@@ -1,0 +1,91 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description = 'Squatch Marketing — Full-service marketing agency in Salt Lake City. Digital marketing, content design, web development, and email campaigns that drive real growth.', canonical } = Astro.props;
+const pageTitle = title === 'Home' ? 'Squatch Marketing — Full-Service Marketing Agency in Salt Lake City' : `${title} | Squatch Marketing`;
+const siteUrl = 'https://squatchmarketing.com';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-void">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Squatch Marketing" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+
+    <title>{pageTitle}</title>
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MarketingAgency",
+      "name": "Squatch Marketing",
+      "description": "Full-service marketing agency specializing in digital marketing, content design, website development, and email campaign management.",
+      "url": siteUrl,
+      "telephone": "+1-801-803-2136",
+      "email": "marketing@squatchmarketing.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3464 Wally Way",
+        "addressLocality": "West Valley City",
+        "addressRegion": "UT",
+        "postalCode": "84128",
+        "addressCountry": "US"
+      },
+      "areaServed": "US",
+      "serviceType": ["Digital Marketing", "Content Design", "Website Development", "Email Marketing"]
+    })} />
+  </head>
+  <body class="min-h-screen">
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
