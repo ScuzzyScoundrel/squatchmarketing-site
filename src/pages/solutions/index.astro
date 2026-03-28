@@ -2,237 +2,315 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Solutions" description="Explore Squatch Marketing's full-service solutions — digital marketing, content design, website development, and email marketing campaigns tailored to grow your business.">
+<Layout title="Solutions" description="Squatch Marketing delivers digital marketing, content design, website development, email marketing, and AI-powered marketing workflows. Full-service strategy built around your business.">
 
   <!-- ========== HERO ========== -->
-  <section class="relative min-h-[70vh] flex items-center gradient-mesh noise overflow-hidden">
-    <!-- Floating orbs -->
-    <div class="orb-1 absolute top-1/4 left-[10%] w-[500px] h-[500px] rounded-full bg-blue/10 blur-[120px] pointer-events-none"></div>
-    <div class="orb-2 absolute bottom-1/4 right-[5%] w-[400px] h-[400px] rounded-full bg-teal/8 blur-[100px] pointer-events-none"></div>
+  <section class="relative min-h-[75vh] flex items-center gradient-mesh noise overflow-hidden" aria-label="Hero">
+    <div class="orb-drift absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full bg-blue/[0.08] blur-[150px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[10%] right-[-3%] w-[500px] h-[500px] rounded-full bg-teal/[0.06] blur-[130px] pointer-events-none"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-20">
       <div class="max-w-3xl">
-        <!-- Eyebrow -->
-        <div class="reveal flex items-center gap-3 mb-8">
-          <div class="h-px w-12 bg-gradient-to-r from-blue to-teal"></div>
-          <span class="text-teal text-sm font-medium tracking-widest uppercase">What We Offer</span>
-        </div>
-
-        <!-- Headline -->
-        <h1 class="reveal reveal-delay-1 font-display font-800 text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight mb-8">
-          Our <span class="text-gradient">Solutions</span>
+        <h1 class="reveal font-display font-800 text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.15] tracking-[-0.03em] mb-7">
+          Everything your brand needs to <span class="text-gradient">grow.</span>
         </h1>
 
-        <!-- Subtitle -->
-        <p class="reveal reveal-delay-2 text-lg sm:text-xl text-white/50 leading-relaxed max-w-xl mb-12">
-          Full-service marketing built around your goals. From paid campaigns to custom websites, we bring strategy and execution under one roof.
+        <p class="reveal reveal-delay-1 text-lg sm:text-xl text-white/35 leading-relaxed max-w-xl mb-10">
+          Five integrated services. One team that actually talks to each other. Strategy, creative, code, and AI working together from day one.
         </p>
 
-        <!-- CTA -->
-        <div class="reveal reveal-delay-3 flex flex-wrap gap-4">
-          <a href="/request-demo" class="btn-gradient px-8 py-4 rounded-full text-white font-semibold text-sm tracking-wide">
-            <span>Request a Demo</span>
+        <div class="reveal reveal-delay-2 flex flex-wrap gap-3">
+          <a href="/request-demo" class="btn-gradient px-8 py-4 rounded-xl text-white font-semibold text-[15px]">
+            <span>Start a Conversation</span>
+          </a>
+          <a href="/pricing" class="btn-ghost px-8 py-4 rounded-xl text-white/50 hover:text-white font-medium text-[15px]">
+            View Pricing
           </a>
         </div>
       </div>
     </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-10"></div>
   </section>
 
-  <!-- ========== SOLUTIONS GRID ========== -->
-  <section class="relative py-32 bg-white overflow-hidden">
-    <!-- Subtle background accent -->
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-surface to-transparent pointer-events-none"></div>
+  <!-- ========== SERVICES BENTO GRID ========== -->
+  <section class="relative py-28 bg-void overflow-hidden" aria-label="Services">
+    <div class="orb-drift absolute top-[30%] right-[10%] w-[400px] h-[400px] rounded-full bg-teal/[0.03] blur-[120px] pointer-events-none"></div>
 
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-      <!-- Section header -->
-      <div class="max-w-2xl mb-20">
-        <div class="reveal flex items-center gap-3 mb-4">
-          <div class="h-px w-12 bg-gradient-to-r from-blue to-teal"></div>
-          <span class="text-blue text-sm font-medium tracking-widest uppercase">Our Capabilities</span>
-        </div>
-        <h2 class="reveal reveal-delay-1 font-display font-800 text-4xl lg:text-5xl text-navy leading-tight mb-6">
-          Four pillars of <span class="text-gradient">real growth</span>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-[1.15] mb-5">
+          Five services, <span class="text-gradient">zero silos.</span>
         </h2>
-        <p class="reveal reveal-delay-2 text-ink-muted text-lg leading-relaxed">
-          Each solution is designed to work on its own or together as a unified strategy. Pick what you need, or let us build the full picture.
+        <p class="text-ink text-lg leading-relaxed">
+          Pick one or stack them all. Every service is built to work independently or as part of a unified growth strategy.
         </p>
       </div>
 
-      <!-- Solution cards — 2-column grid, larger format -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Bento grid — 5 cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-        <!-- Digital Marketing -->
-        <a href="/solutions/digital-marketing" class="reveal group relative rounded-3xl p-10 lg:p-12 bg-white border border-navy/5 hover:border-blue/20 transition-all duration-500 hover:shadow-xl hover:shadow-blue/5 hover:-translate-y-1">
-          <div class="flex items-start justify-between mb-8">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue/10 to-teal/10 flex items-center justify-center group-hover:from-blue/20 group-hover:to-teal/20 transition-colors duration-500">
-              <svg class="w-8 h-8 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
-              </svg>
+        <!-- 1. Digital Marketing — wide card with mini chart -->
+        <a href="/solutions/digital-marketing" class="reveal lg:col-span-2 group glass-interactive rounded-2xl p-10 lg:p-12 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue/[0.04] to-transparent pointer-events-none"></div>
+          <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-start">
+            <div>
+              <div class="w-14 h-14 rounded-xl bg-blue/10 flex items-center justify-center mb-6 group-hover:bg-blue/20 transition-colors duration-500">
+                <svg class="w-7 h-7 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+                </svg>
+              </div>
+              <h3 class="font-display font-700 text-2xl text-white mb-3 group-hover:text-blue transition-colors duration-300">Digital Marketing</h3>
+              <p class="text-ink text-[15px] leading-relaxed max-w-md mb-7">Data-driven campaigns that turn ad spend into revenue. We handle strategy, execution, and optimization across every major platform so you can focus on closing deals.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Paid Social</span>
+                <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Search Ads</span>
+                <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Retargeting</span>
+                <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Strategy</span>
+              </div>
             </div>
-            <svg class="w-5 h-5 text-ink-muted/30 group-hover:text-blue group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
+            <!-- Mini sparkline -->
+            <div class="hidden lg:block w-40">
+              <div class="text-xs text-white/30 mb-2 font-medium">Campaign Performance</div>
+              <div class="flex items-end gap-1 h-16">
+                <div class="flex-1 bg-blue/20 rounded" style="height:30%"></div>
+                <div class="flex-1 bg-blue/25 rounded" style="height:45%"></div>
+                <div class="flex-1 bg-blue/25 rounded" style="height:40%"></div>
+                <div class="flex-1 bg-blue/30 rounded" style="height:60%"></div>
+                <div class="flex-1 bg-blue/35 rounded" style="height:55%"></div>
+                <div class="flex-1 bg-teal/35 rounded" style="height:75%"></div>
+                <div class="flex-1 bg-teal/40 rounded" style="height:70%"></div>
+                <div class="flex-1 bg-teal/45 rounded" style="height:85%"></div>
+                <div class="flex-1 bg-teal/50 rounded" style="height:100%"></div>
+              </div>
+            </div>
           </div>
-          <h3 class="font-display font-700 text-2xl text-navy mb-4 group-hover:text-blue transition-colors duration-300">Digital Marketing</h3>
-          <p class="text-ink-muted text-base leading-relaxed mb-6">
-            Drive qualified traffic and turn clicks into customers with data-backed campaigns across every major platform.
-          </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Social ad creation &amp; management
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Paid search &amp; display campaigns
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Retargeting &amp; audience segmentation
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Cross-channel online strategies
-            </li>
-          </ul>
+          <svg class="absolute top-10 right-10 w-6 h-6 text-white/[0.06] group-hover:text-blue/50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
         </a>
 
-        <!-- Content Design -->
-        <a href="/solutions/content-design" class="reveal reveal-delay-1 group relative rounded-3xl p-10 lg:p-12 bg-white border border-navy/5 hover:border-teal/20 transition-all duration-500 hover:shadow-xl hover:shadow-teal/5 hover:-translate-y-1">
-          <div class="flex items-start justify-between mb-8">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal/10 to-blue/10 flex items-center justify-center group-hover:from-teal/20 group-hover:to-blue/20 transition-colors duration-500">
-              <svg class="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-              </svg>
-            </div>
-            <svg class="w-5 h-5 text-ink-muted/30 group-hover:text-teal group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
-          </div>
-          <h3 class="font-display font-700 text-2xl text-navy mb-4 group-hover:text-teal transition-colors duration-300">Content Design</h3>
-          <p class="text-ink-muted text-base leading-relaxed mb-6">
-            Compelling visual content that tells your story, builds authority, and leaves a lasting impression on your audience.
-          </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              Infographics &amp; data visualization
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              Whitepapers &amp; case studies
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              Brand books &amp; style guides
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              Trade-show &amp; print materials
-            </li>
-          </ul>
-        </a>
-
-        <!-- Website Development -->
-        <a href="/solutions/website-development" class="reveal group relative rounded-3xl p-10 lg:p-12 bg-white border border-navy/5 hover:border-blue/20 transition-all duration-500 hover:shadow-xl hover:shadow-blue/5 hover:-translate-y-1">
-          <div class="flex items-start justify-between mb-8">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue/10 to-teal/10 flex items-center justify-center group-hover:from-blue/20 group-hover:to-teal/20 transition-colors duration-500">
-              <svg class="w-8 h-8 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-              </svg>
-            </div>
-            <svg class="w-5 h-5 text-ink-muted/30 group-hover:text-blue group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
-          </div>
-          <h3 class="font-display font-700 text-2xl text-navy mb-4 group-hover:text-blue transition-colors duration-300">Website Development</h3>
-          <p class="text-ink-muted text-base leading-relaxed mb-6">
-            Custom-built websites engineered to convert visitors into customers, with performance and SEO baked in from day one.
-          </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              New development &amp; full redesigns
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Conversion-optimized landing pages
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Responsive &amp; mobile-first design
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-blue/40 shrink-0"></div>
-              Performance &amp; SEO optimization
-            </li>
-          </ul>
-        </a>
-
-        <!-- Email Marketing -->
-        <a href="/solutions/email-marketing" class="reveal reveal-delay-1 group relative rounded-3xl p-10 lg:p-12 bg-white border border-navy/5 hover:border-teal/20 transition-all duration-500 hover:shadow-xl hover:shadow-teal/5 hover:-translate-y-1">
-          <div class="flex items-start justify-between mb-8">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal/10 to-blue/10 flex items-center justify-center group-hover:from-teal/20 group-hover:to-blue/20 transition-colors duration-500">
-              <svg class="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <!-- 2. Email Marketing — tall card with template mockup -->
+        <a href="/solutions/email-marketing" class="reveal reveal-delay-1 lg:row-span-2 group glass-interactive rounded-2xl p-9 relative overflow-hidden flex flex-col">
+          <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-teal/[0.04] to-transparent pointer-events-none"></div>
+          <div class="relative flex-1 flex flex-col">
+            <div class="w-14 h-14 rounded-xl bg-teal/10 flex items-center justify-center mb-6 group-hover:bg-teal/20 transition-colors duration-500">
+              <svg class="w-7 h-7 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </div>
-            <svg class="w-5 h-5 text-ink-muted/30 group-hover:text-teal group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            <h3 class="font-display font-700 text-2xl text-white mb-3 group-hover:text-teal transition-colors duration-300">Email Marketing</h3>
+            <p class="text-ink text-[15px] leading-relaxed mb-8">Full lifecycle email management. We pick the right ESP, build branded templates, clean your lists, and create campaigns that people actually open.</p>
+
+            <!-- Email template mockup -->
+            <div class="mt-auto bg-white/[0.03] rounded-2xl p-5 border border-white/[0.06]">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue to-teal"></div>
+                <div class="flex-1">
+                  <div class="h-2.5 w-28 rounded bg-white/[0.08]"></div>
+                  <div class="h-2 w-20 rounded bg-white/[0.04] mt-1.5"></div>
+                </div>
+              </div>
+              <div class="h-20 rounded-xl bg-gradient-to-br from-blue/[0.08] to-teal/[0.05] mb-4 flex items-center justify-center border border-white/[0.04]">
+                <span class="text-xs text-white/25 font-medium">Hero Image</span>
+              </div>
+              <div class="space-y-2 mb-4">
+                <div class="h-2.5 w-full rounded bg-white/[0.06]"></div>
+                <div class="h-2.5 w-5/6 rounded bg-white/[0.05]"></div>
+                <div class="h-2.5 w-2/3 rounded bg-white/[0.04]"></div>
+              </div>
+              <div class="w-24 h-8 rounded-full bg-gradient-to-r from-blue/30 to-teal/25 flex items-center justify-center">
+                <span class="text-[11px] text-white/50 font-medium">CTA Button</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">ESP Setup</span>
+              <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Templates</span>
+              <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Automation</span>
+              <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">List Hygiene</span>
+            </div>
+          </div>
+          <svg class="absolute top-9 right-9 w-6 h-6 text-white/[0.06] group-hover:text-teal/50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </a>
+
+        <!-- 3. Content Design -->
+        <a href="/solutions/content-design" class="reveal reveal-delay-2 group glass-interactive rounded-2xl p-9 relative overflow-hidden">
+          <div class="w-14 h-14 rounded-xl bg-blue/10 flex items-center justify-center mb-6 group-hover:bg-blue/20 transition-colors duration-500">
+            <svg class="w-7 h-7 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-2xl text-navy mb-4 group-hover:text-teal transition-colors duration-300">Email Marketing</h3>
-          <p class="text-ink-muted text-base leading-relaxed mb-6">
-            End-to-end email programs that nurture leads, retain customers, and drive measurable revenue with every send.
-          </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              ESP selection &amp; platform setup
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              Email branding &amp; template design
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              List cleaning &amp; deliverability
-            </li>
-            <li class="flex items-center gap-2 text-sm text-ink-muted">
-              <div class="w-1.5 h-1.5 rounded-full bg-teal/40 shrink-0"></div>
-              Campaign strategy &amp; automation
-            </li>
-          </ul>
+          <h3 class="font-display font-700 text-2xl text-white mb-3 group-hover:text-blue transition-colors duration-300">Content Design</h3>
+          <p class="text-ink text-[15px] leading-relaxed mb-6">Visual content that builds authority and makes people stop scrolling. Brand assets, data-driven infographics, whitepapers, and print collateral that looks as good on a booth wall as it does in a PDF.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Brand Assets</span>
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Infographics</span>
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Whitepapers</span>
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Print</span>
+          </div>
+          <svg class="absolute top-9 right-9 w-6 h-6 text-white/[0.06] group-hover:text-blue/50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </a>
+
+        <!-- 4. Website Development — with browser mockup -->
+        <a href="/solutions/website-development" class="reveal reveal-delay-3 group glass-interactive rounded-2xl p-9 relative overflow-hidden">
+          <div class="w-14 h-14 rounded-xl bg-teal/10 flex items-center justify-center mb-6 group-hover:bg-teal/20 transition-colors duration-500">
+            <svg class="w-7 h-7 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-2xl text-white mb-3 group-hover:text-teal transition-colors duration-300">Website Development</h3>
+          <p class="text-ink text-[15px] leading-relaxed mb-6">Fast, conversion-focused websites built from scratch. No templates, no page builders, no bloat. Launch, Business, and Custom tiers so you get exactly what you need.</p>
+          <!-- Mini browser mockup -->
+          <div class="bg-white/[0.03] rounded-lg border border-white/[0.06] overflow-hidden">
+            <div class="flex items-center gap-1.5 px-3 py-2 border-b border-white/[0.04]">
+              <div class="w-2 h-2 rounded-full bg-white/10"></div>
+              <div class="w-2 h-2 rounded-full bg-white/10"></div>
+              <div class="w-2 h-2 rounded-full bg-white/10"></div>
+            </div>
+            <div class="p-3">
+              <div class="h-2 w-16 rounded bg-white/[0.06] mb-2"></div>
+              <div class="h-1.5 w-full rounded bg-white/[0.03] mb-1"></div>
+              <div class="h-1.5 w-4/5 rounded bg-white/[0.03] mb-1"></div>
+              <div class="h-1.5 w-3/5 rounded bg-white/[0.03]"></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Custom Build</span>
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">SEO</span>
+            <span class="text-xs px-3.5 py-1.5 rounded-full bg-white/[0.04] text-white/40 border border-white/[0.06]">Performance</span>
+          </div>
+          <svg class="absolute top-9 right-9 w-6 h-6 text-white/[0.06] group-hover:text-teal/50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </a>
+
+        <!-- 5. Marketing AI Workflows — full-width bottom card with workflow visual + "New" badge -->
+        <a href="/solutions/ai-workflows" class="reveal reveal-delay-4 lg:col-span-3 group glass-interactive rounded-2xl p-10 lg:p-12 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-teal/[0.03] via-transparent to-blue/[0.03] pointer-events-none"></div>
+          <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue/15 to-teal/15 flex items-center justify-center group-hover:from-blue/25 group-hover:to-teal/25 transition-colors duration-500">
+                  <svg class="w-7 h-7 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                  </svg>
+                </div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal/[0.08] border border-teal/[0.12]">
+                  <div class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></div>
+                  <span class="text-teal text-xs font-semibold">New</span>
+                </div>
+              </div>
+              <h3 class="font-display font-700 text-2xl text-white mb-3 group-hover:text-teal transition-colors duration-300">Marketing AI Workflows</h3>
+              <p class="text-ink text-[15px] leading-relaxed max-w-xl">Custom AI-powered pipelines that handle content creation, email sequences, social copy, and market research. We build them, train your team, or run them for you. This is how modern marketing scales.</p>
+            </div>
+            <!-- Mini workflow visual -->
+            <div class="hidden lg:flex items-center gap-3">
+              <div class="bg-white/[0.04] rounded-xl px-4 py-3 border border-white/[0.06]">
+                <span class="text-xs text-white/50 font-semibold">Brief</span>
+              </div>
+              <svg class="w-5 h-5 text-white/15 animate-pulse-flow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              <div class="bg-teal/[0.08] rounded-xl px-4 py-3 border border-teal/[0.12]">
+                <span class="text-xs text-teal font-semibold">AI Generate</span>
+                <div class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse-dot inline-block ml-1.5 align-middle"></div>
+              </div>
+              <svg class="w-5 h-5 text-white/15 animate-pulse-flow anim-delay-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              <div class="bg-blue/[0.08] rounded-xl px-4 py-3 border border-blue/[0.12]">
+                <span class="text-xs text-blue font-semibold">Review</span>
+              </div>
+              <svg class="w-5 h-5 text-white/15 animate-pulse-flow anim-delay-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              <div class="bg-white/[0.04] rounded-xl px-4 py-3 border border-white/[0.06]">
+                <span class="text-xs text-white/50 font-semibold">Deploy</span>
+              </div>
+            </div>
+          </div>
+          <svg class="absolute top-10 right-10 w-6 h-6 text-white/[0.06] group-hover:text-teal/50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
         </a>
 
       </div>
     </div>
   </section>
 
-  <!-- ========== CTA ========== -->
-  <section class="relative py-32 bg-white overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-surface via-white to-surface pointer-events-none"></div>
+  <!-- ========== SEPARATOR ========== -->
+  <div class="section-divider"></div>
 
-    <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
-      <div class="reveal">
-        <div class="flex items-center justify-center gap-3 mb-4">
-          <div class="h-px w-12 bg-gradient-to-r from-blue to-teal"></div>
-          <span class="text-blue text-sm font-medium tracking-widest uppercase">Get Started</span>
-          <div class="h-px w-12 bg-gradient-to-l from-blue to-teal"></div>
-        </div>
+  <!-- ========== WHY SQUATCH ========== -->
+  <section class="relative py-28 section-mesh noise overflow-hidden" aria-label="Why Squatch">
+    <div class="orb-drift absolute top-[20%] right-[5%] w-[400px] h-[400px] rounded-full bg-blue/[0.04] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-[1.15] mb-5">
+          Why teams pick <span class="text-gradient">Squatch.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          We are not a giant agency with layers of account managers. We are a tight crew that does the work ourselves.
+        </p>
       </div>
 
-      <h2 class="reveal reveal-delay-1 font-display font-800 text-4xl lg:text-5xl text-navy leading-tight mb-6">
-        Ready to <span class="text-gradient">get started</span>?
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="reveal glass-interactive rounded-2xl p-9 relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-xl bg-blue/10 flex items-center justify-center mb-6 group-hover:bg-blue/20 transition-colors duration-500">
+            <svg class="w-6 h-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl text-white mb-3">Speed without shortcuts</h3>
+          <p class="text-ink text-[15px] leading-relaxed">Small teams move fast. No approval chains, no bloated timelines. You talk directly to the people building your campaigns.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reveal reveal-delay-1 glass-interactive rounded-2xl p-9 relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6 group-hover:bg-teal/20 transition-colors duration-500">
+            <svg class="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl text-white mb-3">Everything connects</h3>
+          <p class="text-ink text-[15px] leading-relaxed">Your ads feed your email list. Your content supports your SEO. Your website converts the traffic. We build it as one system, not five separate projects.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal reveal-delay-2 glass-interactive rounded-2xl p-9 relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-xl bg-blue/10 flex items-center justify-center mb-6 group-hover:bg-blue/20 transition-colors duration-500">
+            <svg class="w-6 h-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl text-white mb-3">AI-native thinking</h3>
+          <p class="text-ink text-[15px] leading-relaxed">We use AI tools in our own workflows every day. That means better output, faster turnaround, and honest advice about what AI can and cannot do for your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SEPARATOR ========== -->
+  <div class="section-divider"></div>
+
+  <!-- ========== CTA ========== -->
+  <section class="relative py-32 gradient-mesh noise overflow-hidden" aria-label="Get started">
+    <div class="orb-drift absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-blue/[0.06] blur-[140px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[10%] right-[5%] w-[400px] h-[400px] rounded-full bg-teal/[0.04] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="reveal font-display font-800 text-3xl lg:text-5xl text-white leading-[1.15] mb-6">
+        Ready to build something <span class="text-gradient">real?</span>
       </h2>
-      <p class="reveal reveal-delay-2 text-ink-muted text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-        Tell us where you want to grow and we'll build a plan that fits. No cookie-cutter packages — just strategy shaped around your business.
+      <p class="reveal reveal-delay-1 text-ink text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+        Tell us where you want to grow. We will put together a plan that fits your goals and your budget. No cookie-cutter packages. No commitment to start the conversation.
       </p>
-      <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-4">
-        <a href="/request-demo" class="btn-gradient px-10 py-4 rounded-full text-white font-semibold text-sm tracking-wide">
+      <div class="reveal reveal-delay-2 flex flex-wrap justify-center gap-4">
+        <a href="/request-demo" class="btn-gradient px-10 py-4 rounded-xl text-white font-semibold text-[15px]">
           <span>Request a Demo</span>
         </a>
-        <a href="/pricing" class="px-10 py-4 rounded-full text-navy font-semibold text-sm tracking-wide border border-navy/10 hover:border-navy/30 hover:bg-navy/5 transition-all duration-300">
+        <a href="/pricing" class="btn-ghost px-10 py-4 rounded-xl text-white/50 hover:text-white font-medium text-[15px]">
           View Pricing
         </a>
       </div>

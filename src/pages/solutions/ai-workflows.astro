@@ -1,0 +1,596 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Marketing AI Workflows" description="AI-powered marketing pipelines built on Claude. Content creation, email sequences, social media copy, and market research automation. We build and run AI workflows for you, or train your team to do it.">
+
+  <!-- ========== HERO ========== -->
+  <section class="relative min-h-[85vh] flex items-center gradient-mesh noise overflow-hidden" aria-label="AI Workflows Hero">
+    <div class="orb-drift absolute top-[3%] left-[-5%] w-[700px] h-[700px] rounded-full bg-teal/[0.10] blur-[170px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[0%] right-[-5%] w-[600px] h-[600px] rounded-full bg-blue/[0.08] blur-[150px] pointer-events-none"></div>
+    <div class="orb-drift absolute top-[40%] left-[50%] w-[300px] h-[300px] rounded-full bg-teal/[0.05] blur-[100px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-20">
+      <div class="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <div class="reveal mb-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-teal/[0.08] border border-teal/[0.12]">
+              <div class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></div>
+              <span class="text-teal text-xs font-semibold tracking-wide">New Service</span>
+            </div>
+          </div>
+
+          <h1 class="reveal reveal-delay-1 font-display font-800 text-[clamp(2.5rem,5.5vw,4.5rem)] text-white leading-[1.1] tracking-[-0.02em] mb-7">
+            AI-powered<br />
+            <span class="text-gradient">marketing machines.</span>
+          </h1>
+
+          <p class="reveal reveal-delay-2 text-lg lg:text-xl text-white/35 leading-relaxed max-w-lg mb-10">
+            We build custom AI workflows using Claude that turn a campaign brief into finished content in minutes. Not a chatbot. Not a template. A production pipeline built around your brand.
+          </p>
+
+          <div class="reveal reveal-delay-3 flex flex-wrap gap-3">
+            <a href="/request-demo" class="btn-gradient px-8 py-4 rounded-xl text-white font-semibold text-[15px]">
+              <span>Build My Workflow</span>
+            </a>
+            <a href="/pricing" class="btn-ghost px-8 py-4 rounded-xl text-white/50 hover:text-white font-medium text-[15px]">
+              View Pricing
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: AI terminal/workflow mockup -->
+        <div class="hidden lg:block relative">
+          <div class="glass-strong rounded-2xl p-1.5 glow relative">
+            <div class="bg-abyss/90 rounded-xl overflow-hidden">
+              <!-- Terminal chrome -->
+              <div class="flex items-center gap-2 px-6 py-3.5 border-b border-white/[0.05]">
+                <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                <span class="ml-4 text-xs text-white/30 font-medium font-mono">squatch-ai-pipeline</span>
+                <div class="ml-auto flex items-center gap-2">
+                  <div class="w-2 h-2 rounded-full bg-teal animate-pulse"></div>
+                  <span class="text-[10px] text-teal font-mono">running</span>
+                </div>
+              </div>
+              <!-- Terminal content — lines type in one by one -->
+              <div class="p-5 font-mono text-sm space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-teal shrink-0">$</span>
+                  <span class="text-white/60">workflow.run <span class="text-blue">--brief</span> "Q2 product launch"</span>
+                </div>
+                <div class="pl-4 space-y-2 type-stagger">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span class="text-white/40 text-xs">Parsing brief... audience: <span class="text-teal">B2B SaaS</span></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span class="text-white/40 text-xs">Generating email sequence... <span class="text-teal">5 emails</span></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span class="text-white/40 text-xs">Generating social copy... <span class="text-blue">15 posts</span></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span class="text-white/40 text-xs">Landing page copy... <span class="text-blue">1 page</span></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span class="text-white/40 text-xs">Brand voice check... <span class="text-teal">passed</span></span>
+                  </div>
+                </div>
+                <div class="border-t border-white/[0.04] pt-3 mt-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-teal">&#10003;</span>
+                    <span class="text-white/50 text-xs">Pipeline complete. <span class="text-teal font-semibold">21 assets</span> ready for review.</span>
+                  </div>
+                  <div class="text-white/20 text-xs mt-1">Elapsed: 3m 42s<span class="cursor-blink"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output summary floating card -->
+          <div class="absolute -bottom-8 -left-10 glass-strong rounded-xl p-5 w-64 glow z-10">
+            <div class="text-xs text-white/40 mb-3 font-semibold">Pipeline Output</div>
+            <div class="space-y-2.5">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs text-white/50">Emails</span>
+                  <span class="text-xs text-teal font-semibold">5/5</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-teal to-teal/60 bar-shimmer" style="width:100%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs text-white/50">Social Posts</span>
+                  <span class="text-xs text-blue font-semibold">15/15</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-blue to-blue/60 bar-shimmer" style="width:100%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs text-white/50">Landing Page</span>
+                  <span class="text-xs text-white/40 font-semibold">1/1</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-blue/60 to-teal/40 bar-shimmer" style="width:100%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Speed badge -->
+          <div class="absolute -top-4 -right-6 glass-strong rounded-xl p-3 glow z-10">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+              <span class="text-xs text-white/50 font-semibold">10x Faster</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-10"></div>
+  </section>
+
+  <!-- ========== VISUAL WORKFLOW DIAGRAM ========== -->
+  <section class="relative py-28 bg-void overflow-hidden" aria-label="How the workflow works">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-tight mb-5">
+          Brief in, <span class="text-gradient">campaigns out.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          One input. Multiple outputs. All tuned to your brand voice, audience, and goals. Here's how it works.
+        </p>
+      </div>
+
+      <!-- Large workflow diagram -->
+      <div class="reveal max-w-4xl mx-auto">
+        <div class="space-y-5">
+          <!-- Step 1: Input -->
+          <div class="glass-strong rounded-2xl p-7 border-l-[3px] border-l-blue/60 relative">
+            <div class="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-blue/[0.03] to-transparent rounded-2xl pointer-events-none"></div>
+            <div class="relative flex items-start gap-5">
+              <div class="w-12 h-12 rounded-xl bg-blue/20 flex items-center justify-center shrink-0">
+                <span class="text-blue text-lg font-800 font-display">1</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-white text-lg font-display font-700">Campaign Brief</span>
+                  <span class="text-[10px] text-white/40 bg-white/[0.06] px-2.5 py-1 rounded-full font-semibold">you</span>
+                </div>
+                <p class="text-white/50 text-[15px] leading-relaxed">Tell us what you're promoting, who you're targeting, and what success looks like. A Slack message works. So does a Google Doc. We pull out audience segments, key messaging pillars, and tone direction.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection -->
+          <div class="flex justify-center">
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-0.5 h-6 bg-gradient-to-b from-blue/30 to-teal/30 rounded-full animate-pulse-glow"></div>
+              <svg class="w-4 h-4 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
+            </div>
+          </div>
+
+          <!-- Step 2: Processing -->
+          <div class="glass-strong rounded-2xl p-7 border-l-[3px] border-l-teal/60 relative">
+            <div class="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-teal/[0.03] to-transparent rounded-2xl pointer-events-none"></div>
+            <div class="relative flex items-start gap-5">
+              <div class="w-12 h-12 rounded-xl bg-teal/20 flex items-center justify-center shrink-0">
+                <span class="text-teal text-lg font-800 font-display">2</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-white text-lg font-display font-700">AI Generation</span>
+                  <span class="text-[10px] text-teal bg-teal/15 px-2.5 py-1 rounded-full font-semibold">AI</span>
+                </div>
+                <p class="text-white/50 text-[15px] leading-relaxed mb-5">Claude processes your brief through custom workflows calibrated to your brand voice. It generates content across multiple channels simultaneously. Not generic AI slop. Structured, strategic content that reads like your best copywriter wrote it.</p>
+                <!-- Output grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div class="bg-white/[0.04] rounded-xl p-4 border border-white/[0.06] text-center">
+                    <div class="text-2xl font-display font-800 text-teal mb-1">5</div>
+                    <div class="text-xs text-white/30">Emails</div>
+                  </div>
+                  <div class="bg-white/[0.04] rounded-xl p-4 border border-white/[0.06] text-center">
+                    <div class="text-2xl font-display font-800 text-blue mb-1">15</div>
+                    <div class="text-xs text-white/30">Social Posts</div>
+                  </div>
+                  <div class="bg-white/[0.04] rounded-xl p-4 border border-white/[0.06] text-center">
+                    <div class="text-2xl font-display font-800 text-white/60 mb-1">1</div>
+                    <div class="text-xs text-white/30">Landing Page</div>
+                  </div>
+                  <div class="bg-white/[0.04] rounded-xl p-4 border border-white/[0.06] text-center">
+                    <div class="text-2xl font-display font-800 text-white/40 mb-1">3</div>
+                    <div class="text-xs text-white/30">Ad Variants</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection -->
+          <div class="flex justify-center">
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-0.5 h-6 bg-gradient-to-b from-teal/30 to-blue/30 rounded-full animate-pulse-glow"></div>
+              <svg class="w-4 h-4 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
+            </div>
+          </div>
+
+          <!-- Step 3: Review -->
+          <div class="glass-strong rounded-2xl p-7 border-l-[3px] border-l-blue/60 relative">
+            <div class="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-blue/[0.03] to-transparent rounded-2xl pointer-events-none"></div>
+            <div class="relative flex items-start gap-5">
+              <div class="w-12 h-12 rounded-xl bg-blue/20 flex items-center justify-center shrink-0">
+                <span class="text-blue text-lg font-800 font-display">3</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-white text-lg font-display font-700">Review &amp; Refine</span>
+                  <span class="text-[10px] text-white/40 bg-white/[0.06] px-2.5 py-1 rounded-full font-semibold">you + us</span>
+                </div>
+                <p class="text-white/50 text-[15px] leading-relaxed">You review the drafts. We make adjustments. The AI learns from your feedback to improve future outputs. Approve what's ready, flag what needs work. Nothing goes live until you're satisfied.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection -->
+          <div class="flex justify-center">
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-0.5 h-6 bg-gradient-to-b from-blue/30 to-teal/30 rounded-full animate-pulse-glow"></div>
+              <svg class="w-4 h-4 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
+            </div>
+          </div>
+
+          <!-- Step 4: Deploy -->
+          <div class="glass-strong rounded-2xl p-7 border-l-[3px] border-l-teal/60 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-teal/[0.02] via-transparent to-blue/[0.02] pointer-events-none"></div>
+            <div class="relative flex items-start gap-5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal/20 to-blue/20 flex items-center justify-center shrink-0">
+                <span class="text-teal text-lg font-800 font-display">4</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-white text-lg font-display font-700">Deploy</span>
+                  <span class="text-[10px] text-teal bg-teal/15 px-2.5 py-1 rounded-full font-semibold">auto</span>
+                </div>
+                <p class="text-white/50 text-[15px] leading-relaxed">Approved content gets scheduled and deployed across your channels. Emails queue in your ESP. Social posts schedule through your publishing tool. The pipeline handles distribution so you can focus on running your business.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== TWO OPTIONS ========== -->
+  <section class="relative py-28 section-mesh noise overflow-hidden" aria-label="Engagement options">
+    <div class="orb-drift absolute top-[10%] right-[5%] w-[500px] h-[500px] rounded-full bg-teal/[0.05] blur-[140px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-tight mb-6">
+          Two ways to <span class="text-gradient">work with us.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          We build and run your AI workflows for you. Or we set them up and train your team to take the wheel. Your call.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <!-- Done For You -->
+        <div class="reveal glass-interactive rounded-2xl p-10 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal to-teal/30"></div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal/[0.08] border border-teal/[0.12] mb-6">
+            <span class="text-teal text-xs font-semibold">Most Popular</span>
+          </div>
+          <h3 class="font-display font-700 text-2xl text-white mb-4">Done For You</h3>
+          <p class="text-ink text-[15px] leading-relaxed mb-8">We build the workflows, run the pipelines, and deliver finished content. You review, approve, and watch it perform. Zero learning curve on your end.</p>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-teal/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Custom pipeline built for your brand
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-teal/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              We handle all AI operations
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-teal/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Monthly content delivery
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-teal/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Performance tracking included
+            </li>
+          </ul>
+          <span class="text-xs text-white/25">Best for teams without AI experience</span>
+        </div>
+
+        <!-- Consult & Train -->
+        <div class="reveal reveal-delay-1 glass-interactive rounded-2xl p-10 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue to-blue/30"></div>
+          <div class="text-5xl font-display font-800 text-blue/10 mb-4"></div>
+          <h3 class="font-display font-700 text-2xl text-white mb-4">Consult &amp; Train</h3>
+          <p class="text-ink text-[15px] leading-relaxed mb-8">We design the workflows, build the prompts, and train your team to run everything independently. You own the system. We're on standby for support.</p>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-blue/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Custom workflow architecture
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-blue/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Prompt engineering &amp; tuning
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-blue/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Hands-on team training sessions
+            </li>
+            <li class="flex items-center gap-3 text-[15px] text-white/70">
+              <div class="w-6 h-6 rounded-md bg-blue/15 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              </div>
+              Documentation &amp; playbooks
+            </li>
+          </ul>
+          <span class="text-xs text-white/25">Best for teams with in-house marketing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== WHAT WE AUTOMATE ========== -->
+  <section class="relative py-28 bg-void overflow-hidden" aria-label="Use cases">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal max-w-2xl mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-tight mb-5">
+          What you can <span class="text-gradient">automate.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          Every workflow is custom. These are the most common pipelines our clients use.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="reveal glass-interactive rounded-2xl p-8 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Email Sequences</h3>
+          <p class="text-ink text-sm leading-relaxed">Full welcome series, nurture campaigns, and promotional sequences. Subject lines, body copy, CTAs. Ready to load into your ESP.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 glass-interactive rounded-2xl p-8 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-blue/10 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Social Media Copy</h3>
+          <p class="text-ink text-sm leading-relaxed">Platform-specific posts for LinkedIn, Twitter/X, Facebook, and Instagram. Adapted tone and format for each channel. Hashtags included.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 glass-interactive rounded-2xl p-8 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Blog &amp; Long-Form Content</h3>
+          <p class="text-ink text-sm leading-relaxed">SEO-optimized blog posts, articles, and thought leadership pieces. Outlines, drafts, and polished final versions in your brand voice.</p>
+        </div>
+
+        <div class="reveal reveal-delay-3 glass-interactive rounded-2xl p-8 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-blue/10 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Market Research</h3>
+          <p class="text-ink text-sm leading-relaxed">Competitor analysis, audience persona development, market positioning reports. Structured research that would take your team days, done in hours.</p>
+        </div>
+
+        <div class="reveal reveal-delay-4 glass-interactive rounded-2xl p-8 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Ad Copy &amp; Creative Briefs</h3>
+          <p class="text-ink text-sm leading-relaxed">Headlines, body copy, and creative briefs for paid campaigns. Multiple variants per ad set for A/B testing. Platform-optimized.</p>
+        </div>
+
+        <div class="reveal reveal-delay-5 glass-interactive rounded-2xl p-8 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue/10 to-teal/10 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Landing Page Copy</h3>
+          <p class="text-ink text-sm leading-relaxed">Full landing page copy packages. Headlines, subheads, body sections, CTAs, social proof blocks. Conversion-focused from the first word.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== POWERED BY CLAUDE ========== -->
+  <section class="relative py-28 section-mesh noise overflow-hidden" aria-label="Technology">
+    <div class="orb-drift-reverse absolute top-[20%] left-[10%] w-[400px] h-[400px] rounded-full bg-blue/[0.04] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="reveal glass-strong rounded-3xl p-10 lg:p-14 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal/[0.03] via-transparent to-blue/[0.03] pointer-events-none"></div>
+        <div class="noise absolute inset-0 rounded-3xl"></div>
+
+        <div class="relative z-10 grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal/15 to-blue/15 flex items-center justify-center">
+                <svg class="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+                </svg>
+              </div>
+            </div>
+            <h2 class="font-display font-800 text-3xl text-white leading-tight mb-5">
+              Built on <span class="text-gradient">Claude.</span>
+            </h2>
+            <p class="text-ink-bright text-[15px] leading-relaxed mb-5">
+              We chose Claude as our AI backbone for a reason. It writes cleaner copy, follows brand guidelines more accurately, and handles complex multi-step workflows better than any other model we've tested.
+            </p>
+            <p class="text-ink text-[15px] leading-relaxed">
+              This isn't ChatGPT with a marketing wrapper. Our workflows use Claude's extended context windows, structured outputs, and tool-use capabilities to build real production pipelines. The difference shows up in the output quality.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bg-white/[0.04] rounded-xl p-5 border border-white/[0.06]">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span class="text-white text-sm font-semibold">Brand Voice Calibration</span>
+              </div>
+              <p class="text-white/40 text-sm leading-relaxed pl-8">Every workflow is tuned to your specific brand voice, terminology, and style. The output sounds like you, not a robot.</p>
+            </div>
+            <div class="bg-white/[0.04] rounded-xl p-5 border border-white/[0.06]">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span class="text-white text-sm font-semibold">Multi-Channel Output</span>
+              </div>
+              <p class="text-white/40 text-sm leading-relaxed pl-8">One brief generates content across email, social, web, and ads. Same message, adapted for each channel's format and audience.</p>
+            </div>
+            <div class="bg-white/[0.04] rounded-xl p-5 border border-white/[0.06]">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span class="text-white text-sm font-semibold">Continuous Learning</span>
+              </div>
+              <p class="text-white/40 text-sm leading-relaxed pl-8">Your feedback improves the system. Every revision makes future outputs better. The pipeline gets smarter the longer you use it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== FAQ ========== -->
+  <section class="relative py-28 bg-void overflow-hidden" aria-label="FAQ">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-4xl text-white leading-tight mb-5">
+          Common <span class="text-gradient">questions.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          New technology, fair questions. Here are the ones we hear most.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="reveal group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            Is the AI content actually good?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            Yes. But not because AI is magic. It's good because we spend significant time calibrating the workflows to your brand voice, building detailed prompt chains, and quality-checking every output. The AI generates the first draft fast. We make sure the final product is something you'd be proud to send.
+          </div>
+        </details>
+
+        <details class="reveal reveal-delay-1 group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            Will this replace my marketing team?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            No. It makes them faster. Your team still provides strategy, brand direction, and final approval. The AI handles the time-consuming parts: first drafts, variant generation, repurposing content across channels. Think of it as a force multiplier, not a replacement.
+          </div>
+        </details>
+
+        <details class="reveal reveal-delay-2 group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            How long does it take to set up?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            Most workflows are operational within 1-2 weeks. That includes brand voice calibration, workflow design, testing, and refinement. Consult &amp; Train engagements take 2-3 weeks to include team training sessions.
+          </div>
+        </details>
+
+        <details class="reveal reveal-delay-3 group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            What about data privacy?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            Your data is not used to train AI models. Claude's API has a zero-retention policy for business data. We don't feed customer lists, proprietary information, or sensitive data into the pipeline. The workflows use your brand guidelines and campaign briefs. Nothing more.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== CTA ========== -->
+  <section class="relative py-36 bg-void overflow-hidden" aria-label="Call to action">
+    <div class="orb-drift-reverse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-teal/[0.06] blur-[180px] pointer-events-none"></div>
+    <div class="orb-drift absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-blue/[0.04] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal/[0.08] border border-teal/[0.12] mb-8">
+        <svg class="w-4 h-4 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+        </svg>
+        <span class="text-teal text-sm font-semibold">The future is already here</span>
+      </div>
+      <h2 class="reveal reveal-delay-1 font-display font-800 text-4xl lg:text-[3.25rem] text-white leading-tight mb-6">
+        Your competitors will<br /><span class="text-gradient">use AI eventually.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-ink text-lg leading-relaxed max-w-lg mx-auto mb-12">
+        The question is whether you move first. Let's build your AI marketing pipeline and give your team a head start that compounds every month.
+      </p>
+      <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-4">
+        <a href="/request-demo" class="btn-gradient px-10 py-4 rounded-xl text-white font-semibold text-[15px]">
+          <span>Build My Workflow</span>
+        </a>
+        <a href="/solutions" class="btn-ghost px-10 py-4 rounded-xl text-white/40 hover:text-white font-medium text-[15px]">
+          All Solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

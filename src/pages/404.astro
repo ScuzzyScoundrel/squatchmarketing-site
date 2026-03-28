@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Page Not Found" description="This page doesn't exist. But we do. Let's get you back on track.">
+
+  <section class="relative min-h-screen flex items-center justify-center gradient-mesh noise overflow-hidden">
+    <div class="orb-drift absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-blue/[0.06] blur-[140px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-teal/[0.05] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 text-center px-6 max-w-2xl">
+      <!-- Big 404 -->
+      <div class="font-display font-800 text-[clamp(8rem,20vw,14rem)] text-gradient leading-none mb-4 select-none">
+        404
+      </div>
+
+      <!-- Sasquatch joke -->
+      <p class="text-white/50 text-lg mb-2">
+        Even Sasquatch couldn't find this page.
+      </p>
+      <p class="text-white/25 text-sm mb-10">
+        It might have been moved, deleted, or maybe it never existed. These things happen.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-gradient px-8 py-3.5 rounded-xl text-white font-semibold text-sm">
+          <span>Back to Home</span>
+        </a>
+        <a href="/solutions" class="btn-ghost px-8 py-3.5 rounded-xl text-white/50 hover:text-white font-medium text-sm">
+          View Solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

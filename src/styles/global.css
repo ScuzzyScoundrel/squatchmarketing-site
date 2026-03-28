@@ -73,22 +73,6 @@ body {
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-.glass-interactive {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-.glass-interactive:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.12);
-  box-shadow:
-    0 0 30px rgba(46,163,242,0.08),
-    0 8px 32px rgba(0,0,0,0.3);
-  transform: translateY(-4px);
-}
-
 /* Gradient text */
 .text-gradient {
   background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-teal) 100%);
@@ -166,7 +150,7 @@ body {
 .reveal-delay-4 { transition-delay: 0.48s; }
 .reveal-delay-5 { transition-delay: 0.60s; }
 
-/* Gradient button */
+/* Gradient button — shimmer sweep + glow bloom on hover */
 .btn-gradient {
   background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-teal) 100%);
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
@@ -176,27 +160,114 @@ body {
 .btn-gradient::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-blue) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: none;
 }
-.btn-gradient:hover::before { opacity: 1; }
+.btn-gradient:hover::before {
+  left: 100%;
+  transition: left 0.6s ease;
+}
 .btn-gradient:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(46,163,242,0.3), 0 0 60px rgba(38,209,189,0.1);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 12px 40px rgba(46,163,242,0.3),
+    0 0 60px rgba(38,209,189,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.btn-gradient:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 20px rgba(46,163,242,0.2);
 }
 .btn-gradient span { position: relative; z-index: 1; }
 
-/* Ghost button */
+/* Ghost button — border glow + fill on hover */
 .btn-ghost {
   border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  position: relative;
+  overflow: hidden;
 }
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(46,163,242,0.06), rgba(38,209,189,0.04));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-ghost:hover::before { opacity: 1; }
 .btn-ghost:hover {
-  border-color: rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.04);
-  transform: translateY(-2px);
+  border-color: rgba(46,163,242,0.3);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 20px rgba(46,163,242,0.08);
+}
+.btn-ghost:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Card hover tilt — subtle 3D perspective */
+.card-tilt {
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  transform-style: preserve-3d;
+}
+.card-tilt:hover {
+  transform: perspective(800px) rotateY(-2deg) rotateX(1deg) translateY(-4px);
+}
+
+/* Link hover — underline slides in from left */
+.link-slide {
+  position: relative;
+  text-decoration: none;
+}
+.link-slide::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-teal));
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.link-slide:hover::after {
+  width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(46,163,242,0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(46,163,242,0.3);
+}
+
+/* Glass card hover glow border */
+.glass-interactive {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.glass-interactive:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(46,163,242,0.2);
+  box-shadow:
+    0 0 30px rgba(46,163,242,0.08),
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  transform: translateY(-4px);
 }
 
 /* Animated orbs */
@@ -228,6 +299,242 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent 5%, rgba(46,163,242,0.15) 30%, rgba(38,209,189,0.15) 70%, transparent 95%);
 }
+
+/* Pulse animations for connectors, arrows, accents */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+@keyframes pulse-flow {
+  0% { opacity: 0.15; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(4px); }
+  100% { opacity: 0.15; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+@keyframes bar-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-pulse-flow { animation: pulse-flow 2s ease-in-out infinite; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+.animate-bar-fill {
+  transform-origin: left;
+  animation: bar-fill 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+/* Staggered animation delays */
+.anim-delay-1 { animation-delay: 0.2s; }
+.anim-delay-2 { animation-delay: 0.4s; }
+.anim-delay-3 { animation-delay: 0.6s; }
+.anim-delay-4 { animation-delay: 0.8s; }
+
+/* ===== PRODUCT MOCKUP ANIMATIONS ===== */
+
+/* Slide-in from below — elements assembling into a mockup */
+@keyframes slide-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-in-right {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Staggered build — children appear one by one like assembling a page */
+.build-stagger > * {
+  opacity: 0;
+  animation: slide-in-up 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.build-stagger > *:nth-child(1) { animation-delay: 0.3s; }
+.build-stagger > *:nth-child(2) { animation-delay: 0.6s; }
+.build-stagger > *:nth-child(3) { animation-delay: 0.9s; }
+.build-stagger > *:nth-child(4) { animation-delay: 1.2s; }
+.build-stagger > *:nth-child(5) { animation-delay: 1.5s; }
+.build-stagger > *:nth-child(6) { animation-delay: 1.8s; }
+.build-stagger > *:nth-child(7) { animation-delay: 2.1s; }
+
+/* Looping build — children appear, hold, fade, repeat */
+@keyframes build-loop {
+  0% { opacity: 0; transform: translateY(12px); }
+  8% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+.build-loop > * {
+  opacity: 0;
+  animation: build-loop 8s cubic-bezier(0.16,1,0.3,1) infinite;
+}
+.build-loop > *:nth-child(1) { animation-delay: 0s; }
+.build-loop > *:nth-child(2) { animation-delay: 0.3s; }
+.build-loop > *:nth-child(3) { animation-delay: 0.6s; }
+.build-loop > *:nth-child(4) { animation-delay: 0.9s; }
+.build-loop > *:nth-child(5) { animation-delay: 1.2s; }
+.build-loop > *:nth-child(6) { animation-delay: 1.5s; }
+
+/* Fake cursor — moves to a target, hovers, then resets */
+@keyframes cursor-move {
+  0%, 20% { transform: translate(0, 0); opacity: 0; }
+  25% { opacity: 1; }
+  45%, 65% { transform: translate(var(--cx, 60px), var(--cy, 40px)); opacity: 1; }
+  75% { opacity: 0; transform: translate(var(--cx, 60px), var(--cy, 40px)); }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+.fake-cursor {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 5;
+  pointer-events: none;
+  animation: cursor-move 7s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+.fake-cursor svg {
+  width: 16px;
+  height: 16px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Button fake-hover glow — SYNCED: cursor arrives at 45%, button glows at 45% */
+@keyframes btn-fake-hover {
+  0%, 42% { box-shadow: none; transform: scale(1); filter: brightness(1); }
+  45%, 65% { box-shadow: 0 0 25px rgba(46,163,242,0.35), 0 0 50px rgba(38,209,189,0.15); transform: scale(1.05); filter: brightness(1.3); }
+  72% { box-shadow: none; transform: scale(1); filter: brightness(1); }
+  100% { box-shadow: none; transform: scale(1); }
+}
+.btn-fake-hover {
+  animation: btn-fake-hover 7s ease infinite;
+}
+
+/* Terminal typing — lines appear one by one with typing feel */
+@keyframes type-line {
+  0% { width: 0; opacity: 1; }
+  70% { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 1; }
+}
+.type-stagger > * {
+  opacity: 0;
+  animation: fade-in 0.3s ease forwards;
+}
+.type-stagger > *:nth-child(1) { animation-delay: 0.4s; }
+.type-stagger > *:nth-child(2) { animation-delay: 1.0s; }
+.type-stagger > *:nth-child(3) { animation-delay: 1.6s; }
+.type-stagger > *:nth-child(4) { animation-delay: 2.2s; }
+.type-stagger > *:nth-child(5) { animation-delay: 2.8s; }
+
+/* ===== CONTINUOUS "ALIVE" ANIMATIONS ===== */
+
+/* Bar breathe — bars brighten one after another in a wave */
+@keyframes bar-breathe {
+  0%, 100% { opacity: 0.5; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.4); }
+}
+.bar-alive > *:nth-child(1) { animation: bar-breathe 3s ease-in-out infinite 0s; }
+.bar-alive > *:nth-child(2) { animation: bar-breathe 3s ease-in-out infinite 0.3s; }
+.bar-alive > *:nth-child(3) { animation: bar-breathe 3s ease-in-out infinite 0.6s; }
+.bar-alive > *:nth-child(4) { animation: bar-breathe 3s ease-in-out infinite 0.9s; }
+.bar-alive > *:nth-child(5) { animation: bar-breathe 3s ease-in-out infinite 1.2s; }
+.bar-alive > *:nth-child(6) { animation: bar-breathe 3s ease-in-out infinite 1.5s; }
+.bar-alive > *:nth-child(7) { animation: bar-breathe 3s ease-in-out infinite 1.8s; }
+.bar-alive > *:nth-child(8) { animation: bar-breathe 3s ease-in-out infinite 2.1s; }
+.bar-alive > *:nth-child(9) { animation: bar-breathe 3s ease-in-out infinite 2.4s; }
+
+/* Progress bar shimmer — light sweep across horizontal bars */
+@keyframes progress-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.bar-shimmer {
+  background-size: 200% 100%;
+  background-image: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.08) 40%,
+    rgba(255,255,255,0.15) 50%,
+    rgba(255,255,255,0.08) 60%,
+    transparent 100%
+  );
+  animation: progress-shimmer 3s ease-in-out infinite;
+}
+
+/* Metric pulse — subtle glow on data cards */
+@keyframes metric-pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(46,163,242,0); }
+  50% { box-shadow: 0 0 20px rgba(46,163,242,0.06); }
+}
+.metric-alive {
+  animation: metric-pulse 4s ease-in-out infinite;
+}
+.metric-alive:nth-child(2) { animation-delay: 1.3s; }
+.metric-alive:nth-child(3) { animation-delay: 2.6s; }
+
+/* Color palette shimmer — colors shift slightly */
+@keyframes color-shift {
+  0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+  50% { filter: hue-rotate(8deg) brightness(1.15); }
+}
+.color-alive {
+  animation: color-shift 5s ease-in-out infinite;
+}
+.color-alive:nth-child(2) { animation-delay: 0.8s; }
+.color-alive:nth-child(3) { animation-delay: 1.6s; }
+.color-alive:nth-child(4) { animation-delay: 2.4s; }
+.color-alive:nth-child(5) { animation-delay: 3.2s; }
+
+/* Scan line — horizontal line sweeps down through a container */
+@keyframes scan {
+  0% { top: -2px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+.scan-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-teal), transparent);
+  animation: scan 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Typing cursor blink for terminal mockups */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--color-teal);
+  animation: cursor-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* Number tick — subtle fluctuation for live-feel metrics */
+@keyframes num-tick {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0.6; }
+}
+.num-tick {
+  animation: num-tick 5s ease infinite;
+}
+.num-tick:nth-child(2) { animation-delay: 1.8s; }
+.num-tick:nth-child(3) { animation-delay: 3.5s; }
 
 ::selection {
   background: rgba(46,163,242,0.3);

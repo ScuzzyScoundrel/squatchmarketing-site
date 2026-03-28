@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -45,6 +46,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
 
     <title>{pageTitle}</title>
+    <ClientRouter />
 
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -75,6 +77,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
     <Footer />
 
     <script>
+      // Scroll reveal
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -86,6 +89,57 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
         { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
       );
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Animated chart bars — grow from 0 to target height
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bars = entry.target.querySelectorAll('.chart-bar');
+            bars.forEach((bar, i) => {
+              const h = bar.getAttribute('data-height');
+              bar.style.height = '0%';
+              bar.style.transition = `height 1s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`;
+              requestAnimationFrame(() => { bar.style.height = h + '%'; });
+            });
+            barObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('#chart-bars').forEach((el) => barObserver.observe(el));
+
+      // Animated number counters
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('[data-count]');
+            counters.forEach((el) => {
+              const target = parseFloat(el.getAttribute('data-count'));
+              const prefix = el.getAttribute('data-prefix') || '';
+              const suffix = el.getAttribute('data-suffix') || '';
+              const isInt = Number.isInteger(target);
+              const duration = 1500;
+              const start = performance.now();
+              const tick = (now) => {
+                const p = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - p, 3);
+                const val = target * ease;
+                if (isInt) {
+                  el.textContent = prefix + Math.round(val).toLocaleString() + suffix;
+                } else {
+                  el.textContent = prefix + val.toFixed(1) + suffix;
+                }
+                if (p < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+            });
+            countObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('#dashboard, [id^="stat-"]').forEach((el) => countObserver.observe(el));
+      // Also observe the results strip parent
+      const statsParent = document.querySelector('[aria-label="Results"] .glass-strong');
+      if (statsParent) countObserver.observe(statsParent);
     </script>
   </body>
 </html>

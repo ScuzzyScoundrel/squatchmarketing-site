@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://squatchmarketing.com/sitemap-index.xml

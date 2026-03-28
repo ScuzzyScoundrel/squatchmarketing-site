@@ -1,0 +1,473 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Email Marketing" description="End-to-end email marketing from Squatch Marketing. ESP setup, branded templates, list hygiene, campaign management, automation flows, and performance tracking. Email is our bread and butter.">
+
+  <!-- ========== HERO ========== -->
+  <section class="relative min-h-[85vh] flex items-center gradient-mesh noise overflow-hidden" aria-label="Email Marketing Hero">
+    <div class="orb-drift absolute top-[5%] left-[0%] w-[700px] h-[700px] rounded-full bg-teal/[0.10] blur-[160px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[10%] right-[5%] w-[550px] h-[550px] rounded-full bg-blue/[0.07] blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-teal/[0.04] blur-[100px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-20">
+      <div class="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <div class="reveal mb-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-teal/[0.08] border border-teal/[0.12]">
+              <div class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></div>
+              <span class="text-teal text-xs font-semibold tracking-wide">Our Specialty</span>
+            </div>
+          </div>
+
+          <h1 class="reveal reveal-delay-1 font-display font-800 text-[clamp(2.5rem,5.5vw,4.5rem)] text-white leading-[1.1] tracking-[-0.02em] mb-7">
+            The channel that<br />
+            <span class="text-gradient">prints money.</span>
+          </h1>
+
+          <p class="reveal reveal-delay-2 text-lg lg:text-xl text-white/35 leading-relaxed max-w-lg mb-10">
+            Email is the highest-ROI channel in marketing. Period. We handle everything from ESP selection to automation flows. This is what we do best.
+          </p>
+
+          <div class="reveal reveal-delay-3 flex flex-wrap gap-3">
+            <a href="/request-demo" class="btn-gradient px-8 py-4 rounded-xl text-white font-semibold text-[15px]">
+              <span>Start Email Marketing</span>
+            </a>
+            <a href="/pricing" class="btn-ghost px-8 py-4 rounded-xl text-white/50 hover:text-white font-medium text-[15px]">
+              View Pricing
+            </a>
+          </div>
+
+          <!-- Social proof stat -->
+          <div class="reveal reveal-delay-4 mt-10 flex items-center gap-6">
+            <div>
+              <div class="text-2xl font-display font-800 text-gradient">$36</div>
+              <div class="text-xs text-white/30">avg. return per $1 spent</div>
+            </div>
+            <div class="w-px h-10 bg-white/[0.06]"></div>
+            <div>
+              <div class="text-2xl font-display font-800 text-white">4.2B</div>
+              <div class="text-xs text-white/30">daily email users worldwide</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Premium email template mockup -->
+        <div class="hidden lg:block relative">
+          <div class="glass-strong rounded-2xl p-1.5 glow relative">
+            <div class="bg-abyss/90 rounded-xl overflow-hidden">
+              <!-- Email client chrome -->
+              <div class="flex items-center justify-between px-6 py-3.5 border-b border-white/[0.05]">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                  <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                  <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                  <span class="ml-3 text-xs text-white/30 font-medium">Email Preview</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] text-teal bg-teal/15 px-2 py-0.5 rounded-full font-semibold">98.2% delivered</span>
+                </div>
+              </div>
+              <!-- Email body — sections stack in -->
+              <div class="p-6 build-loop relative">
+                <!-- Sender info -->
+                <div class="flex items-center gap-3 mb-5 pb-4 border-b border-white/[0.04]">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal to-blue flex items-center justify-center">
+                    <span class="font-display font-800 text-white text-sm">A</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-sm text-white font-semibold">Acme Corp</div>
+                    <div class="text-xs text-white/30">marketing@acmecorp.com</div>
+                  </div>
+                  <div class="text-xs text-white/20">2 min ago</div>
+                </div>
+                <!-- Email content -->
+                <div class="h-28 rounded-xl bg-gradient-to-br from-teal/[0.08] to-blue/[0.05] mb-5 flex items-center justify-center border border-white/[0.04] relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-t from-abyss/50 to-transparent"></div>
+                  <span class="relative text-sm text-white/30 font-medium">Campaign Hero</span>
+                </div>
+                <div class="space-y-2.5 mb-5">
+                  <div class="h-3 w-3/4 rounded bg-white/[0.07]"></div>
+                  <div class="h-3 w-full rounded bg-white/[0.05]"></div>
+                  <div class="h-3 w-5/6 rounded bg-white/[0.04]"></div>
+                </div>
+                <div class="flex gap-3 mb-5">
+                  <div class="w-28 h-9 rounded-xl bg-gradient-to-r from-teal/40 to-blue/30 flex items-center justify-center btn-fake-hover">
+                    <span class="text-xs text-white/60 font-semibold">Shop Now</span>
+                  </div>
+                  <div class="w-28 h-9 rounded-xl border border-white/[0.08] flex items-center justify-center">
+                    <span class="text-xs text-white/30 font-medium">Learn More</span>
+                  </div>
+                </div>
+                <!-- Engagement chart -->
+                <div class="bg-white/[0.02] rounded-lg p-3 border border-white/[0.03]">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[9px] text-white/30 font-medium">7-Day Engagement</span>
+                    <span class="text-[9px] text-teal font-semibold">Trending Up</span>
+                  </div>
+                  <div class="flex items-end gap-1 h-10 bar-alive">
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-teal to-teal/30" style="height:30%"></div>
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-teal to-teal/40" style="height:45%"></div>
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-teal to-blue/40" style="height:55%"></div>
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-blue to-blue/40" style="height:48%"></div>
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-blue to-teal/50" style="height:70%"></div>
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-teal to-teal/50" style="height:82%"></div>
+                    <div class="flex-1 rounded-sm bg-gradient-to-t from-teal to-teal/60" style="height:100%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating metrics -->
+          <div class="absolute -bottom-6 -left-8 glass-strong rounded-xl p-4 glow z-10">
+            <div class="grid grid-cols-3 gap-4">
+              <div class="text-center metric-alive">
+                <div class="text-lg font-display font-800 text-teal">42%</div>
+                <div class="text-[10px] text-white/30">Open Rate</div>
+              </div>
+              <div class="text-center border-x border-white/[0.06] px-3 metric-alive">
+                <div class="text-lg font-display font-800 text-blue">8.3%</div>
+                <div class="text-[10px] text-white/30">Click Rate</div>
+              </div>
+              <div class="text-center metric-alive">
+                <div class="text-lg font-display font-800 text-gradient">$12k</div>
+                <div class="text-[10px] text-white/30">Revenue</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Automation indicator -->
+          <div class="absolute -top-4 -right-6 glass-strong rounded-xl p-3 glow z-10">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-teal animate-pulse"></div>
+              <span class="text-xs text-white/50 font-medium">Automation Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-10"></div>
+  </section>
+
+  <!-- ========== FULL SERVICE BREAKDOWN ========== -->
+  <section class="relative py-28 bg-void overflow-hidden" aria-label="Email services">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal max-w-2xl mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-tight mb-5">
+          End-to-end email, <span class="text-gradient">nothing left out.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          Most agencies hand you templates and call it done. We build the entire system. From the platform you send on to the automations that run while you sleep.
+        </p>
+      </div>
+
+      <!-- Services bento -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- ESP Selection & Setup - featured -->
+        <div class="reveal lg:col-span-2 glass-interactive rounded-2xl p-10 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-teal/[0.03] to-transparent pointer-events-none"></div>
+          <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-start">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-700 text-xl text-white mb-3">ESP Selection &amp; Setup</h3>
+              <p class="text-ink text-[15px] leading-relaxed max-w-lg mb-5">Mailchimp, Klaviyo, ActiveCampaign, HubSpot, Brevo. We evaluate your needs, recommend the right platform, and handle the full migration and setup. DNS records, authentication, sender reputation. All of it.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-3 py-1.5 rounded-full bg-teal/[0.06] text-teal/60 border border-teal/[0.08]">SPF/DKIM/DMARC</span>
+                <span class="text-xs px-3 py-1.5 rounded-full bg-teal/[0.06] text-teal/60 border border-teal/[0.08]">Migration</span>
+                <span class="text-xs px-3 py-1.5 rounded-full bg-teal/[0.06] text-teal/60 border border-teal/[0.08]">Auth Setup</span>
+              </div>
+            </div>
+            <!-- ESP logos mockup -->
+            <div class="hidden lg:grid grid-cols-2 gap-2">
+              <div class="bg-white/[0.04] rounded-xl p-3 border border-white/[0.06] flex items-center justify-center h-14">
+                <span class="text-xs text-white/30 font-semibold">Klaviyo</span>
+              </div>
+              <div class="bg-white/[0.04] rounded-xl p-3 border border-white/[0.06] flex items-center justify-center h-14">
+                <span class="text-xs text-white/30 font-semibold">Mailchimp</span>
+              </div>
+              <div class="bg-white/[0.04] rounded-xl p-3 border border-white/[0.06] flex items-center justify-center h-14">
+                <span class="text-xs text-white/30 font-semibold">HubSpot</span>
+              </div>
+              <div class="bg-teal/[0.06] rounded-xl p-3 border border-teal/[0.10] flex items-center justify-center h-14">
+                <span class="text-xs text-teal/60 font-semibold">+ More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Branding & Templates -->
+        <div class="reveal reveal-delay-1 lg:row-span-2 glass-interactive rounded-2xl p-9 relative overflow-hidden flex flex-col">
+          <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue/[0.03] to-transparent pointer-events-none"></div>
+          <div class="relative flex-1 flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+              </svg>
+            </div>
+            <h3 class="font-display font-700 text-xl text-white mb-3">Branding &amp; Templates</h3>
+            <p class="text-ink text-[15px] leading-relaxed mb-6">Custom email templates that match your brand. Not drag-and-drop templates from a gallery. Hand-coded HTML emails that render perfectly in every inbox.</p>
+
+            <!-- Template preview mockup -->
+            <div class="mt-auto bg-white/[0.03] rounded-2xl p-4 border border-white/[0.06]">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-teal to-blue"></div>
+                <div class="flex-1">
+                  <div class="h-2 w-24 rounded bg-white/[0.08]"></div>
+                  <div class="h-1.5 w-16 rounded bg-white/[0.04] mt-1"></div>
+                </div>
+              </div>
+              <div class="h-16 rounded-lg bg-gradient-to-br from-teal/[0.06] to-blue/[0.04] mb-3 border border-white/[0.03]"></div>
+              <div class="space-y-1.5 mb-3">
+                <div class="h-2 w-full rounded bg-white/[0.05]"></div>
+                <div class="h-2 w-4/5 rounded bg-white/[0.04]"></div>
+                <div class="h-2 w-3/5 rounded bg-white/[0.03]"></div>
+              </div>
+              <div class="w-20 h-7 rounded-full bg-gradient-to-r from-teal/30 to-blue/25 flex items-center justify-center">
+                <span class="text-[10px] text-white/50 font-medium">CTA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Cleaning -->
+        <div class="reveal reveal-delay-2 glass-interactive rounded-2xl p-9 relative overflow-hidden">
+          <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl text-white mb-3">List Cleaning &amp; Hygiene</h3>
+          <p class="text-ink text-[15px] leading-relaxed mb-5">Dead emails kill deliverability. We clean your list, remove hard bounces, identify inactive subscribers, and set up re-engagement campaigns before cutting dead weight.</p>
+          <div class="flex items-center gap-3">
+            <div class="bg-white/[0.04] rounded-lg px-3 py-2 border border-white/[0.06]">
+              <span class="text-xs text-white/30 block">Before</span>
+              <span class="text-sm font-display font-700 text-white/50">12.4k</span>
+            </div>
+            <svg class="w-4 h-4 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            <div class="bg-teal/[0.06] rounded-lg px-3 py-2 border border-teal/[0.10]">
+              <span class="text-xs text-teal/60 block">After</span>
+              <span class="text-sm font-display font-700 text-teal">9.8k</span>
+            </div>
+            <span class="text-xs text-white/25 ml-1">engaged subscribers</span>
+          </div>
+        </div>
+
+        <!-- Campaign Management -->
+        <div class="reveal reveal-delay-3 glass-interactive rounded-2xl p-9 relative overflow-hidden">
+          <div class="w-12 h-12 rounded-xl bg-blue/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl text-white mb-3">Campaign Management</h3>
+          <p class="text-ink text-[15px] leading-relaxed">We plan, write, design, schedule, and send your campaigns. A/B testing subject lines and content. Segmentation by behavior and engagement. Every send is intentional.</p>
+        </div>
+
+        <!-- Automation Flows - wide -->
+        <div class="reveal reveal-delay-4 lg:col-span-2 glass-interactive rounded-2xl p-10 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-teal/[0.02] via-transparent to-blue/[0.02] pointer-events-none"></div>
+          <div class="relative grid lg:grid-cols-[1fr_1.2fr] gap-8 items-start">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal/10 to-blue/10 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+                </svg>
+              </div>
+              <h3 class="font-display font-700 text-xl text-white mb-3">Automation Flows</h3>
+              <p class="text-ink text-[15px] leading-relaxed max-w-md">Welcome sequences, abandoned cart recovery, post-purchase follow-ups, re-engagement campaigns, birthday emails. We build the automations that run 24/7 and generate revenue while you're offline.</p>
+            </div>
+            <!-- Automation flow diagram -->
+            <div class="hidden lg:block">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <div class="bg-teal/[0.08] rounded-lg px-4 py-2.5 border border-teal/[0.12] flex-1">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded bg-teal/20 flex items-center justify-center">
+                        <svg class="w-3 h-3 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" /></svg>
+                      </div>
+                      <span class="text-xs text-teal/80 font-semibold">New Subscriber</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-center"><div class="w-0.5 h-4 bg-gradient-to-b from-teal/30 to-blue/30 rounded-full animate-pulse-glow"></div></div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="bg-white/[0.04] rounded-lg px-3 py-2 border border-white/[0.06]">
+                    <span class="text-[11px] text-white/40 font-medium">Welcome Email</span>
+                    <div class="text-[10px] text-white/20 mt-0.5">Immediate</div>
+                  </div>
+                  <div class="bg-white/[0.04] rounded-lg px-3 py-2 border border-white/[0.06]">
+                    <span class="text-[11px] text-white/40 font-medium">Value Offer</span>
+                    <div class="text-[10px] text-white/20 mt-0.5">Day 2</div>
+                  </div>
+                </div>
+                <div class="flex justify-center"><div class="w-0.5 h-4 bg-gradient-to-b from-blue/30 to-teal/30 rounded-full animate-pulse-glow"></div></div>
+                <div class="bg-blue/[0.06] rounded-lg px-3 py-2 border border-blue/[0.10] text-center">
+                  <span class="text-[11px] text-blue/60 font-medium">Decision: Opened?</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <div class="text-center text-[10px] text-teal/50 mb-1">Yes</div>
+                    <div class="bg-teal/[0.06] rounded-lg px-3 py-2 border border-teal/[0.10]">
+                      <span class="text-[11px] text-teal/60 font-medium">Product Showcase</span>
+                      <div class="text-[10px] text-white/20 mt-0.5">Day 5</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-center text-[10px] text-white/30 mb-1">No</div>
+                    <div class="bg-white/[0.04] rounded-lg px-3 py-2 border border-white/[0.06]">
+                      <span class="text-[11px] text-white/40 font-medium">Re-engage</span>
+                      <div class="text-[10px] text-white/20 mt-0.5">Day 4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Tracking -->
+        <div class="reveal reveal-delay-5 glass-interactive rounded-2xl p-9 relative overflow-hidden">
+          <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl text-white mb-3">Performance Tracking</h3>
+          <p class="text-ink text-[15px] leading-relaxed">Monthly reports that matter. Open rates, click rates, revenue attribution, list growth, and deliverability metrics. We tell you what's working and what we're changing next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== WHY EMAIL ========== -->
+  <section class="relative py-28 section-mesh noise overflow-hidden" aria-label="Why email marketing">
+    <div class="orb-drift absolute top-[10%] left-[5%] w-[400px] h-[400px] rounded-full bg-teal/[0.05] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-[2.75rem] text-white leading-tight mb-6">
+          Why email <span class="text-gradient">still wins.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          Social algorithms change. Ad costs rise. Email is the one channel you own. Your list, your relationship, your revenue.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-4 gap-4">
+        <div class="reveal glass rounded-2xl p-7 text-center">
+          <div class="text-3xl font-display font-800 text-gradient mb-2">36x</div>
+          <div class="text-sm text-white/50 font-medium mb-1">Average ROI</div>
+          <div class="text-xs text-white/25">Per dollar spent on email</div>
+        </div>
+        <div class="reveal reveal-delay-1 glass rounded-2xl p-7 text-center">
+          <div class="text-3xl font-display font-800 text-white mb-2">77%</div>
+          <div class="text-sm text-white/50 font-medium mb-1">Prefer Email</div>
+          <div class="text-xs text-white/25">For promotional content</div>
+        </div>
+        <div class="reveal reveal-delay-2 glass rounded-2xl p-7 text-center">
+          <div class="text-3xl font-display font-800 text-teal mb-2">4.2B</div>
+          <div class="text-sm text-white/50 font-medium mb-1">Daily Users</div>
+          <div class="text-xs text-white/25">More than any social platform</div>
+        </div>
+        <div class="reveal reveal-delay-3 glass rounded-2xl p-7 text-center">
+          <div class="text-3xl font-display font-800 text-blue mb-2">100%</div>
+          <div class="text-sm text-white/50 font-medium mb-1">You Own It</div>
+          <div class="text-xs text-white/25">No algorithm dependency</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== FAQ ========== -->
+  <section class="relative py-28 bg-void overflow-hidden" aria-label="FAQ">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      <div class="reveal text-center mb-16">
+        <h2 class="font-display font-800 text-3xl lg:text-4xl text-white leading-tight mb-5">
+          Common <span class="text-gradient">questions.</span>
+        </h2>
+        <p class="text-ink text-lg leading-relaxed">
+          Everything you want to know about working with us on email.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="reveal group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            Which ESPs do you work with?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            We work with all major ESPs: Klaviyo, Mailchimp, ActiveCampaign, HubSpot, Brevo (formerly Sendinblue), Constant Contact, and more. If you're starting fresh, we'll recommend the best fit for your business size, budget, and goals. If you're already on a platform, we'll work with what you have.
+          </div>
+        </details>
+
+        <details class="reveal reveal-delay-1 group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            Do you write the email copy too?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            Yes. We write all copy, subject lines, preview text, and CTAs. You review and approve everything before it sends. If you prefer to write your own copy, we'll handle design, coding, scheduling, and optimization.
+          </div>
+        </details>
+
+        <details class="reveal reveal-delay-2 group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            How often should we send emails?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            It depends on your industry and audience. Most B2B companies do well with 2-4 emails per month. E-commerce brands can push 2-3 per week. We'll analyze your engagement data and find the sweet spot. More isn't always better. Better is better.
+          </div>
+        </details>
+
+        <details class="reveal reveal-delay-3 group glass rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer text-white font-display font-700 text-lg hover:text-teal transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
+            Can you help if my emails go to spam?
+            <svg class="w-5 h-5 text-ink-muted shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </summary>
+          <div class="px-6 pb-6 text-ink text-[15px] leading-relaxed border-t border-white/[0.04] pt-4">
+            Absolutely. Deliverability issues are usually caused by poor authentication, dirty lists, or bad sending practices. We audit your DNS records (SPF, DKIM, DMARC), clean your list, warm up your sending domain if needed, and fix the underlying problems. Most clients see major improvements within 2-4 weeks.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ========== CTA ========== -->
+  <section class="relative py-36 bg-void overflow-hidden" aria-label="Call to action">
+    <div class="orb-drift-reverse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-teal/[0.06] blur-[180px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-blue/[0.03] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="reveal font-display font-800 text-4xl lg:text-[3.25rem] text-white leading-tight mb-6">
+        Your inbox strategy<br /><span class="text-gradient">starts here.</span>
+      </h2>
+      <p class="reveal reveal-delay-1 text-ink text-lg leading-relaxed max-w-lg mx-auto mb-12">
+        Whether you're sending your first campaign or optimizing a list of 100k, we'll build the email program your business deserves.
+      </p>
+      <div class="reveal reveal-delay-2 flex flex-wrap justify-center gap-4">
+        <a href="/request-demo" class="btn-gradient px-10 py-4 rounded-xl text-white font-semibold text-[15px]">
+          <span>Start Email Marketing</span>
+        </a>
+        <a href="/solutions" class="btn-ghost px-10 py-4 rounded-xl text-white/40 hover:text-white font-medium text-[15px]">
+          All Solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
