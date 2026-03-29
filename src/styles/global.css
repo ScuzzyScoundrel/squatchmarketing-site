@@ -582,6 +582,10 @@ body {
 .footprint-trail .step:nth-child(5) { animation-delay: 2.8s; }
 .footprint-trail .step:nth-child(6) { animation-delay: 3.5s; }
 .footprint-trail .step:nth-child(7) { animation-delay: 4.2s; }
+.footprint-trail .step:nth-child(8) { animation-delay: 4.9s; }
+.footprint-trail .step:nth-child(9) { animation-delay: 5.6s; }
+.footprint-trail .step:nth-child(10) { animation-delay: 6.3s; }
+.footprint-trail .step:nth-child(11) { animation-delay: 7.0s; }
 
 ::selection {
   background: rgba(46,163,242,0.3);
