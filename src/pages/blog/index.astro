@@ -3,44 +3,44 @@ import Layout from '../../layouts/Layout.astro';
 
 const posts = [
   {
-    title: "Why Most Marketing Dashboards Lie to You",
-    excerpt: "Vanity metrics feel good but hide the truth. Here's how to build reporting that actually tracks revenue impact.",
-    date: "March 20, 2026",
-    readTime: "6 min read",
-    category: "Strategy",
-    gradient: "from-blue/30 via-blue/10 to-teal/20",
-    categoryColor: "text-blue bg-blue/10 border-blue/20",
-    slug: "#",
-  },
-  {
-    title: "The Email Sequence That Converts Cold Leads",
-    excerpt: "A 5-email framework we've used across 30+ campaigns. No gimmicks, just structure that moves people to act.",
-    date: "March 12, 2026",
-    readTime: "8 min read",
-    category: "Email",
-    gradient: "from-teal/30 via-teal/10 to-blue/20",
-    categoryColor: "text-teal bg-teal/10 border-teal/20",
-    slug: "#",
-  },
-  {
-    title: "AI in Marketing: What Actually Works Right Now",
-    excerpt: "We tested 12 AI tools across real client campaigns. Some saved hours. Most were noise. Here's the honest breakdown.",
-    date: "March 4, 2026",
-    readTime: "10 min read",
-    category: "AI",
-    gradient: "from-blue/20 via-teal/15 to-blue/30",
-    categoryColor: "text-blue-light bg-blue/10 border-blue/20",
-    slug: "#",
-  },
-  {
-    title: "Landing Pages That Convert Above 8%",
-    excerpt: "Forget best practices lists. We're sharing the exact layout patterns and copy structures behind our highest-performing pages.",
-    date: "February 25, 2026",
+    title: "Why Your Email Open Rates Suck (And How to Fix Them)",
+    excerpt: "Your open rates are below average and you're not sure why. Here are the 5 most common reasons and actionable fixes for each one.",
+    date: "March 22, 2026",
     readTime: "7 min read",
+    category: "Email",
+    gradient: "from-teal via-teal/40 to-blue/30",
+    categoryColor: "text-teal bg-teal/10 border-teal/20",
+    slug: "/blog/why-your-email-open-rates-suck",
+  },
+  {
+    title: "AI Marketing Workflows: What They Are and Why You Need One",
+    excerpt: "Not chatbots. Not gimmicks. Actual production pipelines that take a brief and produce usable marketing assets in minutes.",
+    date: "March 18, 2026",
+    readTime: "8 min read",
+    category: "AI",
+    gradient: "from-teal via-blue/40 to-teal/30",
+    categoryColor: "text-teal bg-teal/10 border-teal/20",
+    slug: "/blog/ai-marketing-workflows-explained",
+  },
+  {
+    title: "5 Digital Marketing Mistakes Small Businesses Make",
+    excerpt: "Most small businesses waste money on digital marketing. Not because they spend too much, but because they make the same avoidable mistakes.",
+    date: "March 14, 2026",
+    readTime: "6 min read",
+    category: "Marketing",
+    gradient: "from-blue via-blue/40 to-teal/30",
+    categoryColor: "text-blue bg-blue/10 border-blue/20",
+    slug: "/blog/small-business-digital-marketing-mistakes",
+  },
+  {
+    title: "Your Website Is Too Slow (And It's Costing You Money)",
+    excerpt: "53% of mobile users leave a site that takes longer than 3 seconds to load. Here's what's slowing you down and how to fix it.",
+    date: "March 10, 2026",
+    readTime: "6 min read",
     category: "Web Dev",
-    gradient: "from-teal/20 via-blue/15 to-teal/30",
-    categoryColor: "text-teal-light bg-teal/10 border-teal/20",
-    slug: "#",
+    gradient: "from-blue via-teal/30 to-blue/40",
+    categoryColor: "text-blue bg-blue/10 border-blue/20",
+    slug: "/blog/website-speed-matters",
   },
 ];
 ---
@@ -56,13 +56,15 @@ const posts = [
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-20">
       <div class="max-w-3xl">
         <!-- Eyebrow -->
-        <div class="reveal flex items-center gap-3 mb-8">
-          <div class="h-px w-12 bg-gradient-to-r from-blue to-teal"></div>
-          <span class="text-teal text-sm font-medium tracking-widest uppercase">Our Blog</span>
-        </div>
+        <div class="reveal mb-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-blue/[0.08] border border-blue/[0.12]">
+              <div class="w-1.5 h-1.5 rounded-full bg-blue animate-pulse"></div>
+              <span class="text-blue text-xs font-semibold tracking-wide">Insights</span>
+            </div>
+          </div>
 
         <!-- Headline -->
-        <h1 class="reveal reveal-delay-1 font-display font-800 text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight mb-8">
+        <h1 class="reveal reveal-delay-1 font-display font-800 text-[clamp(2.5rem,5.5vw,4.5rem)] text-white leading-[1.1] tracking-[-0.03em] mb-8">
           Insights <span class="text-gradient">&amp; Ideas</span>
         </h1>
 
@@ -96,7 +98,7 @@ const posts = [
               <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 40px 40px;"></div>
               {/* Category tag */}
               <div class="absolute top-4 left-4">
-                <span class={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${post.categoryColor}`}>
+                <span class={`inline-block px-3 py-1 rounded-xl text-xs font-medium border ${post.categoryColor}`}>
                   {post.category}
                 </span>
               </div>

@@ -30,15 +30,28 @@ body {
   overflow-x: hidden;
 }
 
-/* Noise texture */
+/* Noise texture — slightly stronger for organic feel */
 .noise::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   background-repeat: repeat;
   pointer-events: none;
   z-index: 1;
+}
+
+/* Topographic contour lines — subtle background pattern */
+.topo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='600' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cstyle%3Ecircle,ellipse%7Bfill:none;stroke:rgba(46,163,242,0.04);stroke-width:1%7D%3C/style%3E%3C/defs%3E%3Cellipse cx='300' cy='300' rx='280' ry='180'/%3E%3Cellipse cx='310' cy='290' rx='230' ry='145'/%3E%3Cellipse cx='320' cy='280' rx='180' ry='110'/%3E%3Cellipse cx='315' cy='275' rx='130' ry='78'/%3E%3Cellipse cx='305' cy='270' rx='82' ry='48'/%3E%3Cellipse cx='300' cy='268' rx='40' ry='22'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 600px 600px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
 }
 
 /* Hero mesh — deeper, more dramatic */
@@ -294,10 +307,10 @@ body {
   border: none;
 }
 
-/* Divider between sections — subtle glow line */
+/* Clean section divider — just a subtle gradient line */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 5%, rgba(46,163,242,0.15) 30%, rgba(38,209,189,0.15) 70%, transparent 95%);
+  background: linear-gradient(90deg, transparent 5%, rgba(46,163,242,0.12) 30%, rgba(38,209,189,0.12) 70%, transparent 95%);
 }
 
 /* Pulse animations for connectors, arrows, accents */

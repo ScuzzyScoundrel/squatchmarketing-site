@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Your Website Is Too Slow (And It's Costing You Money)" description="A slow website kills conversions, tanks your Google rankings, and drives customers to competitors. Here's why speed matters and how to fix it.">
+
+  <section class="relative gradient-mesh noise overflow-hidden">
+    <div class="orb-drift-reverse absolute top-[10%] right-[10%] w-[500px] h-[500px] rounded-full bg-blue/[0.06] blur-[140px] pointer-events-none"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-16">
+      <div class="reveal mb-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-blue/[0.08] border border-blue/[0.12]">
+          <div class="w-1.5 h-1.5 rounded-full bg-blue animate-pulse"></div>
+          <span class="text-blue text-xs font-semibold tracking-wide">Web Development</span>
+        </div>
+      </div>
+      <h1 class="reveal reveal-delay-1 font-display font-800 text-[clamp(2rem,4.5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.02em] mb-6">
+        Your Website Is Too Slow (And It's Costing You Money)
+      </h1>
+      <div class="reveal reveal-delay-2 flex items-center gap-4 text-sm text-white/30">
+        <span>March 10, 2026</span>
+        <span class="w-1 h-1 rounded-full bg-white/20"></span>
+        <span>6 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-16 bg-void">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      <article>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          Here's a number that should scare you: 53% of mobile users leave a website that takes longer than 3 seconds to load. Not 10 seconds. Not 30. Three seconds. If your site is slow, you're losing more than half your visitors before they even see what you offer.
+        </p>
+
+        <h2 class="font-display font-700 text-xl lg:text-2xl text-white mt-14 mb-5">Speed directly affects your revenue</h2>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          Amazon found that every 100 milliseconds of load time cost them 1% in sales. That was years ago and the bar has only gotten higher. For a small business, the math is simpler but just as painful: a 1-second delay in page load reduces conversions by roughly 7%.
+        </p>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          If your site generates 10 leads per week and it's 2 seconds slower than it should be, you're losing about 1.4 leads per week. That's 73 leads per year. What's a lead worth to your business? Multiply that number and you'll see how expensive a slow website really is.
+        </p>
+
+        <h2 class="font-display font-700 text-xl lg:text-2xl text-white mt-14 mb-5">Google cares about speed too</h2>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          Google has used page speed as a ranking factor since 2010. In 2021 they made it even more important with Core Web Vitals. If your site is slow, Google will rank your competitors above you. They're not being mean about it. They're just showing users the sites that provide the best experience.
+        </p>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          You can check your site right now at <strong class="text-white">PageSpeed Insights</strong> (just Google it). You'll get a score from 0-100. If you're below 50 on mobile, you have a serious problem. Below 80, you have room to improve. Above 90, you're in great shape.
+        </p>
+
+        <h2 class="font-display font-700 text-xl lg:text-2xl text-white mt-14 mb-5">What's making your site slow</h2>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          The usual suspects:
+        </p>
+        <ul class="space-y-3 mb-6 ml-4">
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span><strong class="text-white">WordPress with too many plugins.</strong> Every plugin adds JavaScript and database queries. 30 plugins means 30 things running on every page load. Most sites only need about 5.</span></li>
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span><strong class="text-white">Unoptimized images.</strong> That 4MB hero image looks great but takes 8 seconds to load on a phone. Compress everything. Use WebP format. Lazy load images below the fold.</span></li>
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span><strong class="text-white">Heavy JavaScript frameworks.</strong> Some sites ship 500KB+ of JavaScript before a single word of content appears. Your marketing site does not need React.</span></li>
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span><strong class="text-white">Cheap shared hosting.</strong> That $5/month hosting plan puts your site on a server with hundreds of other sites. When one of them gets traffic, everyone slows down.</span></li>
+        </ul>
+
+        <h2 class="font-display font-700 text-xl lg:text-2xl text-white mt-14 mb-5">How to fix it</h2>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          The fastest websites today are static sites. Instead of building every page on the server each time someone visits, static sites pre-build everything ahead of time. The result is pure HTML files served from a global CDN. Load times under 1 second. Lighthouse scores of 100. Zero server maintenance.
+        </p>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          Tools like Astro, Next.js, and Hugo make this practical for business sites. You get a modern, fast website that can be hosted for free on platforms like Cloudflare Pages or Netlify. No WordPress updates. No plugin vulnerabilities. No database to maintain.
+        </p>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          If you're not ready to rebuild, there are quick wins you can apply to your current site:
+        </p>
+        <ul class="space-y-3 mb-6 ml-4">
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span>Compress all images (use TinyPNG or ShortPixel)</span></li>
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span>Remove plugins you're not actively using</span></li>
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span>Add a caching plugin (WP Super Cache or similar)</span></li>
+          <li class="flex items-start gap-3 text-ink-bright text-base lg:text-lg leading-relaxed"><div class="w-1.5 h-1.5 rounded-full bg-blue mt-2.5 shrink-0"></div><span>Put Cloudflare in front of your site (free tier works great)</span></li>
+        </ul>
+
+        <h2 class="font-display font-700 text-xl lg:text-2xl text-white mt-14 mb-5">Speed is a competitive advantage</h2>
+        <p class="text-ink-bright text-base lg:text-lg leading-relaxed mb-6">
+          Most of your competitors have slow websites. They're running WordPress 6 with 40 plugins on a shared GoDaddy server. If your site loads in under a second while theirs takes 5, you win the first impression every time. That's not a small thing. First impressions determine whether someone stays or bounces. And unlike ad spend, you only pay for speed once.
+        </p>
+      </article>
+
+      <div class="mt-20 section-divider"></div>
+      <div class="mt-16 text-center">
+        <h2 class="font-display font-800 text-2xl text-white mb-4">Want a website that actually performs?</h2>
+        <p class="text-ink text-base mb-8">We build fast, modern sites that score 100 on Lighthouse. Not WordPress templates.</p>
+        <a href="/request-demo" class="btn-gradient px-8 py-3.5 rounded-xl text-white font-semibold text-sm inline-block"><span>Get Started</span></a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
