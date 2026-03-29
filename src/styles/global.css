@@ -550,13 +550,17 @@ body {
 .num-tick:nth-child(2) { animation-delay: 1.8s; }
 .num-tick:nth-child(3) { animation-delay: 3.5s; }
 
-/* Sasquatch footprint trail — walks across the background */
-@keyframes footstep {
-  0% { opacity: 0; transform: scale(0.8); }
-  10% { opacity: 0.04; transform: scale(1); }
-  50% { opacity: 0.04; transform: scale(1); }
-  70% { opacity: 0; transform: scale(1.05); }
-  100% { opacity: 0; transform: scale(0.8); }
+/* Sasquatch footprint trail — heel-to-toe roll, diagonal walk */
+@keyframes footstep-press {
+  0% { opacity: 0; clip-path: inset(100% 0 0 0); }
+  8% { opacity: 0.05; clip-path: inset(60% 0 0 0); }
+  16% { opacity: 0.05; clip-path: inset(20% 0 0 0); }
+  22% { opacity: 0.05; clip-path: inset(0 0 0 0); }
+  55% { opacity: 0.05; clip-path: inset(0 0 0 0); }
+  65% { opacity: 0.04; clip-path: inset(0 0 30% 0); }
+  75% { opacity: 0.02; clip-path: inset(0 0 70% 0); }
+  85% { opacity: 0; clip-path: inset(0 0 100% 0); }
+  100% { opacity: 0; clip-path: inset(100% 0 0 0); }
 }
 
 .footprint-trail {
@@ -570,25 +574,17 @@ body {
 .footprint-trail .step {
   position: absolute;
   opacity: 0;
-  animation: footstep 8s ease-in-out infinite;
+  animation: footstep-press 10s ease-in-out infinite;
 }
 
-/* Left foot — slightly rotated left */
-.footprint-trail .step.left {
-  transform-origin: center;
-}
-/* Right foot — slightly rotated right */
-.footprint-trail .step.right {
-  transform-origin: center;
-}
-
-/* Stagger each step */
+/* Stagger each step — walking rhythm */
 .footprint-trail .step:nth-child(1) { animation-delay: 0s; }
-.footprint-trail .step:nth-child(2) { animation-delay: 1.2s; }
-.footprint-trail .step:nth-child(3) { animation-delay: 2.4s; }
-.footprint-trail .step:nth-child(4) { animation-delay: 3.6s; }
-.footprint-trail .step:nth-child(5) { animation-delay: 4.8s; }
-.footprint-trail .step:nth-child(6) { animation-delay: 6s; }
+.footprint-trail .step:nth-child(2) { animation-delay: 1.4s; }
+.footprint-trail .step:nth-child(3) { animation-delay: 2.8s; }
+.footprint-trail .step:nth-child(4) { animation-delay: 4.2s; }
+.footprint-trail .step:nth-child(5) { animation-delay: 5.6s; }
+.footprint-trail .step:nth-child(6) { animation-delay: 7s; }
+.footprint-trail .step:nth-child(7) { animation-delay: 8.4s; }
 
 ::selection {
   background: rgba(46,163,242,0.3);

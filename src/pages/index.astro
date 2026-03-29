@@ -9,15 +9,16 @@ import Layout from '../layouts/Layout.astro';
     <div class="orb-drift absolute top-[10%] left-[3%] w-[700px] h-[700px] rounded-full bg-blue/[0.08] blur-[160px] pointer-events-none"></div>
     <div class="orb-drift-reverse absolute bottom-[5%] right-[0%] w-[500px] h-[500px] rounded-full bg-teal/[0.06] blur-[140px] pointer-events-none"></div>
 
-    <!-- Sasquatch footprints walking across the background -->
+    <!-- Sasquatch footprints walking diagonally bottom-left to top-right -->
     <div class="footprint-trail">
-      <!-- Left foot, right foot, alternating across the screen -->
-      <svg class="step left" style="left:5%;top:65%;width:60px;rotate:-15deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
-      <svg class="step right" style="left:18%;top:55%;width:60px;rotate:12deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
-      <svg class="step left" style="left:32%;top:70%;width:60px;rotate:-18deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
-      <svg class="step right" style="left:48%;top:58%;width:60px;rotate:10deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
-      <svg class="step left" style="left:63%;top:72%;width:60px;rotate:-14deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
-      <svg class="step right" style="left:78%;top:60%;width:60px;rotate:16deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <!-- Alternating left/right feet, angled ~45deg up-right, staggered position -->
+      <svg class="step" style="left:4%;top:85%;width:55px;rotate:-55deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <svg class="step" style="left:14%;top:75%;width:55px;rotate:-35deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <svg class="step" style="left:22%;top:65%;width:55px;rotate:-55deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <svg class="step" style="left:32%;top:55%;width:55px;rotate:-35deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <svg class="step" style="left:40%;top:45%;width:55px;rotate:-55deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <svg class="step" style="left:50%;top:35%;width:55px;rotate:-35deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
+      <svg class="step" style="left:58%;top:25%;width:55px;rotate:-55deg" viewBox="0 0 24 30" fill="white"><ellipse cx="12" cy="19" rx="6.5" ry="10"/><circle cx="5.5" cy="6" r="2.3"/><circle cx="9.5" cy="3.5" r="2.1"/><circle cx="14" cy="3" r="2.1"/><circle cx="18" cy="4.5" r="2.1"/></svg>
     </div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-32">
