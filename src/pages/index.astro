@@ -133,42 +133,57 @@ import Layout from '../layouts/Layout.astro';
           <div class="absolute inset-0 bg-gradient-to-br from-blue/[0.04] via-transparent to-teal/[0.04] pointer-events-none"></div>
           <div class="noise absolute inset-0 rounded-3xl"></div>
 
-          <!-- Swaying pine grove — bottom right corner -->
-          <div class="absolute bottom-0 right-8 lg:right-16 pointer-events-none z-0 opacity-[0.04] hidden lg:block">
-            <svg width="200" height="160" viewBox="0 0 200 160" fill="white">
-              <!-- Tall pine -->
-              <g class="tree-sway" style="animation-delay:0.3s">
-                <rect x="58" y="60" width="4" height="100" rx="2"/>
-                <polygon points="60,15 40,65 80,65"/>
-                <polygon points="60,35 44,75 76,75"/>
-                <polygon points="60,55 48,85 72,85"/>
+          <!-- Feathery pine grove — left side of workflow area -->
+          <div class="absolute bottom-0 right-[45%] pointer-events-none z-0 opacity-[0.05] hidden lg:block">
+            <svg width="120" height="280" viewBox="0 0 120 280" fill="white">
+              <!-- Tall pine — feathery layers, narrow top, broad base -->
+              <g class="tree-sway" style="animation-delay:0.2s">
+                <polygon points="45,0 42,12 48,12"/>
+                <polygon points="45,8 38,24 52,24"/>
+                <polygon points="45,18 34,38 56,38"/>
+                <polygon points="45,30 30,55 60,55"/>
+                <polygon points="45,44 26,72 64,72"/>
+                <polygon points="45,58 22,92 68,92"/>
+                <polygon points="45,74 18,115 72,115"/>
+                <polygon points="45,92 15,140 75,140"/>
+                <polygon points="45,115 12,170 78,170"/>
+                <polygon points="45,140 10,205 80,205"/>
+                <polygon points="45,170 8,245 82,245"/>
+                <rect x="43" y="245" width="4" height="35" rx="2"/>
               </g>
-              <!-- Medium pine -->
-              <g class="tree-sway-slow" style="animation-delay:0.8s">
-                <rect x="98" y="75" width="4" height="85" rx="2"/>
-                <polygon points="100,30 82,80 118,80"/>
-                <polygon points="100,48 86,90 114,90"/>
-                <polygon points="100,65 90,100 110,100"/>
+              <!-- Medium pine — slightly behind -->
+              <g class="tree-sway-slow" style="animation-delay:0.9s">
+                <polygon points="85,60 82,72 88,72"/>
+                <polygon points="85,68 79,84 91,84"/>
+                <polygon points="85,78 75,98 95,98"/>
+                <polygon points="85,90 71,115 99,115"/>
+                <polygon points="85,104 67,135 103,135"/>
+                <polygon points="85,120 63,158 107,158"/>
+                <polygon points="85,138 60,185 110,185"/>
+                <polygon points="85,160 57,215 113,215"/>
+                <polygon points="85,185 55,250 115,250"/>
+                <rect x="83" y="250" width="4" height="30" rx="2"/>
               </g>
-              <!-- Small pine -->
-              <g class="tree-sway-fast" style="animation-delay:0.1s">
-                <rect x="138" y="90" width="3" height="70" rx="1.5"/>
-                <polygon points="139.5,50 126,95 153,95"/>
-                <polygon points="139.5,65 129,105 150,105"/>
-              </g>
-              <!-- Tiny background pine -->
-              <g class="tree-sway-slow" style="animation-delay:1.5s">
-                <rect x="28" y="95" width="3" height="65" rx="1.5"/>
-                <polygon points="29.5,58 19,100 40,100"/>
-                <polygon points="29.5,75 22,110 37,110"/>
-              </g>
-              <!-- Another small one -->
-              <g class="tree-sway" style="animation-delay:0.6s">
-                <rect x="168" y="100" width="3" height="60" rx="1.5"/>
-                <polygon points="169.5,65 159,105 180,105"/>
-                <polygon points="169.5,80 162,115 177,115"/>
+              <!-- Small foreground pine -->
+              <g class="tree-sway-fast" style="animation-delay:0.5s">
+                <polygon points="18,140 16,150 20,150"/>
+                <polygon points="18,146 13,160 23,160"/>
+                <polygon points="18,154 10,172 26,172"/>
+                <polygon points="18,164 7,188 29,188"/>
+                <polygon points="18,176 4,208 32,208"/>
+                <polygon points="18,192 2,232 34,232"/>
+                <polygon points="18,210 0,260 36,260"/>
+                <rect x="16.5" y="260" width="3" height="20" rx="1.5"/>
               </g>
             </svg>
+          </div>
+
+          <!-- Wind particles -->
+          <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden hidden lg:block">
+            <div class="absolute w-8 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent rounded-full" style="top:30%;left:20%;animation:wind-drift 6s ease-in-out infinite"></div>
+            <div class="absolute w-12 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent rounded-full" style="top:45%;left:35%;animation:wind-drift 8s ease-in-out infinite 1s"></div>
+            <div class="absolute w-6 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent rounded-full" style="top:55%;left:25%;animation:wind-drift 5s ease-in-out infinite 2.5s"></div>
+            <div class="absolute w-10 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent rounded-full" style="top:65%;left:40%;animation:wind-drift 7s ease-in-out infinite 0.5s"></div>
           </div>
 
           <div class="relative z-10 grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-0">
