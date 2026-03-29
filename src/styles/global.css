@@ -587,6 +587,33 @@ body {
 .footprint-trail .step:nth-child(10) { animation-delay: 6.3s; }
 .footprint-trail .step:nth-child(11) { animation-delay: 7.0s; }
 
+/* Wind-blown trees */
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-1.5deg); }
+  75% { transform: rotate(1deg); }
+}
+@keyframes sway-slow {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(1.5deg); }
+  60% { transform: rotate(-2deg); }
+  80% { transform: rotate(0.5deg); }
+}
+
+.tree-sway {
+  transform-origin: bottom center;
+  animation: sway 4s ease-in-out infinite;
+}
+.tree-sway-slow {
+  transform-origin: bottom center;
+  animation: sway-slow 5.5s ease-in-out infinite;
+}
+.tree-sway-fast {
+  transform-origin: bottom center;
+  animation: sway 3s ease-in-out infinite;
+}
+
 ::selection {
   background: rgba(46,163,242,0.3);
   color: #fff;
