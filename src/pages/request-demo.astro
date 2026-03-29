@@ -10,6 +10,39 @@ import Layout from '../layouts/Layout.astro';
     <div class="orb-drift absolute top-[5%] left-[0%] w-[600px] h-[600px] rounded-full bg-blue/[0.08] blur-[160px] pointer-events-none"></div>
     <div class="orb-drift-reverse absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-teal/[0.06] blur-[140px] pointer-events-none"></div>
 
+    <!-- 2 small pines — bottom-left corner behind form -->
+    <div class="absolute bottom-0 left-[3%] w-[140px] h-[180px] pointer-events-none z-0 opacity-[0.04] hidden lg:block overflow-visible">
+      <svg viewBox="0 0 140 180" fill="currentColor" class="text-white w-full h-full">
+        <!-- Left small pine -->
+        <g class="tree-sway-slow" style="animation-delay:0.4s">
+          <polygon points="35,30 32,42 38,42"/>
+          <polygon points="35,36 29,54 41,54"/>
+          <polygon points="35,46 25,72 45,72"/>
+          <polygon points="35,60 21,94 49,94"/>
+          <polygon points="35,78 17,120 53,120"/>
+          <polygon points="35,98 13,150 57,150"/>
+          <polygon points="35,120 9,180 61,180"/>
+        </g>
+        <!-- Right slightly taller pine -->
+        <g class="tree-sway-fast" style="animation-delay:1.8s">
+          <polygon points="100,10 97,22 103,22"/>
+          <polygon points="100,16 94,32 106,32"/>
+          <polygon points="100,26 89,50 111,50"/>
+          <polygon points="100,40 84,72 116,72"/>
+          <polygon points="100,56 79,98 121,98"/>
+          <polygon points="100,76 74,128 126,128"/>
+          <polygon points="100,98 69,160 131,160"/>
+          <polygon points="100,120 65,180 135,180"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Wind leaves — request demo -->
+    <div class="absolute inset-0 pointer-events-none z-[1] overflow-hidden hidden lg:block">
+      <svg class="absolute" style="top:50%;left:12%;animation:wind-swirl 9s ease-in-out infinite 2.5s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.1)"/></svg>
+      <svg class="absolute" style="top:75%;left:30%;animation:wind-swirl 7s ease-in-out infinite 0.8s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.12)"/></svg>
+    </div>
+
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-28">
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
 

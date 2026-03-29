@@ -299,6 +299,26 @@ import Layout from '../../layouts/Layout.astro';
     <div class="orb-drift absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-blue/[0.06] blur-[140px] pointer-events-none"></div>
     <div class="orb-drift-reverse absolute bottom-[10%] right-[5%] w-[400px] h-[400px] rounded-full bg-teal/[0.04] blur-[120px] pointer-events-none"></div>
 
+    <!-- Single small pine — left side -->
+    <div class="absolute bottom-0 left-[5%] w-[80px] h-[150px] pointer-events-none z-0 opacity-[0.04] hidden lg:block overflow-visible">
+      <svg viewBox="0 0 80 150" fill="currentColor" class="text-white w-full h-full">
+        <g class="tree-sway" style="animation-delay:1.5s">
+          <polygon points="40,0 37,10 43,10"/>
+          <polygon points="40,6 34,22 46,22"/>
+          <polygon points="40,16 29,40 51,40"/>
+          <polygon points="40,30 24,62 56,62"/>
+          <polygon points="40,48 19,88 61,88"/>
+          <polygon points="40,68 14,118 66,118"/>
+          <polygon points="40,92 10,150 70,150"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Wind leaf — solutions CTA -->
+    <div class="absolute inset-0 pointer-events-none z-[1] overflow-hidden hidden lg:block">
+      <svg class="absolute" style="top:42%;left:25%;animation:wind-swirl 10s ease-in-out infinite 1.5s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.09)"/></svg>
+    </div>
+
     <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
       <h2 class="reveal font-display font-800 text-3xl lg:text-5xl text-white leading-[1.15] mb-6">
         Ready to build something <span class="text-gradient">real?</span>

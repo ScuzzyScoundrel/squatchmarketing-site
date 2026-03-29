@@ -12,6 +12,42 @@ import Layout from '../layouts/Layout.astro';
     <div class="orb-drift absolute top-[5%] right-[10%] w-[600px] h-[600px] rounded-full bg-blue/[0.08] blur-[160px] pointer-events-none"></div>
     <div class="orb-drift-reverse absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-teal/[0.06] blur-[140px] pointer-events-none"></div>
 
+    <!-- 2 pines of different sizes — right side -->
+    <div class="absolute bottom-0 right-[6%] w-[160px] h-[260px] pointer-events-none z-0 opacity-[0.03] hidden lg:block overflow-visible">
+      <svg viewBox="0 0 160 260" fill="currentColor" class="text-white w-full h-full">
+        <!-- Tall pine, right -->
+        <g class="tree-sway" style="animation-delay:0.8s">
+          <polygon points="115,0 111,14 119,14"/>
+          <polygon points="115,8 108,28 122,28"/>
+          <polygon points="115,20 104,46 126,46"/>
+          <polygon points="115,36 99,68 131,68"/>
+          <polygon points="115,54 94,96 136,96"/>
+          <polygon points="115,74 89,126 141,126"/>
+          <polygon points="115,96 84,158 146,158"/>
+          <polygon points="115,120 79,192 151,192"/>
+          <polygon points="115,146 74,228 156,228"/>
+          <polygon points="115,174 70,260 160,260"/>
+        </g>
+        <!-- Shorter pine, left-front -->
+        <g class="tree-sway-fast" style="animation-delay:2s">
+          <polygon points="40,100 37,112 43,112"/>
+          <polygon points="40,106 34,122 46,122"/>
+          <polygon points="40,116 30,140 50,140"/>
+          <polygon points="40,130 26,160 54,160"/>
+          <polygon points="40,146 22,184 58,184"/>
+          <polygon points="40,164 18,210 62,210"/>
+          <polygon points="40,184 14,240 66,240"/>
+          <polygon points="40,202 10,260 70,260"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Wind leaves — about hero -->
+    <div class="absolute inset-0 pointer-events-none z-[1] overflow-hidden hidden lg:block">
+      <svg class="absolute" style="top:40%;left:80%;animation:wind-swirl 8s ease-in-out infinite 2s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.1)"/></svg>
+      <svg class="absolute" style="top:68%;left:60%;animation:wind-swirl 11s ease-in-out infinite 4.5s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.08)"/></svg>
+    </div>
+
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-20">
       <div class="max-w-3xl">
         <div class="reveal mb-6">
