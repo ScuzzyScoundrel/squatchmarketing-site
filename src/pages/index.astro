@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ========== HERO ========== -->
   <section class="relative min-h-screen flex items-center gradient-mesh noise topo overflow-hidden" aria-label="Hero">
     <div class="orb-drift absolute top-[10%] left-[3%] w-[700px] h-[700px] rounded-full bg-blue/[0.08] blur-[160px] pointer-events-none"></div>
-    <div class="orb-drift-reverse absolute bottom-[5%] right-[-5%] w-[600px] h-[600px] rounded-full bg-teal/[0.06] blur-[140px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[5%] right-[0%] w-[500px] h-[500px] rounded-full bg-teal/[0.06] blur-[140px] pointer-events-none"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 lg:pt-44 pb-32">
       <div class="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
@@ -104,21 +104,8 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    <!-- Twin peaks with valley glow — pure CSS, no SVG blur -->
-    <div class="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none" style="height:55%">
-      <!-- Valley glow — bright, visible, rising from the gap -->
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-[90%]" style="background:radial-gradient(ellipse 100% 80% at 50% 100%, rgba(46,163,242,0.15) 0%, rgba(38,209,189,0.08) 30%, transparent 70%)"></div>
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[25%] h-[70%]" style="background:radial-gradient(ellipse 100% 70% at 50% 100%, rgba(38,209,189,0.12) 0%, rgba(46,163,242,0.05) 40%, transparent 70%)"></div>
-
-      <!-- Left peak — massive triangle via clip-path -->
-      <div class="absolute bottom-0 left-0 w-[55%] h-full" style="background:linear-gradient(to bottom, #0A1E30 0%, #000A12 80%);clip-path:polygon(0% 100%, 0% 45%, 15% 35%, 30% 25%, 45% 10%, 60% 5%, 78% 18%, 88% 40%, 100% 55%, 100% 100%);opacity:0.6"></div>
-
-      <!-- Right peak — massive triangle via clip-path -->
-      <div class="absolute bottom-0 right-0 w-[55%] h-full" style="background:linear-gradient(to bottom, #0A1E30 0%, #000A12 80%);clip-path:polygon(0% 55%, 12% 40%, 22% 18%, 40% 5%, 55% 10%, 70% 25%, 85% 35%, 100% 45%, 100% 100%, 0% 100%);opacity:0.6"></div>
-
-      <!-- Bottom fade -->
-      <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-void to-transparent"></div>
-    </div>
+    <!-- Bottom fade into next section -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-[2]"></div>
   </section>
 
   <!-- ========== AI WORKFLOWS — FEATURED ========== -->

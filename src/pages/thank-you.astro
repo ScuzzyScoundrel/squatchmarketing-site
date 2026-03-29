@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Thank You" description="Thanks for reaching out to Squatch Marketing. We'll be in touch within 24 hours.">
+
+  <section class="relative min-h-screen flex items-center justify-center gradient-mesh noise overflow-hidden">
+    <div class="orb-drift absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-blue/[0.06] blur-[140px] pointer-events-none"></div>
+    <div class="orb-drift-reverse absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-teal/[0.05] blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 text-center px-6 max-w-2xl">
+      <!-- Checkmark -->
+      <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue to-teal flex items-center justify-center mx-auto mb-8">
+        <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+      </div>
+
+      <h1 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] mb-4">
+        We got your message.
+      </h1>
+      <p class="text-white/40 text-lg mb-3">
+        Someone from our team will reach out within 24 hours.
+      </p>
+      <p class="text-white/25 text-sm mb-10">
+        In the meantime, check out what we've been writing about.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/blog" class="btn-gradient px-8 py-3.5 rounded-xl text-white font-semibold text-sm">
+          <span>Read Our Blog</span>
+        </a>
+        <a href="/" class="btn-ghost px-8 py-3.5 rounded-xl text-white/50 hover:text-white font-medium text-sm">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
