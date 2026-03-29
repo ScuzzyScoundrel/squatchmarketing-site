@@ -108,31 +108,33 @@ const navLinks = [
 </nav>
 
 <script>
-  const nav = document.getElementById('main-nav');
-  const scrollHandler = () => {
-    if (!nav) return;
-    if (window.scrollY > 30) {
-      nav.style.background = 'rgba(0,10,18,0.85)';
-      nav.style.backdropFilter = 'blur(20px)';
-      nav.style.webkitBackdropFilter = 'blur(20px)';
-      nav.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
-    } else {
-      nav.style.background = 'transparent';
-      nav.style.backdropFilter = 'none';
-      nav.style.webkitBackdropFilter = 'none';
-      nav.style.borderBottom = '1px solid transparent';
-    }
-  };
-  window.addEventListener('scroll', scrollHandler, { passive: true });
-  scrollHandler();
+  document.addEventListener('astro:page-load', () => {
+    const nav = document.getElementById('main-nav');
+    const scrollHandler = () => {
+      if (!nav) return;
+      if (window.scrollY > 30) {
+        nav.style.background = 'rgba(0,10,18,0.85)';
+        nav.style.backdropFilter = 'blur(20px)';
+        nav.style.webkitBackdropFilter = 'blur(20px)';
+        nav.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
+      } else {
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        nav.style.webkitBackdropFilter = 'none';
+        nav.style.borderBottom = '1px solid transparent';
+      }
+    };
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    scrollHandler();
 
-  const toggle = document.getElementById('mobile-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('menu-open');
-  const iconClose = document.getElementById('menu-close');
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    iconOpen?.classList.toggle('hidden');
-    iconClose?.classList.toggle('hidden');
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-open');
+    const iconClose = document.getElementById('menu-close');
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+      iconOpen?.classList.toggle('hidden');
+      iconClose?.classList.toggle('hidden');
+    });
   });
 </script>
