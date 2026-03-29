@@ -512,37 +512,36 @@ import Layout from '../layouts/Layout.astro';
   <section class="relative py-32 section-mesh noise topo overflow-hidden" aria-label="How we work">
     <div class="orb-drift absolute top-[20%] right-[5%] w-[400px] h-[400px] rounded-full bg-blue/[0.04] blur-[120px] pointer-events-none"></div>
 
-    <!-- Small cluster of 2 pines — left side -->
-    <div class="absolute bottom-0 left-[4%] w-[180px] h-[200px] pointer-events-none z-0 opacity-[0.035] hidden lg:block overflow-visible">
-      <svg viewBox="0 0 180 200" fill="currentColor" class="text-white w-full h-full">
-        <!-- Shorter front pine -->
-        <g class="tree-sway-fast" style="animation-delay:0.2s">
-          <polygon points="45,50 41,66 49,66"/>
-          <polygon points="45,58 38,80 52,80"/>
-          <polygon points="45,72 34,100 56,100"/>
-          <polygon points="45,88 30,124 60,124"/>
-          <polygon points="45,106 26,152 64,152"/>
-          <polygon points="45,128 22,180 68,180"/>
-          <polygon points="45,150 18,200 72,200"/>
+    <!-- Pines peeking up from bottom edge — right side -->
+    <div class="absolute bottom-0 right-[5%] pointer-events-none z-0 opacity-[0.04] hidden lg:block overflow-visible">
+      <svg width="160" height="320" viewBox="0 0 160 320" fill="white">
+        <g class="tree-sway-slow" style="animation-delay:0.4s">
+          <polygon points="55,80 52,92 58,92"/>
+          <polygon points="55,86 49,104 61,104"/>
+          <polygon points="55,96 44,120 66,120"/>
+          <polygon points="55,110 39,142 71,142"/>
+          <polygon points="55,128 34,168 76,168"/>
+          <polygon points="55,150 29,200 81,200"/>
+          <polygon points="55,176 24,238 86,238"/>
+          <polygon points="55,206 19,280 91,280"/>
+          <polygon points="55,240 15,320 95,320"/>
         </g>
-        <!-- Taller back pine, offset right -->
-        <g class="tree-sway" style="animation-delay:1.2s">
-          <polygon points="120,20 116,36 124,36"/>
-          <polygon points="120,28 113,48 127,48"/>
-          <polygon points="120,40 108,68 132,68"/>
-          <polygon points="120,56 104,92 136,92"/>
-          <polygon points="120,74 100,118 140,118"/>
-          <polygon points="120,94 96,148 144,148"/>
-          <polygon points="120,116 92,178 148,178"/>
-          <polygon points="120,140 88,200 152,200"/>
+        <g class="tree-sway" style="animation-delay:1.5s">
+          <polygon points="120,140 117,152 123,152"/>
+          <polygon points="120,146 114,162 126,162"/>
+          <polygon points="120,156 109,180 131,180"/>
+          <polygon points="120,170 104,204 136,204"/>
+          <polygon points="120,188 99,232 141,232"/>
+          <polygon points="120,210 94,268 146,268"/>
+          <polygon points="120,238 90,320 150,320"/>
         </g>
       </svg>
     </div>
 
-    <!-- Floating dots — How we work -->
+    <!-- Wind leaves -->
     <div class="absolute inset-0 pointer-events-none z-[1] overflow-hidden hidden lg:block">
-      <div class="absolute w-1.5 h-1.5 rounded-full bg-teal/[0.1]" style="top:35%;left:8%;animation:wind-float 8s ease-in-out infinite 0.5s"></div>
-      <div class="absolute w-1.5 h-1.5 rounded-full bg-teal/[0.08]" style="top:62%;left:14%;animation:wind-float 11s ease-in-out infinite 3s"></div>
+      <svg class="absolute" style="top:60%;left:80%;animation:wind-swirl 8s ease-in-out infinite 1s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.09)"/></svg>
+      <div class="absolute w-1.5 h-1.5 rounded-full bg-teal/[0.08]" style="top:70%;left:85%;animation:wind-float 9s ease-in-out infinite 2s"></div>
     </div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -605,30 +604,36 @@ import Layout from '../layouts/Layout.astro';
     <div class="orb-drift-reverse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue/[0.05] blur-[160px] pointer-events-none"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-teal/[0.03] blur-[120px] pointer-events-none"></div>
 
-    <!-- Single tall lone pine — right side -->
-    <div class="absolute bottom-0 right-[8%] w-[120px] h-[280px] pointer-events-none z-0 opacity-[0.04] hidden lg:block overflow-visible">
-      <svg viewBox="0 0 120 280" fill="currentColor" class="text-white w-full h-full">
-        <g class="tree-sway-slow" style="animation-delay:0.5s">
-          <polygon points="60,0 56,16 64,16"/>
-          <polygon points="60,10 53,30 67,30"/>
-          <polygon points="60,22 50,48 70,48"/>
-          <polygon points="60,38 46,70 74,70"/>
-          <polygon points="60,56 42,96 78,96"/>
-          <polygon points="60,76 38,124 82,124"/>
-          <polygon points="60,98 34,156 86,156"/>
-          <polygon points="60,122 30,190 90,190"/>
-          <polygon points="60,148 26,226 94,226"/>
-          <polygon points="60,176 22,260 98,260"/>
-          <polygon points="60,200 18,280 102,280"/>
+    <!-- Pines peeking from bottom-left -->
+    <div class="absolute bottom-0 left-[4%] pointer-events-none z-0 opacity-[0.04] hidden lg:block overflow-visible">
+      <svg width="140" height="300" viewBox="0 0 140 300" fill="white">
+        <!-- Tall pine -->
+        <g class="tree-sway" style="animation-delay:0.3s">
+          <polygon points="50,60 47,72 53,72"/>
+          <polygon points="50,66 44,84 56,84"/>
+          <polygon points="50,78 39,104 61,104"/>
+          <polygon points="50,94 34,130 66,130"/>
+          <polygon points="50,114 29,162 71,162"/>
+          <polygon points="50,138 24,200 76,200"/>
+          <polygon points="50,168 19,244 81,244"/>
+          <polygon points="50,200 14,300 86,300"/>
+        </g>
+        <!-- Shorter companion -->
+        <g class="tree-sway-fast" style="animation-delay:1.2s">
+          <polygon points="110,160 107,172 113,172"/>
+          <polygon points="110,166 104,182 116,182"/>
+          <polygon points="110,176 99,200 121,200"/>
+          <polygon points="110,192 94,226 126,226"/>
+          <polygon points="110,212 89,258 131,258"/>
+          <polygon points="110,236 85,300 135,300"/>
         </g>
       </svg>
     </div>
 
-    <!-- Wind leaves drifting across CTA -->
+    <!-- Wind leaves -->
     <div class="absolute inset-0 pointer-events-none z-[1] overflow-hidden hidden lg:block">
-      <svg class="absolute" style="top:28%;left:72%;animation:wind-swirl 7s ease-in-out infinite 1s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.09)"/></svg>
-      <svg class="absolute" style="top:55%;left:18%;animation:wind-swirl 9s ease-in-out infinite 3s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.08)"/></svg>
-      <svg class="absolute" style="top:70%;left:45%;animation:wind-swirl 6s ease-in-out infinite 0.5s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.1)"/></svg>
+      <svg class="absolute" style="top:40%;left:12%;animation:wind-swirl 7s ease-in-out infinite 0.8s" width="7" height="4" viewBox="0 0 7 4"><ellipse cx="3.5" cy="2" rx="3.5" ry="1.8" fill="rgba(38,209,189,0.09)"/></svg>
+      <svg class="absolute" style="top:65%;left:8%;animation:wind-swirl 9s ease-in-out infinite 3s" width="6" height="4" viewBox="0 0 6 4"><ellipse cx="3" cy="2" rx="3" ry="1.5" fill="rgba(46,163,242,0.08)"/></svg>
     </div>
 
     <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
