@@ -104,7 +104,9 @@ import Layout from '../layouts/Layout.astro';
               <h2 class="font-display font-700 text-2xl text-white mb-2">Request your demo</h2>
               <p class="text-white/35 text-sm mb-8">Fill this out and we'll be in touch fast.</p>
 
-              <form action="#" method="POST" class="space-y-5">
+              <form action="https://formspree.io/f/mjgpylqb" method="POST" class="space-y-5">
+                <!-- Honeypot — invisible to humans, catches bots -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
                 <!-- Name row -->
                 <div class="grid sm:grid-cols-2 gap-5">
                   <div>

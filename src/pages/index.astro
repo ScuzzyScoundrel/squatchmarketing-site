@@ -104,21 +104,25 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    <!-- Mountain range backdrop — big, dramatic, layered -->
-    <div class="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none">
-      <svg class="w-full" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="height:clamp(120px,15vw,200px)">
-        <!-- Far range — tallest peaks, most transparent -->
-        <path d="M0,200 L0,140 C60,135,90,100,140,85 C190,70,220,95,280,65 C320,45,360,75,420,40 C460,15,500,50,560,25 C600,8,640,40,700,20 C740,5,780,35,840,15 C900,0,940,30,1000,18 C1060,8,1100,40,1160,30 C1220,20,1280,50,1340,40 C1380,32,1420,55,1440,60 L1440,200 Z" fill="rgba(46,163,242,0.025)"/>
-        <!-- Mid range -->
-        <path d="M0,200 L0,155 C80,148,120,120,200,110 C280,100,320,125,400,95 C440,78,500,105,560,80 C620,60,660,90,720,65 C780,48,840,80,900,60 C960,45,1020,75,1080,58 C1140,42,1200,70,1260,55 C1320,42,1380,65,1440,75 L1440,200 Z" fill="rgba(38,209,189,0.02)"/>
-        <!-- Front range — solid void color, creates the clean edge -->
-        <path d="M0,200 L0,168 C100,162,160,145,260,138 C360,130,420,150,520,132 C580,120,660,145,740,125 C820,110,880,135,960,118 C1040,105,1120,130,1200,120 C1280,112,1340,132,1440,140 L1440,200 Z" fill="var(--color-void)"/>
-      </svg>
+    <!-- Twin peaks with valley glow — pure CSS, no SVG blur -->
+    <div class="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none" style="height:55%">
+      <!-- Valley glow — bright, visible, rising from the gap -->
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-[90%]" style="background:radial-gradient(ellipse 100% 80% at 50% 100%, rgba(46,163,242,0.15) 0%, rgba(38,209,189,0.08) 30%, transparent 70%)"></div>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[25%] h-[70%]" style="background:radial-gradient(ellipse 100% 70% at 50% 100%, rgba(38,209,189,0.12) 0%, rgba(46,163,242,0.05) 40%, transparent 70%)"></div>
+
+      <!-- Left peak — massive triangle via clip-path -->
+      <div class="absolute bottom-0 left-0 w-[55%] h-full" style="background:linear-gradient(to bottom, #0A1E30 0%, #000A12 80%);clip-path:polygon(0% 100%, 0% 45%, 15% 35%, 30% 25%, 45% 10%, 60% 5%, 78% 18%, 88% 40%, 100% 55%, 100% 100%);opacity:0.6"></div>
+
+      <!-- Right peak — massive triangle via clip-path -->
+      <div class="absolute bottom-0 right-0 w-[55%] h-full" style="background:linear-gradient(to bottom, #0A1E30 0%, #000A12 80%);clip-path:polygon(0% 55%, 12% 40%, 22% 18%, 40% 5%, 55% 10%, 70% 25%, 85% 35%, 100% 45%, 100% 100%, 0% 100%);opacity:0.6"></div>
+
+      <!-- Bottom fade -->
+      <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-void to-transparent"></div>
     </div>
   </section>
 
   <!-- ========== AI WORKFLOWS — FEATURED ========== -->
-  <section class="relative pt-8 pb-28 -mt-16 bg-void overflow-hidden" aria-label="AI Workflows">
+  <section class="relative pt-4 pb-28 bg-void overflow-visible" aria-label="AI Workflows">
     <div class="orb-drift absolute top-0 left-[40%] w-[500px] h-[500px] rounded-full bg-teal/[0.04] blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
