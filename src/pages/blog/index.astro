@@ -163,10 +163,12 @@ const posts = [
           </p>
 
           <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" />
+            <input type="hidden" name="locale" value="en" />
+            <input type="hidden" name="html_type" value="simple" />
             <input
               type="email"
-              name="newsletter-email"
+              name="EMAIL"
               required
               class="flex-1 px-5 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300"
               placeholder="you@company.com"
@@ -192,10 +194,10 @@ const posts = [
         const btn = form.querySelector('button[type="submit"]');
         if (btn) btn.innerHTML = '<span>Sending...</span>';
         try {
-          await fetch('https://formspree.io/f/mjgpylqb', {
+          await fetch('https://2d3a7fca.sibforms.com/serve/MUIFAEbhsZEod4saVXmJ1oCLhqkbYeTV-cI195a8uZwjHXOutGOdGkURiB7qajS0_ZjnrHk5Ecja3w_8IZ3J4SGHoxdcOLErcYuFKy755iBNlTn2g_h8HFA_5C758qSbXq0F6DfUYvLhRZOvK3fOKv68G7qK7OIjt5skb79fh6alyyBw7S-fCUx-WlA33QPBzgsFwfhjABAPJHKalQ==', {
             method: 'POST',
             body: data,
-            headers: { 'Accept': 'application/json' }
+            mode: 'no-cors'
           });
           window.location.href = '/thank-you';
         } catch {
