@@ -1,4 +1,15 @@
 export async function onRequestPost(context) {
+  const apiKey = context.env.BREVO_API_KEY;
+  if (!apiKey) {
+    return new Response(JSON.stringify({
+      error: 'BREVO_API_KEY not found in env',
+      envKeys: Object.keys(context.env),
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   const formData = await context.request.formData();
 
   const email = formData.get('EMAIL');
@@ -28,7 +39,7 @@ export async function onRequestPost(context) {
   const res = await fetch('https://api.brevo.com/v3/contacts', {
     method: 'POST',
     headers: {
-      'api-key': context.env.BREVO_API_KEY,
+      'api-key': apiKey,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     },
