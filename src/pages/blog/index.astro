@@ -162,11 +162,7 @@ const posts = [
             We're just getting started. Drop your email and we'll send you new posts the moment they go live. One email per post. Unsubscribe anytime.
           </p>
 
-          <iframe name="brevo-frame-newsletter" style="display:none"></iframe>
-          <form id="newsletter-form" method="POST" action="https://2d3a7fca.sibforms.com/serve/MUIFAEbhsZEod4saVXmJ1oCLhqkbYeTV-cI195a8uZwjHXOutGOdGkURiB7qajS0_ZjnrHk5Ecja3w_8IZ3J4SGHoxdcOLErcYuFKy755iBNlTn2g_h8HFA_5C758qSbXq0F6DfUYvLhRZOvK3fOKv68G7qK7OIjt5skb79fh6alyyBw7S-fCUx-WlA33QPBzgsFwfhjABAPJHKalQ==" target="brevo-frame-newsletter" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" />
-            <input type="hidden" name="locale" value="en" />
-            <input type="hidden" name="html_type" value="simple" />
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
               type="email"
               name="EMAIL"
@@ -189,10 +185,24 @@ const posts = [
     document.addEventListener('astro:page-load', () => {
       const form = document.getElementById('newsletter-form');
       if (!form) return;
-      form.addEventListener('submit', () => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
         const btn = form.querySelector('button[type="submit"]');
         if (btn) btn.innerHTML = '<span>Sending...</span>';
-        setTimeout(() => { window.location.href = '/thank-you'; }, 1000);
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            body: data,
+          });
+          if (res.ok) {
+            window.location.href = '/thank-you';
+          } else {
+            if (btn) btn.innerHTML = '<span>Something went wrong</span>';
+          }
+        } catch {
+          if (btn) btn.innerHTML = '<span>Something went wrong</span>';
+        }
       });
     });
   </script>
