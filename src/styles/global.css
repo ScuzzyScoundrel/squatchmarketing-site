@@ -572,6 +572,7 @@ body {
   position: absolute;
   opacity: 0;
   animation: footstep-walk 7s ease-out infinite;
+  filter: brightness(0) invert(1);
 }
 
 /* Tight stagger — next foot plants as previous lifts */
