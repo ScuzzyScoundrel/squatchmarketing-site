@@ -1,0 +1,50 @@
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[9999] translate-y-full transition-transform duration-500 ease-out pointer-events-none">
+  <div class="max-w-4xl mx-auto px-4 pb-4 sm:px-6 sm:pb-6">
+    <div class="glass-strong rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pointer-events-auto">
+      <p class="text-ink-bright text-sm leading-relaxed flex-1">
+        We use minimal cookies for site functionality. No tracking, no ads.
+      </p>
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="/cookies" class="text-white/40 hover:text-teal text-sm font-medium transition-colors duration-200">
+          Learn More
+        </a>
+        <button id="cookie-accept" class="btn-gradient px-6 py-2.5 rounded-xl text-white font-semibold text-sm cursor-pointer">
+          <span>Accept</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+
+    if (!banner || !acceptBtn) return;
+
+    const hasConsented = localStorage.getItem('cookie-consent');
+
+    if (hasConsented) {
+      banner.style.display = 'none';
+      return;
+    }
+
+    // Show banner with slide-up animation after a short delay
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        banner.classList.remove('translate-y-full');
+        banner.classList.add('translate-y-0');
+      }, 800);
+    });
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      banner.classList.remove('translate-y-0');
+      banner.classList.add('translate-y-full');
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 500);
+    });
+  });
+</script>
