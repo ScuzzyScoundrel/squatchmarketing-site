@@ -12,19 +12,19 @@ import Layout from '../layouts/Layout.astro';
     <!-- Sasquatch footprints — fixed max-width container so stride stays consistent -->
     <div class="footprint-trail">
       <div class="absolute inset-0 max-w-7xl mx-auto hidden lg:block">
-        <!-- Left track: starts (30,90), +160px right, -16% up each step -->
-        <!-- Right track: starts (120,82), same increments, offset start -->
-        <!-- Tiny variance: +/-5px, +/-1% for natural feel -->
-        <img class="step" src="/foot-left.svg" alt="" style="left:30px;top:90%;width:70px" />
-        <img class="step" src="/foot-right.svg" alt="" style="left:123px;top:82%;width:70px" />
-        <img class="step" src="/foot-left.svg" alt="" style="left:195px;top:73%;width:70px" />
-        <img class="step" src="/foot-right.svg" alt="" style="left:278px;top:66%;width:70px" />
-        <img class="step" src="/foot-left.svg" alt="" style="left:355px;top:58%;width:70px" />
-        <img class="step" src="/foot-right.svg" alt="" style="left:443px;top:50%;width:70px" />
-        <img class="step" src="/foot-left.svg" alt="" style="left:510px;top:41%;width:70px" />
-        <img class="step" src="/foot-right.svg" alt="" style="left:598px;top:34%;width:70px" />
-        <img class="step" src="/foot-left.svg" alt="" style="left:670px;top:26%;width:70px" />
-        <img class="step" src="/foot-right.svg" alt="" style="left:763px;top:18%;width:70px" />
+        <!-- Right track: (150, 85%) → +165px, -16% per step -->
+        <!-- Left track: starts at midpoint of right #1 and #2 = (232, 77%) → same +165px, -16% -->
+        <!-- Right track shifted down-right as a whole for stagger -->
+        <img class="step" src="/foot-right.svg" alt="" style="left:150px;top:85%;width:70px" />
+        <img class="step" src="/foot-left.svg" alt="" style="left:235px;top:77%;width:70px" />
+        <img class="step" src="/foot-right.svg" alt="" style="left:318px;top:69%;width:70px" />
+        <img class="step" src="/foot-left.svg" alt="" style="left:397px;top:61%;width:70px" />
+        <img class="step" src="/foot-right.svg" alt="" style="left:480px;top:53%;width:70px" />
+        <img class="step" src="/foot-left.svg" alt="" style="left:565px;top:45%;width:70px" />
+        <img class="step" src="/foot-right.svg" alt="" style="left:648px;top:37%;width:70px" />
+        <img class="step" src="/foot-left.svg" alt="" style="left:727px;top:29%;width:70px" />
+        <img class="step" src="/foot-right.svg" alt="" style="left:810px;top:21%;width:70px" />
+        <img class="step" src="/foot-left.svg" alt="" style="left:895px;top:13%;width:70px" />
       </div>
     </div>
 
