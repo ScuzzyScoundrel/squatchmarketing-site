@@ -5,9 +5,12 @@
         We use minimal cookies for site functionality. No tracking, no ads.
       </p>
       <div class="flex items-center gap-3 shrink-0">
-        <a href="/cookies" class="text-white/40 hover:text-teal text-sm font-medium transition-colors duration-200">
+        <a href="/cookies" class="text-white/30 hover:text-teal text-xs font-medium transition-colors duration-200">
           Learn More
         </a>
+        <button id="cookie-decline" class="btn-ghost px-5 py-2.5 rounded-xl text-white/50 font-medium text-sm cursor-pointer">
+          Decline
+        </button>
         <button id="cookie-accept" class="btn-gradient px-6 py-2.5 rounded-xl text-white font-semibold text-sm cursor-pointer">
           <span>Accept</span>
         </button>
@@ -20,17 +23,17 @@
   document.addEventListener('astro:page-load', () => {
     const banner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('cookie-accept');
+    const declineBtn = document.getElementById('cookie-decline');
 
-    if (!banner || !acceptBtn) return;
+    if (!banner) return;
 
-    const hasConsented = localStorage.getItem('cookie-consent');
+    const hasResponded = localStorage.getItem('cookie-consent');
 
-    if (hasConsented) {
+    if (hasResponded) {
       banner.style.display = 'none';
       return;
     }
 
-    // Show banner with slide-up animation after a short delay
     requestAnimationFrame(() => {
       setTimeout(() => {
         banner.classList.remove('translate-y-full');
@@ -38,13 +41,14 @@
       }, 800);
     });
 
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
+    const dismiss = (value) => {
+      localStorage.setItem('cookie-consent', value);
       banner.classList.remove('translate-y-0');
       banner.classList.add('translate-y-full');
-      setTimeout(() => {
-        banner.style.display = 'none';
-      }, 500);
-    });
+      setTimeout(() => { banner.style.display = 'none'; }, 500);
+    };
+
+    acceptBtn?.addEventListener('click', () => dismiss('accepted'));
+    declineBtn?.addEventListener('click', () => dismiss('declined'));
   });
 </script>
