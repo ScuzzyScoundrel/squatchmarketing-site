@@ -137,8 +137,7 @@ import Layout from '../layouts/Layout.astro';
               <h2 class="font-display font-700 text-2xl text-white mb-2">Request your demo</h2>
               <p class="text-white/35 text-sm mb-8">Fill this out and we'll be in touch fast.</p>
 
-              <form action="https://formspree.io/f/mjgpylqb" method="POST" class="space-y-5">
-                <input type="hidden" name="_next" value="https://squatchmarketing-site.pages.dev/thank-you" />
+              <form id="demo-form" class="space-y-5">
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
                 <!-- Name row -->
                 <div class="grid sm:grid-cols-2 gap-5">
@@ -212,13 +211,13 @@ import Layout from '../layouts/Layout.astro';
                     class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white/60 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300 appearance-none"
                     style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;"
                   >
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="digital-marketing">Digital Marketing</option>
-                    <option value="content-design">Content Design</option>
-                    <option value="website-development">Website Development</option>
-                    <option value="email-marketing">Email Marketing</option>
-                    <option value="ai-workflows">AI Workflows</option>
-                    <option value="not-sure">Not Sure Yet</option>
+                    <option value="" disabled selected style="background:#001220;color:#94A3B8">Select a service</option>
+                    <option value="digital-marketing" style="background:#001220;color:#CBD5E1">Digital Marketing</option>
+                    <option value="content-design" style="background:#001220;color:#CBD5E1">Content Design</option>
+                    <option value="website-development" style="background:#001220;color:#CBD5E1">Website Development</option>
+                    <option value="email-marketing" style="background:#001220;color:#CBD5E1">Email Marketing</option>
+                    <option value="ai-workflows" style="background:#001220;color:#CBD5E1">AI Workflows</option>
+                    <option value="not-sure" style="background:#001220;color:#CBD5E1">Not Sure Yet</option>
                   </select>
                 </div>
 
@@ -293,5 +292,28 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const form = document.getElementById('demo-form');
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.innerHTML = '<span>Sending...</span>';
+        try {
+          await fetch('https://formspree.io/f/mjgpylqb', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          window.location.href = '/thank-you';
+        } catch {
+          window.location.href = '/thank-you';
+        }
+      });
+    });
+  </script>
 
 </Layout>

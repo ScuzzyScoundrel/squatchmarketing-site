@@ -162,8 +162,7 @@ const posts = [
             We're just getting started. Drop your email and we'll send you new posts the moment they go live. One email per post. Unsubscribe anytime.
           </p>
 
-          <form action="https://formspree.io/f/mjgpylqb" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="hidden" name="_next" value="https://squatchmarketing-site.pages.dev/thank-you" />
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
             <input
               type="email"
@@ -182,5 +181,28 @@ const posts = [
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const form = document.getElementById('newsletter-form');
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.innerHTML = '<span>Sending...</span>';
+        try {
+          await fetch('https://formspree.io/f/mjgpylqb', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          window.location.href = '/thank-you';
+        } catch {
+          window.location.href = '/thank-you';
+        }
+      });
+    });
+  </script>
 
 </Layout>
