@@ -44,7 +44,8 @@ const company = [
 
         <!-- Newsletter -->
         <p class="text-white/35 text-xs font-medium mb-2">Stay in the loop</p>
-        <form id="footer-newsletter" class="flex gap-2">
+        <iframe name="brevo-frame-footer" style="display:none"></iframe>
+        <form id="footer-newsletter" method="POST" action="https://2d3a7fca.sibforms.com/serve/MUIFAEbhsZEod4saVXmJ1oCLhqkbYeTV-cI195a8uZwjHXOutGOdGkURiB7qajS0_ZjnrHk5Ecja3w_8IZ3J4SGHoxdcOLErcYuFKy755iBNlTn2g_h8HFA_5C758qSbXq0F6DfUYvLhRZOvK3fOKv68G7qK7OIjt5skb79fh6alyyBw7S-fCUx-WlA33QPBzgsFwfhjABAPJHKalQ==" target="brevo-frame-footer" class="flex gap-2">
           <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" />
           <input type="hidden" name="locale" value="en" />
           <input type="hidden" name="html_type" value="simple" />
@@ -116,21 +117,14 @@ const company = [
     document.addEventListener('astro:page-load', () => {
       const form = document.getElementById('footer-newsletter');
       if (!form) return;
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
+      form.addEventListener('submit', () => {
         const btn = form.querySelector('button[type="submit"]');
         if (btn) btn.innerHTML = '<span>Sent!</span>';
-        try {
-          await fetch('https://2d3a7fca.sibforms.com/serve/MUIFAEbhsZEod4saVXmJ1oCLhqkbYeTV-cI195a8uZwjHXOutGOdGkURiB7qajS0_ZjnrHk5Ecja3w_8IZ3J4SGHoxdcOLErcYuFKy755iBNlTn2g_h8HFA_5C758qSbXq0F6DfUYvLhRZOvK3fOKv68G7qK7OIjt5skb79fh6alyyBw7S-fCUx-WlA33QPBzgsFwfhjABAPJHKalQ==', {
-            method: 'POST',
-            body: data,
-            mode: 'no-cors'
-          });
-        } catch {}
         const input = form.querySelector('input[name="EMAIL"]');
-        if (input) input.value = '';
-        setTimeout(() => { if (btn) btn.innerHTML = '<span>Subscribe</span>'; }, 2500);
+        setTimeout(() => {
+          if (input) input.value = '';
+          if (btn) btn.innerHTML = '<span>Subscribe</span>';
+        }, 2500);
       });
     });
   </script>

@@ -137,7 +137,8 @@ import Layout from '../layouts/Layout.astro';
               <h2 class="font-display font-700 text-2xl text-white mb-2">Request your demo</h2>
               <p class="text-white/35 text-sm mb-8">Fill this out and we'll be in touch fast.</p>
 
-              <form id="demo-form" class="space-y-5">
+              <iframe name="brevo-frame-demo" style="display:none"></iframe>
+              <form id="demo-form" method="POST" action="https://2d3a7fca.sibforms.com/serve/MUIFANN_e_G4MhJefNaFPk2iGinWPKq2Ki7B3pp2XR2nd-5FQesEp2Kr0U1eSXQC2hf8L9TpVmtSwxIACGu8efpdWPUesFQ1qjwFioCD8bkbXQtUEBPPsZowfAalzdwwozaQLwrOhDP_9WHzthyw93tiwibDvtpAI4w3Z09sGzQCfoyWrbGwc5CkfDoMIr-xB2AflsOp-l3M3a_mog==" target="brevo-frame-demo" class="space-y-5">
                 <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" />
                 <input type="hidden" name="locale" value="en" />
                 <input type="hidden" name="html_type" value="simple" />
@@ -300,21 +301,10 @@ import Layout from '../layouts/Layout.astro';
     document.addEventListener('astro:page-load', () => {
       const form = document.getElementById('demo-form');
       if (!form) return;
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
+      form.addEventListener('submit', () => {
         const btn = form.querySelector('button[type="submit"]');
         if (btn) btn.innerHTML = '<span>Sending...</span>';
-        try {
-          await fetch('https://2d3a7fca.sibforms.com/serve/MUIFANN_e_G4MhJefNaFPk2iGinWPKq2Ki7B3pp2XR2nd-5FQesEp2Kr0U1eSXQC2hf8L9TpVmtSwxIACGu8efpdWPUesFQ1qjwFioCD8bkbXQtUEBPPsZowfAalzdwwozaQLwrOhDP_9WHzthyw93tiwibDvtpAI4w3Z09sGzQCfoyWrbGwc5CkfDoMIr-xB2AflsOp-l3M3a_mog==', {
-            method: 'POST',
-            body: data,
-            mode: 'no-cors'
-          });
-          window.location.href = '/thank-you';
-        } catch {
-          window.location.href = '/thank-you';
-        }
+        setTimeout(() => { window.location.href = '/thank-you'; }, 1000);
       });
     });
   </script>
