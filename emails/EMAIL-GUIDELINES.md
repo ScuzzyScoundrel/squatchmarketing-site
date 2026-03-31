@@ -453,6 +453,39 @@ Emails are **dark-mode-first** to match squatchmarketing.com. No white/light sec
 - **No CSS variables** — Zero support
 - **No `<div>` for layout** — Tables only
 - **No embedded video** — Use a thumbnail image with play button linking to hosted video
+- **No emoji icons** — Render inconsistently across clients. Use clean Unicode geometric
+  symbols (`◆` `◇` `◊` `▪`) in tinted icon boxes instead. Match the website's `rounded-md bg-blue/15` pattern.
+
+### Mobile Button Stacking
+
+Side-by-side buttons MUST stack vertically on mobile. Apply `class="mobile-btn-stack"`
+to each button's `<td>`. The responsive CSS handles the rest:
+```css
+.mobile-btn-stack { display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 10px !important; }
+.mobile-btn-stack table { width: 100% !important; }
+.mobile-btn-stack a { display: block !important; width: 100% !important; text-align: center !important; box-sizing: border-box !important; }
+```
+
+### Icon Boxes (replaces emoji)
+
+Use tinted rounded boxes with Unicode geometric characters. Alternate blue/teal tints.
+```html
+<!--[if mso]>
+<table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr>
+    <td style="width:36px;height:36px;background-color:#0C2D48;text-align:center;
+               vertical-align:middle;font-family:Helvetica,Arial,sans-serif;
+               font-size:16px;color:#2EA3F2;">&#9670;</td>
+</tr></table>
+<![endif]-->
+<!--[if !mso]><!-->
+<div style="width:36px;height:36px;border-radius:10px;
+            background-color:rgba(46,163,242,0.12);text-align:center;
+            line-height:36px;font-family:Helvetica,Arial,sans-serif;
+            font-size:16px;color:#2EA3F2;">&#9670;</div>
+<!--<![endif]-->
+```
+
+Available symbols: `&#9670;` (◆), `&#9671;` (◇), `&#9674;` (◊), `&#9642;` (▪), `&#9654;` (▶)
 
 ---
 
