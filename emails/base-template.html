@@ -29,37 +29,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet" type="text/css">
     <!--<![endif]-->
 
-    <style>
-        /* === RESET (Cerberus standard) === */
-        :root { color-scheme: light dark; supported-color-schemes: light dark; }
-        html, body { margin: 0 auto !important; padding: 0 !important; height: 100% !important; width: 100% !important; }
-        * { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
-        div[style*="margin: 16px 0"] { margin: 0 !important; }
-        #MessageViewBody, #MessageWebViewDiv { width: 100% !important; }
-        table, td { mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; }
-        /* Desktop width lock */
-        @media screen and (min-width: 601px) {
-            .email-container { width: 600px !important; }
-        }
-        .email-container { margin: 0 auto !important; }
-        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
-        a { text-decoration: none; }
-        a[x-apple-data-detectors], .unstyle-auto-detected-links a, .aBn { border-bottom: 0 !important; cursor: default !important; color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
-        .im { color: inherit !important; }
-        .a6S { display: none !important; opacity: 0.01 !important; }
-        img.g-img + div { display: none !important; }
+    <style type="text/css">
+        /* BOILERPLATE (CareCloud proven) */
+        #outlook a{padding:0;}
+        .ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
+        .ExternalClass, .ExternalClass span, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+        body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+        table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+        img {-ms-interpolation-mode:bicubic;}
+        body {height:100% !important; margin:0 !important; padding:0 !important; width:100% !important;}
+        img {border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
 
-        /* === BUTTON HOVERS === */
+        /* LINK STYLES */
+        a { text-decoration: none; }
+        .appleLink a {color:#94A3B8 !important; text-decoration: none !important;}
+
+        /* HOVERS */
         a.btn-primary:hover { background: linear-gradient(135deg, #5BB8F5 0%, #5EEBD5 100%) !important; }
         a.btn-ghost:hover { background-color: #0C2D48 !important; }
         a.link-hover:hover { color: #5BB8F5 !important; }
 
-        /* === MOBILE === */
-        @media screen and (max-width: 600px) {
-            .email-container { width: 100% !important; margin: auto !important; }
-            .fluid { max-width: 100% !important; height: auto !important; margin-left: auto !important; margin-right: auto !important; }
-            .stack-column, .stack-column-center { display: block !important; width: 100% !important; max-width: 100% !important; direction: ltr !important; }
-            .stack-column-center { text-align: center !important; }
+        /* DESKTOP WIDTH LOCK */
+        @media screen and (min-width: 601px) {
+            .email-container {
+                width: 600px !important;
+            }
+        }
+
+        /* MOBILE */
+        @media screen and (max-width: 600px), screen and (max-device-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                word-break: break-word;
+            }
             .mobile-padding { padding: 28px 20px !important; }
             .mobile-gutter { padding-left: 20px !important; padding-right: 20px !important; }
             .no-padding { padding: 0 !important; }
