@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Squatch Marketing — Email Asset Export</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #111; font-family: 'DM Sans', sans-serif; color: #fff; padding: 40px; }
+        h1 { font-family: 'Syne', sans-serif; margin-bottom: 10px; }
+        .label { color: #94A3B8; font-size: 13px; margin-bottom: 8px; }
+        .grid { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 60px; }
+
+        /* === BRAND TOKENS === */
+        :root {
+            --void: #000A12;
+            --abyss: #001220;
+            --deep: #00192E;
+            --navy: #00273F;
+            --slate: #0C2D48;
+            --blue: #2EA3F2;
+            --blue-light: #5BB8F5;
+            --teal: #26D1BD;
+            --teal-light: #5EEBD5;
+            --ink: #94A3B8;
+            --ink-bright: #CBD5E1;
+        }
+
+        /* ======================== */
+        /* EXPORTABLE COMPONENTS     */
+        /* Each [data-export] gets   */
+        /* screenshotted by export.js */
+        /* ======================== */
+
+        /* --- ICONS (72x72 @2x for 36x36 display) --- */
+        .icon-box {
+            width: 72px; height: 72px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .icon-box svg { width: 36px; height: 36px; }
+        .icon-box.blue { background: #0A1E30; }
+        .icon-box.teal { background: #0A2520; }
+
+        /* --- MOCKUP: Campaign Dashboard --- */
+        .mockup-dashboard {
+            width: 552px;
+            background: var(--abyss);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .mockup-dashboard .titlebar {
+            display: flex; align-items: center; gap: 8px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .mockup-dashboard .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+        .mockup-dashboard .titlebar span { color: rgba(255,255,255,0.3); font-size: 12px; margin-left: 12px; }
+        .mockup-dashboard .body { padding: 20px; }
+        .metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        .metric-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .metric-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+        .metric-value { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: #fff; }
+        .metric-value.gradient { background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .metric-change { font-size: 11px; color: var(--teal); margin-top: 6px; font-weight: 600; }
+        .chart-container {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .chart-header { display: flex; justify-content: space-between; margin-bottom: 14px; }
+        .chart-header span { font-size: 11px; color: rgba(255,255,255,0.4); }
+        .chart-header .highlight { color: var(--teal); font-weight: 600; }
+        .bars { display: flex; align-items: flex-end; gap: 8px; height: 80px; }
+        .bar {
+            flex: 1;
+            border-radius: 4px;
+            background: linear-gradient(to top, var(--blue), rgba(46,163,242,0.4));
+        }
+        .bar.teal { background: linear-gradient(to top, var(--teal), rgba(38,209,189,0.4)); }
+        .bar-labels { display: flex; justify-content: space-between; margin-top: 8px; }
+        .bar-labels span { font-size: 9px; color: rgba(255,255,255,0.25); }
+
+        /* --- MOCKUP: AI Workflow --- */
+        .mockup-workflow {
+            width: 552px;
+            background: var(--abyss);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 28px;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .workflow-step {
+            background: rgba(255,255,255,0.04);
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 6px;
+        }
+        .workflow-step .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .step-num {
+            width: 32px; height: 32px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800;
+        }
+        .step-num.blue { background: rgba(46,163,242,0.2); color: var(--blue); }
+        .step-num.teal { background: rgba(38,209,189,0.2); color: var(--teal); }
+        .step-title { font-size: 14px; font-weight: 700; color: #fff; }
+        .step-tag { margin-left: auto; font-size: 10px; padding: 4px 10px; border-radius: 50px; font-weight: 600; }
+        .step-tag.auto { background: rgba(38,209,189,0.15); color: var(--teal); }
+        .step-tag.ai { background: rgba(38,209,189,0.15); color: var(--teal); }
+        .step-tag.you { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+        .step-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; padding-left: 44px; }
+        .workflow-connector { display: flex; justify-content: center; padding: 4px 0; }
+        .connector-line { width: 2px; height: 16px; border-radius: 1px; background: linear-gradient(to bottom, rgba(46,163,242,0.3), rgba(38,209,189,0.3)); }
+        .workflow-output {
+            background: rgba(0,18,32,0.85);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-top: 12px;
+        }
+        .output-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .output-dot { width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(135deg, var(--blue), var(--teal)); }
+        .output-label { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 600; }
+        .output-stats { display: flex; gap: 16px; }
+        .output-stats span { font-size: 13px; font-weight: 600; }
+        .output-stats .blue { color: var(--teal); }
+        .output-stats .teal-text { color: var(--blue); }
+        .output-stats .muted { color: rgba(255,255,255,0.4); }
+        .output-stats .divider { color: rgba(255,255,255,0.15); }
+
+        /* --- MOCKUP: Stats Strip --- */
+        .mockup-stats {
+            width: 552px;
+            background: rgba(0,18,32,0.85);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            text-align: center;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .stat-item .stat-value {
+            font-family: 'Syne', sans-serif;
+            font-size: 32px; font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .stat-item .stat-value.gradient { background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-item .stat-label { font-size: 12px; color: rgba(255,255,255,0.35); }
+        .stat-item .stat-sub { font-size: 10px; color: rgba(255,255,255,0.15); margin-top: 4px; }
+
+        /* --- Utility --- */
+        .section-title { font-family: 'Syne', sans-serif; font-size: 24px; margin: 40px 0 8px 0; color: #fff; }
+        .section-desc { color: var(--ink); font-size: 14px; margin-bottom: 20px; }
+        hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>Email Asset Export</h1>
+    <p class="label">Each [data-export] element gets captured as a PNG by export.js</p>
+    <hr>
+
+    <!-- ==================== -->
+    <!-- ICONS                 -->
+    <!-- ==================== -->
+    <div class="section-title">Icons (72x72)</div>
+    <p class="section-desc">Display at 36x36 in emails (2x retina)</p>
+    <div class="grid">
+
+        <div>
+            <p class="label">Strategy (blue)</p>
+            <div class="icon-box blue" data-export="icon-strategy">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#2EA3F2" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
+                </svg>
+            </div>
+        </div>
+
+        <div>
+            <p class="label">Web/SEO (teal)</p>
+            <div class="icon-box teal" data-export="icon-web">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#26D1BD" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                </svg>
+            </div>
+        </div>
+
+        <div>
+            <p class="label">Email (blue)</p>
+            <div class="icon-box blue" data-export="icon-email">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#2EA3F2" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                </svg>
+            </div>
+        </div>
+
+        <div>
+            <p class="label">Content/Design (blue)</p>
+            <div class="icon-box blue" data-export="icon-content">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#2EA3F2" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>
+                </svg>
+            </div>
+        </div>
+
+        <div>
+            <p class="label">AI/Automation (teal)</p>
+            <div class="icon-box teal" data-export="icon-ai">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#26D1BD" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+                </svg>
+            </div>
+        </div>
+
+        <div>
+            <p class="label">Checkmark (teal)</p>
+            <div class="icon-box teal" data-export="icon-check">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#26D1BD" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- ==================== -->
+    <!-- MOCKUPS                -->
+    <!-- ==================== -->
+    <div class="section-title">Mockups (552px wide — fits inside 600px email with 24px padding)</div>
+    <p class="section-desc">These render as full-width images in the email content area</p>
+
+    <!-- Dashboard Mockup -->
+    <p class="label" style="margin-top: 24px;">Campaign Dashboard</p>
+    <div class="mockup-dashboard" data-export="mockup-dashboard">
+        <div class="titlebar">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <span>Campaign Dashboard</span>
+        </div>
+        <div class="body">
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-label">Revenue</div>
+                    <div class="metric-value gradient">$42.8k</div>
+                    <div class="metric-change">+18.3%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Conversions</div>
+                    <div class="metric-value">1,247</div>
+                    <div class="metric-change">+24.1%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">ROAS</div>
+                    <div class="metric-value gradient">4.2x</div>
+                    <div class="metric-change">+0.8x</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-header">
+                    <span>Weekly Performance</span>
+                    <span class="highlight">+32% avg</span>
+                </div>
+                <div class="bars">
+                    <div class="bar" style="height: 45%"></div>
+                    <div class="bar" style="height: 62%"></div>
+                    <div class="bar" style="height: 38%"></div>
+                    <div class="bar teal" style="height: 85%"></div>
+                    <div class="bar teal" style="height: 72%"></div>
+                    <div class="bar teal" style="height: 93%"></div>
+                    <div class="bar teal" style="height: 100%"></div>
+                </div>
+                <div class="bar-labels">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- Workflow Mockup -->
+    <p class="label">AI Workflow</p>
+    <div class="mockup-workflow" data-export="mockup-workflow">
+        <div class="workflow-step" style="border-left: 3px solid rgba(46,163,242,0.6);">
+            <div class="step-header">
+                <div class="step-num blue">1</div>
+                <span class="step-title">Brief Ingestion</span>
+                <span class="step-tag auto">auto</span>
+            </div>
+            <div class="step-desc">Parse campaign brief, extract audience segments and key messaging</div>
+        </div>
+        <div class="workflow-connector"><div class="connector-line"></div></div>
+        <div class="workflow-step" style="border-left: 3px solid rgba(38,209,189,0.6);">
+            <div class="step-header">
+                <div class="step-num teal">2</div>
+                <span class="step-title">Content Generation</span>
+                <span class="step-tag ai">AI</span>
+            </div>
+            <div class="step-desc">Generate email sequences, social copy, and landing page content</div>
+        </div>
+        <div class="workflow-connector"><div class="connector-line"></div></div>
+        <div class="workflow-step" style="border-left: 3px solid rgba(46,163,242,0.6);">
+            <div class="step-header">
+                <div class="step-num blue">3</div>
+                <span class="step-title">Review &amp; Deploy</span>
+                <span class="step-tag you">you</span>
+            </div>
+            <div class="step-desc">Review AI drafts, approve with one click, auto-schedule deployment</div>
+        </div>
+        <div class="workflow-output">
+            <div class="output-header">
+                <div class="output-dot"></div>
+                <span class="output-label">Output</span>
+            </div>
+            <div class="output-stats">
+                <span class="blue">3 emails</span>
+                <span class="divider">|</span>
+                <span class="teal-text">12 social posts</span>
+                <span class="divider">|</span>
+                <span class="muted">1 landing page</span>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- Stats Strip -->
+    <p class="label">Stats Strip</p>
+    <div class="mockup-stats" data-export="mockup-stats">
+        <div class="stat-item">
+            <div class="stat-value gradient">38%</div>
+            <div class="stat-label">Avg. email open rate</div>
+            <div class="stat-sub">Industry avg: 21%</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" style="color: #fff;">4.2x</div>
+            <div class="stat-label">Return on ad spend</div>
+            <div class="stat-sub">Industry avg: 2.8x</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value gradient">10x</div>
+            <div class="stat-label">Faster with AI platform</div>
+            <div class="stat-sub">vs. manual workflows</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value gradient">92%</div>
+            <div class="stat-label">Client satisfaction</div>
+            <div class="stat-sub">2025 survey results</div>
+        </div>
+    </div>
+
+    <hr>
+    <p class="label">Add new components above with data-export="name" attribute, then run: node emails/assets/export.js</p>
+
+</body>
+</html>
