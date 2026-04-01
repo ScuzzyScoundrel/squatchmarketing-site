@@ -37,7 +37,8 @@
         div[style*="margin: 16px 0"] { margin: 0 !important; }
         #MessageViewBody, #MessageWebViewDiv { width: 100% !important; }
         table, td { mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; }
-        table { border-spacing: 0 !important; border-collapse: collapse !important; table-layout: fixed !important; margin: 0 auto !important; }
+        table { border-spacing: 0 !important; border-collapse: collapse !important; }
+        .email-container { table-layout: fixed !important; margin: 0 auto !important; }
         img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
         a { text-decoration: none; }
         a[x-apple-data-detectors], .unstyle-auto-detected-links a, .aBn { border-bottom: 0 !important; cursor: default !important; color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
@@ -118,8 +119,11 @@
                             <!-- Pill Badge -->
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 20px;">
                                 <tr>
-                                    <td bgcolor="#082A24" style="background-color: #082A24; border-radius: 50px; border: 1px solid #15443A; padding: 6px 14px; font-size: 12px; font-weight: 600; color: #26D1BD; letter-spacing: 0.5px; line-height: 1; font-family: 'DM Sans', Helvetica, Arial, sans-serif;">
-                                        &#9679;&nbsp; Pill Label
+                                    <td bgcolor="#082A24" style="background-color: #082A24; border-radius: 50px; border: 1px solid #15443A; padding: 6px 14px;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                                            <td valign="middle" style="padding-right: 8px; font-size: 8px; color: #26D1BD; line-height: 1;">&#9679;</td>
+                                            <td valign="middle" style="font-family: 'DM Sans', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; color: #26D1BD; letter-spacing: 0.5px; line-height: 1;">Pill Label</td>
+                                        </tr></table>
                                     </td>
                                 </tr>
                             </table>
@@ -191,8 +195,11 @@
                             <!-- Pill -->
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 16px;">
                                 <tr>
-                                    <td bgcolor="#0A2540" style="background-color: #0A2540; border-radius: 50px; border: 1px solid #1A3A5C; padding: 6px 14px; font-size: 12px; font-weight: 600; color: #2EA3F2; letter-spacing: 0.5px; line-height: 1; font-family: 'DM Sans', Helvetica, Arial, sans-serif;">
-                                        &#9679;&nbsp; What We Do
+                                    <td bgcolor="#0A2540" style="background-color: #0A2540; border-radius: 50px; border: 1px solid #1A3A5C; padding: 6px 14px;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                                            <td valign="middle" style="padding-right: 8px; font-size: 8px; color: #2EA3F2; line-height: 1;">&#9679;</td>
+                                            <td valign="middle" style="font-family: 'DM Sans', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; color: #2EA3F2; letter-spacing: 0.5px; line-height: 1;">What We Do</td>
+                                        </tr></table>
                                     </td>
                                 </tr>
                             </table>
@@ -358,8 +365,11 @@
                             <!-- Pill -->
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 18px;">
                                 <tr>
-                                    <td bgcolor="#082A24" style="background-color: #082A24; border-radius: 50px; border: 1px solid #15443A; padding: 6px 14px; font-size: 12px; font-weight: 600; color: #26D1BD; letter-spacing: 0.5px; line-height: 1; font-family: 'DM Sans', Helvetica, Arial, sans-serif;">
-                                        &#9679;&nbsp; Free Consultation
+                                    <td bgcolor="#082A24" style="background-color: #082A24; border-radius: 50px; border: 1px solid #15443A; padding: 6px 14px;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
+                                            <td valign="middle" style="padding-right: 8px; font-size: 8px; color: #26D1BD; line-height: 1;">&#9679;</td>
+                                            <td valign="middle" style="font-family: 'DM Sans', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; color: #26D1BD; letter-spacing: 0.5px; line-height: 1;">Free Consultation</td>
+                                        </tr></table>
                                     </td>
                                 </tr>
                             </table>
