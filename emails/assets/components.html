@@ -161,6 +161,103 @@
         .stat-item .stat-label { font-size: 12px; color: rgba(255,255,255,0.35); }
         .stat-item .stat-sub { font-size: 10px; color: rgba(255,255,255,0.15); margin-top: 4px; }
 
+        /* --- SOLUTION MOCKUPS (552px with floating cards) --- */
+        .mockup-container {
+            width: 552px;
+            position: relative;
+            padding: 20px 20px 30px 20px; /* room for floating cards */
+        }
+        .mockup-panel {
+            background: var(--abyss);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+        .mockup-chrome {
+            display: flex; align-items: center; gap: 8px;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .chrome-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+        .chrome-paw { width: 12px; height: 12px; color: rgba(255,255,255,0.1); }
+        .chrome-label { color: rgba(255,255,255,0.3); font-size: 11px; margin-left: 8px; font-weight: 500; }
+        .chrome-tag { font-size: 9px; padding: 3px 8px; border-radius: 50px; font-weight: 600; margin-left: auto; }
+        .chrome-tag.teal { background: rgba(38,209,189,0.15); color: var(--teal); }
+        .chrome-tag.green { background: rgba(38,209,189,0.15); color: var(--teal); }
+        .mockup-body { padding: 18px; }
+
+        /* Floating overlay cards */
+        .float-card {
+            position: absolute;
+            background: rgba(0,18,32,0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 14px 16px;
+            z-index: 10;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+        }
+        .float-card.bottom-left { bottom: 0; left: 0; }
+        .float-card.top-right { top: 0; right: 0; }
+        .float-card.bottom-right { bottom: 0; right: 0; }
+
+        /* Mini metric cards */
+        .mini-metric {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 12px;
+        }
+        .mini-metric .m-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+        .mini-metric .m-value { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: #fff; line-height: 1; }
+        .mini-metric .m-value.blue { color: var(--blue); }
+        .mini-metric .m-value.teal { color: var(--teal); }
+        .mini-metric .m-value.gradient { background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .mini-metric .m-change { font-size: 10px; color: var(--teal); margin-top: 4px; font-weight: 600; }
+
+        /* Progress bars */
+        .progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .progress-row .p-label { font-size: 10px; color: rgba(255,255,255,0.5); width: 65px; flex-shrink: 0; }
+        .progress-row .p-track { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.04); overflow: hidden; }
+        .progress-row .p-fill { height: 100%; border-radius: 3px; }
+        .progress-row .p-fill.blue { background: linear-gradient(90deg, rgba(46,163,242,0.6), rgba(46,163,242,0.3)); }
+        .progress-row .p-fill.teal { background: linear-gradient(90deg, rgba(38,209,189,0.6), rgba(38,209,189,0.3)); }
+        .progress-row .p-fill.mixed { background: linear-gradient(90deg, rgba(46,163,242,0.5), rgba(38,209,189,0.3)); }
+        .progress-row .p-val { font-size: 10px; font-weight: 600; width: 28px; text-align: right; }
+
+        /* Mini bar charts */
+        .mini-bars { display: flex; align-items: flex-end; gap: 3px; }
+        .mini-bars .mini-bar { flex: 1; border-radius: 2px; min-width: 4px; }
+        .mini-bars .mini-bar.blue { background: linear-gradient(to top, var(--blue), rgba(46,163,242,0.3)); }
+        .mini-bars .mini-bar.teal { background: linear-gradient(to top, var(--teal), rgba(38,209,189,0.3)); }
+
+        /* Terminal */
+        .terminal-line { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 4px; font-family: 'Courier New', monospace; }
+        .terminal-line .prompt { color: var(--teal); flex-shrink: 0; font-size: 12px; }
+        .terminal-line .cmd { color: rgba(255,255,255,0.6); font-size: 11px; }
+        .terminal-line .flag { color: var(--blue); }
+        .terminal-check { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; padding-left: 16px; }
+        .terminal-check .check { color: var(--teal); font-size: 12px; }
+        .terminal-check .text { color: rgba(255,255,255,0.4); font-size: 10px; font-family: 'Courier New', monospace; }
+        .terminal-check .highlight { color: var(--teal); }
+        .terminal-check .highlight-blue { color: var(--blue); }
+
+        /* Brand book */
+        .color-swatch { flex: 1; height: 32px; border-radius: 6px; }
+        .type-preview { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 10px; }
+        .type-preview .type-label { font-size: 9px; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+
+        /* Email preview */
+        .email-line { height: 8px; border-radius: 4px; margin-bottom: 6px; }
+
+        /* Lighthouse circle */
+        .lighthouse-circle {
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 2px solid var(--teal);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: var(--teal);
+        }
+
         /* --- Utility --- */
         .section-title { font-family: 'Syne', sans-serif; font-size: 24px; margin: 40px 0 8px 0; color: #fff; }
         .section-desc { color: var(--ink); font-size: 14px; margin-bottom: 20px; }
@@ -366,7 +463,308 @@
     </div>
 
     <hr>
-    <p class="label">Add new components above with data-export="name" attribute, then run: node emails/assets/export.js</p>
+
+    <!-- ==================== -->
+    <!-- SOLUTION PAGE MOCKUPS  -->
+    <!-- ==================== -->
+    <div class="section-title">Solution Page Mockups (552px with floating cards)</div>
+    <p class="section-desc">Each mockup includes the main panel + floating overlay cards, captured as one image</p>
+
+    <!-- 1. DIGITAL MARKETING — Ad Performance Dashboard -->
+    <p class="label" style="margin-top: 24px;">Digital Marketing — Ad Performance</p>
+    <div class="mockup-container" data-export="mockup-digital-marketing">
+        <div class="mockup-panel">
+            <div class="mockup-chrome">
+                <div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div>
+                <span class="chrome-label">Ad Performance</span>
+            </div>
+            <div class="mockup-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+                    <div class="mini-metric"><div class="m-label">Ad Spend</div><div class="m-value">$8.4k</div><div class="m-change" style="color: var(--blue);">This month</div></div>
+                    <div class="mini-metric"><div class="m-label">Revenue</div><div class="m-value">$38.2k</div><div class="m-change">+127%</div></div>
+                    <div class="mini-metric"><div class="m-label">ROAS</div><div class="m-value gradient">4.5x</div><div class="m-change">+0.6x</div></div>
+                </div>
+                <div class="mini-metric">
+                    <div class="m-label" style="margin-bottom: 10px;">Platform Breakdown</div>
+                    <div class="progress-row"><span class="p-label">Facebook</span><div class="p-track"><div class="p-fill blue" style="width:72%"></div></div><span class="p-val" style="color: var(--blue);">72%</span></div>
+                    <div class="progress-row"><span class="p-label">Instagram</span><div class="p-track"><div class="p-fill teal" style="width:58%"></div></div><span class="p-val" style="color: var(--teal);">58%</span></div>
+                    <div class="progress-row" style="margin-bottom: 0;"><span class="p-label">LinkedIn</span><div class="p-track"><div class="p-fill mixed" style="width:45%"></div></div><span class="p-val" style="color: rgba(255,255,255,0.4);">45%</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating: CTR card -->
+        <div class="float-card bottom-left" style="width: 180px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(38,209,189,0.15); display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 18px; height: 18px;" fill="none" viewBox="0 0 24 24" stroke="#26D1BD" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+                </div>
+                <div>
+                    <div style="font-size: 13px; color: #fff; font-weight: 600;">CTR Up 34%</div>
+                    <div style="font-size: 10px; color: rgba(255,255,255,0.35);">Last 7 days</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- 2. EMAIL MARKETING — Email Template Preview -->
+    <p class="label">Email Marketing — Template Preview</p>
+    <div class="mockup-container" data-export="mockup-email-marketing">
+        <div class="mockup-panel">
+            <div class="mockup-chrome">
+                <div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div>
+                <span class="chrome-label">Email Preview</span>
+                <span class="chrome-tag teal">98.2% delivered</span>
+            </div>
+            <div class="mockup-body">
+                <!-- Sender -->
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">
+                    <div style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--blue)); display: flex; align-items: center; justify-content: center;">
+                        <svg style="width: 16px; height: 16px;" viewBox="0 0 24 28" fill="white"><ellipse cx="12" cy="18" rx="7" ry="9.5"/><circle cx="6" cy="5.5" r="2.2"/><circle cx="10" cy="3" r="2"/><circle cx="14.5" cy="3" r="2"/><circle cx="18.5" cy="5.5" r="2.2"/><circle cx="4" cy="9" r="1.8"/></svg>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; color: #fff; font-weight: 600;">Acme Corp</div>
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.3);">marketing@acmecorp.com</div>
+                    </div>
+                    <div style="font-size: 10px; color: rgba(255,255,255,0.2);">2 min ago</div>
+                </div>
+                <!-- Hero banner -->
+                <div style="height: 80px; border-radius: 10px; background: linear-gradient(135deg, rgba(38,209,189,0.08), rgba(46,163,242,0.05)); margin-bottom: 14px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.04);">
+                    <span style="font-size: 11px; color: rgba(255,255,255,0.3);">Campaign Hero</span>
+                </div>
+                <!-- Text lines -->
+                <div class="email-line" style="width: 75%; background: rgba(255,255,255,0.07);"></div>
+                <div class="email-line" style="width: 100%; background: rgba(255,255,255,0.05);"></div>
+                <div class="email-line" style="width: 85%; background: rgba(255,255,255,0.04); margin-bottom: 14px;"></div>
+                <!-- Buttons -->
+                <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+                    <div style="width: 90px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, rgba(38,209,189,0.4), rgba(46,163,242,0.3)); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 600;">Shop Now</span>
+                    </div>
+                    <div style="width: 90px; height: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 10px; color: rgba(255,255,255,0.3);">Learn More</span>
+                    </div>
+                </div>
+                <!-- Mini chart -->
+                <div style="background: rgba(255,255,255,0.02); border-radius: 8px; padding: 10px; border: 1px solid rgba(255,255,255,0.03);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="font-size: 9px; color: rgba(255,255,255,0.3);">7-Day Engagement</span>
+                        <span style="font-size: 9px; color: var(--teal); font-weight: 600;">Trending Up</span>
+                    </div>
+                    <div class="mini-bars" style="height: 32px;">
+                        <div class="mini-bar teal" style="height: 30%"></div>
+                        <div class="mini-bar teal" style="height: 45%"></div>
+                        <div class="mini-bar teal" style="height: 55%"></div>
+                        <div class="mini-bar blue" style="height: 48%"></div>
+                        <div class="mini-bar blue" style="height: 70%"></div>
+                        <div class="mini-bar teal" style="height: 82%"></div>
+                        <div class="mini-bar teal" style="height: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating: Metrics card -->
+        <div class="float-card bottom-left" style="width: 220px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; text-align: center;">
+                <div><div style="font-family: 'Syne'; font-size: 16px; font-weight: 800; color: var(--teal);">42%</div><div style="font-size: 9px; color: rgba(255,255,255,0.3);">Open Rate</div></div>
+                <div style="border-left: 1px solid rgba(255,255,255,0.06); border-right: 1px solid rgba(255,255,255,0.06); padding: 0 6px;"><div style="font-family: 'Syne'; font-size: 16px; font-weight: 800; color: var(--blue);">8.3%</div><div style="font-size: 9px; color: rgba(255,255,255,0.3);">Click Rate</div></div>
+                <div><div style="font-family: 'Syne'; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$12k</div><div style="font-size: 9px; color: rgba(255,255,255,0.3);">Revenue</div></div>
+            </div>
+        </div>
+        <!-- Floating: Automation active -->
+        <div class="float-card top-right" style="padding: 10px 14px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <div style="width: 7px; height: 7px; border-radius: 50%; background: var(--teal);"></div>
+                <span style="font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 500;">Automation Active</span>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- 3. WEBSITE DEVELOPMENT — Browser Mockup -->
+    <p class="label">Website Development — Browser Mockup</p>
+    <div class="mockup-container" data-export="mockup-website-dev">
+        <div class="mockup-panel">
+            <div class="mockup-chrome">
+                <div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div>
+                <div style="margin-left: 12px; flex: 1; height: 22px; border-radius: 11px; background: rgba(255,255,255,0.04); display: flex; align-items: center; padding: 0 10px;">
+                    <span style="font-size: 9px; color: rgba(255,255,255,0.2);">https://yourcompany.com</span>
+                </div>
+            </div>
+            <div class="mockup-body">
+                <!-- Nav -->
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 20px; height: 20px; border-radius: 4px; background: linear-gradient(135deg, var(--blue), var(--teal));"></div>
+                        <div style="height: 6px; width: 50px; border-radius: 3px; background: rgba(255,255,255,0.06);"></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <div style="height: 6px; width: 30px; border-radius: 3px; background: rgba(255,255,255,0.04);"></div>
+                        <div style="height: 6px; width: 30px; border-radius: 3px; background: rgba(255,255,255,0.04);"></div>
+                        <div style="height: 18px; width: 50px; border-radius: 9px; background: linear-gradient(90deg, rgba(46,163,242,0.3), rgba(38,209,189,0.25));"></div>
+                    </div>
+                </div>
+                <!-- Hero -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div style="padding: 10px 0;">
+                        <div style="height: 10px; width: 75%; border-radius: 5px; background: rgba(255,255,255,0.08); margin-bottom: 8px;"></div>
+                        <div style="height: 10px; width: 50%; border-radius: 5px; background: rgba(255,255,255,0.06); margin-bottom: 14px;"></div>
+                        <div style="height: 6px; width: 100%; border-radius: 3px; background: rgba(255,255,255,0.03); margin-bottom: 5px;"></div>
+                        <div style="height: 6px; width: 85%; border-radius: 3px; background: rgba(255,255,255,0.03); margin-bottom: 14px;"></div>
+                        <div style="height: 24px; width: 70px; border-radius: 8px; background: linear-gradient(90deg, rgba(46,163,242,0.3), rgba(38,209,189,0.25));"></div>
+                    </div>
+                    <div style="height: 110px; border-radius: 10px; background: linear-gradient(135deg, rgba(46,163,242,0.06), rgba(38,209,189,0.04)); border: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 10px; color: rgba(255,255,255,0.15);">Hero Image</span>
+                    </div>
+                </div>
+                <!-- Mini chart -->
+                <div style="background: rgba(255,255,255,0.02); border-radius: 8px; padding: 10px; border: 1px solid rgba(255,255,255,0.03);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <div style="height: 5px; width: 50px; border-radius: 3px; background: rgba(255,255,255,0.05);"></div>
+                        <span style="font-size: 9px; color: var(--teal); font-weight: 600;">+24%</span>
+                    </div>
+                    <div class="mini-bars" style="height: 32px;">
+                        <div class="mini-bar blue" style="height: 35%"></div>
+                        <div class="mini-bar blue" style="height: 50%"></div>
+                        <div class="mini-bar blue" style="height: 42%"></div>
+                        <div class="mini-bar teal" style="height: 68%"></div>
+                        <div class="mini-bar teal" style="height: 60%"></div>
+                        <div class="mini-bar teal" style="height: 82%"></div>
+                        <div class="mini-bar teal" style="height: 75%"></div>
+                        <div class="mini-bar teal" style="height: 95%"></div>
+                        <div class="mini-bar teal" style="height: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating: Lighthouse score -->
+        <div class="float-card bottom-left">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="lighthouse-circle">98</div>
+                <div>
+                    <div style="font-size: 12px; color: #fff; font-weight: 600;">Performance</div>
+                    <div style="font-size: 10px; color: rgba(255,255,255,0.35);">Lighthouse Score</div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating: Responsive badge -->
+        <div class="float-card top-right" style="padding: 10px 14px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <svg style="width: 14px; height: 14px;" fill="none" viewBox="0 0 24 24" stroke="#2EA3F2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+                <span style="font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 500;">Responsive</span>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- 4. AI WORKFLOWS — Terminal Mockup -->
+    <p class="label">AI Workflows — Brand Engine Terminal</p>
+    <div class="mockup-container" data-export="mockup-ai-workflows">
+        <div class="mockup-panel">
+            <div class="mockup-chrome">
+                <div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div>
+                <span class="chrome-label" style="font-family: 'Courier New', monospace;">brand-engine</span>
+                <div style="margin-left: auto; display: flex; align-items: center; gap: 5px;">
+                    <div style="width: 7px; height: 7px; border-radius: 50%; background: var(--teal);"></div>
+                    <span style="font-size: 9px; color: var(--teal); font-family: 'Courier New', monospace;">running</span>
+                </div>
+            </div>
+            <div class="mockup-body" style="font-family: 'Courier New', monospace;">
+                <div class="terminal-line"><span class="prompt">$</span><span class="cmd">generate <span class="flag">--brief</span> "Q2 product launch"</span></div>
+                <div style="height: 8px;"></div>
+                <div class="terminal-check"><span class="check">&#10003;</span><span class="text">Loading brand profile... voice: <span class="highlight">confident, technical</span></span></div>
+                <div class="terminal-check"><span class="check">&#10003;</span><span class="text">Parsing brief... audience: <span class="highlight">B2B SaaS</span></span></div>
+                <div class="terminal-check"><span class="check">&#10003;</span><span class="text">Generating email sequence... <span class="highlight">5 emails</span></span></div>
+                <div class="terminal-check"><span class="check">&#10003;</span><span class="text">Generating social copy... <span class="highlight-blue">12 posts</span></span></div>
+                <div class="terminal-check"><span class="check">&#10003;</span><span class="text">Landing page copy... <span class="highlight-blue">1 page</span></span></div>
+                <div class="terminal-check"><span class="check">&#10003;</span><span class="text">Brand voice check... <span class="highlight">passed</span></span></div>
+                <div style="height: 8px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 8px;"></div>
+                <div class="terminal-check" style="padding-left: 0;"><span class="check">&#10003;</span><span class="text">Complete. <span class="highlight" style="font-weight: 700;">19 assets</span> ready for review.</span></div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.2); padding-left: 16px; margin-top: 2px;">Elapsed: 2m 14s<span style="display: inline-block; width: 2px; height: 12px; background: var(--teal); vertical-align: text-bottom; margin-left: 2px;"></span></div>
+            </div>
+        </div>
+        <!-- Floating: Output summary -->
+        <div class="float-card bottom-left" style="width: 210px;">
+            <div style="font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 10px; font-weight: 600;">Platform Output</div>
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="font-size: 10px; color: rgba(255,255,255,0.5);">Emails</span><span style="font-size: 10px; color: var(--teal); font-weight: 600;">5/5</span></div>
+                <div class="p-track"><div class="p-fill teal" style="width: 100%; height: 5px; border-radius: 3px;"></div></div>
+            </div>
+            <div style="margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="font-size: 10px; color: rgba(255,255,255,0.5);">Social Posts</span><span style="font-size: 10px; color: var(--blue); font-weight: 600;">12/12</span></div>
+                <div class="p-track"><div class="p-fill blue" style="width: 100%; height: 5px; border-radius: 3px;"></div></div>
+            </div>
+            <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 3px;"><span style="font-size: 10px; color: rgba(255,255,255,0.5);">Landing Page</span><span style="font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 600;">1/1</span></div>
+                <div class="p-track"><div class="p-fill mixed" style="width: 100%; height: 5px; border-radius: 3px;"></div></div>
+            </div>
+        </div>
+        <!-- Floating: Speed badge -->
+        <div class="float-card top-right" style="padding: 10px 14px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <svg style="width: 14px; height: 14px;" fill="none" viewBox="0 0 24 24" stroke="#26D1BD" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                <span style="font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 500;">10x Faster</span>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- 5. CONTENT DESIGN — Brand Book -->
+    <p class="label">Content Design — Brand Book</p>
+    <div class="mockup-container" data-export="mockup-content-design">
+        <div class="mockup-panel" style="border: none; background: rgba(0,18,32,0.85); backdrop-filter: blur(20px); padding: 20px;">
+            <!-- Brand header -->
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--teal)); display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 20px; height: 20px;" viewBox="0 0 24 28" fill="white"><ellipse cx="12" cy="18" rx="7" ry="9.5"/><circle cx="6" cy="5.5" r="2.2"/><circle cx="10" cy="3" r="2"/><circle cx="14.5" cy="3" r="2"/><circle cx="18.5" cy="5.5" r="2.2"/><circle cx="4" cy="9" r="1.8"/></svg>
+                </div>
+                <div>
+                    <div style="height: 8px; width: 100px; border-radius: 4px; background: rgba(255,255,255,0.08);"></div>
+                    <div style="height: 6px; width: 60px; border-radius: 3px; background: rgba(255,255,255,0.04); margin-top: 6px;"></div>
+                </div>
+                <div style="margin-left: auto; width: 7px; height: 7px; border-radius: 50%; background: rgba(38,209,189,0.6);"></div>
+            </div>
+            <!-- Color palette -->
+            <div style="display: flex; gap: 6px; margin-bottom: 16px;">
+                <div class="color-swatch" style="background: linear-gradient(135deg, var(--blue), rgba(46,163,242,0.8));"></div>
+                <div class="color-swatch" style="background: linear-gradient(135deg, var(--teal), rgba(38,209,189,0.8));"></div>
+                <div class="color-swatch" style="background: var(--navy);"></div>
+                <div class="color-swatch" style="background: rgba(255,255,255,0.1);"></div>
+                <div class="color-swatch" style="background: var(--slate);"></div>
+            </div>
+            <!-- Typography -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <div class="type-preview">
+                    <div class="type-label">Display</div>
+                    <div style="font-family: 'Syne'; font-weight: 800; color: #fff; font-size: 16px;">Syne Bold</div>
+                </div>
+                <div class="type-preview">
+                    <div class="type-label">Body</div>
+                    <div style="color: #fff; font-size: 14px;">DM Sans Regular</div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating: Engagement chart -->
+        <div class="float-card bottom-right" style="width: 180px;">
+            <div style="font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 8px; font-weight: 500;">Engagement Metrics</div>
+            <div class="mini-bars" style="height: 48px;">
+                <div class="mini-bar teal" style="height: 40%"></div>
+                <div class="mini-bar teal" style="height: 65%"></div>
+                <div class="mini-bar blue" style="height: 50%"></div>
+                <div class="mini-bar blue" style="height: 80%"></div>
+                <div class="mini-bar blue" style="height: 100%"></div>
+                <div class="mini-bar teal" style="height: 72%"></div>
+                <div class="mini-bar teal" style="height: 88%"></div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <p class="label">Add new components above with data-export="name" attribute, then run: node emails/assets/export.cjs</p>
 
 </body>
 </html>
