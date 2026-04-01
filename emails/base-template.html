@@ -70,36 +70,30 @@
     </style>
 </head>
 
-<!--
-    Background color defined in three places:
-    1. body tag: most email clients
-    2. center tag: Gmail/Inbox mobile
-    3. mso conditional: Windows 10 Mail
--->
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #000A12;">
-<center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color: #000A12;">
-<!--[if mso | IE]>
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000A12;"><tr><td>
-<![endif]-->
+<body class="body" style="background-color: #000A12;" bgcolor="#000A12">
 
-    <!-- Preheader -->
-    <div style="max-height: 0; overflow: hidden; mso-hide: all;" aria-hidden="true">
-        PREVIEW TEXT GOES HERE
-    </div>
-    <!-- Zero-width spacer to push Gmail snippet -->
-    <div style="font-size: 1px; max-height: 0px; overflow: hidden;">
-        &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
-    </div>
+<!-- Preheader -->
+<!--[if !gte mso 9]><!---->
+<div style="display:none !important; visibility:hidden; mso-hide:all; font-size:1px; color:#000A12; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
+    PREVIEW TEXT GOES HERE
+</div>
+<!--<![endif]-->
 
-    <!-- ============================================ -->
-    <!-- EMAIL BODY — 600px fixed-width container      -->
-    <!-- ============================================ -->
+<!-- Zero-width spacer -->
+<div style="display:none; font-size:1px; color:#000A12; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
 
-    <!--[if mso]>
-    <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="600"><tr><td>
-    <![endif]-->
-
-    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: auto;" class="email-container">
+<!-- OUTER WRAPPER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" bgcolor="#000A12" style="padding: 20px 15px 50px 15px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td>
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" class="email-container" style="max-width: 600px;" width="100%">
 
 
         <!-- LOGO -->
@@ -452,16 +446,15 @@
         </tr>
 
 
-    </table>
-    <!-- End email body -->
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
 
-    <!--[if mso]>
-    </td></tr></table>
-    <![endif]-->
-
-<!--[if mso | IE]>
-</td></tr></table>
-<![endif]-->
-</center>
 </body>
 </html>
