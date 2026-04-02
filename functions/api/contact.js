@@ -18,24 +18,62 @@ export async function onRequestPost(context) {
   }
 
   const phone = formData.get('SMS');
+  const industry = formData.get('INDUSTRY') || '';
   const attributes = {
     FIRSTNAME: formData.get('FIRSTNAME') || '',
     LASTNAME: formData.get('LASTNAME') || '',
     COMPANY_NAME: formData.get('COMPANY_NAME') || '',
     SERVICES: formData.get('SERVICES') || '',
     MESSAGE: formData.get('MESSAGE') || '',
+    LEAD_STATUS: 'opportunity',
   };
+  if (industry) {
+    attributes.INDUSTRY = industry;
+  }
   if (phone) {
     attributes.LANDLINE_NUMBER = `+1${phone.replace(/\D/g, '')}`;
   }
-
-  const body = { email, attributes, listIds: [3], updateEnabled: true };
 
   const headers = {
     'api-key': apiKey,
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   };
+
+  // If industry provided, find or create the segment list
+  let segmentListId = null;
+  if (industry) {
+    const segmentName = `Segment | ${industry}`;
+
+    // Search existing lists for a match
+    const listsRes = await fetch('https://api.brevo.com/v3/contacts/lists?limit=50', { headers });
+    if (listsRes.ok) {
+      const listsData = await listsRes.json();
+      const existing = listsData.lists.find((l) => l.name === segmentName);
+      if (existing) {
+        segmentListId = existing.id;
+      } else {
+        // Create new segment list (folder 6 = "Industry Segments")
+        const createRes = await fetch('https://api.brevo.com/v3/contacts/lists', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({ name: segmentName, folderId: 6 }),
+        });
+        if (createRes.ok) {
+          const created = await createRes.json();
+          segmentListId = created.id;
+        }
+      }
+    }
+  }
+
+  // Build list IDs: always #3 (consultations), plus segment if found/created
+  const listIds = [3];
+  if (segmentListId) {
+    listIds.push(segmentListId);
+  }
+
+  const body = { email, attributes, listIds, updateEnabled: true };
 
   let res = await fetch('https://api.brevo.com/v3/contacts', {
     method: 'POST',
@@ -51,7 +89,7 @@ export async function onRequestPost(context) {
       res = await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers,
-        body: JSON.stringify({ email, attributes, listIds: [3], updateEnabled: true }),
+        body: JSON.stringify({ email, attributes, listIds, updateEnabled: true }),
       });
     } else {
       return new Response(JSON.stringify({ success: false, error: errorText }), {
@@ -62,7 +100,25 @@ export async function onRequestPost(context) {
   }
 
   if (res.ok || res.status === 204) {
-    return new Response(JSON.stringify({ success: true }), {
+    // Send thank-you transactional email (fire and forget)
+    const firstname = formData.get('FIRSTNAME') || '';
+    const greeting = firstname ? ` ${firstname}` : '';
+    fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        sender: { name: 'Squatch Marketing', email: 'marketing@squatchmarketing.com' },
+        to: [{ email, name: firstname }],
+        subject: 'Thanks for reaching out — we\'ll be in touch soon',
+        textContent: `Hey${greeting},\n\nThanks for reaching out to Squatch Marketing! We got your request and Jerris will be in touch within 24 hours.\n\nIn the meantime, feel free to check out our solutions and how we work with local businesses:\nhttps://squatchmarketing.com/solutions\n\nTalk soon,\nSquatch Marketing\n801-803-2136`,
+      }),
+    }).catch(() => {}); // don't block the response if email fails
+
+    return new Response(JSON.stringify({
+      success: true,
+      segmentCreated: segmentListId ? true : false,
+      segmentListId,
+    }), {
       headers: { 'Content-Type': 'application/json' },
     });
   }
