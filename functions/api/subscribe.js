@@ -11,7 +11,7 @@ export async function onRequestPost(context) {
 
   const body = {
     email,
-    listIds: [4],
+    listIds: [11],
     updateEnabled: true,
   };
 
