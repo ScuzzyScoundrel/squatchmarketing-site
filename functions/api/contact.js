@@ -100,20 +100,24 @@ export async function onRequestPost(context) {
   }
 
   if (res.ok || res.status === 204) {
-    // Send thank-you transactional email (must await — Cloudflare kills pending fetches on return)
+    // Send branded thank-you email (must await — Cloudflare kills pending fetches on return)
     const firstname = formData.get('FIRSTNAME') || '';
-    const greeting = firstname ? ` ${firstname}` : '';
     try {
-      await fetch('https://api.brevo.com/v3/smtp/email', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          sender: { name: 'Squatch Marketing', email: 'marketing@squatchmarketing.com' },
-          to: [{ email, name: firstname }],
-          subject: "Thanks for reaching out \u2014 we'll be in touch soon",
-          textContent: `Hey${greeting},\n\nThanks for reaching out to Squatch Marketing! We got your request and Jerris will be in touch within 24 hours.\n\nIn the meantime, feel free to check out our solutions and how we work with local businesses:\nhttps://squatchmarketing.com/solutions\n\nTalk soon,\nSquatch Marketing\n801-803-2136`,
-        }),
-      });
+      // Fetch the hosted HTML template
+      const templateRes = await fetch('https://squatchmarketing.com/emails/thank-you.html');
+      if (templateRes.ok) {
+        const htmlContent = await templateRes.text();
+        await fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            sender: { name: 'Squatch Marketing', email: 'marketing@squatchmarketing.com' },
+            to: [{ email, name: firstname }],
+            subject: "Thanks for reaching out \u2014 we'll be in touch soon",
+            htmlContent,
+          }),
+        });
+      }
     } catch (_) {} // don't fail the form submission if email fails
 
     return new Response(JSON.stringify({
