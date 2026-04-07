@@ -69,6 +69,15 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
       "areaServed": "US",
       "serviceType": ["Digital Marketing", "Content Design", "Website Development", "Email Marketing"]
     })} />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSPDYTYRW0"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JSPDYTYRW0');
+    </script>
   </head>
   <body class="min-h-screen">
     <Nav />
