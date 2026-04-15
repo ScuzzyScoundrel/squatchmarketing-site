@@ -65,6 +65,26 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
       <slot />
     </main>
 
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        // Scroll reveal - required for .reveal elements to fade in
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => {
+          el.classList.remove('visible');
+          observer.observe(el);
+        });
+      });
+    </script>
+
     <!-- Minimal footer -->
     <footer class="bg-void border-t border-white/[0.04] py-10">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
