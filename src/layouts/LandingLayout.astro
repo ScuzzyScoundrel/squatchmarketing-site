@@ -1,0 +1,85 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Squatch Marketing — Small business marketing done for you.' } = Astro.props;
+const pageTitle = `${title} | Squatch Marketing`;
+const siteUrl = 'https://squatchmarketing.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-void">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+
+    <title>{pageTitle}</title>
+    <ClientRouter />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSPDYTYRW0"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JSPDYTYRW0');
+    </script>
+  </head>
+  <body class="min-h-screen bg-void">
+    <!-- Minimal top bar (brand only, no nav) -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-void/60 backdrop-blur-md border-b border-white/[0.04]">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/squatch-logo.svg" alt="Squatch Marketing" class="h-7 w-auto" />
+        </a>
+        <a href="tel:8018032136" class="text-white/50 hover:text-white text-sm font-medium transition-colors">
+          <span class="hidden sm:inline">801-803-2136</span>
+          <span class="sm:hidden">Call Us</span>
+        </a>
+      </div>
+    </div>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Minimal footer -->
+    <footer class="bg-void border-t border-white/[0.04] py-10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <img src="/squatch-logo.svg" alt="Squatch Marketing" class="h-6 w-auto opacity-60" />
+            <span class="text-white/30 text-sm">&copy; 2026 Squatch Marketing</span>
+          </div>
+          <div class="flex items-center gap-6 text-sm text-white/40">
+            <a href="tel:8018032136" class="hover:text-white transition-colors">801-803-2136</a>
+            <a href="mailto:marketing@squatchmarketing.com" class="hover:text-white transition-colors hidden sm:inline">marketing@squatchmarketing.com</a>
+            <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
