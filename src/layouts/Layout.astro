@@ -166,12 +166,14 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
                 h: bar.getAttribute('data-height'),
               }));
               targets.forEach(({ bar }, i) => {
-                bar.style.transition = `height 1s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`;
-                bar.style.height = '0%';
+                bar.style.transition = `transform 1s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`;
+                bar.style.transform = 'scaleY(0)';
               });
               requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                  targets.forEach(({ bar, h }) => { bar.style.height = h + '%'; });
+                  targets.forEach(({ bar, h }) => {
+                    bar.style.transform = `scaleY(${(parseFloat(h) || 0) / 100})`;
+                  });
                 });
               });
               barObserver.unobserve(entry.target);
