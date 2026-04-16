@@ -43,6 +43,9 @@
 
     const dismiss = (value) => {
       localStorage.setItem('cookie-consent', value);
+      if (value === 'accepted' && typeof window.__loadAnalytics === 'function') {
+        window.__loadAnalytics();
+      }
       banner.classList.remove('translate-y-0');
       banner.classList.add('translate-y-full');
       setTimeout(() => { banner.style.display = 'none'; }, 500);

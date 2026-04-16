@@ -41,10 +41,23 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts -->
+    <!-- Fonts — non-render-blocking (print media swap pattern) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    </noscript>
 
     <title>{pageTitle}</title>
     <ClientRouter />
@@ -70,33 +83,51 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
       "serviceType": ["Digital Marketing", "Content Design", "Website Development", "Email Marketing"]
     })} />
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSPDYTYRW0"></script>
+    <!-- Analytics — consent-gated, loaded only after user accepts cookies -->
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JSPDYTYRW0');
-    </script>
+      (function () {
+        function loadAnalytics() {
+          if (window.__analyticsLoaded) return;
+          window.__analyticsLoaded = true;
 
-    <!-- Microsoft Advertising UET (Universal Event Tracking) -->
-    <script is:inline>
-      (function(w, d, t, u, o) {
-        w[u] = w[u] || [], o.ts = (new Date).getTime();
-        var n = d.createElement(t);
-        n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""),
-        n.async = 1, n.onload = n.onreadystatechange = function() {
-          var s = this.readyState;
-          s && "loaded" !== s && "complete" !== s ||
-          (o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"),
-          n.onload = n.onreadystatechange = null)
-        };
-        var i = d.getElementsByTagName(t)[0];
-        i.parentNode.insertBefore(n, i);
-      })(window, document, "script", "uetq", {
-        ti: "343244388",
-        enableAutoSpaTracking: true
-      });
+          // Google Analytics 4
+          var ga = document.createElement('script');
+          ga.async = true;
+          ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-JSPDYTYRW0';
+          document.head.appendChild(ga);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-JSPDYTYRW0');
+
+          // Microsoft Advertising UET
+          (function(w, d, t, u, o) {
+            w[u] = w[u] || [], o.ts = (new Date).getTime();
+            var n = d.createElement(t);
+            n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""),
+            n.async = 1, n.onload = n.onreadystatechange = function() {
+              var s = this.readyState;
+              s && "loaded" !== s && "complete" !== s ||
+              (o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"),
+              n.onload = n.onreadystatechange = null)
+            };
+            var i = d.getElementsByTagName(t)[0];
+            i.parentNode.insertBefore(n, i);
+          })(window, document, "script", "uetq", {
+            ti: "343244388",
+            enableAutoSpaTracking: true
+          });
+        }
+
+        window.__loadAnalytics = loadAnalytics;
+
+        try {
+          if (localStorage.getItem('cookie-consent') === 'accepted') {
+            loadAnalytics();
+          }
+        } catch (e) {}
+      })();
     </script>
   </head>
   <body class="min-h-screen">
@@ -125,16 +156,23 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
           observer.observe(el);
         });
 
-        // Animated chart bars
+        // Animated chart bars — avoid forced reflow by batching style writes in one rAF
         const barObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const bars = entry.target.querySelectorAll('.chart-bar');
-              bars.forEach((bar, i) => {
-                const h = bar.getAttribute('data-height');
-                bar.style.height = '0%';
+              const targets = Array.from(bars).map((bar) => ({
+                bar,
+                h: bar.getAttribute('data-height'),
+              }));
+              targets.forEach(({ bar }, i) => {
                 bar.style.transition = `height 1s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`;
-                requestAnimationFrame(() => { bar.style.height = h + '%'; });
+                bar.style.height = '0%';
+              });
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  targets.forEach(({ bar, h }) => { bar.style.height = h + '%'; });
+                });
               });
               barObserver.unobserve(entry.target);
             }
