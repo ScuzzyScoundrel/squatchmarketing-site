@@ -101,7 +101,7 @@ const sites = [
 ];
 ---
 
-<Layout title="Our Work" description="Real preview sites we've built for small businesses across the US. 12+ custom websites live for contractors, spas, yoga studios, gyms, and more.">
+<Layout title="Our Work" description="Real preview sites and email designs we've built for small businesses. 12+ custom websites and hand-coded email campaigns — see the quality before you buy.">
 
   <!-- HERO -->
   <section class="relative min-h-[60vh] flex items-center gradient-mesh noise overflow-hidden">
@@ -118,11 +118,11 @@ const sites = [
         </div>
 
         <h1 class="reveal reveal-delay-1 font-display font-800 text-[clamp(2.5rem,5.5vw,4.5rem)] text-white leading-[1.1] tracking-[-0.03em] mb-8">
-          Real websites. <span class="text-gradient">Real businesses.</span>
+          Real websites. <span class="text-gradient">Real emails.</span>
         </h1>
 
         <p class="reveal reveal-delay-2 text-lg sm:text-xl text-white/40 leading-relaxed max-w-xl">
-          Every site below is a live preview we built for a real small business. Click into any of them to see the work. Yours could look like this next week.
+          Live preview sites and hand-coded email designs we've built for small businesses. Scroll down to see the work. Yours could look like this next week.
         </p>
       </div>
     </div>
@@ -135,6 +135,16 @@ const sites = [
     <div class="orb-drift-reverse absolute top-[30%] right-[-10%] w-[400px] h-[400px] rounded-full bg-blue/[0.04] blur-[120px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal mb-12 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-blue/[0.08] border border-blue/[0.12] mb-5">
+          <div class="w-1.5 h-1.5 rounded-full bg-blue animate-pulse"></div>
+          <span class="text-blue text-xs font-semibold tracking-wide">Websites</span>
+        </div>
+        <h2 class="font-display font-800 text-3xl sm:text-4xl text-white leading-tight">
+          12 live preview sites.
+        </h2>
+      </div>
+
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sites.map((site, i) => (
           <a
@@ -180,6 +190,296 @@ const sites = [
 
   <div class="section-divider"></div>
 
+  <!-- EMAIL CAMPAIGNS -->
+  <section class="relative py-24 bg-void overflow-hidden" aria-label="Email campaigns">
+    <div class="orb-drift absolute top-[10%] left-[-5%] w-[450px] h-[450px] rounded-full bg-teal/[0.05] blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal mb-16 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-teal/[0.08] border border-teal/[0.12] mb-5">
+          <div class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></div>
+          <span class="text-teal text-xs font-semibold tracking-wide">Email Campaigns</span>
+        </div>
+        <h2 class="font-display font-800 text-3xl sm:text-4xl text-white leading-tight mb-4">
+          Hand-coded emails <span class="text-gradient">for every industry.</span>
+        </h2>
+        <p class="text-white/40 text-base leading-relaxed max-w-xl mx-auto">
+          No Mailchimp templates. No AI slop. Every email below is custom HTML, designed to match the brand and the moment. Scroll through a few examples.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-12 items-center">
+
+        <!-- EMAIL MOCKUP 1: Chiropractic Recall -->
+        <div class="reveal w-full max-w-[680px]">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <span class="text-white/30 text-xs font-medium tracking-wide uppercase">Chiropractic · Appointment Recall</span>
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-white/40">
+              <div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+              Transactional
+            </span>
+          </div>
+
+          <div class="glass-interactive rounded-2xl overflow-hidden">
+            <!-- Inbox Chrome -->
+            <div class="flex items-start gap-3 p-4 border-b border-white/5 bg-white/[0.02]">
+              <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-white text-sm" style="background:linear-gradient(135deg, #10B981 0%, #059669 100%);">FF</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-white text-sm font-semibold">FormFit Chiropractic</span>
+                  <span class="text-white/30 text-xs">&lt;hello@formfitchiro.com&gt;</span>
+                </div>
+                <div class="text-white/80 text-sm mt-0.5 font-medium">Hey Sarah, time for a check-in?</div>
+                <div class="text-white/30 text-xs mt-0.5">Your spine called. Let's take a look.</div>
+              </div>
+              <span class="text-white/30 text-xs flex-shrink-0">9:42 AM</span>
+            </div>
+
+            <!-- Email Body (light theme, cream background) -->
+            <div style="background:#FAFAF7; padding:0;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px; margin:0 auto;">
+                <tr><td align="center" style="padding:32px 24px 8px 24px; font-family:'DM Sans', Helvetica, Arial, sans-serif;">
+                  <div style="font-family:'Syne', Helvetica, Arial, sans-serif; font-weight:700; font-size:20px; color:#064E3B; letter-spacing:-0.02em;">FormFit<span style="color:#10B981;">.</span></div>
+                </td></tr>
+
+                <tr><td style="padding:24px 32px 8px 32px; font-family:'DM Sans', Helvetica, Arial, sans-serif;">
+                  <div style="display:inline-block; padding:5px 12px; border-radius:50px; background:#ECFDF5; border:1px solid #D1FAE5; font-size:11px; font-weight:600; color:#059669; letter-spacing:0.4px; margin-bottom:16px;">● FRIENDLY REMINDER</div>
+                  <h1 style="margin:0 0 14px 0; font-family:'Syne', Helvetica, Arial, sans-serif; font-size:30px; line-height:1.2; color:#111827; font-weight:700; letter-spacing:-0.02em;">
+                    Hey Sarah,<br>time for an adjustment?
+                  </h1>
+                  <p style="margin:0 0 24px 0; font-size:15px; line-height:1.65; color:#4B5563;">
+                    It's been about six weeks since your last visit. We noticed your usual check-in window is coming up, so just a quick nudge. No pressure, but if you've been feeling any of the old tightness creeping back, now's a good time to book in.
+                  </p>
+                </td></tr>
+
+                <tr><td style="padding:0 32px 24px 32px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#F0FDF4; border:1px solid #D1FAE5; border-radius:14px;">
+                    <tr><td style="padding:18px 20px; font-family:'DM Sans', Helvetica, Arial, sans-serif;">
+                      <div style="font-size:11px; font-weight:600; color:#059669; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:6px;">Your Last Visit</div>
+                      <div style="font-size:15px; color:#064E3B; font-weight:600;">March 6, 2026 · Lower back adjustment</div>
+                      <div style="font-size:13px; color:#4B5563; margin-top:4px;">Dr. Chen's recommended interval: 4–6 weeks between adjustments.</div>
+                    </td></tr>
+                  </table>
+                </td></tr>
+
+                <tr><td align="center" style="padding:0 32px 32px 32px;">
+                  <table border="0" cellpadding="0" cellspacing="0">
+                    <tr><td bgcolor="#10B981" style="background-color:#10B981; border-radius:10px;">
+                      <a href="#" style="display:block; padding:14px 36px; font-family:'DM Sans', Helvetica, Arial, sans-serif; font-size:15px; font-weight:600; color:#FFFFFF; text-decoration:none; background:linear-gradient(135deg, #10B981 0%, #059669 100%); border-radius:10px;">Book My Adjustment →</a>
+                    </td></tr>
+                  </table>
+                  <div style="font-family:'DM Sans', Helvetica, Arial, sans-serif; font-size:13px; color:#6B7280; margin-top:16px;">Or just reply to this email and we'll find a time.</div>
+                </td></tr>
+
+                <tr><td align="center" style="padding:24px 32px 32px 32px; border-top:1px solid #E5E7EB; font-family:'DM Sans', Helvetica, Arial, sans-serif; font-size:11px; color:#9CA3AF; line-height:1.6;">
+                  FormFit Chiropractic · 1425 N State Street, Pleasant Grove UT<br>
+                  <a href="#" style="color:#10B981; text-decoration:none;">Reschedule</a> · <a href="#" style="color:#9CA3AF; text-decoration:none;">Unsubscribe</a>
+                </td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL MOCKUP 2: Restaurant Flash Event -->
+        <div class="reveal w-full max-w-[680px]">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <span class="text-white/30 text-xs font-medium tracking-wide uppercase">Restaurant · Flash Event</span>
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-white/40">
+              <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+              Broadcast
+            </span>
+          </div>
+
+          <div class="glass-interactive rounded-2xl overflow-hidden">
+            <!-- Inbox Chrome -->
+            <div class="flex items-start gap-3 p-4 border-b border-white/5 bg-white/[0.02]">
+              <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-white text-sm" style="background:linear-gradient(135deg, #D97706 0%, #7F1D1D 100%); font-family:'Syne', serif;">CK</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-white text-sm font-semibold">The Copper Kettle</span>
+                  <span class="text-white/30 text-xs">&lt;events@copperkettle.com&gt;</span>
+                </div>
+                <div class="text-white/80 text-sm mt-0.5 font-medium">Saturday only: Wagyu tasting menu (6 seats left)</div>
+                <div class="text-white/30 text-xs mt-0.5">5 courses, 7pm, $125. We don't do this often.</div>
+              </div>
+              <span class="text-white/30 text-xs flex-shrink-0">4:12 PM</span>
+            </div>
+
+            <!-- Email Body (dark warm theme) -->
+            <div style="background:#1C1917;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px; margin:0 auto;">
+
+                <tr><td align="center" style="padding:36px 24px 20px 24px; font-family:'Syne', Georgia, serif;">
+                  <div style="font-size:22px; font-weight:700; color:#FBBF24; letter-spacing:0.12em; text-transform:uppercase;">The Copper Kettle</div>
+                  <div style="font-size:11px; color:#A8A29E; letter-spacing:0.3em; margin-top:4px; text-transform:uppercase;">Est. 2018 · Salt Lake City</div>
+                </td></tr>
+
+                <tr><td style="padding:0 24px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:linear-gradient(135deg, #7F1D1D 0%, #451A03 100%); border-radius:20px; border:1px solid #78350F;">
+                    <tr><td align="center" style="padding:56px 32px; font-family:'Syne', Georgia, serif;">
+                      <div style="display:inline-block; padding:6px 16px; border-radius:50px; background:rgba(251,191,36,0.12); border:1px solid rgba(251,191,36,0.3); font-family:'DM Sans', sans-serif; font-size:11px; font-weight:600; color:#FBBF24; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:20px;">One Night Only</div>
+                      <h1 style="margin:0 0 10px 0; font-size:40px; line-height:1.1; color:#FEF3C7; font-weight:700; letter-spacing:-0.02em;">
+                        Wagyu<br>Tasting Menu
+                      </h1>
+                      <div style="font-family:'DM Sans', sans-serif; font-size:14px; color:#FBBF24; letter-spacing:0.2em; text-transform:uppercase; margin-top:12px;">Sat, April 24 · 7pm · $125/guest</div>
+                    </td></tr>
+                  </table>
+                </td></tr>
+
+                <tr><td style="padding:32px 40px 8px 40px; font-family:'DM Sans', Helvetica, Arial, sans-serif;">
+                  <div style="font-size:11px; font-weight:600; color:#FBBF24; text-transform:uppercase; letter-spacing:0.3em; margin-bottom:14px;">The Menu</div>
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top:1px solid #292524;">
+                    <tr><td style="padding:14px 0; border-bottom:1px solid #292524;">
+                      <div style="font-family:'Syne', Georgia, serif; font-size:15px; color:#FEF3C7; font-weight:600;">01 · Amuse-bouche</div>
+                      <div style="font-size:13px; color:#A8A29E; margin-top:3px;">Seared foie gras, fig compote, brioche crumb</div>
+                    </td></tr>
+                    <tr><td style="padding:14px 0; border-bottom:1px solid #292524;">
+                      <div style="font-family:'Syne', Georgia, serif; font-size:15px; color:#FEF3C7; font-weight:600;">02 · First Course</div>
+                      <div style="font-size:13px; color:#A8A29E; margin-top:3px;">Charred octopus, smoked paprika, black garlic</div>
+                    </td></tr>
+                    <tr><td style="padding:14px 0; border-bottom:1px solid #292524;">
+                      <div style="font-family:'Syne', Georgia, serif; font-size:15px; color:#FEF3C7; font-weight:600;">03 · Main Feature</div>
+                      <div style="font-size:13px; color:#A8A29E; margin-top:3px;">A5 Wagyu, bone marrow butter, black truffle jus</div>
+                    </td></tr>
+                    <tr><td style="padding:14px 0; border-bottom:1px solid #292524;">
+                      <div style="font-family:'Syne', Georgia, serif; font-size:15px; color:#FEF3C7; font-weight:600;">04 · Cheese</div>
+                      <div style="font-size:13px; color:#A8A29E; margin-top:3px;">Artisan selection, local honeycomb, aged balsamic</div>
+                    </td></tr>
+                    <tr><td style="padding:14px 0;">
+                      <div style="font-family:'Syne', Georgia, serif; font-size:15px; color:#FEF3C7; font-weight:600;">05 · Dessert</div>
+                      <div style="font-size:13px; color:#A8A29E; margin-top:3px;">Dark chocolate soufflé, espresso crème anglaise</div>
+                    </td></tr>
+                  </table>
+                </td></tr>
+
+                <tr><td align="center" style="padding:28px 32px 16px 32px;">
+                  <div style="display:inline-block; padding:6px 14px; border-radius:8px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); font-family:'DM Sans', sans-serif; font-size:12px; font-weight:600; color:#FCA5A5; letter-spacing:0.05em; margin-bottom:18px;">● 6 seats left of 24</div>
+                  <br>
+                  <table border="0" cellpadding="0" cellspacing="0" style="display:inline-block;">
+                    <tr><td bgcolor="#FBBF24" style="background-color:#FBBF24; border-radius:10px;">
+                      <a href="#" style="display:block; padding:16px 44px; font-family:'DM Sans', Helvetica, Arial, sans-serif; font-size:15px; font-weight:700; color:#1C1917; text-decoration:none; background:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); border-radius:10px; letter-spacing:0.02em;">Reserve My Table</a>
+                    </td></tr>
+                  </table>
+                </td></tr>
+
+                <tr><td align="center" style="padding:24px 32px 36px 32px; font-family:'DM Sans', Helvetica, Arial, sans-serif; font-size:11px; color:#78716C; line-height:1.7;">
+                  The Copper Kettle · 218 S Main, Salt Lake City<br>
+                  <a href="#" style="color:#FBBF24; text-decoration:none;">View in browser</a> · <a href="#" style="color:#78716C; text-decoration:none;">Unsubscribe</a>
+                </td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL MOCKUP 3: Med Spa Welcome -->
+        <div class="reveal w-full max-w-[680px]">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <span class="text-white/30 text-xs font-medium tracking-wide uppercase">Med Spa · Welcome Sequence</span>
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-white/40">
+              <div class="w-1.5 h-1.5 rounded-full bg-rose-300"></div>
+              Automation
+            </span>
+          </div>
+
+          <div class="glass-interactive rounded-2xl overflow-hidden">
+            <!-- Inbox Chrome -->
+            <div class="flex items-start gap-3 p-4 border-b border-white/5 bg-white/[0.02]">
+              <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-white text-sm" style="background:linear-gradient(135deg, #D4A574 0%, #A16248 100%); font-family:'Syne', serif;">LV</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-white text-sm font-semibold">La Belle Vie Medical Spa</span>
+                  <span class="text-white/30 text-xs">&lt;welcome@labellevie.com&gt;</span>
+                </div>
+                <div class="text-white/80 text-sm mt-0.5 font-medium">Welcome, Sarah — here's what to expect</div>
+                <div class="text-white/30 text-xs mt-0.5">Your skin, your pace. Plus a gift inside.</div>
+              </div>
+              <span class="text-white/30 text-xs flex-shrink-0">10:15 AM</span>
+            </div>
+
+            <!-- Email Body (cream/rose editorial theme) -->
+            <div style="background:#FAF7F2;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px; margin:0 auto;">
+
+                <tr><td align="center" style="padding:40px 32px 0 32px; font-family:'Syne', Georgia, serif;">
+                  <div style="font-size:20px; font-weight:500; color:#7C4A2C; letter-spacing:0.3em; text-transform:uppercase;">La Belle Vie</div>
+                  <div style="width:40px; height:1px; background:#D4A574; margin:14px auto;"></div>
+                  <div style="font-family:'DM Sans', sans-serif; font-size:11px; color:#A16248; letter-spacing:0.35em; text-transform:uppercase;">Medical Spa · Draper</div>
+                </td></tr>
+
+                <tr><td style="padding:44px 48px 24px 48px; font-family:'DM Sans', Helvetica, Arial, sans-serif;">
+                  <h1 style="margin:0 0 20px 0; font-family:'Syne', Georgia, serif; font-size:40px; line-height:1.15; color:#3E2C1F; font-weight:600; letter-spacing:-0.015em; text-align:center;">
+                    Welcome, Sarah.
+                  </h1>
+                  <p style="margin:0; font-size:15px; line-height:1.8; color:#5B4636; text-align:center;">
+                    We're so glad you're here. Before your first visit, we wanted to share a little about how we work and what you can expect. No sales, no pressure, just honest skin care at your pace.
+                  </p>
+                </td></tr>
+
+                <tr><td style="padding:12px 32px 32px 32px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td width="33%" align="center" valign="top" style="padding:0 8px; font-family:'DM Sans', sans-serif;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #F5E6D3 0%, #E8CFB4 100%); margin:0 auto 12px auto; font-family:'Syne', Georgia, serif; font-size:18px; color:#7C4A2C; line-height:48px; font-weight:600;">01</div>
+                        <div style="font-size:13px; font-weight:600; color:#3E2C1F; margin-bottom:6px;">Free Consultation</div>
+                        <div style="font-size:12px; color:#7C6855; line-height:1.5;">30 minutes with our lead esthetician. No commitment.</div>
+                      </td>
+                      <td width="33%" align="center" valign="top" style="padding:0 8px; font-family:'DM Sans', sans-serif;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #F5E6D3 0%, #E8CFB4 100%); margin:0 auto 12px auto; font-family:'Syne', Georgia, serif; font-size:18px; color:#7C4A2C; line-height:48px; font-weight:600;">02</div>
+                        <div style="font-size:13px; font-weight:600; color:#3E2C1F; margin-bottom:6px;">Custom Plan</div>
+                        <div style="font-size:12px; color:#7C6855; line-height:1.5;">Built around your skin, your goals, your budget.</div>
+                      </td>
+                      <td width="33%" align="center" valign="top" style="padding:0 8px; font-family:'DM Sans', sans-serif;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #F5E6D3 0%, #E8CFB4 100%); margin:0 auto 12px auto; font-family:'Syne', Georgia, serif; font-size:18px; color:#7C4A2C; line-height:48px; font-weight:600;">03</div>
+                        <div style="font-size:13px; font-weight:600; color:#3E2C1F; margin-bottom:6px;">Ongoing Care</div>
+                        <div style="font-size:12px; color:#7C6855; line-height:1.5;">Monthly check-ins so your plan evolves with you.</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td></tr>
+
+                <tr><td style="padding:8px 32px 32px 32px;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background:#FFFFFF; border:1px solid #E8CFB4; border-radius:16px;">
+                    <tr><td align="center" style="padding:28px 24px; font-family:'DM Sans', sans-serif;">
+                      <div style="font-family:'Syne', Georgia, serif; font-size:11px; color:#A16248; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:10px;">A Gift For Joining</div>
+                      <div style="font-family:'Syne', Georgia, serif; font-size:28px; color:#3E2C1F; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">15% off your first treatment</div>
+                      <div style="font-size:13px; color:#7C6855;">Use code <span style="font-family:Georgia, serif; letter-spacing:0.15em; color:#7C4A2C; font-weight:600;">WELCOME15</span> at booking. Valid for 30 days.</div>
+                    </td></tr>
+                  </table>
+                </td></tr>
+
+                <tr><td align="center" style="padding:0 32px 32px 32px;">
+                  <table border="0" cellpadding="0" cellspacing="0">
+                    <tr><td bgcolor="#7C4A2C" style="background-color:#7C4A2C; border-radius:8px;">
+                      <a href="#" style="display:block; padding:15px 40px; font-family:'DM Sans', Helvetica, Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; text-decoration:none; background:linear-gradient(135deg, #A16248 0%, #7C4A2C 100%); border-radius:8px; letter-spacing:0.15em; text-transform:uppercase;">Book My Consultation</a>
+                    </td></tr>
+                  </table>
+                </td></tr>
+
+                <tr><td align="center" style="padding:0 32px 36px 32px; font-family:'Syne', Georgia, serif;">
+                  <div style="font-size:14px; color:#7C4A2C; font-style:italic; margin-bottom:4px;">With care,</div>
+                  <div style="font-size:16px; color:#3E2C1F; font-weight:600;">Marie Chen, Founder</div>
+                </td></tr>
+
+                <tr><td align="center" style="padding:20px 32px 36px 32px; border-top:1px solid #E8CFB4; font-family:'DM Sans', sans-serif; font-size:11px; color:#A16248; line-height:1.7;">
+                  La Belle Vie Medical Spa · Draper, UT<br>
+                  <a href="#" style="color:#7C4A2C; text-decoration:none;">Manage preferences</a> · <a href="#" style="color:#A16248; text-decoration:none;">Unsubscribe</a>
+                </td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal mt-16 text-center">
+        <p class="text-white/30 text-sm italic">More campaign types in the works: abandoned cart, referral programs, loyalty milestones, monthly newsletters, quote follow-ups, rebooking reminders.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
   <!-- CTA -->
   <section class="relative py-28 section-mesh overflow-hidden">
     <div class="orb-drift absolute top-0 left-[30%] w-[500px] h-[500px] rounded-full bg-teal/[0.05] blur-[140px] pointer-events-none"></div>
@@ -194,15 +494,15 @@ const sites = [
             Want yours on this list?
           </h2>
           <p class="text-white/35 leading-relaxed mb-10">
-            Free preview in 5 business days. Starting at $149/mo. First month free, cancel anytime.
+            Free website preview in 5 business days, or a free 15-minute email audit. Both start at $149/mo. First month free, cancel anytime.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/websites" class="btn-gradient px-8 py-3.5 rounded-xl text-white font-semibold text-sm inline-block">
-              <span>Get Your Free Preview</span>
+              <span>Free Website Preview</span>
             </a>
-            <a href="/request-demo" class="glass-interactive px-8 py-3.5 rounded-xl text-white/60 hover:text-white font-medium text-sm inline-block transition-colors">
-              Talk to Us First
+            <a href="/email" class="glass-interactive px-8 py-3.5 rounded-xl text-white/60 hover:text-white font-medium text-sm inline-block transition-colors">
+              Free Email Audit
             </a>
           </div>
         </div>
