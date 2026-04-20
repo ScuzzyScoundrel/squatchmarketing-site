@@ -17,18 +17,18 @@ const path = require('path');
 const fs = require('fs');
 
 const SITES = [
-  { slug: 'garcia-contracting',    url: 'https://garcia-contracting.squatch-previews.pages.dev' },
-  { slug: 'coyote-contracting',    url: 'https://coyote-contracting.squatch-previews.pages.dev' },
-  { slug: 'cross-general',         url: 'https://cross-general.squatch-previews.pages.dev' },
-  { slug: 'jt-burke-and-sons',     url: 'https://jt-burke-and-sons.squatch-previews.pages.dev' },
-  { slug: 'yogavega',              url: 'https://yogavega.squatch-previews.pages.dev' },
-  { slug: 'millpond-spa',          url: 'https://millpond-spa.squatch-previews.pages.dev' },
-  { slug: 'body-balance',          url: 'https://body-balance.squatch-previews.pages.dev' },
-  { slug: 'ute-crossfit',          url: 'https://ute-crossfit.squatch-previews.pages.dev' },
-  { slug: 'blind-tiger',           url: 'https://blind-tiger.squatch-previews.pages.dev' },
-  { slug: 'labelle-vie',           url: 'https://labelle-vie.squatch-previews.pages.dev' },
-  { slug: 'formfit-chiro',         url: 'https://formfit-chiro.squatch-previews.pages.dev' },
-  { slug: 'vision-re',             url: 'https://vision-re.squatch-previews.pages.dev' },
+  { slug: 'garcia-contracting',    url: 'https://garcia-contracting.squatch-previews.pages.dev',    path: '/' },
+  { slug: 'coyote-contracting',    url: 'https://coyote-contracting.squatch-previews.pages.dev',    path: '/' },
+  { slug: 'cross-general',         url: 'https://cross-general.squatch-previews.pages.dev',         path: '/' },
+  { slug: 'jt-burke-and-sons',     url: 'https://jt-burke-and-sons.squatch-previews.pages.dev',     path: '/services' },
+  { slug: 'yogavega',              url: 'https://yogavega.squatch-previews.pages.dev',              path: '/' },
+  { slug: 'millpond-spa',          url: 'https://millpond-spa.squatch-previews.pages.dev',          path: '/about' },
+  { slug: 'body-balance',          url: 'https://body-balance.squatch-previews.pages.dev',          path: '/services' },
+  { slug: 'ute-crossfit',          url: 'https://ute-crossfit.squatch-previews.pages.dev',          path: '/' },
+  { slug: 'blind-tiger',           url: 'https://blind-tiger.squatch-previews.pages.dev',           path: '/' },
+  { slug: 'labelle-vie',           url: 'https://labelle-vie.squatch-previews.pages.dev',           path: '/about' },
+  { slug: 'formfit-chiro',         url: 'https://formfit-chiro.squatch-previews.pages.dev',         path: '/services' },
+  { slug: 'vision-re',             url: 'https://vision-re.squatch-previews.pages.dev',             path: '/' },
 ];
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'site-previews');
@@ -40,7 +40,7 @@ const SETTLE_MS = 1500;
 async function screenshotSites(filter) {
   if (filter === '--list') {
     console.log('\nSites:\n');
-    SITES.forEach(s => console.log(`  ${s.slug.padEnd(22)} ${s.url}`));
+    SITES.forEach(s => console.log(`  ${s.slug.padEnd(22)} ${(s.path || '/').padEnd(10)} ${s.url}`));
     console.log(`\nTotal: ${SITES.length} sites\n`);
     return;
   }
@@ -71,14 +71,15 @@ async function screenshotSites(filter) {
     const outputPath = path.join(OUTPUT_DIR, site.slug + '.png');
 
     try {
-      await page.goto(site.url, { waitUntil: 'networkidle0', timeout: NAV_TIMEOUT });
+      const fullUrl = site.url + (site.path || '/');
+      await page.goto(fullUrl, { waitUntil: 'networkidle0', timeout: NAV_TIMEOUT });
       await page.evaluateHandle('document.fonts.ready');
       await new Promise(r => setTimeout(r, SETTLE_MS));
 
       await page.screenshot({ path: outputPath, type: 'png', fullPage: false });
 
       const sizeKb = (fs.statSync(outputPath).size / 1024).toFixed(1);
-      console.log(`  ✓ ${site.slug.padEnd(22)} ${sizeKb} KB`);
+      console.log(`  ✓ ${site.slug.padEnd(22)} ${(site.path || '/').padEnd(10)} ${sizeKb} KB`);
       results.push({ slug: site.slug, ok: true });
     } catch (err) {
       console.log(`  ✗ ${site.slug.padEnd(22)} FAILED: ${err.message}`);
