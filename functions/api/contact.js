@@ -120,6 +120,39 @@ export async function onRequestPost(context) {
       }
     } catch (_) {} // don't fail the form submission if email fails
 
+    // Send internal new-lead notification
+    try {
+      const lastname = formData.get('LASTNAME') || '';
+      const company = formData.get('COMPANY_NAME') || '';
+      const services = formData.get('SERVICES') || '';
+      const message = formData.get('MESSAGE') || '';
+      const escape = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+      const fullname = `${firstname} ${lastname}`.trim();
+      const rows = [
+        ['Name', fullname],
+        ['Email', email],
+        ['Phone', phone || ''],
+        ['Company', company],
+        ['Industry', industry],
+        ['Services', services],
+        ['Message', message],
+      ].filter(([, v]) => v);
+      const rowsHtml = rows
+        .map(([k, v]) => `<tr><td style="padding:6px 12px 6px 0;font-weight:600;vertical-align:top">${escape(k)}</td><td style="padding:6px 0;white-space:pre-wrap">${escape(v)}</td></tr>`)
+        .join('');
+      await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          sender: { name: 'Squatch Marketing Leads', email: 'marketing@squatchmarketing.com' },
+          to: [{ email: 'heaton.jerris@gmail.com', name: 'Jerris' }],
+          replyTo: { email, name: fullname || email },
+          subject: `New lead: ${fullname || email}${company ? ` (${company})` : ''}`,
+          htmlContent: `<div style="font-family:system-ui,sans-serif;font-size:14px;color:#111"><h2 style="margin:0 0 12px">New contact form submission</h2><table style="border-collapse:collapse">${rowsHtml}</table></div>`,
+        }),
+      });
+    } catch (_) {} // don't fail the form submission if notification fails
+
     return new Response(JSON.stringify({
       success: true,
       segmentCreated: segmentListId ? true : false,
