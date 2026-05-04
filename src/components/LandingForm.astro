@@ -1,0 +1,154 @@
+---
+// Inline lead-capture form for paid landing pages.
+// Posts to /api/contact, redirects to /thank-you on success (fires UET goal).
+//
+// Props:
+//   headline      — eyebrow/title above the form (e.g. "Get your free email audit")
+//   subheadline   — one-line value prop under the headline
+//   ctaText       — submit button label (e.g. "Send My Audit")
+//   leadSource    — passed to /api/contact so Brevo gets a LEAD_SOURCE attribute
+//   formId        — DOM id (must be unique per page if multiple forms)
+const {
+  headline,
+  subheadline,
+  ctaText,
+  leadSource,
+  formId = 'landing-form',
+} = Astro.props;
+---
+
+<section class="relative py-20 bg-void overflow-hidden" aria-label="Get started">
+  <div class="orb-drift absolute top-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-teal/[0.05] blur-[120px] pointer-events-none"></div>
+  <div class="orb-drift-reverse absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-blue/[0.05] blur-[120px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-2xl mx-auto px-6 lg:px-8">
+    <div class="reveal text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-teal/[0.08] border border-teal/[0.12] mb-5">
+        <div class="w-1.5 h-1.5 rounded-full bg-teal animate-pulse"></div>
+        <span class="text-teal text-xs font-semibold tracking-wide">Free · No commitment</span>
+      </div>
+      <h2 class="font-display font-800 text-3xl sm:text-4xl text-white leading-tight mb-3">{headline}</h2>
+      <p class="text-white/40 text-base leading-relaxed max-w-lg mx-auto">{subheadline}</p>
+    </div>
+
+    <form id={formId} class="reveal reveal-delay-1 glass rounded-2xl p-7 sm:p-9 space-y-5" data-lead-source={leadSource}>
+
+      <!-- First name -->
+      <div>
+        <label for={`${formId}-FIRSTNAME`} class="block text-sm text-white/50 mb-2 font-medium">First Name <span class="text-blue">*</span></label>
+        <input
+          type="text"
+          id={`${formId}-FIRSTNAME`}
+          name="FIRSTNAME"
+          required
+          class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300"
+          placeholder="Jane"
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for={`${formId}-EMAIL`} class="block text-sm text-white/50 mb-2 font-medium">Email <span class="text-blue">*</span></label>
+        <input
+          type="email"
+          id={`${formId}-EMAIL`}
+          name="EMAIL"
+          required
+          class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300"
+          placeholder="jane@yourbusiness.com"
+        />
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label for={`${formId}-SMS`} class="block text-sm text-white/50 mb-2 font-medium">Phone <span class="text-blue">*</span></label>
+        <input
+          type="tel"
+          id={`${formId}-SMS`}
+          name="SMS"
+          required
+          class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300"
+          placeholder="(801) 555-0123"
+        />
+      </div>
+
+      <!-- Business name -->
+      <div>
+        <label for={`${formId}-COMPANY_NAME`} class="block text-sm text-white/50 mb-2 font-medium">Business Name <span class="text-blue">*</span></label>
+        <input
+          type="text"
+          id={`${formId}-COMPANY_NAME`}
+          name="COMPANY_NAME"
+          required
+          class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300"
+          placeholder="Acme Co"
+        />
+      </div>
+
+      <!-- Industry -->
+      <div>
+        <label for={`${formId}-INDUSTRY`} class="block text-sm text-white/50 mb-2 font-medium">Industry <span class="text-blue">*</span></label>
+        <select
+          id={`${formId}-INDUSTRY`}
+          name="INDUSTRY"
+          required
+          class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/[0.06] rounded-xl text-white/60 text-sm focus:outline-none focus:border-blue/40 focus:bg-white/[0.05] transition-all duration-300 appearance-none"
+          style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;"
+        >
+          <option value="" disabled selected style="background:#001220;color:#94A3B8">Select your industry</option>
+          <option value="Beauty & Spa" style="background:#001220;color:#CBD5E1">Beauty & Spa</option>
+          <option value="Yoga" style="background:#001220;color:#CBD5E1">Yoga Studio</option>
+          <option value="Fitness" style="background:#001220;color:#CBD5E1">Fitness / Crossfit</option>
+          <option value="Massage" style="background:#001220;color:#CBD5E1">Massage & Wellness</option>
+          <option value="Med Spa" style="background:#001220;color:#CBD5E1">Med Spa</option>
+          <option value="Chiropractic" style="background:#001220;color:#CBD5E1">Chiropractic</option>
+          <option value="Barbershop & Salon" style="background:#001220;color:#CBD5E1">Barbershop / Salon</option>
+          <option value="Dental" style="background:#001220;color:#CBD5E1">Dental</option>
+          <option value="Physical Therapy" style="background:#001220;color:#CBD5E1">Physical Therapy</option>
+          <option value="Restaurant & Food" style="background:#001220;color:#CBD5E1">Restaurant & Food</option>
+          <option value="Real Estate" style="background:#001220;color:#CBD5E1">Real Estate</option>
+          <option value="Construction" style="background:#001220;color:#CBD5E1">Construction</option>
+          <option value="Other" style="background:#001220;color:#CBD5E1">Other</option>
+        </select>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="btn-gradient w-full px-6 py-4 rounded-xl text-white font-semibold text-[15px] mt-2"
+      >
+        <span>{ctaText}</span>
+      </button>
+
+      <p class="text-white/25 text-xs text-center pt-2">No spam. We'll be in touch within 24 hours.</p>
+    </form>
+  </div>
+
+  <script define:vars={{ formId }}>
+    document.addEventListener('astro:page-load', () => {
+      const form = document.getElementById(formId);
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const leadSource = form.dataset.leadSource;
+        if (leadSource) data.set('LEAD_SOURCE', leadSource);
+        const btn = form.querySelector('button[type="submit"]');
+        const originalLabel = btn ? btn.innerHTML : '';
+        if (btn) btn.innerHTML = '<span>Sending...</span>';
+        try {
+          const res = await fetch('/api/contact', { method: 'POST', body: data });
+          if (res.ok) {
+            window.location.href = '/thank-you';
+          } else {
+            if (btn) btn.innerHTML = '<span>Something went wrong</span>';
+            setTimeout(() => { if (btn) btn.innerHTML = originalLabel; }, 3000);
+          }
+        } catch {
+          if (btn) btn.innerHTML = '<span>Something went wrong</span>';
+          setTimeout(() => { if (btn) btn.innerHTML = originalLabel; }, 3000);
+        }
+      });
+    });
+  </script>
+</section>

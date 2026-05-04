@@ -1,5 +1,7 @@
 ---
 import LandingLayout from '../layouts/LandingLayout.astro';
+import LandingForm from '../components/LandingForm.astro';
+import RecentWorkGrid from '../components/RecentWorkGrid.astro';
 ---
 
 <LandingLayout title="Email Marketing That Actually Gets Opened" description="Squatch Marketing handles your email marketing end-to-end. Campaigns, automation, and reporting for $149/mo. Free 15-minute email audit.">
@@ -54,6 +56,18 @@ import LandingLayout from '../layouts/LandingLayout.astro';
 
     <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent pointer-events-none z-10"></div>
   </section>
+
+  <!-- INLINE LEAD FORM -->
+  <LandingForm
+    headline="Get your free email audit"
+    subheadline="A 15-minute video walkthrough of your current setup. We'll show you what's working, what's leaking money, and the 3 things we'd fix first. No sales call required."
+    ctaText="Send My Free Audit →"
+    leadSource="paid-email-audit"
+    formId="form-email-audit"
+  />
+
+  <!-- RECENT WORK -->
+  <RecentWorkGrid />
 
   <!-- HOW IT WORKS -->
   <section id="how-it-works" class="relative py-24 bg-void overflow-hidden">

@@ -19,6 +19,7 @@ export async function onRequestPost(context) {
 
   const phone = formData.get('SMS');
   const industry = formData.get('INDUSTRY') || '';
+  const leadSource = formData.get('LEAD_SOURCE') || '';
   const attributes = {
     FIRSTNAME: formData.get('FIRSTNAME') || '',
     LASTNAME: formData.get('LASTNAME') || '',
@@ -29,6 +30,9 @@ export async function onRequestPost(context) {
   };
   if (industry) {
     attributes.INDUSTRY = industry;
+  }
+  if (leadSource) {
+    attributes.LEAD_SOURCE = leadSource;
   }
   if (phone) {
     attributes.LANDLINE_NUMBER = `+1${phone.replace(/\D/g, '')}`;
@@ -134,6 +138,7 @@ export async function onRequestPost(context) {
         ['Phone', phone || ''],
         ['Company', company],
         ['Industry', industry],
+        ['Source', leadSource],
         ['Services', services],
         ['Message', message],
       ].filter(([, v]) => v);
