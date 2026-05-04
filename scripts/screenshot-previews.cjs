@@ -17,6 +17,7 @@ const path = require('path');
 const fs = require('fs');
 
 const SITES = [
+  { slug: 'nicks-tattoo',          url: 'https://nicks-tattoo.squatch-previews.pages.dev',          path: '/' },
   { slug: 'garcia-contracting',    url: 'https://garcia-contracting.squatch-previews.pages.dev',    path: '/' },
   { slug: 'coyote-contracting',    url: 'https://coyote-contracting.squatch-previews.pages.dev',    path: '/' },
   { slug: 'cross-general',         url: 'https://cross-general.squatch-previews.pages.dev',         path: '/' },
