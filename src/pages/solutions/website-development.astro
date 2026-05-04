@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import RecentWorkGrid from '../../components/RecentWorkGrid.astro';
 ---
 
 <Layout title="Website Development" description="Custom website development by Squatch Marketing. Hand-coded, conversion-focused sites built with modern frameworks and AI-assisted workflows. Launch sites, business sites, and custom web apps.">
@@ -265,6 +266,9 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 
   <div class="section-divider"></div>
+
+  <!-- ========== RECENT WORK ========== -->
+  <RecentWorkGrid mode="sites" />
 
   <!-- ========== ADD-ON SERVICES ========== -->
   <section class="relative py-28 section-mesh noise overflow-hidden" aria-label="Additional services">

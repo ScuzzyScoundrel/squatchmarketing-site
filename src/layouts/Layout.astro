@@ -11,7 +11,7 @@ interface Props {
   canonical?: string;
 }
 
-const { title, description = 'Squatch Marketing — Full-service marketing agency in Salt Lake City. Digital marketing, content design, web development, and email campaigns that drive real growth.', canonical } = Astro.props;
+const { title, description = 'Squatch Marketing — Full-service marketing agency in Salt Lake City. Digital marketing, content design, web development, and email campaigns that drive real growth.', canonical, noindex = false } = Astro.props;
 const pageTitle = title === 'Home' ? 'Squatch Marketing — Full-Service Marketing Agency in Salt Lake City' : `${title} | Squatch Marketing`;
 const siteUrl = 'https://squatchmarketing.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
@@ -23,6 +23,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->

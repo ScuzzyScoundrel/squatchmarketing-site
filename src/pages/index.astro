@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RecentWorkGrid from '../components/RecentWorkGrid.astro';
 ---
 
 <Layout title="Home">
@@ -328,6 +329,9 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <!-- ========== RECENT WORK ========== -->
+  <RecentWorkGrid mode="all" />
 
   <!-- ========== SERVICES — BENTO GRID (5 cards) ========== -->
   <section class="relative pt-8 pb-28 bg-void overflow-hidden" aria-label="Services">

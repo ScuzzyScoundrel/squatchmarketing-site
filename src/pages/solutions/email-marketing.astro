@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import RecentWorkGrid from '../../components/RecentWorkGrid.astro';
 ---
 
 <Layout title="Email Marketing" description="End-to-end email marketing from Squatch Marketing. ESP setup, branded templates, list hygiene, campaign management, automation flows, and performance tracking. Email is our bread and butter.">
@@ -388,6 +389,9 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 
   <div class="section-divider"></div>
+
+  <!-- ========== RECENT WORK ========== -->
+  <RecentWorkGrid mode="emails" />
 
   <!-- ========== FAQ ========== -->
   <section class="relative py-28 bg-void overflow-hidden" aria-label="FAQ">

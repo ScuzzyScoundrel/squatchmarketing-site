@@ -1,0 +1,120 @@
+---
+// Social media post mockups — screenshotted by scripts/screenshot-social.cjs
+// Each mockup lives in a fixed-size <div id="<slug>"> and is clipped individually.
+// Not linked from the site; noindex.
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=1600" />
+    <title>Social Mockups</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 40px;
+        background: #111;
+        font-family: 'Inter', system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        align-items: flex-start;
+      }
+      .mockup-label {
+        color: #888;
+        font-size: 13px;
+        font-family: ui-monospace, monospace;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- =========================================================
+         WHATS-NEW  (LinkedIn 1200x627)
+         ========================================================= -->
+    <div>
+      <div class="mockup-label">#whats-new · 1200×627</div>
+      <div
+        id="whats-new"
+        class="relative overflow-hidden"
+        style="width:1200px; height:627px; background: radial-gradient(ellipse at 20% 30%, rgba(46,163,242,0.18) 0%, transparent 55%), radial-gradient(ellipse at 85% 75%, rgba(38,209,189,0.15) 0%, transparent 55%), linear-gradient(135deg, #000A12 0%, #00192E 100%);"
+      >
+        <!-- grid texture -->
+        <div
+          class="absolute inset-0 opacity-[0.05]"
+          style="background-image: linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px); background-size: 56px 56px;"
+        ></div>
+
+        <!-- glow orbs -->
+        <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full" style="background: rgba(46,163,242,0.08); filter: blur(120px);"></div>
+        <div class="absolute bottom-[-15%] left-[-5%] w-[450px] h-[450px] rounded-full" style="background: rgba(38,209,189,0.10); filter: blur(120px);"></div>
+
+        <div class="relative z-10 h-full flex items-center px-16 gap-12">
+
+          <!-- LEFT: Headline -->
+          <div class="flex-1 max-w-[520px]">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl mb-6" style="background: rgba(38,209,189,0.08); border: 1px solid rgba(38,209,189,0.18);">
+              <div class="w-1.5 h-1.5 rounded-full" style="background:#26D1BD"></div>
+              <span class="text-xs font-semibold tracking-wide" style="color:#26D1BD">UPDATE</span>
+            </div>
+
+            <h1 class="font-800 leading-[1.05] tracking-[-0.02em] mb-5" style="font-size:64px; color:#fff;">
+              What's new at
+              <span style="background: linear-gradient(135deg, #2EA3F2, #26D1BD); -webkit-background-clip: text; background-clip: text; color: transparent;">Squatch Marketing</span>
+            </h1>
+            <p style="color:rgba(255,255,255,0.55); font-size:18px; line-height:1.55; margin:0;">
+              New site. Weekly blog. AI-powered services. We've been busy.
+            </p>
+
+            <!-- foot logo -->
+            <div class="flex items-center gap-3 mt-10">
+              <img src="/foot-logo.svg" alt="" style="width:38px; height:38px;" />
+              <span style="color:rgba(255,255,255,0.4); font-size:14px; letter-spacing:0.02em; font-weight:600;">squatchmarketing.com</span>
+            </div>
+          </div>
+
+          <!-- RIGHT: Three icon cards -->
+          <div class="flex flex-col gap-4" style="width:520px;">
+
+            <!-- Card 1: Website -->
+            <div class="rounded-2xl p-5 flex items-center gap-5" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
+              <div class="rounded-xl flex items-center justify-center shrink-0" style="width:56px; height:56px; background: linear-gradient(135deg, rgba(46,163,242,0.18), rgba(38,209,189,0.12)); border: 1px solid rgba(46,163,242,0.25);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5BB8F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.5" fill="#5BB8F5"/><circle cx="8" cy="6.5" r="0.5" fill="#5BB8F5"/></svg>
+              </div>
+              <div>
+                <div style="color:#fff; font-weight:700; font-size:19px; margin-bottom:2px;">Brand new website</div>
+                <div style="color:rgba(255,255,255,0.5); font-size:14px; line-height:1.4;">Rebuilt from scratch. Faster, cleaner, sharper.</div>
+              </div>
+            </div>
+
+            <!-- Card 2: Blog -->
+            <div class="rounded-2xl p-5 flex items-center gap-5" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
+              <div class="rounded-xl flex items-center justify-center shrink-0" style="width:56px; height:56px; background: linear-gradient(135deg, rgba(38,209,189,0.18), rgba(46,163,242,0.12)); border: 1px solid rgba(38,209,189,0.25);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5EEBD5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4"/><path d="M8 13h8M8 17h5"/></svg>
+              </div>
+              <div>
+                <div style="color:#fff; font-weight:700; font-size:19px; margin-bottom:2px;">Weekly blog content</div>
+                <div style="color:rgba(255,255,255,0.5); font-size:14px; line-height:1.4;">SEO, email, AI, strategy. No fluff, just what works.</div>
+              </div>
+            </div>
+
+            <!-- Card 3: AI -->
+            <div class="rounded-2xl p-5 flex items-center gap-5" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
+              <div class="rounded-xl flex items-center justify-center shrink-0" style="width:56px; height:56px; background: linear-gradient(135deg, rgba(46,163,242,0.20), rgba(38,209,189,0.18)); border: 1px solid rgba(46,163,242,0.30);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5BB8F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M9 11v2M15 11v2"/><path d="M12 3v3M8 18v2M16 18v2"/><circle cx="12" cy="13" r="0.8" fill="#5BB8F5"/></svg>
+              </div>
+              <div>
+                <div style="color:#fff; font-weight:700; font-size:19px; margin-bottom:2px;">AI-powered services</div>
+                <div style="color:rgba(255,255,255,0.5); font-size:14px; line-height:1.4;">Same personal touch. Way more firepower.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

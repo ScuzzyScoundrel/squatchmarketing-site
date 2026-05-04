@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "screenshot:previews": "node scripts/screenshot-previews.cjs",
+    "screenshot:social": "node scripts/screenshot-social.cjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

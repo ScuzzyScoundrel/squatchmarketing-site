@@ -1,17 +1,44 @@
 ---
-// 6-up curated grid of recent work — 3 site previews + 3 email mockups.
-// Used on paid landing pages to show proof inline; links to /work for the full set.
+// Curated grid of recent work — used as proof on paid landing + service pages.
+// mode="all"    → 3 sites + 3 emails (default — for home + paid landings)
+// mode="sites"  → 6 site previews    (for /solutions/website-development)
+// mode="emails" → 6 email mockups    (for /solutions/email-marketing)
+const { mode = 'all' } = Astro.props;
+
 const sites = [
-  { src: '/site-previews/ute-crossfit.png',  label: 'Ute CrossFit',  industry: 'Fitness' },
-  { src: '/site-previews/yogavega.png',      label: 'YogaVega',      industry: 'Yoga' },
-  { src: '/site-previews/blind-tiger.png',   label: 'Blind Tiger',   industry: 'Restaurant' },
+  { src: '/site-previews/ute-crossfit.png',     label: 'Ute CrossFit',      industry: 'Fitness',     kind: 'Website' },
+  { src: '/site-previews/yogavega.png',         label: 'YogaVega',          industry: 'Yoga',        kind: 'Website' },
+  { src: '/site-previews/blind-tiger.png',      label: 'Blind Tiger',       industry: 'Restaurant',  kind: 'Website' },
+  { src: '/site-previews/vision-re.png',        label: 'Vision Real Estate', industry: 'Real Estate', kind: 'Website' },
+  { src: '/site-previews/garcia-contracting.png', label: 'Garcia Contracting', industry: 'Trades',   kind: 'Website' },
+  { src: '/site-previews/coyote-contracting.png', label: 'Coyote Contracting', industry: 'Trades',   kind: 'Website' },
 ];
 const emails = [
-  { src: '/work-screenshots/gym-challenge.png',   label: '30-Day Gym Challenge',   industry: 'Fitness' },
-  { src: '/work-screenshots/chiropractic-recall.png', label: 'Appointment Recall', industry: 'Chiropractic' },
-  { src: '/work-screenshots/restaurant-flash-event.png', label: 'Flash Event',     industry: 'Restaurant' },
+  { src: '/work-screenshots/gym-challenge.png',          label: '30-Day Gym Challenge', industry: 'Fitness',      kind: 'Email' },
+  { src: '/work-screenshots/chiropractic-recall.png',    label: 'Appointment Recall',   industry: 'Chiropractic', kind: 'Email' },
+  { src: '/work-screenshots/restaurant-flash-event.png', label: 'Flash Event',          industry: 'Restaurant',   kind: 'Email' },
+  { src: '/work-screenshots/medspa-welcome.png',         label: 'Welcome Series',       industry: 'Med Spa',      kind: 'Email' },
+  { src: '/work-screenshots/dental-recall.png',          label: 'Cleaning Recall',      industry: 'Dental',       kind: 'Email' },
+  { src: '/work-screenshots/real-estate-report.png',     label: 'Market Report',        industry: 'Real Estate',  kind: 'Email' },
 ];
-const items = [...sites, ...emails];
+
+const items = mode === 'sites'
+  ? sites
+  : mode === 'emails'
+  ? emails
+  : [...sites.slice(0, 3), ...emails.slice(0, 3)];
+
+const heading = mode === 'sites'
+  ? 'Real sites. Real businesses.'
+  : mode === 'emails'
+  ? 'Real campaigns. Real opens.'
+  : 'Real businesses. Real results.';
+
+const sub = mode === 'sites'
+  ? 'A few preview sites we\'ve built for local businesses recently.'
+  : mode === 'emails'
+  ? 'A few email campaigns we\'ve designed for local businesses recently.'
+  : 'A few recent sites and email campaigns we\'ve built for local businesses across Utah and beyond.';
 ---
 
 <section class="relative py-24 bg-void overflow-hidden" aria-label="Recent work">
@@ -24,10 +51,10 @@ const items = [...sites, ...emails];
         <span class="text-blue text-xs font-semibold tracking-wide">Recent Work</span>
       </div>
       <h2 class="font-display font-800 text-3xl sm:text-4xl text-white leading-tight mb-4">
-        Real businesses. Real results.
+        {heading}
       </h2>
       <p class="text-white/40 text-base leading-relaxed">
-        A few recent sites and email campaigns we've built for local businesses across Utah and beyond.
+        {sub}
       </p>
     </div>
 
@@ -48,7 +75,7 @@ const items = [...sites, ...emails];
               <div class="text-white/30 text-xs mt-0.5">{item.industry}</div>
             </div>
             <span class="text-white/20 text-[11px] uppercase tracking-wide font-medium">
-              {i < 3 ? 'Website' : 'Email'}
+              {item.kind}
             </span>
           </div>
         </div>
