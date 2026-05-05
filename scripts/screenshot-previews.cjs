@@ -19,18 +19,18 @@ const fs = require('fs');
 const SITES = [
   { slug: 'wendys-way',            url: 'https://wendys-way.squatch-previews.pages.dev',            path: '/' },
   { slug: 'nicks-tattoo',          url: 'https://nicks-tattoo.squatch-previews.pages.dev',          path: '/' },
-  { slug: 'garcia-contracting',    url: 'https://garcia-contracting.squatch-previews.pages.dev',    path: '/' },
+  { slug: 'garcia-contracting',    url: 'https://garcia-bespoke.squatch-previews.pages.dev',    path: '/' },
   { slug: 'coyote-contracting',    url: 'https://coyote-contracting.squatch-previews.pages.dev',    path: '/' },
   { slug: 'cross-general',         url: 'https://cross-general.squatch-previews.pages.dev',         path: '/' },
   { slug: 'jt-burke-and-sons',     url: 'https://jt-burke-and-sons.squatch-previews.pages.dev',     path: '/services' },
   { slug: 'yogavega',              url: 'https://yogavega-bespoke.squatch-previews.pages.dev',              path: '/' },
-  { slug: 'millpond-spa',          url: 'https://millpond-spa.squatch-previews.pages.dev',          path: '/about' },
+  { slug: 'millpond-spa',          url: 'https://millpond-bespoke.squatch-previews.pages.dev',          path: '/' },
   { slug: 'body-balance',          url: 'https://body-balance.squatch-previews.pages.dev',          path: '/services' },
   { slug: 'ute-crossfit',          url: 'https://utecrossfit-bespoke.squatch-previews.pages.dev',          path: '/' },
   { slug: 'blind-tiger',           url: 'https://blindtiger-bespoke.squatch-previews.pages.dev',           path: '/' },
   { slug: 'labelle-vie',           url: 'https://labelle-vie.squatch-previews.pages.dev',           path: '/about' },
-  { slug: 'formfit-chiro',         url: 'https://formfit-chiro.squatch-previews.pages.dev',         path: '/services' },
-  { slug: 'vision-re',             url: 'https://vision-re.squatch-previews.pages.dev',             path: '/' },
+  { slug: 'formfit-chiro',         url: 'https://formfit-bespoke.squatch-previews.pages.dev',         path: '/' },
+  { slug: 'vision-re',             url: 'https://vision-re-bespoke.squatch-previews.pages.dev',             path: '/' },
 ];
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'site-previews');
