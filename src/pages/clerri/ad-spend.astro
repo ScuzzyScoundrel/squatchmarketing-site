@@ -1,0 +1,173 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Ad Spend Tiers" section="ad-spend">
+
+<div class="page-head">
+  <div class="page-eyebrow">04 · Budget Strategy</div>
+  <h1 class="page-title">Light, moderate, aggressive, <em>or market-leader.</em></h1>
+  <p class="page-sub">Four ad spend tiers with channel-by-channel allocation. Build the case for the budget you actually need by anchoring against verified competitor spend — Subscribili is investing $340-560K/yr backed by Vyne Dental + Darby. Charlesbank-backed Clerri should not be out-invested.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="ad-spend"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="ad-spend">0 / 0</span> budget tasks completed</p>
+
+  <!-- COMPETITOR ANCHOR -->
+  <h2>Competitor spend anchor</h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Direct competitors are spending <strong>$90K-$560K annually</strong> on marketing. Subscribili (newest, capital-fresh, ex-Membersy CEO) is the high-water mark.</p>
+
+  <div class="grid-4">
+    <div class="metric-card"><div class="v" style="font-size:1.5rem">$90-150K</div><div class="l">DentalHQ (annual)</div></div>
+    <div class="metric-card"><div class="v" style="font-size:1.5rem">$120-180K</div><div class="l">BoomCloud (annual)</div></div>
+    <div class="metric-card"><div class="v" style="font-size:1.5rem">$160-280K</div><div class="l">Plan Forward (annual)</div></div>
+    <div class="metric-card" style="background:var(--clerri-green);color:var(--cotton);border-color:var(--clerri-green)"><div class="v" style="color:var(--zest);font-size:1.5rem">$340-560K</div><div class="l" style="color:var(--zest)">Subscribili (annual)</div></div>
+  </div>
+
+  <!-- TIERS -->
+  <h2>Four spend tiers — <em>pick the conviction level.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Each tier is a complete monthly allocation across channels. Conference spend is annualized + averaged. Tier names are honest — pick the one that matches the conviction Charlesbank wants to express.</p>
+
+  <!-- TIER 1: LIGHT -->
+  <div class="tier-card">
+    <div class="tier-card-head">
+      <span class="pill pill-grey">Tier 01 · Hold the line</span>
+      <h3>Light</h3>
+      <div class="spend">$25K / month <span style="font-size:0.875rem;font-weight:400;color:var(--muted)">· $300K / year</span></div>
+    </div>
+    <div class="tier-card-body">
+      <p style="color:var(--ink-soft);font-size:0.9rem;margin-bottom:1rem"><strong>Use when:</strong> Year-1 budget constrained, focus on foundational organic + 1-2 paid bets. Matches Plan Forward / BoomCloud combined burn. <em>Risk:</em> Subscribili out-spends you.</p>
+      <table class="data-table">
+        <thead><tr><th>Channel</th><th>$ / mo</th><th>% Mix</th><th>Expected Output</th></tr></thead>
+        <tbody>
+          <tr><td>Google Ads (branded defense + light conquest)</td><td class="num-cell">$5K</td><td>20%</td><td>10-20 demos/mo</td></tr>
+          <tr><td>LinkedIn ABM (top 50 DSOs only)</td><td class="num-cell">$3K</td><td>12%</td><td>Test-and-learn</td></tr>
+          <tr><td>Content production (in-house + AI workflows)</td><td class="num-cell">$2K</td><td>8%</td><td>4-6 pieces/mo</td></tr>
+          <tr><td>GDN newsletter sponsorship</td><td class="num-cell">$3K</td><td>12%</td><td>1-2 placements</td></tr>
+          <tr><td>Conferences (ADSO + 1 other, annualized)</td><td class="num-cell">$5K</td><td>20%</td><td>2 shows/yr</td></tr>
+          <tr><td>SEO/AEO tooling (Otterly, basic stack)</td><td class="num-cell">$2K</td><td>8%</td><td>Foundational</td></tr>
+          <tr><td>Podcast sponsorships (1 show)</td><td class="num-cell">$2K</td><td>8%</td><td>2-4 episodes</td></tr>
+          <tr><td>Reserve / test budget</td><td class="num-cell">$3K</td><td>12%</td><td>Experimental</td></tr>
+        </tbody>
+      </table>
+      <div data-section="ad-spend">
+        <label class="task"><input type="checkbox" data-track="tier-light-build-case" data-section="ad-spend" /><div class="task-content"><div class="task-title">Build "Light" budget proposal as the floor — what we'd do if forced</div></div></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 2: MODERATE (RECOMMENDED FIRST) -->
+  <div class="tier-card tier-recommended">
+    <div class="tier-card-head">
+      <span class="pill pill-zest">Tier 02 · RECOMMENDED YEAR-1 OPENING</span>
+      <h3>Moderate</h3>
+      <div class="spend">$60K / month <span style="font-size:0.875rem;font-weight:400;color:rgba(207,252,120,0.7)">· $720K / year</span></div>
+    </div>
+    <div class="tier-card-body">
+      <p style="color:var(--ink-soft);font-size:0.9rem;margin-bottom:1rem"><strong>Use when:</strong> Year-1 open, want to outpace all 5 direct competitors but not burn budget you can't justify with attribution. This is the recommended starting position — easily defended channel-by-channel, with room to scale into Aggressive as KPIs prove out.</p>
+      <table class="data-table">
+        <thead><tr><th>Channel</th><th>$ / mo</th><th>% Mix</th><th>Expected Output</th></tr></thead>
+        <tbody>
+          <tr><td>Google Ads (branded + competitor conquest + DSO modifiers)</td><td class="num-cell">$12K</td><td>20%</td><td>30-50 demos/mo</td></tr>
+          <tr><td>LinkedIn ABM (top 200 DSO list + lookalikes)</td><td class="num-cell">$10K</td><td>17%</td><td>500-800 reaches/mo at top accounts</td></tr>
+          <tr><td>Meta lookalikes (off Clerri's practice CRM)</td><td class="num-cell">$5K</td><td>8%</td><td>SMB owner segment</td></tr>
+          <tr><td>Content syndication (Becker's + GDN + Endeavor)</td><td class="num-cell">$8K</td><td>13%</td><td>3-4 placements/mo</td></tr>
+          <tr><td>Conferences (ADSO + DEO + 3 others, annualized)</td><td class="num-cell">$12K</td><td>20%</td><td>5-6 shows/yr</td></tr>
+          <tr><td>Podcast host-reads (3 shows: GDN, Bulletproof, Nifty Thrifty)</td><td class="num-cell">$5K</td><td>8%</td><td>8-12 episodes/mo coverage</td></tr>
+          <tr><td>SEO/AEO/martech tooling (Profound, Clay, etc.)</td><td class="num-cell">$4K</td><td>7%</td><td>Full Day-1 stack</td></tr>
+          <tr><td>Reserve / experimental (TikTok, employer pilot)</td><td class="num-cell">$4K</td><td>7%</td><td>2-3 experiments/qtr</td></tr>
+        </tbody>
+      </table>
+      <div data-section="ad-spend">
+        <label class="task"><input type="checkbox" data-track="tier-moderate-build-case" data-section="ad-spend" /><div class="task-content"><div class="task-title">Build "Moderate" budget proposal as the primary recommendation</div></div></label>
+        <label class="task"><input type="checkbox" data-track="tier-moderate-attribution" data-section="ad-spend" /><div class="task-content"><div class="task-title">Define attribution + reporting framework before launch — every dollar accountable</div></div></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 3: AGGRESSIVE -->
+  <div class="tier-card">
+    <div class="tier-card-head">
+      <span class="pill pill-green">Tier 03 · Press the advantage</span>
+      <h3>Aggressive</h3>
+      <div class="spend">$120K / month <span style="font-size:0.875rem;font-weight:400;color:var(--muted)">· $1.44M / year</span></div>
+    </div>
+    <div class="tier-card-body">
+      <p style="color:var(--ink-soft);font-size:0.9rem;margin-bottom:1rem"><strong>Use when:</strong> Pipeline metrics validate Moderate; ready to widen the gap vs Subscribili + Plan Forward; Charlesbank wants accelerated NRR. Pre-fundraise or pre-exit positioning. Outspends ALL 5 competitors combined.</p>
+      <table class="data-table">
+        <thead><tr><th>Channel</th><th>$ / mo</th><th>% Mix</th><th>Expected Output</th></tr></thead>
+        <tbody>
+          <tr><td>Google Ads (full conquest + DSO modifiers + retargeting)</td><td class="num-cell">$24K</td><td>20%</td><td>60-100 demos/mo</td></tr>
+          <tr><td>LinkedIn ABM (top 500 + named campaign per top-50 DSO)</td><td class="num-cell">$24K</td><td>20%</td><td>Persistent reach at top accounts</td></tr>
+          <tr><td>Meta lookalikes + YouTube pre-roll</td><td class="num-cell">$10K</td><td>8%</td><td>Brand layer + SMB acquisition</td></tr>
+          <tr><td>Content syndication (Becker's premium + GDN + multi-pub)</td><td class="num-cell">$15K</td><td>13%</td><td>Always-on placements</td></tr>
+          <tr><td>Conferences (ADSO + DEO + ADA + GNYDM + 4 others)</td><td class="num-cell">$20K</td><td>17%</td><td>8-10 shows/yr at premium booth</td></tr>
+          <tr><td>Podcast sponsorships (5+ shows, host-reads + episode sponsorships)</td><td class="num-cell">$10K</td><td>8%</td><td>Always-in-ear at owner audience</td></tr>
+          <tr><td>SEO/AEO/martech (full stack + analyst relations)</td><td class="num-cell">$7K</td><td>6%</td><td>Foundational + analyst-grade reporting</td></tr>
+          <tr><td>Reserve / experimental + PR + analyst (Becker's editorial, DrBicuspid)</td><td class="num-cell">$10K</td><td>8%</td><td>Quarterly bets + thought leadership</td></tr>
+        </tbody>
+      </table>
+      <div data-section="ad-spend">
+        <label class="task"><input type="checkbox" data-track="tier-aggressive-trigger" data-section="ad-spend" /><div class="task-content"><div class="task-title">Define exact KPI triggers that justify scaling from Moderate → Aggressive</div><div class="task-meta">Pipeline coverage ratio, marketing-sourced ARR, NRR contribution</div></div></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 4: MARKET LEADER -->
+  <div class="tier-card">
+    <div class="tier-card-head" style="background:var(--clerri-green);color:var(--cotton)">
+      <span class="pill pill-zest">Tier 04 · Lock the category</span>
+      <h3 style="color:var(--cotton)">Market Leader</h3>
+      <div class="spend" style="color:var(--zest)">$200K / month <span style="font-size:0.875rem;font-weight:400;color:rgba(207,252,120,0.6)">· $2.4M / year</span></div>
+    </div>
+    <div class="tier-card-body">
+      <p style="color:var(--ink-soft);font-size:0.9rem;margin-bottom:1rem"><strong>Use when:</strong> Pre-exit narrative push, defending against PE-backed insurgent, or claiming "the only dental membership platform" category-king positioning. <strong>This is 7-10x the largest competitor's burn.</strong></p>
+      <table class="data-table">
+        <thead><tr><th>Channel</th><th>$ / mo</th><th>% Mix</th><th>Strategic Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>LinkedIn ABM (single-image + carousel + document + named campaigns)</td><td class="num-cell">$70K</td><td>35%</td><td>DSO/CMO buyers live here; $8-12 CPC tolerated for $50K+ ACVs</td></tr>
+          <tr><td>Google PPC (branded + competitor + ICP intent)</td><td class="num-cell">$40K</td><td>20%</td><td>Capture every alternative query + own DSO modifiers</td></tr>
+          <tr><td>Meta lookalikes (off CRM)</td><td class="num-cell">$20K</td><td>10%</td><td>Cheapest pixel-fed CPL for SMB owner segment</td></tr>
+          <tr><td>Podcast host-reads (3-5 shows concurrent)</td><td class="num-cell">$20K</td><td>10%</td><td>GDN + Bulletproof + Nifty Thrifty bundle</td></tr>
+          <tr><td>Content syndication (Becker's + GDN + Dental Products Report)</td><td class="num-cell">$20K</td><td>10%</td><td>Where DSO execs actually read</td></tr>
+          <tr><td>Trade shows (6-8 shows/yr at $20-30K all-in)</td><td class="num-cell">$20K</td><td>10%</td><td>Top-tier booth + speaker slots</td></tr>
+          <tr><td>Earned/PR + analyst relations</td><td class="num-cell">$10K</td><td>5%</td><td>Maintain Charlesbank/leader narrative</td></tr>
+        </tbody>
+      </table>
+      <div data-section="ad-spend">
+        <label class="task"><input type="checkbox" data-track="tier-leader-readiness" data-section="ad-spend" /><div class="task-content"><div class="task-title">Define the readiness conditions before proposing Market Leader tier (NRR, pipeline coverage, sales capacity to absorb)</div></div></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALLOCATION HEURISTICS -->
+  <h2>Allocation heuristics — <em>defending each dollar.</em></h2>
+  <div class="grid-2">
+    <div class="callout">
+      <div class="lbl">Performance Spend (test → scale or cut)</div>
+      <p><strong>Google PPC, paid social, podcast host-reads, conferences.</strong> Defends with payback math. CAC + payback period per channel + segment. If a channel can't hit defined ROI hurdles in 90 days, it gets cut. No emotional attachment.</p>
+    </div>
+    <div class="callout zest-hi">
+      <div class="lbl">Foundational Spend (compounding, longer ROI)</div>
+      <p><strong>SEO, AEO, content engine, website, lifecycle infrastructure, tech stack.</strong> Defends with strategic outcome metrics — share of voice, organic traffic growth, brand search volume, NRR. Compounds over time. Don't kill quarterly.</p>
+    </div>
+  </div>
+
+  <div class="callout mint">
+    <div class="lbl">Decision logic for the CEO conversation</div>
+    <p><strong>1.</strong> Anchor against verified competitor spend (Subscribili $340-560K/yr backed by Vyne+Darby). <strong>2.</strong> Recommend Moderate ($60K/mo) as opening — easily defended, outpaces all competitors except aggressive Subscribili scenarios. <strong>3.</strong> Define explicit triggers for Moderate→Aggressive→Market Leader escalation. <strong>4.</strong> Reserve 7-12% for experimental — Jim's "comfortable failing" appetite needs a budget line, not just permission.</p>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Budget proposal notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="budget-proposal" placeholder="Where Jim pushed back, board appetite, Charlesbank reporting requirements, attribution framework decisions..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/competitors"><span class="dir">← Prev</span><span class="name">03 · Competitor Intelligence</span></a>
+    <a href="/clerri/icp"><span class="dir">Next →</span><span class="name">05 · ICP & ABM</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

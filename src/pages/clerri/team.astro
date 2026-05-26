@@ -1,0 +1,85 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Team & Operations" section="team">
+
+<div class="page-head">
+  <div class="page-eyebrow">15 · Org</div>
+  <h1 class="page-title">Hire sequence, <em>agency strategy, cadence.</em></h1>
+  <p class="page-sub">Small specialized team scaled with AI workflows. Each person owns a clear function with clean handoffs. Hands-on without micromanaging.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="team"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="team">0 / 0</span></p>
+
+  <h2>Team philosophy</h2>
+  <p>Small specialized team scaled with AI workflows and agencies for areas where AI doesn't replace expertise. AI-leveraged production = one person doing the work of three. Cut what doesn't work — no emotional attachment. Leadership rolls up sleeves on craft alongside the team.</p>
+
+  <h2>Hire sequence hypothesis</h2>
+  <p style="color:var(--ink-soft);font-style:italic">Subject to validation against existing team and priorities. Current = you + 3 marketers.</p>
+
+  <div class="grid-3">
+    <div class="card" style="background:var(--clerri-green);color:var(--cotton);border-color:var(--clerri-green)">
+      <span class="pill pill-zest">FIRST HIRE</span>
+      <h3 style="margin:0.5rem 0;color:var(--zest)">Marketing Ops / Demand Gen Generalist</h3>
+      <p style="font-size:0.9rem">Owns Pardot/Salesforce, lead routing, attribution, campaign execution. Also owns n8n + Claude workflow stack. <strong>Foundation for everything else.</strong></p>
+    </div>
+    <div class="card" style="background:var(--clerri-green);color:var(--cotton);border-color:var(--clerri-green)">
+      <span class="pill pill-zest">SECOND HIRE</span>
+      <h3 style="margin:0.5rem 0;color:var(--zest)">Content + Product Marketing Lead</h3>
+      <p style="font-size:0.9rem">Owns positioning, messaging, content production, launch motion. Runs case study engine, battle card system, content velocity. AI-leveraged = work of three.</p>
+    </div>
+    <div class="card" style="background:var(--clerri-green);color:var(--cotton);border-color:var(--clerri-green)">
+      <span class="pill pill-zest">THIRD HIRE</span>
+      <h3 style="margin:0.5rem 0;color:var(--zest)">Customer Marketing / Lifecycle Lead</h3>
+      <p style="font-size:0.9rem">Owns expansion programs, member lifecycle, case studies, customer advocacy. <strong>Critical given revenue model</strong> — Bucket 02 lives or dies here.</p>
+    </div>
+  </div>
+  <p style="font-size:0.875rem;color:var(--ink-soft);font-style:italic;margin-top:0.75rem">Beyond: specialize as needed — paid media specialist, design, brand — based on where gaps appear in months 6-12.</p>
+
+  <div data-section="team">
+    <label class="task"><input type="checkbox" data-track="team-01-existing-audit" data-section="team" /><div class="task-content"><div class="task-title">Audit existing 3-person team — current ownership, strengths, gaps before any hire</div></div></label>
+    <label class="task"><input type="checkbox" data-track="team-02-jd-first" data-section="team" /><div class="task-content"><div class="task-title">Write first-hire JD (Marketing Ops / Demand Gen) by Day 45</div></div></label>
+    <label class="task"><input type="checkbox" data-track="team-03-budget-headcount" data-section="team" /><div class="task-content"><div class="task-title">Budget approval for first hire with Jim — define expected ramp</div></div></label>
+    <label class="task"><input type="checkbox" data-track="team-04-second-jd" data-section="team" /><div class="task-content"><div class="task-title">Second-hire JD (Content + PMM) by Day 75</div></div></label>
+    <label class="task"><input type="checkbox" data-track="team-05-third-jd" data-section="team" /><div class="task-content"><div class="task-title">Third-hire JD (Customer Marketing) by Day 90</div></div></label>
+  </div>
+
+  <h2>Agency strategy</h2>
+  <div class="card">
+    <p>Most operational work in-house with AI leverage. Agencies for specialized work where AI doesn't substitute well:</p>
+    <ul style="font-size:0.9rem;padding-left:1rem">
+      <li>High-volume paid media management (if spend &gt; $50K/mo)</li>
+      <li>Professional video production (case study video, brand pieces)</li>
+      <li>PR and analyst relations (Becker's, GDN editorial relationships)</li>
+      <li>Specialized creative (Hint-Health-quality annual report design)</li>
+    </ul>
+    <p style="font-size:0.9rem;font-style:italic;color:var(--ink-soft);margin-top:0.75rem">Scoped engagements with clear performance metrics. Cut quickly when underperforming.</p>
+  </div>
+
+  <h2>Operating cadence</h2>
+  <div class="card">
+    <ul style="padding-left:1rem">
+      <li>Weekly 1:1 with Jim (first 90 days), monthly thereafter</li>
+      <li>Weekly marketing team standup</li>
+      <li>Biweekly cross-functional with sales, CS (John), product (Jacob)</li>
+      <li>Monthly full marketing review with leadership</li>
+      <li>Quarterly strategic planning and budget review</li>
+      <li>Annual: State of Dental Membership report (Hint Health pattern)</li>
+    </ul>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Team notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="team-notes" placeholder="Team member observations, hiring pipeline, agency evaluations, cadence adjustments..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/conferences"><span class="dir">← Prev</span><span class="name">14 · Conferences</span></a>
+    <a href="/clerri/horizontal"><span class="dir">Next →</span><span class="name">16 · Horizontal Expansion</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

@@ -1,0 +1,124 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Workflow Recipes" section="workflows">
+
+<div class="page-head">
+  <div class="page-eyebrow">10 · Build</div>
+  <h1 class="page-title">Eight workflows. <em>Stack, effort, cost.</em></h1>
+  <p class="page-sub">Each workflow has a clear trigger, output, owner, and measurable result. Real platform names — not categories. Track which you've built.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="workflows"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Workflows shipped: <span data-progress-here="workflows">0 / 0</span></p>
+
+  <!-- A -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">WEEK 1 DEPLOY</span><h3 style="margin:0.5rem 0">A · Markdown → branded HTML email</h3></div>
+      <div data-status="workflow-a" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">CEO's "I want to see AI working" moment. Already proven at CareCloud — 90% time savings.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Google Doc (markdown) → n8n folder watcher → Claude API → MJML / React Email → Pardot API</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: marketing ops · Effort: 1-2 days · Cost: ~$5/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-a-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow A shipped + first email sent via the pipeline</div></div></label></div>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">JIM'S DIRECT CONCERN</span><h3 style="margin:0.5rem 0">B · AEO monitoring across ChatGPT / Perplexity / Claude / Gemini</h3></div>
+      <div data-status="workflow-b" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">Current information about Clerri is outdated across AI assistants. Q1 priority.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Otterly.ai ($29) 60-day pilot → graduate to Profound ($399) → daily prompts → CSV → n8n → Slack digest + Looker Studio</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: SEO/content lead · Effort: 0 days (SaaS) · Cost: $29-$399/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-b-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow B live — daily AEO monitoring with Slack alerts</div></div></label></div>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-green">5K SCALE UNLOCK</span><h3 style="margin:0.5rem 0">C · Per-practice customized marketing assets</h3></div>
+      <div data-status="workflow-c" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">Impossible at 5K practices manually, trivial with AI. Every Clerri practice gets co-branded brochures, landing pages, emails.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Clay (5K enrichment $185-$495) → n8n → Claude Sonnet 4.6 (prompt-cached personas) → Lovable UI → Gotenberg/Puppeteer PDFs + Pardot dynamic emails → S3</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: marketing ops + content · Effort: 5-8 days · Cost: $235-$745/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-c-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow C live — first 100 practices have branded assets generated</div></div></label></div>
+  </div>
+
+  <!-- D -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-mint">VELOCITY</span><h3 style="margin:0.5rem 0">D · Case study production engine</h3></div>
+      <div data-status="workflow-d" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">2-week process becomes 1 day. CS submits transcript → AI drafts → Marketing reviews → publish.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Otter.ai/Fireflies → S3 → n8n → Claude Opus 4.7 multi-pass (extract → draft → quote verify) → Google Doc → human edit → Letterdrop publish</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: content lead + CS · Effort: 3-5 days · Cost: ~$15/study (saves 4-6 hours)</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-d-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow D live — first 3 case studies produced via pipeline</div></div></label></div>
+  </div>
+
+  <!-- E -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-mint">SALES ENABLEMENT</span><h3 style="margin:0.5rem 0">E · Sales battle card on demand</h3></div>
+      <div data-status="workflow-e" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">Rep pastes objection in Slack → AI drafts 3-sentence response + 1 metric + 1 case study link in seconds.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Slack `/battlecard &lt;objection&gt;` → n8n → Claude API + MCP (HubSpot/SF + Notion + Drive for positioning + competitor + win stories) → response in thread</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: product marketing + RevOps · Effort: 2-4 days · Cost: $0-30/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-e-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow E live — first AE team using `/battlecard` daily</div></div></label></div>
+  </div>
+
+  <!-- F -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">REVENUE MODEL UNLOCK</span><h3 style="margin:0.5rem 0">F · Expansion-ready account identification</h3></div>
+      <div data-status="workflow-f" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">Clerri's Bucket 02 unlock. Scan existing customers nightly for expansion signals.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Salesforce (usage + plan data) → n8n nightly → Claude (signal scoring) → ranked list → Slack alert to CS + AE</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: customer marketing + CS · Effort: 3-5 days · Cost: ~$30/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-f-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow F live — CS receiving daily expansion candidate digest</div></div></label></div>
+  </div>
+
+  <!-- G -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-rose">JIM'S TOP FRUSTRATION</span><h3 style="margin:0.5rem 0">G · Member lifecycle communication engine</h3></div>
+      <div data-status="workflow-g" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">Direct response to one-renewal-email-per-year problem. Co-branded with each practice.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Pardot (send + Engagement Studio) + Claude API (copy per-practice) + n8n + S3 (workflow C assets) → Welcome (Day 0/7/30) + quarterly + renewal warming (60/30/14/7d) + win-back</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: customer marketing / lifecycle · Effort: 7-10 days · Cost: $100-300/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-g-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow G live — full lifecycle program running for member base</div></div></label></div>
+  </div>
+
+  <!-- H -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-blue">DEFENSIVE</span><h3 style="margin:0.5rem 0">H · Competitive intelligence weekly digest</h3></div>
+      <div data-status="workflow-h" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p style="font-size:0.9rem">Track Subscribili, Plan Forward, Pearly, DentalHQ, BoomCloud — pricing, blog, careers, LinkedIn, G2.</p>
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Visualping/Crayon (change detection) + Apify/Firecrawl (scrape) + LinkedIn + news → n8n → Claude (summarization + interpretation) → Monday 8am Slack channel + Notion archive</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: product marketing + competitive intel · Effort: 2-3 days · Cost: $50-150/mo</p>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-h-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow H live — Monday digest landing in #competitive-intel</div></div></label></div>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Workflow build notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="workflow-build" placeholder="Build gotchas, integration issues, what's working better than expected, what's stuck..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/ai-stack"><span class="dir">← Prev</span><span class="name">09 · AI Marketing Stack</span></a>
+    <a href="/clerri/website"><span class="dir">Next →</span><span class="name">11 · Website & Messaging</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

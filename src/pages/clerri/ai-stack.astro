@@ -1,0 +1,102 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="AI Marketing Stack" section="ai-stack">
+
+<div class="page-head">
+  <div class="page-eyebrow">09 · Tooling</div>
+  <h1 class="page-title">Six tools, <em>$400-900/month.</em></h1>
+  <p class="page-sub">Day-1 stack replaces what would otherwise be $5-15K/month of enterprise tooling. Battle-tested, not hyped. Each tool has a clear use case and integration path.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="ai-stack"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="ai-stack">0 / 0</span></p>
+
+  <h2>Day-1 stack — <em>the six tools.</em></h2>
+  <div class="grid-2">
+    <div class="card">
+      <span class="pill pill-zest">01 · Content Engine</span>
+      <h3 style="margin:0.5rem 0">Claude API (Sonnet 4.6)</h3>
+      <p style="font-size:0.9rem">Primary content engine — drafting, summarization, scoring. Prompt caching cuts input 90%; Batch API 50% off. Opus 4.7 for strategic positioning + case studies.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">~$100-300/mo at full load</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-01-claude" data-section="ai-stack" /><div class="task-content"><div class="task-title">Set up Claude API account + Pardot/Salesforce credentials</div></div></label></div>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">02 · Orchestration</span>
+      <h3 style="margin:0.5rem 0">n8n (self-hosted)</h3>
+      <p style="font-size:0.9rem">Owns every cross-system flow. Execution-based billing. Native LangChain + 70 AI nodes in v2.0. 80-90% cheaper than Zapier at marketing-ops scale.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">~$7/mo VPS</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-02-n8n" data-section="ai-stack" /><div class="task-content"><div class="task-title">Spin up self-hosted n8n on $7/mo VPS — primary workflow orchestrator</div></div></label></div>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">03 · Enrichment</span>
+      <h3 style="margin:0.5rem 0">Clay (Launch tier)</h3>
+      <p style="font-size:0.9rem">Per-practice enrichment for 5K personalization play. Waterfall data — 78% email match, 85% company-data fill. Failed lookups free (March 2026).</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">$185/mo Launch or $495 Growth</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-03-clay" data-section="ai-stack" /><div class="task-content"><div class="task-title">Clay Launch ($185/mo) — build top-100 DSO + 200 emerging-group enrichment lists</div></div></label></div>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">04 · AEO Monitoring</span>
+      <h3 style="margin:0.5rem 0">Otterly.ai → Profound</h3>
+      <p style="font-size:0.9rem">Start cheap at $29/mo (60-day pilot). Graduate to Profound $399 if AEO traffic + citations are real. DIY with Claude API costs ~$50-100 but sacrifices citation tracking.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">$29 → $399/mo</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-04-otterly" data-section="ai-stack" /><div class="task-content"><div class="task-title">Otterly.ai $29 pilot — establish AEO baseline before any content refresh</div></div></label></div>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">05 · Sales Engagement</span>
+      <h3 style="margin:0.5rem 0">Apollo</h3>
+      <p style="font-size:0.9rem">Replaces Salesloft/Outreach for &lt;40-rep teams. 210M+ contact DB. Strong AI features (Lavender-style email coaching). Pairs with Pardot.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">$49-$119/user/mo</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-05-apollo" data-section="ai-stack" /><div class="task-content"><div class="task-title">Eval Apollo vs existing sales engagement tooling — consolidate where possible</div></div></label></div>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">06 · Internal Tools</span>
+      <h3 style="margin:0.5rem 0">Lovable + Bolt</h3>
+      <p style="font-size:0.9rem">Marketing-owned internal tools — asset generator UI, battle card slash command, expansion dashboard. Lovable for visual, Bolt for framework flexibility.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">~$50-100/mo combined</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-06-lovable" data-section="ai-stack" /><div class="task-content"><div class="task-title">Lovable + Bolt accounts — build first internal tool within 30 days</div></div></label></div>
+    </div>
+  </div>
+
+  <h2>Optional Week-2 additions</h2>
+  <div class="grid-3">
+    <div class="card"><h4>Cassidy AI · $49-79/mo</h4><p style="font-size:0.875rem">Brand-voice content + KB-grounded agents. 10K credits, 20K KB pages, 5 seats on Starter. Non-dev-friendly.</p></div>
+    <div class="card"><h4>Letterdrop</h4><p style="font-size:0.875rem">B2B content OS — SEO automation, internal linking, content refresh, LinkedIn + sales distribution. CMS replacement candidate.</p></div>
+    <div class="card"><h4>Castmagic + Opus Clip + Descript</h4><p style="font-size:0.875rem">Audio/video repurposing stack. Podcast transcripts → social, long → short clips, DAW-style edit. ~$78/mo combined.</p></div>
+  </div>
+
+  <h2>Hyped but unproven — <em>skip Day 1.</em></h2>
+  <div class="callout wine">
+    <ul style="font-size:0.925rem;padding-left:1rem;margin:0">
+      <li><strong>Lindy.ai at scale</strong> — credit system is a budget trap (275 credits/run; voice $0.19/min extra)</li>
+      <li><strong>Relevance AI</strong> — Gumloop is cheaper with better UX for predictable flows</li>
+      <li><strong>Brandlight</strong> — enterprise-only; Mastercard/Humana-tier overkill</li>
+      <li><strong>Demandbase / 6sense</strong> — $80-120K/yr ABM platforms; overkill for Clerri stage</li>
+      <li><strong>Chorus</strong> — bundled with ZoomInfo ($15-40K combined)</li>
+      <li><strong>Pardot Einstein</strong> — gated behind Advanced ($4K+) / Premium ($15K+) tiers</li>
+    </ul>
+  </div>
+
+  <h2>MCP servers <em>worth knowing.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Mid-2025 onward, Claude can read/write CRM, analytics, and ops data via natural language. 25 marketing-relevant MCP servers cover ~95% of agency-grade workflows.</p>
+
+  <div class="grid-3">
+    <div class="card"><h4>CRM</h4><p style="font-size:0.875rem">HubSpot MCP (official beta), Salesforce MCP (most mature). For Pardot: Salesforce MCP + Pardot REST via n8n bridge.</p></div>
+    <div class="card"><h4>Analytics + Knowledge</h4><p style="font-size:0.875rem">GA4 MCP, Notion MCP, Google Drive MCP, Linear MCP — knowledge grounding for battle cards + case studies.</p></div>
+    <div class="card"><h4>Platform</h4><p style="font-size:0.875rem">Cloudflare MCP gateway (host your own behind auth), Anthropic reference servers (filesystem, fetch, postgres) for custom builds.</p></div>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Stack decisions notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="stack-decisions" placeholder="Tool eval notes, why you picked X over Y, Pardot integration gotchas, what worked, what didn't..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/directory"><span class="dir">← Prev</span><span class="name">08 · Patient Directory</span></a>
+    <a href="/clerri/workflows"><span class="dir">Next →</span><span class="name">10 · Workflow Recipes</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

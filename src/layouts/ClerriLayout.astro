@@ -1,0 +1,637 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  section?: string;
+}
+const { title, description = 'Clerri Marketing Strategy Hub — working document', section = '' } = Astro.props;
+
+const sections = [
+  { slug: 'dashboard', href: '/clerri', label: 'Dashboard', num: '00' },
+  { slug: 'foundation', href: '/clerri/foundation', label: 'Strategic Foundation', num: '01' },
+  { slug: 'market', href: '/clerri/market', label: 'Market Context', num: '02' },
+  { slug: 'competitors', href: '/clerri/competitors', label: 'Competitor Intelligence', num: '03' },
+  { slug: 'ad-spend', href: '/clerri/ad-spend', label: 'Ad Spend Tiers', num: '04' },
+  { slug: 'icp', href: '/clerri/icp', label: 'ICP & ABM Targets', num: '05' },
+  { slug: 'ad-strategy', href: '/clerri/ad-strategy', label: 'Ad Creative & Targeting', num: '06' },
+  { slug: 'aeo-seo', href: '/clerri/aeo-seo', label: 'AEO / SEO / SEM', num: '07' },
+  { slug: 'directory', href: '/clerri/directory', label: 'Patient Directory', num: '08' },
+  { slug: 'ai-stack', href: '/clerri/ai-stack', label: 'AI Marketing Stack', num: '09' },
+  { slug: 'workflows', href: '/clerri/workflows', label: 'Workflow Recipes', num: '10' },
+  { slug: 'website', href: '/clerri/website', label: 'Website & Messaging', num: '11' },
+  { slug: 'channels', href: '/clerri/channels', label: 'Channel Strategy', num: '12' },
+  { slug: 'partners', href: '/clerri/partners', label: 'Partnership Targets', num: '13' },
+  { slug: 'conferences', href: '/clerri/conferences', label: 'Conferences 2026', num: '14' },
+  { slug: 'team', href: '/clerri/team', label: 'Team & Operations', num: '15' },
+  { slug: 'horizontal', href: '/clerri/horizontal', label: 'Horizontal Expansion', num: '16' },
+  { slug: '90day', href: '/clerri/90day', label: 'First 90 Days', num: '17' },
+  { slug: 'metrics', href: '/clerri/metrics', label: 'Metrics & Questions', num: '18' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="description" content={description} />
+<title>{title} · Clerri Strategy Hub</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+<style is:global>
+  :root {
+    --clerri-green: #002920;
+    --clerri-green-dark: #001f18;
+    --clerri-green-darker: #06372D;
+    --clerri-grey: #2e423e;
+    --clerri-grey-light: #b9baab;
+    --zest: #cffc78;
+    --zest-hover: #c5f764;
+    --zest-dark: #b3e85a;
+    --lumen: #f6ff8f;
+    --cotton: #f3f0e4;
+    --cotton-plus: #f5f0e1;
+    --cotton-dark: #e4dfcd;
+    --scrub: #bbf6e2;
+    --enamel: #b5c2f8;
+    --enamel-dark: #99acf5;
+    --liberty: #5b70cd;
+    --pulse: #992e5c;
+    --blush: #ff9b8e;
+    --ink: #212121;
+    --ink-soft: #444;
+    --muted: #666;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Funnel Sans', system-ui, -apple-system, sans-serif;
+    background: var(--cotton);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  a { color: inherit; }
+  hr { border: 0; border-top: 1px solid var(--cotton-dark); margin: 2rem 0; }
+  ::selection { background: var(--zest); color: var(--clerri-green); }
+
+  /* ====== LAYOUT ====== */
+  .clerri-app {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+  }
+  @media (max-width: 1024px) {
+    .clerri-app { grid-template-columns: 1fr; }
+    .clerri-sidebar { position: static !important; height: auto !important; }
+  }
+
+  /* ====== SIDEBAR ====== */
+  .clerri-sidebar {
+    position: sticky; top: 0;
+    height: 100vh;
+    background: var(--clerri-green);
+    color: var(--cotton);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .clerri-brand {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .clerri-brand .word {
+    font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--zest);
+  }
+  .clerri-brand .sub {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clerri-grey-light); margin-top: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sidebar-nav {
+    flex: 1; overflow-y: auto;
+    padding: 0.5rem 0;
+  }
+  .sidebar-nav::-webkit-scrollbar { width: 4px; }
+  .sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(207,252,120,0.2); border-radius: 2px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 1.5rem;
+    color: rgba(243,240,228,0.7);
+    text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .nav-item:hover { background: rgba(207,252,120,0.06); color: var(--cotton); }
+  .nav-item.active { background: rgba(207,252,120,0.1); color: var(--zest); border-left-color: var(--zest); }
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: rgba(207,252,120,0.5);
+    min-width: 1.5rem;
+  }
+  .nav-item.active .nav-num { color: var(--zest); }
+  .nav-progress {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    background: rgba(207,252,120,0.1);
+    color: var(--zest);
+    padding: 0.15rem 0.4rem;
+    border-radius: 999px;
+    min-width: 2.5rem; text-align: center;
+  }
+  .sidebar-foot {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .sidebar-foot button {
+    background: transparent;
+    border: 1px solid rgba(207,252,120,0.3);
+    color: var(--zest);
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    font-family: 'Funnel Sans', sans-serif;
+    font-size: 0.75rem; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .sidebar-foot button:hover {
+    background: var(--zest); color: var(--clerri-green);
+  }
+
+  /* ====== MAIN ====== */
+  .clerri-main { padding: 0; min-width: 0; }
+  .page-head {
+    background: var(--clerri-green);
+    color: var(--cotton);
+    padding: 3rem 3rem 2.5rem;
+    position: relative;
+  }
+  .page-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--zest); margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+  .page-title em { font-style: italic; color: var(--zest); font-weight: 600; }
+  .page-sub {
+    font-size: 1.15rem; color: rgba(243,240,228,0.8); max-width: 50rem;
+    margin: 0;
+  }
+  .page-body { padding: 3rem; max-width: 1200px; }
+  @media (max-width: 720px) {
+    .page-head, .page-body { padding: 2rem 1.5rem; }
+  }
+
+  h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; margin: 2.5rem 0 1rem; }
+  h2 em { font-style: italic; color: var(--clerri-green); font-weight: 600; }
+  h3 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+  h4 { font-size: 1rem; font-weight: 700; margin: 1.25rem 0 0.5rem; }
+  p { margin: 0.5rem 0; }
+
+  /* ====== UI COMPONENTS ====== */
+  .card {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    margin: 0.75rem 0;
+  }
+  .card-tight { padding: 1rem 1.25rem; border-radius: 1rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+
+  .pill {
+    display: inline-block; padding: 0.25rem 0.7rem;
+    border-radius: 999px; font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .pill-zest { background: var(--zest); color: var(--clerri-green); }
+  .pill-green { background: var(--clerri-green); color: var(--zest); }
+  .pill-mint { background: var(--scrub); color: var(--clerri-green); }
+  .pill-blue { background: var(--enamel); color: var(--clerri-green); }
+  .pill-rose { background: var(--blush); color: var(--clerri-green); }
+  .pill-wine { background: var(--pulse); color: var(--cotton); }
+  .pill-grey { background: var(--cotton-dark); color: var(--ink); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    font-family: 'Funnel Sans', sans-serif;
+    font-weight: 600; font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--zest); color: var(--clerri-green); }
+  .btn-primary:hover { background: var(--zest-hover); transform: translateY(-1px); }
+  .btn-secondary { background: var(--clerri-green); color: var(--zest); }
+  .btn-secondary:hover { background: var(--clerri-green-darker); }
+  .btn-ghost { background: transparent; border-color: var(--cotton-dark); color: var(--ink); }
+  .btn-ghost:hover { background: var(--cotton-dark); }
+
+  /* ====== TRACKER / TASK ITEMS ====== */
+  .task {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    padding: 0.85rem 1rem;
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 0.75rem;
+    margin: 0.4rem 0;
+    transition: all 0.15s;
+  }
+  .task:hover { border-color: var(--clerri-green); }
+  .task input[type="checkbox"] {
+    appearance: none;
+    width: 1.25rem; height: 1.25rem;
+    border: 2px solid var(--clerri-green);
+    border-radius: 0.35rem;
+    cursor: pointer; flex-shrink: 0;
+    margin-top: 0.15rem;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .task input[type="checkbox"]:checked {
+    background: var(--clerri-green);
+  }
+  .task input[type="checkbox"]:checked::after {
+    content: "✓"; position: absolute;
+    color: var(--zest); font-weight: 700;
+    top: -3px; left: 2px; font-size: 1rem;
+  }
+  .task-content { flex: 1; }
+  .task-title { font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+  .task input[type="checkbox"]:checked ~ .task-content .task-title {
+    text-decoration: line-through; opacity: 0.55;
+  }
+  .task-meta { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+  .task-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+
+  /* ====== STATUS DROPDOWN ====== */
+  .status {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--cotton);
+    border: 1px solid var(--cotton-dark);
+    border-radius: 999px;
+    padding: 0.25rem 0.85rem 0.25rem 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; font-weight: 500;
+  }
+  .status::before {
+    content: ""; width: 0.5rem; height: 0.5rem;
+    border-radius: 999px; background: var(--muted);
+  }
+  .status[data-status-val="not-started"]::before { background: var(--muted); }
+  .status[data-status-val="exploring"]::before { background: var(--liberty); }
+  .status[data-status-val="in-progress"]::before { background: var(--zest-dark); }
+  .status[data-status-val="blocked"]::before { background: var(--pulse); }
+  .status[data-status-val="done"]::before { background: var(--clerri-green); }
+  .status select {
+    background: transparent; border: none; outline: none;
+    font: inherit; color: inherit; cursor: pointer;
+    padding-right: 0.25rem;
+  }
+
+  /* ====== NOTE BLOCK ====== */
+  .note-block {
+    background: var(--cotton-plus);
+    border: 1px dashed var(--cotton-dark);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .note-block.has-content { border-style: solid; border-color: var(--clerri-green); background: #fff; }
+  .note-block .note-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .note-block textarea {
+    width: 100%; min-height: 3.5rem;
+    background: transparent; border: none; outline: none;
+    font-family: inherit; font-size: 0.95rem; color: var(--ink);
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .note-block textarea::placeholder { color: var(--muted); font-style: italic; }
+  .note-saved {
+    font-size: 0.65rem; color: var(--clerri-green); opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .note-saved.show { opacity: 1; }
+
+  /* ====== TABLE ====== */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1rem; overflow: hidden;
+    font-size: 0.875rem;
+    margin: 0.75rem 0;
+  }
+  .data-table th {
+    background: var(--clerri-green); color: var(--cotton);
+    padding: 0.85rem 1rem; text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .data-table td { padding: 0.85rem 1rem; border-top: 1px solid var(--cotton-dark); vertical-align: top; }
+  .data-table tr:hover td { background: var(--cotton-plus); }
+  .num-cell { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--clerri-green); }
+
+  /* ====== CALLOUT ====== */
+  .callout {
+    background: var(--clerri-green); color: var(--cotton);
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    margin: 1.5rem 0;
+  }
+  .callout.zest-hi { background: var(--zest); color: var(--clerri-green); }
+  .callout.mint { background: var(--scrub); color: var(--clerri-green); }
+  .callout.rose { background: var(--blush); color: var(--clerri-green); }
+  .callout.wine { background: var(--pulse); color: var(--cotton); }
+  .callout .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: inherit; opacity: 0.85; font-weight: 600;
+  }
+  .callout p { margin: 0.25rem 0; }
+
+  /* ====== KEY METRIC ====== */
+  .metric-card {
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid var(--cotton-dark);
+  }
+  .metric-card .v {
+    font-size: 2rem; font-weight: 800; color: var(--clerri-green);
+    letter-spacing: -0.02em; line-height: 1;
+  }
+  .metric-card .l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.5rem;
+  }
+
+  /* ====== TIER CARD (for ad spend) ====== */
+  .tier-card {
+    background: #fff; border-radius: 1.5rem; overflow: hidden;
+    border: 2px solid var(--cotton-dark);
+    transition: all 0.2s;
+  }
+  .tier-card.tier-recommended { border-color: var(--clerri-green); }
+  .tier-card-head {
+    padding: 1.5rem; background: var(--cotton-plus);
+    border-bottom: 1px solid var(--cotton-dark);
+  }
+  .tier-card.tier-recommended .tier-card-head {
+    background: var(--clerri-green); color: var(--cotton);
+  }
+  .tier-card-head h3 { margin: 0; font-size: 1.5rem; font-weight: 700; }
+  .tier-card-head .spend {
+    font-size: 1.75rem; font-weight: 800; color: var(--clerri-green);
+    margin-top: 0.25rem;
+  }
+  .tier-card.tier-recommended .tier-card-head .spend { color: var(--zest); }
+  .tier-card-body { padding: 1.5rem; }
+  .tier-card ul { margin: 0; padding-left: 1rem; font-size: 0.9rem; }
+  .tier-card li { padding: 0.25rem 0; }
+
+  /* ====== PROGRESS BAR ====== */
+  .progress-track {
+    background: var(--cotton-dark); height: 0.5rem; border-radius: 999px;
+    overflow: hidden; margin: 0.5rem 0;
+  }
+  .progress-fill {
+    height: 100%; background: var(--clerri-green); border-radius: 999px;
+    transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  /* ====== TOPIC NAV (next/prev) ====== */
+  .topic-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid var(--cotton-dark);
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .topic-foot a {
+    display: flex; flex-direction: column; gap: 0.25rem;
+    padding: 0.75rem 1.25rem; background: #fff;
+    border: 1px solid var(--cotton-dark); border-radius: 0.75rem;
+    text-decoration: none; min-width: 200px;
+    transition: all 0.15s;
+  }
+  .topic-foot a:hover { border-color: var(--clerri-green); transform: translateY(-1px); }
+  .topic-foot .dir {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  }
+  .topic-foot .name { font-weight: 600; color: var(--clerri-green); }
+
+  /* MOBILE NAV TOGGLE */
+  .mobile-toggle {
+    display: none; position: fixed; top: 1rem; right: 1rem; z-index: 100;
+    background: var(--clerri-green); color: var(--zest);
+    border: none; border-radius: 999px; padding: 0.65rem 1rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    cursor: pointer;
+  }
+  @media (max-width: 1024px) {
+    .mobile-toggle { display: block; }
+    .clerri-sidebar.mobile-hidden { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="clerri-app">
+  <aside class="clerri-sidebar" id="sidebar">
+    <div class="clerri-brand">
+      <a href="/clerri" style="text-decoration:none">
+        <div class="word">clerri.</div>
+        <div class="sub">Strategy Hub · v3</div>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      {sections.map(s => (
+        <a href={s.href} class={`nav-item ${section === s.slug ? 'active' : ''}`}>
+          <span class="nav-num">{s.num}</span>
+          <span>{s.label}</span>
+          <span class="nav-progress" data-progress-section={s.slug}>—</span>
+        </a>
+      ))}
+    </nav>
+    <div class="sidebar-foot">
+      <button onclick="exportHub()">↓ Export markdown</button>
+      <button onclick="resetHub()">⟲ Reset state</button>
+      <div class="mono" style="font-size:0.65rem;color:rgba(207,252,120,0.5);text-align:center;letter-spacing:0.1em">Working doc · Jerris Pendleton</div>
+    </div>
+  </aside>
+
+  <main class="clerri-main">
+    <slot />
+  </main>
+</div>
+
+<button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('mobile-hidden')">☰ Menu</button>
+
+<script is:inline>
+(function() {
+  const KEY = 'clerri-hub-v3';
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch { return {}; }
+  }
+  function save(s) { localStorage.setItem(KEY, JSON.stringify(s)); }
+
+  function init() {
+    const state = load();
+
+    // Tasks (checkboxes)
+    document.querySelectorAll('[data-track]').forEach(cb => {
+      const k = cb.dataset.track;
+      cb.checked = !!state[k];
+      cb.addEventListener('change', () => {
+        const s = load();
+        s[k] = cb.checked;
+        save(s);
+        updateProgress();
+      });
+    });
+
+    // Notes (textareas)
+    document.querySelectorAll('[data-note]').forEach(ta => {
+      const k = 'note:' + ta.dataset.note;
+      if (state[k]) {
+        ta.value = state[k];
+        ta.closest('.note-block')?.classList.add('has-content');
+      }
+      let savedEl = ta.parentElement.querySelector('.note-saved');
+      let timer;
+      ta.addEventListener('input', () => {
+        const s = load();
+        s[k] = ta.value;
+        save(s);
+        ta.closest('.note-block')?.classList.toggle('has-content', !!ta.value.trim());
+        if (savedEl) {
+          savedEl.classList.add('show');
+          clearTimeout(timer);
+          timer = setTimeout(() => savedEl.classList.remove('show'), 1200);
+        }
+      });
+    });
+
+    // Status dropdowns
+    document.querySelectorAll('[data-status]').forEach(host => {
+      const sel = host.querySelector('select');
+      const k = 'status:' + host.dataset.status;
+      if (state[k]) sel.value = state[k];
+      host.dataset.statusVal = sel.value;
+      sel.addEventListener('change', () => {
+        const s = load();
+        s[k] = sel.value;
+        save(s);
+        host.dataset.statusVal = sel.value;
+      });
+    });
+
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const state = load();
+    const sections = {};
+    document.querySelectorAll('[data-track]').forEach(cb => {
+      const sec = cb.dataset.section || 'misc';
+      sections[sec] = sections[sec] || { done: 0, total: 0 };
+      sections[sec].total++;
+      if (state[cb.dataset.track]) sections[sec].done++;
+    });
+    // Update visible page progress
+    document.querySelectorAll('[data-progress-here]').forEach(el => {
+      const sec = el.dataset.progressHere;
+      const s = sections[sec];
+      if (s) el.textContent = s.done + ' / ' + s.total;
+      const fill = document.querySelector('[data-progress-fill="' + sec + '"]');
+      if (fill && s) fill.style.width = (s.done / Math.max(s.total, 1) * 100) + '%';
+    });
+    // Update sidebar nav badges using globally-stored counts per section
+    const allSections = JSON.parse(localStorage.getItem(KEY + ':sections') || '{}');
+    // Merge what we just counted on THIS page
+    Object.assign(allSections, sections);
+    localStorage.setItem(KEY + ':sections', JSON.stringify(allSections));
+    document.querySelectorAll('[data-progress-section]').forEach(el => {
+      const sec = el.dataset.progressSection;
+      const s = allSections[sec];
+      if (s && s.total > 0) {
+        el.textContent = s.done + '/' + s.total;
+        if (s.done === s.total) el.style.background = 'var(--zest)';
+      } else { el.textContent = '—'; }
+    });
+  }
+
+  window.exportHub = function() {
+    const state = load();
+    const lines = ['# Clerri Strategy Hub — Export', '', 'Generated: ' + new Date().toLocaleString(), ''];
+    const tasks = {}, notes = {}, statuses = {};
+    Object.entries(state).forEach(([k, v]) => {
+      if (k.startsWith('note:')) notes[k.slice(5)] = v;
+      else if (k.startsWith('status:')) statuses[k.slice(7)] = v;
+      else tasks[k] = v;
+    });
+    lines.push('## Completed tasks', '');
+    Object.entries(tasks).filter(([_, v]) => v).forEach(([k]) => lines.push('- [x] ' + k));
+    lines.push('', '## Statuses', '');
+    Object.entries(statuses).forEach(([k, v]) => lines.push('- **' + k + '**: ' + v));
+    lines.push('', '## Notes', '');
+    Object.entries(notes).forEach(([k, v]) => {
+      lines.push('### ' + k); lines.push(v); lines.push('');
+    });
+    const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'clerri-hub-' + new Date().toISOString().slice(0, 10) + '.md';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  window.resetHub = function() {
+    if (!confirm('Reset ALL tracked progress, notes, and statuses? This cannot be undone.')) return;
+    localStorage.removeItem(KEY);
+    localStorage.removeItem(KEY + ':sections');
+    location.reload();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+</script>
+</body>
+</html>

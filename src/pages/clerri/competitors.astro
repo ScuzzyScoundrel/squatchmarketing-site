@@ -1,0 +1,349 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Competitor Intelligence" section="competitors">
+
+<div class="page-head">
+  <div class="page-eyebrow">03 · Competitive Intelligence</div>
+  <h1 class="page-title">Five competitors, <em>two real threats.</em></h1>
+  <p class="page-sub">Verified May 2026. The category has bifurcated. Each competitor includes estimated monthly marketing investment across PPC, paid social, content syndication, and trade shows — all directional estimates with confidence flags.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="competitors"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="competitors">0 / 0</span> evaluation tasks completed</p>
+
+  <!-- SPEND COMPARISON TABLE -->
+  <h2>Estimated competitor monthly marketing investment</h2>
+  <p style="color:var(--ink-soft);max-width:65ch">All figures are <strong>directional estimates</strong> triangulated from funding, employee counts, content output, podcast/conference presence, and B2B SaaS LinkedIn benchmarks ($8+ CPC, $60-200+ CPL). No competitor publishes spend. Use as a relative ranking, not absolute budgeting.</p>
+
+  <div style="overflow-x:auto">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Competitor</th>
+          <th>PPC / mo</th>
+          <th>Paid Social / mo</th>
+          <th>Content Syndication / mo</th>
+          <th>Trade Shows / yr</th>
+          <th>Est. Annual Total</th>
+          <th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>BoomCloud</strong><br /><span class="mono" style="font-size:0.75rem;color:var(--muted)">$3.1M ARR · 16 FTE · bootstrapped</span></td>
+          <td class="num-cell">$4-8K</td>
+          <td class="num-cell">$2-5K</td>
+          <td class="num-cell">$1-3K</td>
+          <td>2-4</td>
+          <td class="num-cell">$120-180K</td>
+          <td><span class="pill pill-grey">Medium</span><br /><span style="font-size:0.75rem;color:var(--muted)">Podcast-led, light paid</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pearly</strong><br /><span class="mono" style="font-size:0.75rem;color:var(--muted)">2,100 practices · ScOp VC backed · RCM-led</span></td>
+          <td class="num-cell">$8-15K</td>
+          <td class="num-cell">$5-12K</td>
+          <td class="num-cell">$3-6K</td>
+          <td>3-5</td>
+          <td class="num-cell">$280-450K</td>
+          <td><span class="pill pill-grey">Med-Low</span><br /><span style="font-size:0.75rem;color:var(--muted)">VC funding implies above-baseline</span></td>
+        </tr>
+        <tr>
+          <td><strong>DentalHQ</strong><br /><span class="mono" style="font-size:0.75rem;color:var(--muted)">$1.4M ARR · 13 FTE · $99/mo</span></td>
+          <td class="num-cell">$3-6K</td>
+          <td class="num-cell">$1-3K</td>
+          <td class="num-cell">$2-4K</td>
+          <td>2-3</td>
+          <td class="num-cell">$90-150K</td>
+          <td><span class="pill pill-grey">Medium</span><br /><span style="font-size:0.75rem;color:var(--muted)">Small ARR caps spend</span></td>
+        </tr>
+        <tr style="background:#fef3c7">
+          <td><strong>Plan Forward</strong> <span class="pill pill-rose" style="vertical-align:middle">HIGH THREAT</span><br /><span class="mono" style="font-size:0.75rem;color:var(--muted)">$3.87M raised · 15 FTE · AADOM circuit</span></td>
+          <td class="num-cell">$4-9K</td>
+          <td class="num-cell">$3-7K</td>
+          <td class="num-cell">$2-5K</td>
+          <td>3-5</td>
+          <td class="num-cell">$160-280K</td>
+          <td><span class="pill pill-grey">Medium</span><br /><span style="font-size:0.75rem;color:var(--muted)">AADOM-heavy verified</span></td>
+        </tr>
+        <tr style="background:#fef3c7">
+          <td><strong>Subscribili</strong> <span class="pill pill-wine" style="vertical-align:middle">INSIDER THREAT</span><br /><span class="mono" style="font-size:0.75rem;color:var(--muted)">$4.3M seed · ex-Membersy CEO · Vyne+Darby backed</span></td>
+          <td class="num-cell">$10-18K</td>
+          <td class="num-cell">$8-15K</td>
+          <td class="num-cell">$4-8K</td>
+          <td>4-6</td>
+          <td class="num-cell">$340-560K</td>
+          <td><span class="pill pill-grey">Low-Med</span><br /><span style="font-size:0.75rem;color:var(--muted)">Capital-fresh + Vyne co-marketing</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="lbl">Trade show booth math · anchor numbers</div>
+    <p>CDA = $6,150 for 10x10. ADA SciSession = $41.50/sqft (~$4,150 base + corner). ADSO Summit (1,000 attendees, 100+ exhibitors) = $10-25K all-in including travel. Annual trade-show line items above assume avg. <strong>$12-18K all-in per show</strong>.</p>
+  </div>
+
+  <!-- BOOMCLOUD -->
+  <h2>BoomCloud <em>(Lehi, UT)</em></h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div>
+        <span class="pill pill-grey">Threat: Medium · Narrative-led</span>
+      </div>
+      <div data-status="competitor-boomcloud" class="status">
+        <select aria-label="Status">
+          <option value="not-started">Not started</option>
+          <option value="exploring">Exploring</option>
+          <option value="in-progress">In progress</option>
+          <option value="blocked">Blocked</option>
+          <option value="done">Done</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:1rem">
+      <div>
+        <h4>Verified data</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Founder/CEO: <strong>Jordon Comstock</strong> (in dental since 2006)</li>
+          <li>Pricing: <strong>$399/mo + $3.50/mo per patient</strong></li>
+          <li>Revenue: $3.1M ARR (2024, up from $2.8M)</li>
+          <li>Bootstrapped — no disclosed VC</li>
+          <li>Positioning: <em>"#1 Dental Membership Software For Dentists Who Actually Go Fee For Service"</em></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Marketing motion</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Heavy content/SEO ("650 SEO-optimized articles/month" claim — likely AI-generated)</li>
+          <li>Most visible founder voice in the category — Comstock hosts/co-hosts 3+ podcasts</li>
+          <li>Comparison-blog SEO targeting Kleer/DentalHQ alternatives</li>
+          <li>Affiliate via Weave</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout zest-hi" style="margin-top:1rem">
+      <div class="lbl">The Patient Marketplace finding — paper tiger</div>
+      <p>ThePatientMarketplace.com gets <strong>2,400 visits/month with 79.6% bounce rate</strong> (Similarweb verified). Built on WooCommerce (literally a WordPress directory). Primary traffic = <strong>paid display ads</strong>. As of research, homepage shows "Platform Update In Progress" — search layer offline. <strong>The narrative is louder than the asset.</strong></p>
+    </div>
+
+    <h4>Clerri counter-strategy</h4>
+    <div data-section="competitors">
+      <label class="task">
+        <input type="checkbox" data-track="bc-01-marketplace-teardown" data-section="competitors" />
+        <div class="task-content"><div class="task-title">Personally teardown ThePatientMarketplace — document UX gaps, broken flows, listing quality</div></div>
+      </label>
+      <label class="task">
+        <input type="checkbox" data-track="bc-02-anti-narrative" data-section="competitors" />
+        <div class="task-content"><div class="task-title">Draft "What a real patient directory looks like" content piece — implicit BoomCloud comparison</div></div>
+      </label>
+      <label class="task">
+        <input type="checkbox" data-track="bc-03-podcast-counter" data-section="competitors" />
+        <div class="task-content"><div class="task-title">Out-podcast Comstock — line up Jim or John on Group Dentistry Now Show + 2 others</div></div>
+      </label>
+    </div>
+
+    <div class="note-block">
+      <div class="note-label">BoomCloud evaluation notes <span class="note-saved">✓ saved</span></div>
+      <textarea data-note="comp-boomcloud" placeholder="What you learned from the teardown, deals you lost/won against them, customer feedback, conquest opportunities..."></textarea>
+    </div>
+  </div>
+
+  <!-- PEARLY -->
+  <h2>Pearly <em>(Santa Barbara, CA)</em></h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div><span class="pill pill-grey">Threat: Adjacent · Billing-led</span></div>
+      <div data-status="competitor-pearly" class="status">
+        <select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:1rem">
+      <div>
+        <h4>Verified data</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Founders: Jeff Cole (CEO), Sean Emmer (CTO), Billy Grokenberger (CS) — ex-Path</li>
+          <li>~39 employees (Tracxn) / 11-50 (LinkedIn)</li>
+          <li>Funding: minimal disclosed; ScOp VC listed</li>
+          <li><strong>2,100+ practices</strong>, 1.6M+ digital statements/month</li>
+          <li>Pricing: demo-gated</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key differentiator</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Membership is <strong>one module of broader RCM/billing suite</strong></li>
+          <li><strong>50+ PMS integrations</strong> — deepest in cohort</li>
+          <li>"1-day launch" positioning</li>
+          <li>Brand line: <em>"It pays to care."</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout mint" style="margin-top:1rem">
+      <div class="lbl">Strategic read</div>
+      <p>Pearly is the <strong>least direct competitor</strong> — they sell billing automation broadly, membership is a wedge. But their 2,100+ practice footprint + 50 PMS integrations make them a real account-level threat for cross-sell. Watch account cannibalization, not category displacement.</p>
+    </div>
+    <div data-section="competitors">
+      <label class="task"><input type="checkbox" data-track="pearly-01-integration-parity" data-section="competitors" /><div class="task-content"><div class="task-title">Audit Clerri Bridge PMS coverage vs Pearly's 50+ — where are we behind?</div></div></label>
+      <label class="task"><input type="checkbox" data-track="pearly-02-billing-positioning" data-section="competitors" /><div class="task-content"><div class="task-title">Sharpen "we're membership-first" positioning vs Pearly's "RCM with membership as wedge"</div></div></label>
+    </div>
+    <div class="note-block"><div class="note-label">Pearly notes <span class="note-saved">✓ saved</span></div><textarea data-note="comp-pearly" placeholder="Account-level overlap, where Pearly wins/loses..."></textarea></div>
+  </div>
+
+  <!-- DENTALHQ -->
+  <h2>DentalHQ <em>(Raleigh, NC)</em></h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div><span class="pill pill-grey">Threat: Medium · Price floor</span></div>
+      <div data-status="competitor-dentalhq" class="status">
+        <select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:1rem">
+      <div>
+        <h4>Verified data</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Founder/CEO: <strong>Dr. Brett Wells, DDS</strong> (practicing dentist, runs Wells Family Dental)</li>
+          <li>Founded 2017 (8 years at $1.4M ARR = slow)</li>
+          <li>13 FTE, $1.5M seed (2022) + bootstrapped, $4.3M valuation</li>
+          <li>Pricing: <strong>$99/mo per location</strong> (DHQ Pro) or $990/year. 45-day free trial.</li>
+          <li>1,000+ practices, 30,000 members (2022 cite)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Weaknesses</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li><strong>Zero G2/Capterra reviews</strong> — "Be the first to review" as of May 2026</li>
+          <li>Founder time split with 7-location dental group</li>
+          <li>Modest LinkedIn activity from leadership</li>
+          <li>Recent Curve Dental integration partnership (Nov 2025) — limited share</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:1rem">
+      <div class="lbl">Strategic read</div>
+      <p>DentalHQ is <strong>the price-leader threat at the low end</strong> — any solo or 2-3 location owner pushing back on Clerri pricing lands here. They're the budget option in conquest conversations.</p>
+    </div>
+    <div data-section="competitors">
+      <label class="task"><input type="checkbox" data-track="dhq-01-pricing-objection" data-section="competitors" /><div class="task-content"><div class="task-title">Build battle card for "DentalHQ is cheaper" objection</div></div></label>
+      <label class="task"><input type="checkbox" data-track="dhq-02-conquest-content" data-section="competitors" /><div class="task-content"><div class="task-title">Clerri already ranks for "DentalHQ alternatives" — double down on comparison content</div></div></label>
+    </div>
+    <div class="note-block"><div class="note-label">DentalHQ notes <span class="note-saved">✓ saved</span></div><textarea data-note="comp-dentalhq" placeholder="Pricing objection patterns, win/loss data..."></textarea></div>
+  </div>
+
+  <!-- PLAN FORWARD -->
+  <h2>Plan Forward <em>(Indianapolis, IN)</em> <span class="pill pill-rose">HIGH THREAT</span></h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div><span class="pill pill-rose">Most strategically threatening real competitor</span></div>
+      <div data-status="competitor-planforward" class="status">
+        <select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:1rem">
+      <div>
+        <h4>Verified data</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Co-CEOs: <strong>Megan Lohman</strong> (ex-dental office mgr), Jane Levy</li>
+          <li>Founded 2018, remote-only, 15 FTE</li>
+          <li>Funding: $2M Seed B Oct 2023; <strong>$3.87M total</strong>. Elevate Ventures, IU Angel, Revere Partners</li>
+          <li>Pricing: demo-gated</li>
+          <li>Targets solo + DSO explicitly</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Why HIGH threat</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li><strong>"Read/Write integrations that actually work"</strong> with Dentrix, Eaglesoft, Open Dental, Ascend, Denticon</li>
+          <li>Lohman runs AADOM podcast circuit — second-most-visible founder voice</li>
+          <li>Publishes <em>"a list of the Clerri alternatives"</em> as defensive SEO</li>
+          <li>Direct play for DSO buyers on Henry Schein One stack</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout rose" style="margin-top:1rem">
+      <div class="lbl">Counter strategy</div>
+      <p>(a) Out-podcast Lohman with Jim/customer voices on GDN Show + Bulletproof Dental. (b) Publish explicit "read/write integration parity" content aimed at DSO buyers — especially Ascend + Denticon shops. (c) File HSO API Exchange application immediately to neutralize integration moat claim.</p>
+    </div>
+    <div data-section="competitors">
+      <label class="task"><input type="checkbox" data-track="pf-01-hso-app" data-section="competitors" /><div class="task-content"><div class="task-title">File HSO API Exchange application — close the Ascend integration gap</div><div class="task-meta">60-90 day formal vendor onboarding</div></div></label>
+      <label class="task"><input type="checkbox" data-track="pf-02-integration-content" data-section="competitors" /><div class="task-content"><div class="task-title">Publish "Clerri integration parity vs Plan Forward" comparison page</div></div></label>
+      <label class="task"><input type="checkbox" data-track="pf-03-aadom-counter" data-section="competitors" /><div class="task-content"><div class="task-title">Get Clerri on AADOM Radio circuit — Lohman has dominated this channel</div></div></label>
+      <label class="task"><input type="checkbox" data-track="pf-04-defensive-seo" data-section="competitors" /><div class="task-content"><div class="task-title">Defend "Clerri alternative" SERPs — Plan Forward is already bidding it</div></div></label>
+    </div>
+    <div class="note-block"><div class="note-label">Plan Forward notes <span class="note-saved">✓ saved</span></div><textarea data-note="comp-planforward" placeholder="Deals lost to them, integration claims to verify, Lohman podcast monitoring..."></textarea></div>
+  </div>
+
+  <!-- SUBSCRIBILI -->
+  <h2>Subscribili <em>(Austin, TX)</em> <span class="pill pill-wine">INSIDER THREAT</span></h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div><span class="pill pill-wine">Underestimated · ex-Membersy CEO</span></div>
+      <div data-status="competitor-subscribili" class="status">
+        <select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:1rem">
+      <div>
+        <h4>Verified data</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>CEO: <strong>Sudha Vetri</strong> — McKinsey, Moody's, Charles Schwab, <strong>Membersy alum</strong></li>
+          <li>Co-founders: Balu Natarajan (CFO), Joe Brown (Implementation)</li>
+          <li>Founded 2021 — Austin (9600 Great Hills Trl)</li>
+          <li>Funding: <strong>$4.3M seed</strong>, Darby Group + Vyne Dental + Gokul Rajaram + Krishna Raj Raja</li>
+          <li>500+ practices across 50 states; <strong>$2M total payments processed</strong> (modest TPV)</li>
+          <li><strong>April 2025 — acquired Stream Dental</strong> (specialty referrals)</li>
+          <li>DMPO + TPA licensed (regulatory moat claim)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Why insider threat</h4>
+        <ul style="font-size:0.9rem;padding-left:1rem">
+          <li>Vetri left a Clerri-predecessor to start direct competitor</li>
+          <li>Backed by <strong>industry strategics</strong> (not generalist VCs)</li>
+          <li>4-module suite: Loop, PulsePay, Sync, Link</li>
+          <li>30+ PMS integrations</li>
+          <li>Acquiring into referrals + specialty</li>
+          <li>Only competitor with both insider knowledge AND external capital</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout wine" style="margin-top:1rem">
+      <div class="lbl">Escalation watch</div>
+      <p>Watch <strong>TPV growth</strong>, not practice count. $2M processed total = small. If that 10x's in 12 months, escalate to Jim + Charlesbank. Set up workflow H (comp-intel digest) to track Subscribili specifically.</p>
+    </div>
+    <div data-section="competitors">
+      <label class="task"><input type="checkbox" data-track="sub-01-tpv-monitoring" data-section="competitors" /><div class="task-content"><div class="task-title">Set up monthly TPV growth watch via workflow H (comp-intel digest)</div></div></label>
+      <label class="task"><input type="checkbox" data-track="sub-02-vyne-partnership-read" data-section="competitors" /><div class="task-content"><div class="task-title">Understand Vyne Dental → Subscribili co-marketing channel — what's the distribution play?</div></div></label>
+      <label class="task"><input type="checkbox" data-track="sub-03-vetri-tracking" data-section="competitors" /><div class="task-content"><div class="task-title">Monitor Sudha Vetri LinkedIn + podcast appearances — she's the brand</div></div></label>
+      <label class="task"><input type="checkbox" data-track="sub-04-stream-integration" data-section="competitors" /><div class="task-content"><div class="task-title">Eval Stream Dental acquisition — does specialty referrals make them a real specialty-DSO play?</div></div></label>
+    </div>
+    <div class="note-block"><div class="note-label">Subscribili notes <span class="note-saved">✓ saved</span></div><textarea data-note="comp-subscribili" placeholder="Vetri activity, Stream integration progress, TPV signals, accounts they're winning..."></textarea></div>
+  </div>
+
+  <!-- BIFURCATION SUMMARY -->
+  <h2>The bifurcation map</h2>
+  <div class="grid-2">
+    <div class="callout">
+      <div class="lbl">Low End</div>
+      <p><strong>DentalHQ</strong> — $99/mo, $1.4M ARR, zero G2 reviews</p>
+      <p><strong>BoomCloud</strong> — $399/mo, $3.1M ARR, "Patient Marketplace" paper tiger</p>
+      <p style="font-size:0.85rem;opacity:0.85;font-style:italic;margin-top:0.5rem">Risk: out-narrated on price + content volume</p>
+    </div>
+    <div class="callout zest-hi">
+      <div class="lbl">High End</div>
+      <p><strong>Plan Forward</strong> — $3.87M raised, read/write to Ascend & Denticon, AADOM-circuit founder</p>
+      <p><strong>Subscribili</strong> — $4.3M raised, ex-Membersy CEO, DMPO+TPA, acquiring referral platforms</p>
+      <p style="font-size:0.85rem;opacity:0.85;font-style:italic;margin-top:0.5rem">Risk: out-integrated on DSO-grade PMS bridges</p>
+    </div>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/market"><span class="dir">← Prev</span><span class="name">02 · Market Context</span></a>
+    <a href="/clerri/ad-spend"><span class="dir">Next →</span><span class="name">04 · Ad Spend Tiers</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

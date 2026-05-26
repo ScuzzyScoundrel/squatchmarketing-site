@@ -1,0 +1,110 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Partnership Targets" section="partners">
+
+<div class="page-head">
+  <div class="page-eyebrow">13 · Business Development</div>
+  <h1 class="page-title">Five partners <em>for first 90 days.</em></h1>
+  <p class="page-sub">Ranked by accessibility × strategic leverage. Each with a first action you can take this month.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="partners"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="partners">0 / 0</span></p>
+
+  <!-- 1 SUNBIT -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">01 · PATIENT FINANCING</span><h3 style="margin:0.5rem 0">Sunbit</h3></div>
+      <div data-status="partner-sunbit" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p><strong>Why:</strong> Best-fit partner for Clerri's "$4-5K procedure bridge" use case. <strong>1.9% practice fee</strong> (lowest in market), <strong>0-14.99% APR on $3K+ loans</strong>, no retroactive interest, 87% approval, 30-second decisions. Onboarding 500+ dental practices/month.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">ACCESSIBILITY: HIGH — Sunbit is actively building practice channel; CEO already discussing</p>
+    <div data-section="partners">
+      <label class="task"><input type="checkbox" data-track="partner-sunbit-intro" data-section="partners" /><div class="task-content"><div class="task-title">Direct BD intro — get on calendar within 30 days</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-sunbit-landing" data-section="partners" /><div class="task-content"><div class="task-title">Co-branded "membership + financing" landing page</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-sunbit-checkout" data-section="partners" /><div class="task-content"><div class="task-title">Integrated checkout flow on Clerri Bridge</div></div></label>
+    </div>
+  </div>
+
+  <!-- 2 HSO -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">02 · PMS INTEGRATION</span><h3 style="margin:0.5rem 0">Henry Schein One API Exchange</h3></div>
+      <div data-status="partner-hso" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p><strong>Why:</strong> Largest installed base in dental (Dentrix = 35,000+ practices). Formal partner program with 140+ approved vendors. <strong>Dentrix Ascend</strong> is the cloud DSO platform — directly matches Clerri's 7-of-10 top DSO ICP. Plan Forward already integrated to Ascend; closing this gap is competitive table stakes.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">ACCESSIBILITY: MEDIUM — formal vendor onboarding, security review, 60-90 days</p>
+    <div data-section="partners">
+      <label class="task"><input type="checkbox" data-track="partner-hso-app" data-section="partners" /><div class="task-content"><div class="task-title">File HSO API Exchange application — Dentrix Ascend first (DSO match), Dentrix second</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-hso-security" data-section="partners" /><div class="task-content"><div class="task-title">Complete HSO security review + compliance docs</div></div></label>
+    </div>
+  </div>
+
+  <!-- 3 DI -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">03 · CO-MARKETING</span><h3 style="margin:0.5rem 0">Dental Intelligence (DI)</h3></div>
+      <div data-status="partner-di" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p><strong>Why:</strong> 9,000+ practices, owns Modento (comms) + LocalMed (scheduling), already partnered with Synchrony/CareCredit. Owner-audience analytics platform — perfect for "prove your membership ROI" co-marketing case studies. Pattern-match the CareCredit playbook with a non-conflicting payment partner.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">ACCESSIBILITY: HIGH — active partnerships team, Intellicon conference sponsorable</p>
+    <div data-section="partners">
+      <label class="task"><input type="checkbox" data-track="partner-di-webinar" data-section="partners" /><div class="task-content"><div class="task-title">Joint webinar — "Prove Your Membership ROI"</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-di-case-study" data-section="partners" /><div class="task-content"><div class="task-title">Co-published case study with shared customer</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-di-intellicon" data-section="partners" /><div class="task-content"><div class="task-title">Intellicon 2026 sponsorship — booth + speaker slot</div></div></label>
+    </div>
+  </div>
+
+  <!-- 4 DEO -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">04 · OWNER COMMUNITY</span><h3 style="margin:0.5rem 0">DEO (Dentist Entrepreneur Organization)</h3></div>
+      <div data-status="partner-deo" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p><strong>Why:</strong> 600+ event attendees, 500+ member organizations, <strong>$3B+ combined revenue</strong>. Group-practice owner-CFO audience — exactly Clerri's volume tier. <strong>Highest concentration of $1M-$100M practice owners in dental.</strong> Not crowded with membership-software sponsors yet.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">ACCESSIBILITY: HIGH — small org, sponsorship-friendly, founder-led</p>
+    <div data-section="partners">
+      <label class="task"><input type="checkbox" data-track="partner-deo-preferred" data-section="partners" /><div class="task-content"><div class="task-title">Become DEO Preferred Vendor / annual sponsor</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-deo-intensive" data-section="partners" /><div class="task-content"><div class="task-title">Jim speaking slot at DEO Operations Intensive 2026 (Dallas)</div></div></label>
+    </div>
+  </div>
+
+  <!-- 5 GLENN VO -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">05 · INFLUENCER SYNDICATION</span><h3 style="margin:0.5rem 0">Dr. Glenn Vo / Nifty Thrifty Dentists</h3></div>
+      <div data-status="partner-glennvo" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <p><strong>Why:</strong> 37-57K dentist Facebook community built explicitly on vendor discount syndication. USA Today / WSJ bestselling author. <strong>Literally a pay-for-deal model</strong> — lowest cost-per-lead channel in dental. Reaches solo GPs and small-group owners who are Clerri's volume tier.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">ACCESSIBILITY: VERY HIGH — that's the business model</p>
+    <div data-section="partners">
+      <label class="task"><input type="checkbox" data-track="partner-vo-deal" data-section="partners" /><div class="task-content"><div class="task-title">Negotiate Nifty Thrifty "Deal of the Month" — promo-code trackable CPL</div></div></label>
+      <label class="task"><input type="checkbox" data-track="partner-vo-podcast" data-section="partners" /><div class="task-content"><div class="task-title">Get Jim on "Uncomplicating Dentistry" podcast (Glenn Vo)</div></div></label>
+    </div>
+  </div>
+
+  <h2>Honorable mentions — Days 91-180</h2>
+  <div class="grid-3">
+    <div class="card"><h4>TakeCommandHealth + Compt + Fringe</h4><p style="font-size:0.875rem">SMB employer pilot. ICHRA + LSA platforms — Clerri membership reimbursable. 83% of ICHRA employers didn't previously offer benefits.</p></div>
+    <div class="card"><h4>Planet DDS Denticon Partner Program</h4><p style="font-size:0.875rem">13,000+ practices, 60+ integration partners, 28% YoY growth. DSO-focused cloud PMS — direct fit for Clerri enterprise base.</p></div>
+    <div class="card"><h4>NexHealth</h4><p style="font-size:0.875rem">400+ integrations, 20+ PMS sync via Synchronizer API. Scheduling-side co-marketing, technical-credibility partner.</p></div>
+    <div class="card"><h4>RevenueWell</h4><p style="font-size:0.875rem">7,500 offices; integrates Dentrix/Ascend/Open Dental/Eaglesoft + CareCredit. Patient-comms cross-sell — "promote your membership" automation.</p></div>
+    <div class="card"><h4>Pearl AI</h4><p style="font-size:0.875rem">AI radiology — HSO API Exchange partner, brand halo, joint case studies on "AI-powered dental practice."</p></div>
+    <div class="card"><h4>Hint Health</h4><p style="font-size:0.875rem">DPC category leader (2,700+ practices, 1.4M members). Reference architecture for horizontal expansion thesis. Co-published "membership across healthcare" content.</p></div>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Partnership notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="partners-notes" placeholder="BD meeting notes, partnership terms, who said yes/no, integration timelines..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/channels"><span class="dir">← Prev</span><span class="name">12 · Channels</span></a>
+    <a href="/clerri/conferences"><span class="dir">Next →</span><span class="name">14 · Conferences 2026</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

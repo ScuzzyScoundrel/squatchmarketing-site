@@ -1,0 +1,67 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="First 90 Days" section="90day">
+
+<div class="page-head">
+  <div class="page-eyebrow">17 · Execution Plan</div>
+  <h1 class="page-title">Diagnose, plan, <em>execute.</em></h1>
+  <p class="page-sub">Bias for action is real — but coming in with a strategy deck before understanding the field is wrong. Audit fast, validate hypotheses, have clear bets in motion by day 60.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="90day"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="90day">0 / 0</span> milestone tasks completed</p>
+
+  <h2>Days 1-30 · <em>Diagnose</em></h2>
+  <div data-section="90day">
+    <label class="task"><input type="checkbox" data-track="d30-01-team-1on1s" data-section="90day" /><div class="task-content"><div class="task-title">1:1s with every marketing team member, sales leadership, CS team (John), product team (Jacob)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-02-martech" data-section="90day" /><div class="task-content"><div class="task-title">Martech audit — Pardot, Salesforce, attribution, analytics, integrations</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-03-12mo-review" data-section="90day" /><div class="task-content"><div class="task-title">12-month marketing performance review — campaigns, channels, pipeline contribution by source</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-04-customers" data-section="90day" /><div class="task-content"><div class="task-title">5-10 customer interviews across solo / group / DSO segments</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-05-comp-verify" data-section="90day" /><div class="task-content"><div class="task-title">Competitive landscape verification — BoomCloud Marketplace teardown, Subscribili TPV growth, Plan Forward integration claims</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-06-aeo-baseline" data-section="90day" /><div class="task-content"><div class="task-title">AEO baseline — Otterly trial document current state across ChatGPT/Perplexity/Claude/Gemini</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-07-web-audit" data-section="90day" /><div class="task-content"><div class="task-title">Website + brand audit — user journey, conversion paths, content inventory</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d30-08-open-questions" data-section="90day" /><div class="task-content"><div class="task-title">Validate the 12 open questions with Jim (see Metrics & Questions page)</div></div></label>
+  </div>
+
+  <h2>Days 30-60 · <em>Plan + Quick Wins</em></h2>
+  <div data-section="90day">
+    <label class="task"><input type="checkbox" data-track="d60-01-email-quickwin" data-section="90day" /><div class="task-content"><div class="task-title">Quick win: Markdown-to-HTML email workflow shipped (Workflow A)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-02-aeo-refresh" data-section="90day" /><div class="task-content"><div class="task-title">Quick win: AEO press release refresh — reissue major historical releases as Clerri</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-03-lifecycle-pilot" data-section="90day" /><div class="task-content"><div class="task-title">Quick win: Member lifecycle pilot — improve from one-renewal-email-per-year</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-04-12mo-plan" data-section="90day" /><div class="task-content"><div class="task-title">Strategic plan finalization — 12-month roadmap with quarterly milestones</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-05-first-hire" data-section="90day" /><div class="task-content"><div class="task-title">First-hire JD published, recruitment timeline set</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-06-budget" data-section="90day" /><div class="task-content"><div class="task-title">Budget proposal to Jim — Moderate tier recommended, defended per dollar</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-07-web-rebuild" data-section="90day" /><div class="task-content"><div class="task-title">Website redesign initiation — internal scope or vendor selection (Verve?)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-08-directory-decision" data-section="90day" /><div class="task-content"><div class="task-title">Patient directory strategic decision — build vs partner vs defer with economic analysis</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-09-hso-app" data-section="90day" /><div class="task-content"><div class="task-title">HSO API Exchange application filed</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d60-10-sunbit-bd" data-section="90day" /><div class="task-content"><div class="task-title">Sunbit partnership BD intro initiated</div></div></label>
+  </div>
+
+  <h2>Days 60-90 · <em>Execute + Build</em></h2>
+  <div data-section="90day">
+    <label class="task"><input type="checkbox" data-track="d90-01-workflows-prod" data-section="90day" /><div class="task-content"><div class="task-title">AI workflows in production — email (A), case study engine (D), AEO monitoring (B) minimum</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-02-first-campaign" data-section="90day" /><div class="task-content"><div class="task-title">First major campaign live under new "Take your practice back" messaging</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-03-lifecycle-live" data-section="90day" /><div class="task-content"><div class="task-title">Member lifecycle program launched (Workflow G)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-04-battlecard-pilot" data-section="90day" /><div class="task-content"><div class="task-title">Sales battle card system (E) piloted with one AE team</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-05-first-hire-progress" data-section="90day" /><div class="task-content"><div class="task-title">First hire interviewing — top candidates engaged</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-06-web-execute" data-section="90day" /><div class="task-content"><div class="task-title">Website redesign in execution phase</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-07-adso-secured" data-section="90day" /><div class="task-content"><div class="task-title">ADSO Summit June 2026 sponsorship secured + speaker slot pursued</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-08-deo-initiated" data-section="90day" /><div class="task-content"><div class="task-title">DEO Operations Intensive partnership initiated</div></div></label>
+    <label class="task"><input type="checkbox" data-track="d90-09-qbr-prep" data-section="90day" /><div class="task-content"><div class="task-title">QBR prep — clear story on what's working, changing, coming next</div></div></label>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">90-day execution notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="90day-notes" placeholder="What's ahead of plan, behind plan, what shifted, what Jim is asking for that wasn't in the plan..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/horizontal"><span class="dir">← Prev</span><span class="name">16 · Horizontal Expansion</span></a>
+    <a href="/clerri/metrics"><span class="dir">Next →</span><span class="name">18 · Metrics & Questions</span></a>
+  </div>
+
+</div>
+</ClerriLayout>
