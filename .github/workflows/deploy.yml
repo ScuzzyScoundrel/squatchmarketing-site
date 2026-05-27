@@ -17,13 +17,6 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Deploy to squatchmarketing-site
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name squatchmarketing-site
-
       - name: Ensure clerri-preview project exists (fails silently if it already does)
         continue-on-error: true
         uses: cloudflare/wrangler-action@v3
@@ -32,9 +25,24 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages project create clerri-preview --production-branch=main
 
-      - name: Deploy to clerri-preview (mockup share URL)
+      - name: Deploy full site to clerri-preview (private mockup URL — has /clerri and /clerri-find)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name clerri-preview
+
+      - name: Strip /clerri and /clerri-find from dist for public production deploy
+        run: |
+          rm -rf dist/clerri dist/clerri-find
+          # Also strip clerri URLs from the sitemap so we don't advertise dead links
+          if [ -f dist/sitemap-0.xml ]; then
+            sed -i '/<loc>[^<]*\/clerri[^<]*<\/loc>/,/<\/url>/d' dist/sitemap-0.xml || true
+          fi
+
+      - name: Deploy stripped site to squatchmarketing-site (clerri URLs now return 404 on squatch domain)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name squatchmarketing-site
