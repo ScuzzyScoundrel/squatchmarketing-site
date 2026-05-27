@@ -559,6 +559,36 @@ import ClerriFindLayout from '../../layouts/ClerriFindLayout.astro';
   </div>
 </section>
 
+<!-- DON'T SEE YOUR DENTIST -->
+<section style="background:var(--clerri-green);color:var(--cotton);padding:5rem 1.5rem;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-100px;left:-50px;width:400px;height:400px;background:radial-gradient(circle,rgba(207,252,120,0.1) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="max-width:1000px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center" class="cf-dont-see">
+    <div>
+      <span class="cf-pill cf-pill-soft" style="margin-bottom:1.25rem;display:inline-block">Don't see your dentist?</span>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin:0 0 1rem;color:var(--cotton);max-width:18ch">Love your current dentist? <em style="font-style:italic;color:var(--zest)">Let us bring them on.</em></h2>
+      <p style="font-size:1.1rem;color:rgba(243,240,228,0.8);max-width:48ch;margin:0 0 1.75rem;line-height:1.6">Send us your dentist's info. Our team reaches out — practice-to-practice, with your patient context. Most practices respond within 2 weeks. You keep the dentist you already trust, just with member pricing.</p>
+      <a href="/clerri-find/suggest-a-practice" class="cf-btn cf-btn-primary cf-btn-lg">Tell us about your dentist →</a>
+      <p style="font-size:0.85rem;color:rgba(243,240,228,0.55);margin:1rem 0 0;font-style:italic;font-family:'Fraunces',serif">No cost to you. No obligation to join.</p>
+    </div>
+    <div style="background:rgba(243,240,228,0.06);border:1px solid rgba(207,252,120,0.2);border-radius:1.5rem;padding:2rem">
+      <div style="font-family:'Fraunces',serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--zest);font-weight:600;margin-bottom:1.25rem">How it works</div>
+      <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem">
+        <div style="width:2rem;height:2rem;background:var(--zest);color:var(--clerri-green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:1rem;flex-shrink:0">1</div>
+        <div style="font-size:0.95rem;color:rgba(243,240,228,0.9);padding-top:0.15rem">You send us their practice name + city</div>
+      </div>
+      <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem">
+        <div style="width:2rem;height:2rem;background:var(--zest);color:var(--clerri-green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:1rem;flex-shrink:0">2</div>
+        <div style="font-size:0.95rem;color:rgba(243,240,228,0.9);padding-top:0.15rem">We reach out with your patient context</div>
+      </div>
+      <div style="display:flex;gap:0.75rem">
+        <div style="width:2rem;height:2rem;background:var(--zest);color:var(--clerri-green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:1rem;flex-shrink:0">3</div>
+        <div style="font-size:0.95rem;color:rgba(243,240,228,0.9);padding-top:0.15rem">You hear back within 2 weeks</div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>@media (max-width: 840px) { .cf-dont-see { grid-template-columns: 1fr !important; } }</style>
+
 <!-- CTA BAND -->
 <section class="cf-cta-band">
   <h2>Ready to find affordable dental care <em>near you?</em></h2>

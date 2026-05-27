@@ -1,0 +1,580 @@
+---
+import ClerriFindLayout from '../../layouts/ClerriFindLayout.astro';
+---
+<ClerriFindLayout title="Don't see your dentist?" page="suggest" description="Tell us about your regular dentist and we'll reach out to bring them onto Clerri.">
+
+<style>
+  .sg-hero {
+    background: var(--clerri-green);
+    color: var(--cotton);
+    padding: 4.5rem 1.5rem 4rem;
+  }
+  .sg-hero-inner { max-width: 900px; margin: 0 auto; }
+  .sg-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.025em;
+    margin: 0 0 1.25rem;
+  }
+  .sg-hero h1 em { font-style: italic; color: var(--zest); font-weight: 600; }
+  .sg-hero p {
+    font-size: 1.15rem;
+    color: rgba(243,240,228,0.85);
+    max-width: 56ch;
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS STRIP */
+  .sg-steps-strip {
+    background: var(--clerri-green-darker);
+    padding: 2.5rem 1.5rem;
+  }
+  .sg-steps-strip-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  @media (max-width: 720px) { .sg-steps-strip-inner { grid-template-columns: 1fr; } }
+  .sg-strip-step {
+    display: flex; gap: 0.85rem; align-items: flex-start;
+  }
+  .sg-strip-step-num {
+    width: 2rem; height: 2rem;
+    background: var(--zest); color: var(--clerri-green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-weight: 700;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .sg-strip-step h4 {
+    font-family: 'Funnel Sans';
+    color: var(--zest);
+    margin: 0 0 0.25rem; font-size: 0.95rem; font-weight: 600;
+  }
+  .sg-strip-step p {
+    color: rgba(243,240,228,0.75);
+    font-size: 0.875rem;
+    margin: 0; line-height: 1.5;
+  }
+
+  /* FORM SECTION */
+  .sg-form-wrap {
+    max-width: 800px; margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  .sg-form-card {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 12px 32px rgba(0,41,32,0.06);
+  }
+  @media (max-width: 600px) { .sg-form-card { padding: 1.75rem 1.5rem; border-radius: 1rem; } }
+
+  .sg-form-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--cotton-dark);
+  }
+  .sg-form-section:last-of-type {
+    margin-bottom: 1.5rem; padding-bottom: 0; border-bottom: none;
+  }
+  .sg-form-section-head { margin-bottom: 1.5rem; }
+  .sg-form-section-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .sg-form-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .sg-form-section p.help {
+    color: var(--muted); font-size: 0.9rem; margin: 0;
+  }
+
+  .sg-form-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-bottom: 1rem;
+  }
+  .sg-form-row.full { grid-template-columns: 1fr; }
+  @media (max-width: 540px) { .sg-form-row { grid-template-columns: 1fr; } }
+
+  .sg-field { display: flex; flex-direction: column; }
+  .sg-field label {
+    font-size: 0.8rem; letter-spacing: 0.04em;
+    color: var(--ink); font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .sg-field .req { color: var(--pulse); margin-left: 0.15rem; }
+  .sg-field input[type="text"], .sg-field input[type="email"],
+  .sg-field input[type="tel"], .sg-field input[type="url"],
+  .sg-field select, .sg-field textarea {
+    width: 100%;
+    background: var(--cotton-plus);
+    border: 1px solid var(--cotton-dark);
+    border-radius: 0.65rem;
+    padding: 0.75rem 0.95rem;
+    font-family: 'Funnel Sans';
+    font-size: 0.95rem;
+    color: var(--ink);
+    transition: 0.15s;
+    outline: none;
+  }
+  .sg-field textarea { min-height: 100px; resize: vertical; line-height: 1.5; }
+  .sg-field input:focus, .sg-field select:focus, .sg-field textarea:focus {
+    border-color: var(--clerri-green);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0,41,32,0.08);
+  }
+  .sg-field-hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
+
+  /* Radio cards */
+  .sg-radio-group {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem; margin-top: 0.4rem;
+  }
+  @media (max-width: 640px) { .sg-radio-group { grid-template-columns: 1fr; } }
+  .sg-radio-card {
+    border: 1.5px solid var(--cotton-dark);
+    border-radius: 0.85rem;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    transition: 0.15s;
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    background: var(--cotton-plus);
+  }
+  .sg-radio-card:hover { border-color: var(--clerri-green); }
+  .sg-radio-card input { margin-top: 0.15rem; accent-color: var(--clerri-green); flex-shrink: 0; }
+  .sg-radio-card.selected { border-color: var(--clerri-green); background: #fff; }
+  .sg-radio-card .sg-radio-title { font-weight: 600; font-size: 0.9rem; color: var(--clerri-green); display: block; }
+  .sg-radio-card .sg-radio-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin-top: 0.1rem; display: block; }
+
+  /* Checkbox */
+  .sg-checkbox {
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    cursor: pointer; user-select: none;
+    padding: 0.65rem 0; font-size: 0.925rem;
+    color: var(--ink);
+  }
+  .sg-checkbox input { accent-color: var(--clerri-green); margin-top: 0.2rem; flex-shrink: 0; }
+
+  .sg-submit {
+    display: flex; gap: 1rem; align-items: center;
+    flex-wrap: wrap;
+  }
+  .sg-submit-btn {
+    background: var(--clerri-green); color: #fff;
+    border: none; border-radius: 999px;
+    padding: 1rem 2rem;
+    font-family: 'Funnel Sans';
+    font-weight: 700; font-size: 1.05rem;
+    cursor: pointer; transition: 0.15s;
+  }
+  .sg-submit-btn:hover { background: var(--clerri-green-darker); transform: translateY(-1px); }
+  .sg-submit-note {
+    font-size: 0.825rem; color: var(--muted);
+  }
+
+  /* SUCCESS STATE */
+  .sg-success {
+    display: none;
+    background: linear-gradient(180deg, var(--zest), #e8f99a);
+    border: 1px solid var(--clerri-green);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .sg-success.show { display: block; }
+  .sg-success-icon {
+    width: 4rem; height: 4rem;
+    background: var(--clerri-green); color: var(--zest);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+  }
+  .sg-success h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .sg-success h2 em { font-style: italic; }
+  .sg-success p {
+    color: var(--clerri-green);
+    font-size: 1rem;
+    max-width: 48ch; margin: 0 auto 0.75rem;
+    line-height: 1.65;
+  }
+  .sg-success-actions {
+    margin-top: 1.5rem;
+    display: flex; gap: 0.75rem; justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* WHY IT WORKS */
+  .sg-why {
+    background: #fff;
+    padding: 4rem 1.5rem;
+  }
+  .sg-why-inner {
+    max-width: 1000px; margin: 0 auto;
+  }
+  .sg-why-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .sg-why h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+  }
+  .sg-why h2 em { font-style: italic; }
+  .sg-why-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 840px) { .sg-why-grid { grid-template-columns: 1fr; } }
+  .sg-why-card {
+    background: var(--cotton);
+    border-radius: 1.25rem; padding: 1.75rem 1.5rem;
+    border: 1px solid var(--cotton-dark);
+  }
+  .sg-why-card .num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--clerri-green); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .sg-why-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem; color: var(--clerri-green);
+    margin: 0 0 0.4rem; font-weight: 700;
+  }
+  .sg-why-card p {
+    font-size: 0.925rem; color: var(--ink-soft);
+    margin: 0; line-height: 1.55;
+  }
+
+  /* FAQ */
+  .sg-faq-wrap {
+    max-width: 800px; margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  .sg-faq-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .sg-faq-wrap h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+    color: var(--clerri-green); font-weight: 700;
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+  }
+  .sg-faq {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1rem;
+    margin-bottom: 0.65rem;
+    overflow: hidden;
+  }
+  .sg-faq summary {
+    list-style: none; cursor: pointer;
+    padding: 1.15rem 1.5rem;
+    font-weight: 600; font-size: 1rem;
+    color: var(--clerri-green);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Funnel Sans';
+  }
+  .sg-faq summary::-webkit-details-marker { display: none; }
+  .sg-faq summary::after {
+    content: "+"; font-size: 1.35rem;
+    color: var(--clerri-green);
+  }
+  .sg-faq[open] summary::after { content: "−"; }
+  .sg-faq-body {
+    padding: 0 1.5rem 1.35rem;
+    font-size: 0.95rem; color: var(--ink-soft);
+    line-height: 1.65;
+  }
+</style>
+
+<section class="sg-hero">
+  <div class="sg-hero-inner">
+    <span class="cf-pill cf-pill-soft" style="margin-bottom:1.5rem;display:inline-block">Don't see your dentist?</span>
+    <h1>Tell us about <em>your dentist.</em> We'll do the rest.</h1>
+    <p>If your regular dentist isn't on Clerri yet, send us their details. We'll reach out and let them know one of their patients is asking about membership plans — and walk them through how it works.</p>
+    <p style="font-size:0.95rem;opacity:0.7;font-style:italic;font-family:'Fraunces',serif">No cost to you. No cost to them. Most practices get back to us within 2 weeks.</p>
+  </div>
+</section>
+
+<section class="sg-steps-strip">
+  <div class="sg-steps-strip-inner">
+    <div class="sg-strip-step">
+      <div class="sg-strip-step-num">1</div>
+      <div>
+        <h4>You send us their info</h4>
+        <p>Practice name + address is all we need. Add your name if you want us to mention you.</p>
+      </div>
+    </div>
+    <div class="sg-strip-step">
+      <div class="sg-strip-step-num">2</div>
+      <div>
+        <h4>We reach out to them</h4>
+        <p>Our team contacts the practice with your patient context and a custom proposal.</p>
+      </div>
+    </div>
+    <div class="sg-strip-step">
+      <div class="sg-strip-step-num">3</div>
+      <div>
+        <h4>You get an update</h4>
+        <p>If they say yes, we'll email you. If not, we'll help you find a great nearby alternative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sg-form-wrap">
+  <div class="sg-success" id="sg-success">
+    <div class="sg-success-icon">✓</div>
+    <h2>Thanks. <em>We'll take it from here.</em></h2>
+    <p>We've got your dentist's info and we'll be in touch with their office in the next few business days. If you gave us your email, we'll let you know what they say.</p>
+    <p style="font-size:0.85rem;opacity:0.75">In the meantime, you can keep browsing membership plans at other practices nearby.</p>
+    <div class="sg-success-actions">
+      <a href="/clerri-find/search" class="cf-btn cf-btn-secondary">Browse other practices</a>
+      <a href="/clerri-find" class="cf-btn cf-btn-ghost">Back to home</a>
+    </div>
+  </div>
+
+  <form id="sg-form" class="sg-form-card" onsubmit="event.preventDefault(); document.getElementById('sg-form').style.display='none'; document.getElementById('sg-success').classList.add('show'); window.scrollTo({top: document.querySelector('.sg-form-wrap').offsetTop - 80, behavior: 'smooth'});">
+
+    <!-- PRACTICE INFO -->
+    <div class="sg-form-section">
+      <div class="sg-form-section-head">
+        <div class="sg-form-section-eyebrow">Step 1 of 3</div>
+        <h2>Your dentist's office</h2>
+        <p class="help">Tell us about the practice you'd like to see on Clerri. Practice name + city is the minimum we need.</p>
+      </div>
+
+      <div class="sg-form-row">
+        <div class="sg-field">
+          <label>Practice name <span class="req">*</span></label>
+          <input type="text" required placeholder="e.g. Smith Family Dentistry" />
+        </div>
+        <div class="sg-field">
+          <label>Your dentist's name</label>
+          <input type="text" placeholder="e.g. Dr. Lisa Smith" />
+          <div class="sg-field-hint">If you know it — optional</div>
+        </div>
+      </div>
+
+      <div class="sg-form-row">
+        <div class="sg-field">
+          <label>City <span class="req">*</span></label>
+          <input type="text" required placeholder="e.g. Indianapolis" />
+        </div>
+        <div class="sg-field">
+          <label>State <span class="req">*</span></label>
+          <select required>
+            <option value="">Select state</option>
+            <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option selected>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sg-form-row full">
+        <div class="sg-field">
+          <label>Street address</label>
+          <input type="text" placeholder="e.g. 142 N Pennsylvania St" />
+          <div class="sg-field-hint">Helpful but optional — we can usually find them with name + city</div>
+        </div>
+      </div>
+
+      <div class="sg-form-row">
+        <div class="sg-field">
+          <label>Phone</label>
+          <input type="tel" placeholder="(555) 555-1234" />
+        </div>
+        <div class="sg-field">
+          <label>Website</label>
+          <input type="url" placeholder="https://" />
+        </div>
+      </div>
+
+      <div class="sg-form-row full">
+        <div class="sg-field">
+          <label>How long have you been a patient there?</label>
+          <select>
+            <option>Pick one (optional)</option>
+            <option>Less than a year</option>
+            <option>1-3 years</option>
+            <option>3-5 years</option>
+            <option>5-10 years</option>
+            <option>10+ years</option>
+            <option>Not a patient yet — interested in becoming one</option>
+          </select>
+          <div class="sg-field-hint">Patient tenure helps us prioritize outreach — long-term patients carry more weight</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUR INFO -->
+    <div class="sg-form-section">
+      <div class="sg-form-section-head">
+        <div class="sg-form-section-eyebrow">Step 2 of 3</div>
+        <h2>Your contact info (optional)</h2>
+        <p class="help">Optional — but adding your name makes our outreach 3-4× more effective. Practices respond faster when they know a real patient is asking.</p>
+      </div>
+
+      <div class="sg-form-row">
+        <div class="sg-field">
+          <label>Your name</label>
+          <input type="text" placeholder="First + last name" />
+        </div>
+        <div class="sg-field">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com" />
+          <div class="sg-field-hint">We'll only email you about this submission</div>
+        </div>
+      </div>
+
+      <div class="sg-form-row full">
+        <div class="sg-field">
+          <label>Anything else we should know?</label>
+          <textarea placeholder="e.g. They stopped accepting my insurance last year and I've been paying out of pocket. I'd love a membership option to stay with them."></textarea>
+          <div class="sg-field-hint">Context helps us tailor the outreach. Totally optional.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERMISSION -->
+    <div class="sg-form-section">
+      <div class="sg-form-section-head">
+        <div class="sg-form-section-eyebrow">Step 3 of 3</div>
+        <h2>How should we mention you?</h2>
+        <p class="help">When we reach out to the practice, here's how we'll reference you.</p>
+      </div>
+
+      <div class="sg-radio-group" id="sg-permission-group">
+        <label class="sg-radio-card selected">
+          <input type="radio" name="permission" value="named" checked />
+          <span>
+            <span class="sg-radio-title">Use my name</span>
+            <span class="sg-radio-desc">"Your patient [name] asked about Clerri." Highest response rate.</span>
+          </span>
+        </label>
+        <label class="sg-radio-card">
+          <input type="radio" name="permission" value="anonymous" />
+          <span>
+            <span class="sg-radio-title">Stay anonymous</span>
+            <span class="sg-radio-desc">"A current patient asked about Clerri." Still effective.</span>
+          </span>
+        </label>
+        <label class="sg-radio-card">
+          <input type="radio" name="permission" value="no-outreach" />
+          <span>
+            <span class="sg-radio-title">Don't contact them</span>
+            <span class="sg-radio-desc">Just keep them on our list for the future.</span>
+          </span>
+        </label>
+      </div>
+
+      <label class="sg-checkbox">
+        <input type="checkbox" checked />
+        <span>Email me when we hear back from the practice</span>
+      </label>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="sg-submit">
+      <button type="submit" class="sg-submit-btn">Send to Clerri →</button>
+      <span class="sg-submit-note">No cost to you · We never sell your info · Outreach within 5 business days</span>
+    </div>
+  </form>
+</div>
+
+<!-- WHY IT WORKS -->
+<section class="sg-why">
+  <div class="sg-why-inner">
+    <div class="sg-why-eyebrow">Why this works</div>
+    <h2>Patients have helped us add <em>1,200+ practices</em> this year.</h2>
+    <div class="sg-why-grid">
+      <div class="sg-why-card">
+        <div class="num">62%</div>
+        <h4>Conversion rate</h4>
+        <p>Of the patient-referred practices we contact, 62% sign on to offer Clerri membership plans within 90 days. Cold outreach converts at 11%.</p>
+      </div>
+      <div class="sg-why-card">
+        <div class="num">14 days</div>
+        <h4>Average response time</h4>
+        <p>Most practices reply within 2 weeks. We follow up multiple times if needed and keep you posted along the way.</p>
+      </div>
+      <div class="sg-why-card">
+        <div class="num">$0</div>
+        <h4>Cost to anyone</h4>
+        <p>You don't pay to submit. Practices don't pay to evaluate. If they decide to offer membership plans, the math works in everyone's favor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="sg-faq-wrap">
+  <div class="sg-faq-eyebrow">Common questions</div>
+  <h2>What happens after I submit?</h2>
+
+  <details class="sg-faq">
+    <summary>Will my dentist know I submitted them?</summary>
+    <div class="sg-faq-body">Only if you choose "Use my name" in Step 3. If you select "Stay anonymous", we'll reference that "a current patient" asked — they won't know which one. If you select "Don't contact them", we'll add the practice to our list but won't reach out on your behalf.</div>
+  </details>
+  <details class="sg-faq">
+    <summary>How will you reach out to them?</summary>
+    <div class="sg-faq-body">Our partnerships team contacts the practice by email and phone with a short, professional message: who we are, that a patient is asking about offering membership plans, and a brief overview of how Clerri works. We share a one-page summary, never a hard pitch. If they're interested, we schedule a 15-minute conversation.</div>
+  </details>
+  <details class="sg-faq">
+    <summary>What if my dentist isn't interested?</summary>
+    <div class="sg-faq-body">No problem. We respect their answer and won't push. If you gave us your email, we'll let you know — and recommend a few similar Clerri practices nearby that might be a good alternative for you.</div>
+  </details>
+  <details class="sg-faq">
+    <summary>How long does this typically take?</summary>
+    <div class="sg-faq-body">Most practices respond within 2 weeks. If they decide to sign on, the onboarding process usually takes another 4-6 weeks before they're listed and accepting members. We'll keep you posted throughout.</div>
+  </details>
+  <details class="sg-faq">
+    <summary>What information do you need from me?</summary>
+    <div class="sg-faq-body">At minimum, practice name + city + state. Everything else is optional. Adding the dentist's name, practice address, or your patient context all make the outreach more effective — but if you only have the practice name, that's fine.</div>
+  </details>
+  <details class="sg-faq">
+    <summary>Is there a cost?</summary>
+    <div class="sg-faq-body">No cost to you for submitting. If your dentist signs on, you'd pay their annual membership fee (typically $129-$249/year) only if you choose to join. There's no obligation to enroll just because you referred them.</div>
+  </details>
+  <details class="sg-faq">
+    <summary>Why are you doing this?</summary>
+    <div class="sg-faq-body">Honestly? Because it works. Patient-referred outreach converts 6× higher than cold outreach. It's the best way we know to bring great practices onto Clerri — and the best way for patients to keep seeing the dentists they already trust.</div>
+  </details>
+</div>
+
+<script is:inline>
+  document.querySelectorAll('#sg-permission-group .sg-radio-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#sg-permission-group .sg-radio-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+</script>
+
+</ClerriFindLayout>

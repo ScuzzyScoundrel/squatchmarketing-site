@@ -397,8 +397,24 @@ const practices = [
 
     <div class="cf-empty" id="cf-empty" style="display:none">
       <h3>No practices match your filters</h3>
-      <p>Try widening your distance or removing some filters.</p>
+      <p style="margin-bottom:1.5rem">Try widening your distance or removing some filters.</p>
+      <div style="border-top:1px solid var(--cotton-dark);padding-top:1.5rem;margin-top:1.5rem">
+        <p style="font-family:'Fraunces',serif;font-style:italic;color:var(--clerri-green);font-size:1.15rem;margin:0 0 0.75rem">Or — don't see your regular dentist?</p>
+        <p style="margin:0 0 1.25rem;color:var(--ink-soft)">Tell us about them. We'll reach out and see if we can bring them onto Clerri.</p>
+        <a href="/clerri-find/suggest-a-practice" class="cf-btn cf-btn-secondary">Tell us about your dentist →</a>
+      </div>
     </div>
+
+    <!-- Always-visible bottom hook for the rest -->
+    <div id="cf-bottom-hook" style="margin-top:2.5rem;background:var(--clerri-green);color:var(--cotton);border-radius:1.5rem;padding:2rem 2rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--zest);font-weight:600;margin-bottom:0.5rem">Don't see your regular dentist?</div>
+        <h3 style="font-family:'Fraunces',serif;color:var(--cotton);margin:0 0 0.5rem;font-size:1.35rem;font-weight:700;letter-spacing:-0.01em">We can reach out and try to bring them on.</h3>
+        <p style="color:rgba(243,240,228,0.75);font-size:0.925rem;margin:0;max-width:50ch;line-height:1.5">Submit your dentist's info. We'll contact their practice with your patient context — most respond within 2 weeks.</p>
+      </div>
+      <a href="/clerri-find/suggest-a-practice" class="cf-btn cf-btn-primary" style="white-space:nowrap">Tell us about them →</a>
+    </div>
+    <style>@media (max-width: 720px) { #cf-bottom-hook { grid-template-columns: 1fr !important; } }</style>
   </main>
 </div>
 
