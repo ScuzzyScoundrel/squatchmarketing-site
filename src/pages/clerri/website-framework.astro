@@ -1,0 +1,343 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Website Framework" section="website-framework">
+
+<div class="page-head">
+  <div class="page-eyebrow">Web · Layout & UX Framework</div>
+  <h1 class="page-title">What the rebuilt site <em>should look like.</em></h1>
+  <p class="page-sub">Section-by-section framework for the new clerri.com. Hero variants, page structure mockups, navigation, audience segmentation, conversion paths. Ready to hand to Verve or whoever builds it.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="website-framework"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="website-framework">0 / 0</span></p>
+
+  <!-- DESIGN PRINCIPLES -->
+  <h2>Five design principles</h2>
+  <div class="grid-3">
+    <div class="card"><span class="pill pill-zest">01</span><h4>Outcome before product</h4><p style="font-size:0.875rem">Hero says what changes for the practice. Product details deeper in. Not "our membership platform" — "take your practice back from insurance."</p></div>
+    <div class="card"><span class="pill pill-zest">02</span><h4>Audience segmentation at the top</h4><p style="font-size:0.875rem">"I'm a dentist" / "I'm a DSO leader" / "I'm a patient" — three distinct journeys, surfaced clearly in nav.</p></div>
+    <div class="card"><span class="pill pill-zest">03</span><h4>Trust signals above-the-fold</h4><p style="font-size:0.875rem">5K+ practices, 7-of-10 DSOs, HIPAA / SOC 2, Charlesbank backing — visible in first 5 seconds. DSO buyers need it.</p></div>
+    <div class="card"><span class="pill pill-zest">04</span><h4>Multiple intents, multiple CTAs</h4><p style="font-size:0.875rem">"Calculate ROI" (early) / "See the platform" (mid) / "Talk to us" (late) — never just one demo CTA.</p></div>
+    <div class="card"><span class="pill pill-zest">05</span><h4>Brand built to travel</h4><p style="font-size:0.875rem">Dental TODAY, but the architecture supports vision / DPC / med spa expansion. Don't over-index on dental-only language at the architecture level.</p></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <h2>Top navigation</h2>
+  <div class="card">
+    <div class="mono" style="font-size:0.85rem;background:var(--clerri-green);color:var(--zest);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ clerri.    Solutions ▾   Platform ▾   Resources ▾   Pricing   For Patients ▾    │
+│                                                                                  │
+│                                              [Talk to us] [Calculate your ROI]   │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+
+    <h4>Mega-menu structure</h4>
+    <div class="grid-2">
+      <div>
+        <h4>Solutions (audience-led)</h4>
+        <ul style="font-size:0.875rem;padding-left:1rem">
+          <li>For Independent Practices</li>
+          <li>For Group Practices (5-25 locations)</li>
+          <li>For DSOs (25+ locations)</li>
+          <li>For Specialty Practices</li>
+          <li>For SMB Employers <em>(new — coming Q2)</em></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Platform (capability-led)</h4>
+        <ul style="font-size:0.875rem;padding-left:1rem">
+          <li>Membership Plans</li>
+          <li>Clerri Bridge (PMS integration)</li>
+          <li>Member Communications</li>
+          <li>Practice Dashboard + Analytics</li>
+          <li>Patient Directory</li>
+          <li>API + Integrations</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul style="font-size:0.875rem;padding-left:1rem">
+          <li>Blog</li>
+          <li>Customer Stories</li>
+          <li>ROI Calculator</li>
+          <li>Membership Plan Guide (definitive)</li>
+          <li>State of Dental Membership Report (annual)</li>
+          <li>Webinar Library</li>
+          <li>Clerri University</li>
+        </ul>
+      </div>
+      <div>
+        <h4>For Patients</h4>
+        <ul style="font-size:0.875rem;padding-left:1rem">
+          <li>Find a Clerri Practice (directory)</li>
+          <li>How Membership Works</li>
+          <li>Dental Insurance vs Membership</li>
+          <li>Patient Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOMEPAGE -->
+  <h2>Homepage — section-by-section</h2>
+
+  <h3>Section 1 · Hero</h3>
+  <div class="card">
+    <div class="mono" style="font-size:0.8rem;background:var(--clerri-green);color:var(--zest);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                  │
+│  Eyebrow: MEMBERSHIP INFRASTRUCTURE FOR DENTAL PRACTICES                         │
+│                                                                                  │
+│  Take your practice back.                                                        │
+│                                                                                  │
+│  Membership plans that reduce insurance dependence,                              │
+│  grow recurring revenue, and put patient relationships                           │
+│  back in your control.                                                           │
+│                                                                                  │
+│  [See your practice's ROI in 15 minutes]    [Watch a 90-second demo]             │
+│                                                                                  │
+│  ──────────────────────────────────────────────────────────────────              │
+│  Trusted by 5,000+ practices · 7 of the top 10 DSOs · Backed by Charlesbank      │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+    <p style="font-size:0.875rem"><strong>Notes:</strong> Two CTAs — early-stage ("calculate ROI") + mid-stage ("watch demo"). Trust strip immediately below. No carousel. No video autoplay. Hero illustration on the right (existing Clerri illustration style works).</p>
+  </div>
+
+  <h3>Section 2 · The PPO write-off math</h3>
+  <div class="card">
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton);color:var(--ink);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre;border:1px solid var(--cotton-dark)">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                  │
+│  The math you didn't realize you were running                                    │
+│                                                                                  │
+│  [$3-6M]              [30%]                  [76M]                                │
+│  Lifetime PPO         Of dentists dropped    Uninsured US adults                 │
+│  write-offs for       insurance networks     looking for affordable              │
+│  a typical practice   in Q4 2024 alone       dental care                         │
+│                                                                                  │
+│                       [Calculate yours →]                                        │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+    <p style="font-size:0.875rem"><strong>Notes:</strong> Three big-number stats, calculator CTA at the bottom. Cream background, dark green numbers. Pulls visitor into the ROI calculator flow.</p>
+  </div>
+
+  <h3>Section 3 · Outcomes-by-segment selector</h3>
+  <div class="card">
+    <div class="mono" style="font-size:0.8rem;background:var(--clerri-green);color:var(--zest);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                  │
+│  Built for every kind of practice                                                │
+│                                                                                  │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐            │
+│  │ Independent  │ │ Group        │ │ DSO          │ │ Specialty    │            │
+│  │ Practice     │ │ Practice     │ │ (25+ locs)   │ │ Practice     │            │
+│  │              │ │              │ │              │ │              │            │
+│  │ "Free your   │ │ "Unify       │ │ "Membership  │ │ "Pre-built   │            │
+│  │  practice."  │ │  members     │ │  at enter-   │ │  templates   │            │
+│  │              │ │  across      │ │  prise       │ │  for ortho,  │            │
+│  │              │ │  locations." │ │  scale."     │ │  pedo, etc." │            │
+│  │              │ │              │ │              │ │              │            │
+│  │ [Learn more] │ │ [Learn more] │ │ [Learn more] │ │ [Learn more] │            │
+│  └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘            │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+    <p style="font-size:0.875rem"><strong>Notes:</strong> Self-segmentation. Each card links to a dedicated page with that audience's specific outcomes, social proof, pricing tier, case studies.</p>
+  </div>
+
+  <h3>Section 4 · Platform feature highlights</h3>
+  <div class="card">
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton);color:var(--ink);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre;border:1px solid var(--cotton-dark)">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                  │
+│  The platform underneath 50,000+ active members                                  │
+│                                                                                  │
+│  ┌─────────────────────────┐  ┌─────────────────────────┐                       │
+│  │ MEMBERSHIP PLANS        │  │ MEMBER COMMUNICATIONS   │                       │
+│  │ Custom plans, automated │  │ Co-branded lifecycle    │                       │
+│  │ enrollment, multi-state │  │ emails on autopilot     │                       │
+│  │ compliance              │  │                         │                       │
+│  └─────────────────────────┘  └─────────────────────────┘                       │
+│                                                                                  │
+│  ┌─────────────────────────┐  ┌─────────────────────────┐                       │
+│  │ CLERRI BRIDGE           │  │ PRACTICE ANALYTICS      │                       │
+│  │ Two-way PMS integration │  │ Per-member LTV,         │                       │
+│  │ with [PMS logo wall]    │  │ enrollment velocity,    │                       │
+│  │                         │  │ retention dashboards    │                       │
+│  └─────────────────────────┘  └─────────────────────────┘                       │
+│                                                                                  │
+│  ┌─────────────────────────┐  ┌─────────────────────────┐                       │
+│  │ PATIENT DIRECTORY       │  │ API + INTEGRATIONS      │                       │
+│  │ Send patients to your   │  │ Hook Clerri into your   │                       │
+│  │ practice from clerri.com│  │ existing tech stack     │                       │
+│  └─────────────────────────┘  └─────────────────────────┘                       │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+  </div>
+
+  <h3>Section 5 · Customer logo wall + named testimonial</h3>
+  <div class="card">
+    <p style="font-size:0.875rem"><strong>Structure:</strong> Horizontal wall of 12-16 customer logos (DSO + group + independent — mix tiers visibly). One large quote pulled from a customer case study with name + practice + headshot. Link to "See more customer stories →" which goes to filterable hub.</p>
+    <p style="font-size:0.875rem;color:var(--muted)"><em>Critical: get customer permission for logos. Aspen, MB2, etc. — formalized via partnership agreement.</em></p>
+  </div>
+
+  <h3>Section 6 · ROI calculator widget (inline)</h3>
+  <div class="card">
+    <div class="mono" style="font-size:0.8rem;background:var(--clerri-green);color:var(--zest);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  Calculate your practice's PPO write-off                                         │
+│                                                                                  │
+│  Monthly patient count:    [_____________]   How much of revenue is PPO:         │
+│                                              [10%] [25%] [50%] [80%]             │
+│  Average procedure value:  [$____________]                                       │
+│                                                                                  │
+│  Your estimated lifetime PPO write-off:                                          │
+│  ████████████████████████████████████████████  $4,247,000                       │
+│                                                                                  │
+│  [Get the full report →]                                                         │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+    <p style="font-size:0.875rem"><strong>Notes:</strong> Inline interactive widget. Email gates the "full report" download. High-intent lead capture.</p>
+  </div>
+
+  <h3>Section 7 · Resource hub teaser</h3>
+  <div class="card">
+    <p style="font-size:0.875rem"><strong>Three featured cards:</strong> Latest blog post / Latest customer story / Featured webinar or report. Below: "View all resources →" link.</p>
+  </div>
+
+  <h3>Section 8 · Final CTA banner</h3>
+  <div class="card">
+    <div class="mono" style="font-size:0.8rem;background:var(--zest);color:var(--clerri-green);padding:1rem;border-radius:0.5rem;overflow-x:auto;white-space:pre">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                  │
+│  15 minutes to see what membership could mean for your practice.                 │
+│                                                                                  │
+│  [Talk to us]    [Calculate ROI]    [Watch the platform tour]                    │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+    <p style="font-size:0.875rem"><strong>Notes:</strong> Three CTAs by intent level — late / mid / early. Bright zest background — last impression before footer.</p>
+  </div>
+
+  <h3>Section 9 · Footer</h3>
+  <div class="card">
+    <p style="font-size:0.875rem"><strong>Critical footer content:</strong> Trust badges (HIPAA, SOC 2, DMPO state-licensed), funding (Backed by Charlesbank), Kleer + Membersy = Clerri disclosure, sitemap (Solutions / Platform / Resources / For Patients / Company / Legal), contact info, social links.</p>
+  </div>
+
+  <!-- AUDIENCE PAGES -->
+  <h2>Audience page framework</h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Each of the 4-5 audience pages (Independent / Group / DSO / Specialty / Employer) follows the same structure with audience-specific content.</p>
+
+  <div class="card">
+    <h4>Structure (in order)</h4>
+    <ol style="font-size:0.9rem;padding-left:1.25rem;line-height:1.7">
+      <li><strong>Hero with audience-specific outcome:</strong> "Free your practice from PPO dependence" (Independent) vs "Membership at enterprise scale" (DSO)</li>
+      <li><strong>Pain validation:</strong> "Sound familiar?" — list of 3-4 specific pains this audience knows</li>
+      <li><strong>Solution preview:</strong> 4-card grid of features most relevant to this audience</li>
+      <li><strong>Social proof tuned to audience:</strong> Logos + named testimonial from someone in same segment</li>
+      <li><strong>Pricing or "How it works":</strong> Independent practice gets pricing transparency. DSO gets "let's talk."</li>
+      <li><strong>ROI calculator scoped to audience</strong></li>
+      <li><strong>FAQ (audience-specific):</strong> Independent practices ask "is it expensive?". DSOs ask "can it scale to 100+ locations?"</li>
+      <li><strong>Final CTA scoped to audience</strong></li>
+    </ol>
+  </div>
+
+  <!-- PATIENT-SIDE -->
+  <h2>For Patients section</h2>
+  <div class="card">
+    <h4>The patient experience needs a totally different visual treatment</h4>
+    <p style="font-size:0.9rem">Hero feels warmer, more accessible. Less "enterprise SaaS" aesthetic. Big search bar above the fold: <strong>"Find a Clerri practice near you"</strong>. Below: educational content ("How does dental membership work?", "How is this different from insurance?").</p>
+
+    <h4>Patient nav structure</h4>
+    <ul style="font-size:0.9rem;padding-left:1rem">
+      <li>Find a practice (= directory; see Directory Mockup page)</li>
+      <li>How membership works</li>
+      <li>Insurance vs membership (decision guide)</li>
+      <li>Member resources / FAQs</li>
+      <li>Patient support</li>
+    </ul>
+  </div>
+
+  <!-- TECH NOTES -->
+  <h2>Technical requirements for the rebuild</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Performance + SEO</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li>Static-site or hybrid (Next.js / Astro) — fast loads, great SEO</li>
+        <li>Lighthouse score target: 90+ on all four axes</li>
+        <li>Schema.org markup throughout (Organization, Product, FAQ, LocalBusiness for directory)</li>
+        <li>OG meta + Twitter cards per page</li>
+        <li>Sitemap.xml + robots.txt with AI-assistant-friendly directives</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Conversion tracking</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li>GA4 + LinkedIn Insight Tag + Meta Pixel + Microsoft Ads UET</li>
+        <li>Pardot form integrations with UTM persistence</li>
+        <li>Server-side conversion tracking (CAPI) for ad platforms</li>
+        <li>Single-source-of-truth attribution (Salesforce)</li>
+        <li>Heatmaps via Microsoft Clarity (free)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Accessibility</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li>WCAG 2.1 AA minimum (DSO buyers + state contracts often require it)</li>
+        <li>Keyboard navigation everywhere</li>
+        <li>Color contrast: 4.5:1 minimum on body text</li>
+        <li>Alt text on all images including illustrations</li>
+        <li>Screen reader testing before launch</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Internationalization (forward-looking)</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li>Architecture supports Spanish-language member-side pages</li>
+        <li>Practice locations have language indicator</li>
+        <li>Patient-side ready for "es-US" locale by year 2</li>
+        <li>Don't translate now — but design for it</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BUILD VS BUY -->
+  <h2>Build vs buy — <em>the vendor question.</em></h2>
+  <div class="grid-3">
+    <div class="card"><span class="pill pill-zest">Path A · Internal rebuild</span><h4>Web dev hire(s) + product team</h4><p style="font-size:0.875rem">Pro: full control, faster iteration after launch. Con: pulls eng away from product. Timeline: 4-6 months.</p></div>
+    <div class="card"><span class="pill pill-zest">Path B · Verve Agency continuation</span><h4>Existing design partner</h4><p style="font-size:0.875rem">Pro: knows the brand (designed current site illustrations + assets). Con: same vendor, similar output. Timeline: 3-4 months.</p></div>
+    <div class="card"><span class="pill pill-zest">Path C · New web agency</span><h4>Specialist B2B SaaS web shop</h4><p style="font-size:0.875rem">Pro: fresh perspective, B2B conversion expertise. Con: brand learning curve. Timeline: 4-5 months.</p></div>
+  </div>
+
+  <h2>Tasks</h2>
+  <div data-section="website-framework">
+    <label class="task"><input type="checkbox" data-track="wf-01-jim-walkthrough" data-section="website-framework" /><div class="task-content"><div class="task-title">Walk this framework with Jim — get directional sign-off before vendor selection</div></div></label>
+    <label class="task"><input type="checkbox" data-track="wf-02-vendor-rfp" data-section="website-framework" /><div class="task-content"><div class="task-title">RFP for website rebuild — get bids from Verve + 2 alternatives</div></div></label>
+    <label class="task"><input type="checkbox" data-track="wf-03-roi-mvp" data-section="website-framework" /><div class="task-content"><div class="task-title">Ship ROI calculator MVP via Lovable as standalone tool — prove demand before full rebuild</div></div></label>
+    <label class="task"><input type="checkbox" data-track="wf-04-content-audit" data-section="website-framework" /><div class="task-content"><div class="task-title">Content inventory audit — what existing pages migrate, what's deprecated, what's new</div></div></label>
+    <label class="task"><input type="checkbox" data-track="wf-05-customer-permissions" data-section="website-framework" /><div class="task-content"><div class="task-title">Customer logo permissions formalized (legal review with CS team)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="wf-06-customer-quotes" data-section="website-framework" /><div class="task-content"><div class="task-title">Pull 3-5 best customer testimonials for hero use (with photo + permission)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="wf-07-trust-page" data-section="website-framework" /><div class="task-content"><div class="task-title">Dedicated Trust + Compliance page scoped (HIPAA / SOC 2 / DMPO / Knox-Keene)</div></div></label>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Website rebuild notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="website-framework-notes" placeholder="Vendor conversations, Jim's feedback on direction, budget approval, timeline shifts, conversion baselines..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/website"><span class="dir">← Prev</span><span class="name">Website & Messaging</span></a>
+    <a href="/clerri/product-ideas"><span class="dir">Next →</span><span class="name">Product Ideas</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

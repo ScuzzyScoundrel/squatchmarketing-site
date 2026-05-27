@@ -1,0 +1,346 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Product Ideas" section="product-ideas">
+
+<div class="page-head">
+  <div class="page-eyebrow">Product & Marketing · Cross-functional</div>
+  <h1 class="page-title">12 product features <em>marketing wants shipped.</em></h1>
+  <p class="page-sub">Each one helps marketing convert deals, retain customers, or generate content. Each has a clear "what it is / why it matters / build complexity / marketing impact" frame. Bring these to Jacob (product) ranked by what hurts most.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="product-ideas"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="product-ideas">0 / 0</span></p>
+
+  <div class="callout zest-hi">
+    <div class="lbl">How to use this page</div>
+    <p>This is your <strong>product-marketing collaboration document</strong>. Don't bring all 12 to Jacob at once — pick top 3-4 most painful, sequence them. Marketing's role is to translate customer/sales pain into product roadmap input, not dictate engineering priorities. The "Marketing Impact" line on each card is the language that earns roadmap slots.</p>
+  </div>
+
+  <!-- IDEA 1: ROI CALCULATOR -->
+  <h2>Idea 01 · Embedded ROI calculator</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Light</span> <span class="pill pill-rose">Demand · HIGH</span></div>
+      <div data-status="prod-roi" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Public-facing calculator on clerri.com. Practice owner enters: monthly patient count, current PPO mix, average procedure value, current membership enrollment rate. Calculator outputs: lifetime PPO write-off, projected membership revenue, payback period for switching, year-over-year impact.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Lead generation:</strong> Gates ROI report behind email — high-intent capture</li>
+      <li><strong>Sales weapon:</strong> Rep sends calculator link mid-call as "homework" — keeps deal warm</li>
+      <li><strong>SEO content magnet:</strong> "Calculate your dental practice ROI" is high-intent search</li>
+      <li><strong>Content amplifier:</strong> "$3-6M lifetime PPO write-off" hooks have a calculator behind them</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~2-3 weeks engineering. Could be marketing-built with Lovable / Bolt if engineering has no bandwidth. Industry-benchmark data needs review.</p>
+  </div>
+
+  <!-- IDEA 2: CHAIR-SIDE ENROLLMENT -->
+  <h2>Idea 02 · Chair-side mobile enrollment flow</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium</span> <span class="pill pill-rose">Demand · HIGH</span></div>
+      <div data-status="prod-chairside" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Single-tap mobile enrollment during a patient visit. Hygienist hands patient a tablet, patient sees their plan options, payment, confirmation. Total time: 90 seconds. Optimized for touch-first, not desktop-first.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Practice ops story:</strong> "Enroll patients in 90 seconds" = better than competitors' web-form flows</li>
+      <li><strong>Conversion rate:</strong> Real-time enrollment when patient is already engaged = 3-5x higher than "we'll send you the form"</li>
+      <li><strong>Demo content:</strong> 30-second video of the flow = endlessly repurposable</li>
+      <li><strong>Practice-onboarding stickiness:</strong> Hygienists become the activation channel</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~4-6 weeks. Mobile UX overhaul. Requires payment integration polish + offline-handling logic.</p>
+  </div>
+
+  <!-- IDEA 3: PER-MEMBER LTV DASHBOARD -->
+  <h2>Idea 03 · Per-member lifetime value dashboard for practices</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium-Heavy</span> <span class="pill pill-rose">Demand · HIGH</span></div>
+      <div data-status="prod-ltv" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Practice-side dashboard showing per-member lifetime revenue contribution. Sortable by tenure, plan tier, procedure mix. Annual cohort analysis. Compare members vs uninsured walk-ins.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Renewal stickiness:</strong> Practice CANNOT churn from Clerri once they're using this dashboard daily</li>
+      <li><strong>Sales weapon:</strong> "Our customers see member LTV grow 4x by year 3" — backed by their own data</li>
+      <li><strong>Case study production:</strong> Workflow D becomes much easier — every customer is a data story</li>
+      <li><strong>Charlesbank narrative:</strong> Quantifiable customer value generation = exit multiple</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~8-12 weeks. Deep PMS integration + analytics. But this is the kind of feature that defines category leadership.</p>
+  </div>
+
+  <!-- IDEA 4: MEMBER REFERRAL -->
+  <h2>Idea 04 · Member referral + rewards</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium</span> <span class="pill pill-blue">Demand · MEDIUM</span></div>
+      <div data-status="prod-referral" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Member refers friend → both get $25 credit toward next visit (or practice-configured amount). Automated tracking. Practice-funded, Clerri-managed. State-by-state compliance configured.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Member acquisition channel for practices</strong> — the practice doesn't have to chase referrals</li>
+      <li><strong>Sticky differentiator:</strong> No competitor has this</li>
+      <li><strong>Member engagement:</strong> Members feel like advocates, not just subscribers</li>
+      <li><strong>Patient-side content fodder:</strong> "How members earn rewards" is good content</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~6-10 weeks. Compliance per state is the gnarly part. But it's solvable, and once shipped it compounds.</p>
+  </div>
+
+  <!-- IDEA 5: PATIENT DIRECTORY -->
+  <h2>Idea 05 · Patient-facing directory ("Find a Clerri practice")</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Heavy</span> <span class="pill pill-rose">Demand · HIGH</span></div>
+      <div data-status="prod-directory" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Consumer-facing directory of all Clerri-member practices. Geo + filter by plan, specialty, languages spoken, accepting new patients. Two-tier monetization: free baseline listing + paid premium (featured placement, lead capture, analytics). See Directory Mockup page for full UI framework.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Single highest-ROI competitive move</strong> — neutralizes BoomCloud's Patient Marketplace paper tiger</li>
+      <li><strong>72M uninsured Americans</strong> = bottom-of-funnel acquisition channel</li>
+      <li><strong>Practice value:</strong> Tangible patient acquisition no competitor offers</li>
+      <li><strong>SEO at scale:</strong> 5,000+ city-level pages = massive local-SEO footprint</li>
+      <li><strong>Built to travel:</strong> Same architecture extends to vision, DPC, med spa (horizontal expansion thesis)</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~12-16 weeks for v1. Substantial. But it's the moat. See Patient Directory page for phased rollout.</p>
+  </div>
+
+  <!-- IDEA 6: EMPLOYER PORTAL -->
+  <h2>Idea 06 · Employer-sponsored plan portal</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium</span> <span class="pill pill-blue">Demand · NEW SEGMENT</span></div>
+      <div data-status="prod-employer" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">SMB employer signs up to provide Clerri membership to all employees. Employee portal for plan selection, practice search, billing. Direct billing to employer, no insurance overhead. Practices in network see traffic.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Jim's "intrigued" channel:</strong> Employer-side acquisition</li>
+      <li><strong>ICHRA + LSA channel becomes a real product</strong> — TakeCommandHealth, Compt, Fringe integrations</li>
+      <li><strong>Demand-side acquisition:</strong> Employers bring patient traffic to practices</li>
+      <li><strong>Multi-sided platform:</strong> Same architecture serves DSO accounts that want to offer employee benefits</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~10-14 weeks. Multi-tenant employer portal. Group billing logic. But it opens a whole new market.</p>
+  </div>
+
+  <!-- IDEA 7: PUBLIC API + WEBHOOKS -->
+  <h2>Idea 07 · Public API + webhook coverage</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium</span> <span class="pill pill-blue">Demand · DSO ENTERPRISE</span></div>
+      <div data-status="prod-api" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Documented public REST + webhook API. DSO buyers want to pull Clerri data into their own dashboards (Tableau, Power BI, custom). Today this is custom-integration per DSO. Make it self-service.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>DSO enterprise sales unlock:</strong> Buyer evaluation increasingly asks "what's your API?"</li>
+      <li><strong>Developer-ecosystem positioning:</strong> Clerri becomes the platform others build on</li>
+      <li><strong>Marketing-led content:</strong> API docs + integration examples = developer-marketing assets</li>
+      <li><strong>Reduces custom-integration support load:</strong> Less CS spent on one-off requests</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~6-8 weeks if internal API exists; 12-16 weeks if not. Public APIs are 80% documentation, monitoring, and rate-limit + auth — the easy-looking part.</p>
+  </div>
+
+  <!-- IDEA 8: MULTI-STATE DSO PLAN -->
+  <h2>Idea 08 · Multi-state DSO plan unification</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Heavy</span> <span class="pill pill-rose">Demand · TOP DSO</span></div>
+      <div data-status="prod-multistate" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">DSO with practices in 8 states offers ONE unified membership plan that works across all locations. Member can use at any DSO practice. Compliance handled state-by-state by Clerri.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Direct conquest weapon</strong> for Heartland (Coast Vantage One), Smile Brands (OneSmile), and any other DSO running proprietary in-house programs</li>
+      <li><strong>Multi-state DMPO + Knox-Keene compliance</strong> handled at platform level = barrier no in-house program can match</li>
+      <li><strong>Sales weapon for top-10 DSO accounts</strong>: "We do this. They don't."</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~16-24 weeks. Compliance is the real work. But this is the kind of moat that justifies Charlesbank ownership.</p>
+  </div>
+
+  <!-- IDEA 9: HYGIENIST PORTAL -->
+  <h2>Idea 09 · Hygienist enrollment portal + training</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Light</span> <span class="pill pill-blue">Demand · OPS</span></div>
+      <div data-status="prod-hygienist" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Hygienist-side mobile portal: see today's patients, who's eligible for membership, talking scripts, enrollment incentive tracking. Backed by Clerri University training content tailored to hygienists.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Hygienist = enrollment channel.</strong> Empower them with tools, conversions go up.</li>
+      <li><strong>Activates an untapped stakeholder</strong> (see Market Gaps page)</li>
+      <li><strong>Content moat:</strong> ASDH partnerships, CE credit for hygienist training</li>
+      <li><strong>Practice productivity story:</strong> "Your hygienists drive 60% of our enrollments" = sticky</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~4-6 weeks. Mostly mobile UI + content. Lightweight relative to impact.</p>
+  </div>
+
+  <!-- IDEA 10: SPECIALTY TEMPLATES -->
+  <h2>Idea 10 · Pre-configured specialty plan templates</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Light</span> <span class="pill pill-blue">Demand · SEGMENT</span></div>
+      <div data-status="prod-specialty" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">Pre-built plan templates for ortho, pedo, perio, OMS. Specialty-specific procedure mixes, pricing benchmarks, enrollment scripts. Practice picks template, customizes 3-5 fields, ships.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Specialty segment unlock</strong> — competitors haven't done this</li>
+      <li><strong>Onboarding friction reduction</strong> = faster time-to-first-enrollment for specialty practices</li>
+      <li><strong>Counter to Subscribili's specialty play</strong> (Stream Dental acquisition)</li>
+      <li><strong>Content per specialty:</strong> Ortho membership best practices, pedo membership case studies, etc.</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~3-5 weeks. Mostly content + plan-builder UI. Engineering-light, marketing/clinical-heavy.</p>
+  </div>
+
+  <!-- IDEA 11: BRAND-SAFE WHITE-LABEL -->
+  <h2>Idea 11 · DSO-level white-label / co-brand customization</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium</span> <span class="pill pill-blue">Demand · ENTERPRISE</span></div>
+      <div data-status="prod-whitelabel" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">DSOs (like Aspen) want member-facing pages, emails, and apps that look like THEIR brand — not Clerri's. Programmatic theming: logo, colors, copy, custom domain. "Powered by Clerri" small footer optional.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>Aspen Savings Plan precedent:</strong> Aspen already runs this model — Clerri can productize it</li>
+      <li><strong>DSO retention weapon:</strong> Branded experience = sticky</li>
+      <li><strong>Pricing tier:</strong> Premium DSO tier = higher ACV</li>
+      <li><strong>Counter to "we'll build in-house":</strong> Most DSOs want their brand without their engineering team</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~10-14 weeks. Multi-tenant theming infrastructure. But high willingness-to-pay.</p>
+  </div>
+
+  <!-- IDEA 12: AI-POWERED PATIENT INSIGHTS -->
+  <h2>Idea 12 · AI-powered patient insights for practices</h2>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+      <div><span class="pill pill-zest">Build · Medium</span> <span class="pill pill-blue">Demand · FUTURE-PROOFING</span></div>
+      <div data-status="prod-ai" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
+    </div>
+    <h4>What it is</h4>
+    <p style="font-size:0.9rem">AI surfaces in the practice dashboard: "These 23 patients are due for treatment they declined last visit", "Member retention is dropping in your zip code — here's likely why", "Suggested talk track for tomorrow's high-value patient." Powered by Claude / OpenAI on top of Clerri's data layer.</p>
+
+    <h4>Why marketing wants it</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li><strong>"AI-powered" positioning</strong> stays current with broader market</li>
+      <li><strong>Practice retention:</strong> Insights surface value daily</li>
+      <li><strong>Conference content:</strong> Lots of demo-able moments</li>
+      <li><strong>Pearl AI + Overjet co-marketing</strong>: positions Clerri in the "AI-powered dental practice" narrative without competing with diagnostic AI</li>
+    </ul>
+
+    <h4>Build complexity</h4>
+    <p style="font-size:0.875rem">~8-12 weeks. Marketing-team-owned proof-of-concepts (Workflow F, F's logic) can prove value before product engineering owns it.</p>
+  </div>
+
+  <!-- PRIORITIZATION FRAMEWORK -->
+  <h2>How to prioritize these with Jacob</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Ship in next 90 days (high ROI / low complexity)</h4>
+      <ol style="font-size:0.9rem;padding-left:1.25rem">
+        <li>ROI Calculator (Idea 01) — Lovable / Bolt could do it</li>
+        <li>Hygienist Portal (Idea 09) — small build, big practice ops story</li>
+        <li>Specialty Plan Templates (Idea 10) — content-heavy, ships fast</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Year-1 roadmap fights (high ROI / medium complexity)</h4>
+      <ol style="font-size:0.9rem;padding-left:1.25rem">
+        <li>Chair-side Mobile Enrollment (Idea 02)</li>
+        <li>Per-Member LTV Dashboard (Idea 03)</li>
+        <li>Patient Directory (Idea 05) — flagship</li>
+        <li>Member Referral + Rewards (Idea 04)</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Year-2 plays (high ROI / heavy build)</h4>
+      <ol style="font-size:0.9rem;padding-left:1.25rem">
+        <li>Multi-state DSO Plan Unification (Idea 08)</li>
+        <li>DSO White-Label (Idea 11)</li>
+        <li>Employer Portal (Idea 06)</li>
+        <li>Public API + Webhooks (Idea 07)</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Build-vs-buy questions</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li>Patient Directory — build or partner with NexHealth?</li>
+        <li>AI Insights — build or layer Pearl AI?</li>
+        <li>Employer Portal — build or integrate TakeCommandHealth?</li>
+        <li>ROI Calculator — marketing builds in Lovable vs product builds native</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Tasks</h2>
+  <div data-section="product-ideas">
+    <label class="task"><input type="checkbox" data-track="pi-01-jacob-1on1" data-section="product-ideas" /><div class="task-content"><div class="task-title">Schedule formal product 1:1 with Jacob to walk through top 4 ideas</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pi-02-roi-mvp" data-section="product-ideas" /><div class="task-content"><div class="task-title">ROI Calculator MVP — marketing builds in Lovable as proof-of-demand</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pi-03-win-loss" data-section="product-ideas" /><div class="task-content"><div class="task-title">Pull last 90 days lost-deal notes — validate which product gaps actually cost deals</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pi-04-prioritization" data-section="product-ideas" /><div class="task-content"><div class="task-title">Joint marketing-product prioritization session (you + Jacob + sales lead)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pi-05-roadmap-input" data-section="product-ideas" /><div class="task-content"><div class="task-title">Submit formal marketing roadmap input doc to product team</div></div></label>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Product collaboration notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="product-ideas-notes" placeholder="What Jacob said, what's already on roadmap, blocks, surprising priorities..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/website-framework"><span class="dir">← Prev</span><span class="name">Website Framework</span></a>
+    <a href="/clerri/ai-stack"><span class="dir">Next →</span><span class="name">AI Marketing Stack</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

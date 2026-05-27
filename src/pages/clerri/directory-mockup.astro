@@ -1,0 +1,819 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Directory Mockup" section="directory-mockup">
+
+<div class="page-head">
+  <div class="page-eyebrow">Product Prototype · Interactive</div>
+  <h1 class="page-title">"Find a Clerri practice <em>near you."</em></h1>
+  <p class="page-sub">Working prototype of the patient-facing directory. Search bar, filters, listing cards, practice profile detail view, mobile layout. Functional UI — click around. This is what you take to Jacob + product team for the build conversation.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="directory-mockup"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="directory-mockup">0 / 0</span></p>
+
+  <div class="callout zest-hi">
+    <div class="lbl">What this is + isn't</div>
+    <p>This is a <strong>visual + interactive framework mockup</strong> — fake data, real UX patterns. Click filters, switch views, see the practice profile detail. Show it to Jacob to scope the real build. Show it to Jim to demonstrate what's possible. Show it to customers to validate desirability before engineering writes a line of production code.</p>
+  </div>
+
+  <!-- LIVE PROTOTYPE -->
+  <h2>The prototype</h2>
+
+  <style>
+    .dir-mock {
+      background: var(--cotton); border: 1px solid var(--cotton-dark);
+      border-radius: 1.25rem; overflow: hidden;
+      margin: 1rem 0;
+    }
+    .dir-header {
+      background: var(--clerri-green); color: var(--cotton);
+      padding: 2rem 1.5rem 2.5rem;
+    }
+    .dir-header-inner { max-width: 900px; margin: 0 auto; }
+    .dir-header h2 {
+      font-size: 2rem; font-weight: 700; line-height: 1.1; margin: 0 0 1rem;
+      color: var(--cotton); letter-spacing: -0.01em;
+    }
+    .dir-header p { color: rgba(243,240,228,0.8); font-size: 1rem; margin: 0 0 1.5rem; }
+    .dir-search {
+      display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.5rem;
+      background: #fff; padding: 0.65rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+      .dir-search { grid-template-columns: 1fr; border-radius: 1rem; }
+    }
+    .dir-search-field {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-right: 1px solid var(--cotton-dark);
+    }
+    @media (max-width: 600px) { .dir-search-field { border-right: none; border-bottom: 1px solid var(--cotton-dark); } }
+    .dir-search-field:last-of-type { border-right: none; border-bottom: none; }
+    .dir-search-field-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600;
+    }
+    .dir-search-field input, .dir-search-field select {
+      border: none; outline: none; background: transparent;
+      font-size: 0.95rem; color: var(--ink); width: 100%;
+      font-family: 'Funnel Sans', sans-serif;
+    }
+    .dir-search-btn {
+      background: var(--zest); color: var(--clerri-green);
+      border: none; border-radius: 999px;
+      padding: 0.85rem 1.5rem; font-weight: 700;
+      cursor: pointer; transition: 0.15s;
+      font-family: 'Funnel Sans', sans-serif;
+    }
+    .dir-search-btn:hover { background: var(--zest-hover); }
+
+    .dir-body {
+      display: grid; grid-template-columns: 280px 1fr;
+      gap: 1.5rem; padding: 1.5rem;
+    }
+    @media (max-width: 800px) {
+      .dir-body { grid-template-columns: 1fr; }
+      .dir-sidebar { order: 2; }
+    }
+
+    .dir-sidebar {
+      background: #fff;
+      border-radius: 1rem; padding: 1.25rem;
+      border: 1px solid var(--cotton-dark);
+      height: fit-content;
+    }
+    .dir-filter-group { margin-bottom: 1.25rem; }
+    .dir-filter-group:last-child { margin-bottom: 0; }
+    .dir-filter-group h5 {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 0.5rem;
+      font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    }
+    .dir-chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .dir-chip {
+      background: var(--cotton-plus); border: 1px solid var(--cotton-dark);
+      padding: 0.3rem 0.75rem; border-radius: 999px;
+      font-size: 0.8rem; cursor: pointer;
+      transition: 0.15s; user-select: none;
+    }
+    .dir-chip:hover { border-color: var(--clerri-green); }
+    .dir-chip.active {
+      background: var(--clerri-green); color: var(--zest);
+      border-color: var(--clerri-green);
+    }
+    .dir-range {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .dir-range input[type="range"] { flex: 1; }
+    .dir-range .val {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+      color: var(--clerri-green); font-weight: 700; min-width: 5ch;
+    }
+    .dir-toggle {
+      display: flex; align-items: center; gap: 0.5rem;
+      cursor: pointer; user-select: none;
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
+    }
+    .dir-toggle input { accent-color: var(--clerri-green); }
+
+    .dir-main { min-width: 0; }
+    .dir-result-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .dir-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .dir-count strong { color: var(--clerri-green); }
+    .dir-view-toggle {
+      display: flex; background: #fff; border-radius: 999px;
+      border: 1px solid var(--cotton-dark);
+      padding: 0.2rem;
+    }
+    .dir-view-toggle button {
+      background: transparent; border: none; cursor: pointer;
+      padding: 0.35rem 0.85rem; border-radius: 999px;
+      font-size: 0.8rem; color: var(--muted);
+      font-family: 'Funnel Sans', sans-serif;
+    }
+    .dir-view-toggle button.active {
+      background: var(--clerri-green); color: var(--zest); font-weight: 600;
+    }
+    .dir-listings { display: flex; flex-direction: column; gap: 0.85rem; }
+    .dir-card {
+      background: #fff; border: 1px solid var(--cotton-dark);
+      border-radius: 1rem; padding: 1.25rem;
+      display: grid; grid-template-columns: 80px 1fr auto;
+      gap: 1rem; align-items: flex-start;
+      transition: 0.15s; cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .dir-card { grid-template-columns: 60px 1fr; }
+      .dir-card-right { grid-column: 1 / -1; }
+    }
+    .dir-card:hover { border-color: var(--clerri-green); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .dir-card.featured {
+      border-color: var(--zest); background: linear-gradient(to bottom right, #fffef4, #fff);
+    }
+    .dir-card-logo {
+      width: 80px; height: 80px;
+      background: var(--clerri-green); color: var(--zest);
+      border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .dir-card.featured .dir-card-logo {
+      background: var(--zest); color: var(--clerri-green);
+    }
+    .dir-card-body { min-width: 0; }
+    .dir-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--zest); background: var(--clerri-green);
+      padding: 0.2rem 0.5rem; border-radius: 999px;
+      display: inline-block; margin-bottom: 0.4rem;
+    }
+    .dir-card.featured .dir-card-tag {
+      background: var(--pulse); color: var(--cotton);
+    }
+    .dir-card h4 {
+      font-size: 1.1rem; font-weight: 700; margin: 0 0 0.25rem;
+      color: var(--clerri-green);
+    }
+    .dir-card-meta {
+      font-size: 0.85rem; color: var(--muted);
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0.25rem 0;
+    }
+    .dir-card-meta span { display: inline-flex; align-items: center; gap: 0.25rem; }
+    .dir-card-plans {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem;
+    }
+    .dir-plan-pill {
+      background: var(--cotton-plus); border: 1px solid var(--cotton-dark);
+      padding: 0.2rem 0.55rem; border-radius: 999px;
+      font-size: 0.75rem; color: var(--ink-soft);
+    }
+    .dir-card-right {
+      text-align: right;
+    }
+    .dir-rating {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700;
+      color: var(--clerri-green); font-size: 1rem;
+    }
+    .dir-card-cta {
+      display: inline-block; margin-top: 0.5rem;
+      background: var(--clerri-green); color: var(--zest);
+      padding: 0.45rem 0.85rem; border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* PRACTICE PROFILE DETAIL MOCKUP */
+    .profile-mock {
+      background: #fff; border: 1px solid var(--cotton-dark);
+      border-radius: 1.25rem; overflow: hidden;
+      margin: 1rem 0;
+    }
+    .profile-hero {
+      background: linear-gradient(135deg, var(--clerri-green), var(--clerri-green-darker));
+      color: var(--cotton);
+      padding: 2rem;
+      display: grid; grid-template-columns: 120px 1fr auto;
+      gap: 1.5rem; align-items: center;
+    }
+    @media (max-width: 720px) {
+      .profile-hero { grid-template-columns: 1fr; text-align: center; }
+    }
+    .profile-logo {
+      width: 120px; height: 120px;
+      background: var(--zest); color: var(--clerri-green);
+      border-radius: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 700;
+      font-size: 2.5rem;
+      margin: 0 auto;
+    }
+    .profile-name { font-size: 1.75rem; font-weight: 700; margin: 0; line-height: 1.1; }
+    .profile-tagline { color: rgba(207,252,120,0.85); font-style: italic; font-family: 'Fraunces', serif; margin: 0.25rem 0 0; font-size: 1rem; }
+    .profile-cta-grp { display: flex; flex-direction: column; gap: 0.5rem; }
+    .profile-cta {
+      background: var(--zest); color: var(--clerri-green);
+      padding: 0.65rem 1.25rem; border-radius: 999px;
+      font-weight: 700; text-decoration: none;
+      text-align: center;
+    }
+    .profile-cta.outline {
+      background: transparent; color: var(--zest);
+      border: 1px solid var(--zest);
+    }
+    .profile-body {
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 1.5rem; padding: 1.5rem;
+    }
+    @media (max-width: 800px) {
+      .profile-body { grid-template-columns: 1fr; }
+    }
+    .profile-section { margin-bottom: 1.5rem; }
+    .profile-section h3 {
+      font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem;
+      color: var(--clerri-green); letter-spacing: -0.01em;
+    }
+    .profile-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+    .profile-plan {
+      background: var(--cotton); border: 1px solid var(--cotton-dark);
+      border-radius: 0.75rem; padding: 1rem;
+    }
+    .profile-plan.featured {
+      background: var(--zest); border-color: var(--clerri-green);
+    }
+    .profile-plan h4 { margin: 0 0 0.25rem; font-size: 1rem; color: var(--clerri-green); }
+    .profile-plan .price {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.75rem; color: var(--clerri-green); line-height: 1;
+    }
+    .profile-plan .price small { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+    .profile-plan ul { font-size: 0.85rem; margin: 0.5rem 0 0; padding-left: 1rem; }
+    .profile-plan li { padding: 0.15rem 0; }
+    .profile-sidebar {
+      background: var(--cotton); border-radius: 1rem; padding: 1.25rem;
+      border: 1px solid var(--cotton-dark);
+      height: fit-content;
+    }
+    .profile-stat {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--cotton-dark);
+      font-size: 0.85rem;
+    }
+    .profile-stat:last-child { border-bottom: none; }
+    .profile-stat-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+    .profile-stat-val { color: var(--clerri-green); font-weight: 600; }
+
+    /* PHONE MOCKUP */
+    .phone-frame {
+      max-width: 320px; margin: 0 auto;
+      background: #1a1a1a; border-radius: 2.5rem;
+      padding: 1rem 0.75rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+    .phone-screen {
+      background: var(--cotton); border-radius: 1.75rem;
+      overflow: hidden; height: 580px;
+      position: relative;
+    }
+    .phone-statusbar {
+      background: var(--clerri-green); color: var(--cotton);
+      padding: 0.5rem 1rem 0.4rem;
+      font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;
+      display: flex; justify-content: space-between;
+    }
+    .phone-content { padding: 1rem; }
+    .phone-search {
+      background: #fff; border-radius: 999px;
+      padding: 0.65rem 1rem;
+      display: flex; gap: 0.5rem; align-items: center;
+      font-size: 0.85rem; color: var(--muted);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .phone-chips { display: flex; gap: 0.35rem; overflow-x: auto; padding: 0.75rem 0; }
+    .phone-chip {
+      background: #fff; border: 1px solid var(--cotton-dark);
+      padding: 0.3rem 0.65rem; border-radius: 999px;
+      font-size: 0.7rem; white-space: nowrap; flex-shrink: 0;
+    }
+    .phone-chip.active { background: var(--clerri-green); color: var(--zest); border-color: var(--clerri-green); }
+    .phone-card {
+      background: #fff; border-radius: 0.75rem;
+      padding: 0.75rem; margin-bottom: 0.5rem;
+      border: 1px solid var(--cotton-dark);
+      display: flex; gap: 0.5rem;
+    }
+    .phone-card-logo {
+      width: 36px; height: 36px;
+      background: var(--clerri-green); color: var(--zest);
+      border-radius: 0.4rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .phone-card-body { min-width: 0; flex: 1; }
+    .phone-card h5 { font-size: 0.85rem; margin: 0 0 0.15rem; color: var(--clerri-green); font-weight: 700; }
+    .phone-card-meta { font-size: 0.7rem; color: var(--muted); margin: 0; }
+  </style>
+
+  <div id="dir-mock" class="dir-mock">
+    <div class="dir-header">
+      <div class="dir-header-inner">
+        <h2>Find affordable dental care<br />near you.</h2>
+        <p>Browse 5,000+ practices offering membership plans. No insurance required.</p>
+        <div class="dir-search">
+          <div class="dir-search-field">
+            <div>
+              <div class="dir-search-field-label">Location</div>
+              <input id="dm-loc" type="text" placeholder="ZIP or city" value="Indianapolis, IN" />
+            </div>
+          </div>
+          <div class="dir-search-field">
+            <div>
+              <div class="dir-search-field-label">Plan type</div>
+              <select id="dm-plan">
+                <option>Any plan</option>
+                <option>Individual</option>
+                <option>Family</option>
+                <option>Senior</option>
+              </select>
+            </div>
+          </div>
+          <button class="dir-search-btn" onclick="dmFilter()">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dir-body">
+      <aside class="dir-sidebar">
+        <div class="dir-filter-group">
+          <h5>Specialty</h5>
+          <div class="dir-chip-row">
+            <div class="dir-chip active" data-filter="specialty" data-val="all">All</div>
+            <div class="dir-chip" data-filter="specialty" data-val="general">General</div>
+            <div class="dir-chip" data-filter="specialty" data-val="pedo">Pedo</div>
+            <div class="dir-chip" data-filter="specialty" data-val="ortho">Ortho</div>
+            <div class="dir-chip" data-filter="specialty" data-val="perio">Perio</div>
+          </div>
+        </div>
+        <div class="dir-filter-group">
+          <h5>Distance</h5>
+          <div class="dir-range">
+            <input id="dm-range" type="range" min="1" max="50" value="15" oninput="dmRange(this.value)" />
+            <span class="val" id="dm-range-val">15 mi</span>
+          </div>
+        </div>
+        <div class="dir-filter-group">
+          <h5>Languages</h5>
+          <div class="dir-chip-row">
+            <div class="dir-chip" data-filter="lang" data-val="en">English</div>
+            <div class="dir-chip" data-filter="lang" data-val="es">Español</div>
+          </div>
+        </div>
+        <div class="dir-filter-group">
+          <h5>Plan price</h5>
+          <div class="dir-chip-row">
+            <div class="dir-chip active" data-filter="price" data-val="any">Any</div>
+            <div class="dir-chip" data-filter="price" data-val="under-200">Under $200</div>
+            <div class="dir-chip" data-filter="price" data-val="200-400">$200-$400</div>
+            <div class="dir-chip" data-filter="price" data-val="family">Family plans</div>
+          </div>
+        </div>
+        <div class="dir-filter-group">
+          <h5>Features</h5>
+          <label class="dir-toggle"><input type="checkbox" checked /> Accepting new patients</label>
+          <label class="dir-toggle"><input type="checkbox" /> Open evenings</label>
+          <label class="dir-toggle"><input type="checkbox" /> Open weekends</label>
+          <label class="dir-toggle"><input type="checkbox" /> Same-day appointments</label>
+          <label class="dir-toggle"><input type="checkbox" /> Financing available (Sunbit)</label>
+        </div>
+      </aside>
+
+      <main class="dir-main">
+        <div class="dir-result-header">
+          <div class="dir-count"><strong>23 practices</strong> within 15 miles of Indianapolis</div>
+          <div class="dir-view-toggle">
+            <button class="active">List</button>
+            <button>Map</button>
+          </div>
+        </div>
+
+        <div class="dir-listings">
+          <div class="dir-card featured">
+            <div class="dir-card-logo">WD</div>
+            <div class="dir-card-body">
+              <span class="dir-card-tag">★ Featured</span>
+              <h4>Wells Family Dental</h4>
+              <div class="dir-card-meta">
+                <span>📍 0.8 mi · Downtown Indianapolis</span>
+                <span>🦷 General + Pedo</span>
+                <span>🗣️ EN / ES</span>
+              </div>
+              <div class="dir-card-plans">
+                <div class="dir-plan-pill">Individual · $189/yr</div>
+                <div class="dir-plan-pill">Family of 4 · $399/yr</div>
+                <div class="dir-plan-pill">Senior · $159/yr</div>
+              </div>
+            </div>
+            <div class="dir-card-right">
+              <div class="dir-rating">★ 4.9</div>
+              <a href="#profile-mock" class="dir-card-cta">View practice →</a>
+            </div>
+          </div>
+
+          <div class="dir-card">
+            <div class="dir-card-logo">CD</div>
+            <div class="dir-card-body">
+              <h4>Circle City Dental</h4>
+              <div class="dir-card-meta">
+                <span>📍 1.4 mi · Mass Ave</span>
+                <span>🦷 General</span>
+                <span>🗣️ EN</span>
+              </div>
+              <div class="dir-card-plans">
+                <div class="dir-plan-pill">Individual · $165/yr</div>
+                <div class="dir-plan-pill">Senior · $129/yr</div>
+              </div>
+            </div>
+            <div class="dir-card-right">
+              <div class="dir-rating">★ 4.7</div>
+              <a href="#" class="dir-card-cta">View practice →</a>
+            </div>
+          </div>
+
+          <div class="dir-card">
+            <div class="dir-card-logo">IO</div>
+            <div class="dir-card-body">
+              <h4>Indiana Orthodontics Group</h4>
+              <div class="dir-card-meta">
+                <span>📍 2.1 mi · Broad Ripple</span>
+                <span>🦷 Ortho</span>
+                <span>🗣️ EN / ES</span>
+              </div>
+              <div class="dir-card-plans">
+                <div class="dir-plan-pill">Ortho member · $399/yr</div>
+                <div class="dir-plan-pill">Financing available</div>
+              </div>
+            </div>
+            <div class="dir-card-right">
+              <div class="dir-rating">★ 4.8</div>
+              <a href="#" class="dir-card-cta">View practice →</a>
+            </div>
+          </div>
+
+          <div class="dir-card">
+            <div class="dir-card-logo">MS</div>
+            <div class="dir-card-body">
+              <h4>MainStreet Family Dentistry</h4>
+              <div class="dir-card-meta">
+                <span>📍 3.5 mi · Carmel</span>
+                <span>🦷 General + Pedo</span>
+                <span>🗣️ EN</span>
+              </div>
+              <div class="dir-card-plans">
+                <div class="dir-plan-pill">Individual · $215/yr</div>
+                <div class="dir-plan-pill">Family of 4 · $449/yr</div>
+              </div>
+            </div>
+            <div class="dir-card-right">
+              <div class="dir-rating">★ 4.9</div>
+              <a href="#" class="dir-card-cta">View practice →</a>
+            </div>
+          </div>
+
+          <div class="dir-card">
+            <div class="dir-card-logo">SC</div>
+            <div class="dir-card-body">
+              <h4>Smile Co. Dental Studio</h4>
+              <div class="dir-card-meta">
+                <span>📍 4.2 mi · Fountain Square</span>
+                <span>🦷 General + Perio</span>
+                <span>🗣️ EN</span>
+              </div>
+              <div class="dir-card-plans">
+                <div class="dir-plan-pill">Individual · $199/yr</div>
+                <div class="dir-plan-pill">Senior · $149/yr</div>
+              </div>
+            </div>
+            <div class="dir-card-right">
+              <div class="dir-rating">★ 4.6</div>
+              <a href="#" class="dir-card-cta">View practice →</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- PRACTICE PROFILE DETAIL -->
+  <h2 id="profile-mock">Practice profile detail (click "View practice" above)</h2>
+  <p style="color:var(--ink-soft);max-width:65ch">What a single practice's profile page looks like after clicking through from a listing card.</p>
+
+  <div class="profile-mock">
+    <div class="profile-hero">
+      <div class="profile-logo">WD</div>
+      <div>
+        <h2 class="profile-name">Wells Family Dental</h2>
+        <p class="profile-tagline">Family dentistry in downtown Indianapolis since 2008.</p>
+        <div style="display:flex;gap:1rem;margin-top:0.75rem;flex-wrap:wrap;color:rgba(207,252,120,0.85);font-size:0.875rem">
+          <span>★ 4.9 (1,247 reviews)</span>
+          <span>📍 142 N Pennsylvania St, Indianapolis IN</span>
+          <span>📞 (317) 555-0142</span>
+        </div>
+      </div>
+      <div class="profile-cta-grp">
+        <a href="#" class="profile-cta">Join membership</a>
+        <a href="#" class="profile-cta outline">Book an appointment</a>
+      </div>
+    </div>
+
+    <div class="profile-body">
+      <div>
+        <div class="profile-section">
+          <h3>Membership plans available</h3>
+          <div class="profile-plans">
+            <div class="profile-plan">
+              <h4>Individual</h4>
+              <div class="price">$189<small>/year</small></div>
+              <ul>
+                <li>2 cleanings + exams/yr</li>
+                <li>2 sets of bitewing X-rays</li>
+                <li>20% off all other services</li>
+                <li>No deductibles, no waiting</li>
+              </ul>
+            </div>
+            <div class="profile-plan featured">
+              <h4>Family of 4</h4>
+              <div class="price">$399<small>/year</small></div>
+              <ul>
+                <li>Best value · save $357</li>
+                <li>All Individual benefits × 4</li>
+                <li>Free fluoride for under-18</li>
+                <li>Sibling cleaning bonus</li>
+              </ul>
+            </div>
+            <div class="profile-plan">
+              <h4>Senior (65+)</h4>
+              <div class="price">$159<small>/year</small></div>
+              <ul>
+                <li>All Individual benefits</li>
+                <li>Discount on dentures</li>
+                <li>Senior-specific cleanings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>What's included for members</h3>
+          <ul style="font-size:0.9rem;padding-left:1rem">
+            <li>Preventive care at no additional cost (2 cleanings + 2 exams/yr)</li>
+            <li>20% off restorative, cosmetic, and emergency services</li>
+            <li>Same-day appointments for members when available</li>
+            <li>Financing via Sunbit for procedures over $500 (0-14.99% APR)</li>
+            <li>No deductibles, no annual maximums, no waiting periods</li>
+          </ul>
+        </div>
+
+        <div class="profile-section">
+          <h3>Services offered</h3>
+          <div class="dir-chip-row" style="gap:0.5rem">
+            <span class="dir-plan-pill">General dentistry</span>
+            <span class="dir-plan-pill">Pediatric dentistry</span>
+            <span class="dir-plan-pill">Cosmetic dentistry</span>
+            <span class="dir-plan-pill">Crowns + bridges</span>
+            <span class="dir-plan-pill">Implants</span>
+            <span class="dir-plan-pill">Root canals</span>
+            <span class="dir-plan-pill">Whitening</span>
+            <span class="dir-plan-pill">Sealants</span>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>About the practice</h3>
+          <p style="font-size:0.9rem">Wells Family Dental has served the Indianapolis community for 17 years. Founded by Dr. Brett Wells, the practice focuses on long-term patient relationships, transparent pricing, and access to care for uninsured families. The practice was an early adopter of membership-plan-based care and now serves over 3,000 members.</p>
+        </div>
+      </div>
+
+      <aside class="profile-sidebar">
+        <div class="profile-stat">
+          <div class="profile-stat-label">Hours</div>
+          <div class="profile-stat-val">Mon-Thu · 7am-6pm<br />Fri · 7am-2pm<br />Sat · 8am-1pm</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-label">Languages</div>
+          <div class="profile-stat-val">English · Español</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-label">Accepting new patients</div>
+          <div class="profile-stat-val">Yes — usually within 1 week</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-label">Member-only perks</div>
+          <div class="profile-stat-val">Same-day emergency · Priority booking · Birthday offer</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-label">Total members</div>
+          <div class="profile-stat-val">3,200+ active members</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-label">Insurance accepted</div>
+          <div class="profile-stat-val">Some PPOs · Most patients use membership instead</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- MOBILE -->
+  <h2>Mobile layout</h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Patient discovery happens on mobile (60%+ of "dentist near me" searches are mobile). Bottom-anchored search, swipeable filter chips, vertically-stacked cards.</p>
+
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="phone-statusbar"><span>9:41</span><span>5G ●●●●</span></div>
+      <div class="phone-content">
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;color:var(--clerri-green)">Find a practice</div>
+        <div class="phone-search">📍 Indianapolis, IN</div>
+        <div class="phone-chips">
+          <div class="phone-chip active">All</div>
+          <div class="phone-chip">General</div>
+          <div class="phone-chip">Pedo</div>
+          <div class="phone-chip">Ortho</div>
+          <div class="phone-chip">Perio</div>
+          <div class="phone-chip">Open weekends</div>
+        </div>
+        <div style="font-size:0.65rem;color:var(--muted);margin:0.5rem 0 0.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;text-transform:uppercase">23 practices · 15 mi</div>
+        <div class="phone-card">
+          <div class="phone-card-logo">WD</div>
+          <div class="phone-card-body">
+            <h5>Wells Family Dental</h5>
+            <p class="phone-card-meta">0.8 mi · $189/yr individual</p>
+            <p class="phone-card-meta">★ 4.9 · Accepting patients</p>
+          </div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-logo">CD</div>
+          <div class="phone-card-body">
+            <h5>Circle City Dental</h5>
+            <p class="phone-card-meta">1.4 mi · $165/yr individual</p>
+            <p class="phone-card-meta">★ 4.7 · Accepting patients</p>
+          </div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-logo">IO</div>
+          <div class="phone-card-body">
+            <h5>Indiana Orthodontics</h5>
+            <p class="phone-card-meta">2.1 mi · $399/yr ortho</p>
+            <p class="phone-card-meta">★ 4.8 · Financing available</p>
+          </div>
+        </div>
+        <div class="phone-card">
+          <div class="phone-card-logo">MS</div>
+          <div class="phone-card-body">
+            <h5>MainStreet Family</h5>
+            <p class="phone-card-meta">3.5 mi · $215/yr individual</p>
+            <p class="phone-card-meta">★ 4.9 · Same-day appts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL NOTES -->
+  <h2>Technical implementation notes</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Data model (per practice)</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li>id, name, tagline, founded_year</li>
+        <li>address, lat/lng, phone, website</li>
+        <li>specialties[] (general, pedo, ortho, perio, etc.)</li>
+        <li>languages[] (en, es, etc.)</li>
+        <li>hours_by_day, accepting_new_patients, emergency_avail</li>
+        <li>plans[] (name, price, benefits[], featured)</li>
+        <li>features[] (open_weekends, sunbit_financing, etc.)</li>
+        <li>rating, review_count (from Google + Clerri)</li>
+        <li>premium_tier (boolean — affects placement)</li>
+        <li>total_active_members (anonymized)</li>
+        <li>logo_url, hero_image_url, gallery[]</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Build complexity breakdown</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li><strong>Frontend:</strong> ~4-6 weeks (Next.js or Astro static + dynamic search). Could be built faster with Lovable for MVP.</li>
+        <li><strong>Practice profile pages:</strong> ~2-3 weeks (5,000 dynamic pages auto-generated).</li>
+        <li><strong>Backend / data sync:</strong> ~4-8 weeks (Salesforce → directory schema, nightly sync, image hosting).</li>
+        <li><strong>Mapbox or Google Maps integration:</strong> ~1-2 weeks (Mapbox is cheaper at scale).</li>
+        <li><strong>SEO scaffolding:</strong> 5,000+ city pages + 5,000 practice pages → schema.org + sitemap.</li>
+        <li><strong>Compliance review:</strong> 2-4 weeks (DMPO state-by-state for consumer-facing claims).</li>
+        <li><strong>Total v1:</strong> ~12-16 weeks. MVP scope can ship in 8 weeks.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Practice-side monetization tiers</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li><strong>Free (default):</strong> All Clerri-member practices listed automatically. Standard card. Profile page.</li>
+        <li><strong>Premium ($X/mo):</strong> Featured placement in search results. Photo gallery on profile. Lead capture form. Analytics dashboard (who viewed your listing, who clicked-to-call).</li>
+        <li><strong>Enterprise (DSO-tier):</strong> Multi-location aggregated profile. DSO-level analytics. Co-branded landing pages per location.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Patient acquisition funnel</h4>
+      <ul style="font-size:0.875rem;padding-left:1rem">
+        <li>Patient searches Google for "affordable dentist near me"</li>
+        <li>Lands on Clerri city page (SEO-optimized)</li>
+        <li>Filters by their preferences (price, distance, language)</li>
+        <li>Clicks practice profile</li>
+        <li>Either books appointment OR clicks "Join membership"</li>
+        <li>Conversion event tracked + attributed to Clerri</li>
+        <li>Practice receives lead notification</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Tasks</h2>
+  <div data-section="directory-mockup">
+    <label class="task"><input type="checkbox" data-track="dm-01-share-jacob" data-section="directory-mockup" /><div class="task-content"><div class="task-title">Share this prototype with Jacob (product) — establish scope for real build</div></div></label>
+    <label class="task"><input type="checkbox" data-track="dm-02-jim-walkthrough" data-section="directory-mockup" /><div class="task-content"><div class="task-title">Walk Jim through the prototype — demonstrate what's possible at this fidelity</div></div></label>
+    <label class="task"><input type="checkbox" data-track="dm-03-customer-validation" data-section="directory-mockup" /><div class="task-content"><div class="task-title">Share with 3-5 existing customer practices — get feedback on practice-side experience</div></div></label>
+    <label class="task"><input type="checkbox" data-track="dm-04-patient-test" data-section="directory-mockup" /><div class="task-content"><div class="task-title">Test with 5-10 patients (uninsured adults) — does the search → enroll flow make sense?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="dm-05-build-decision" data-section="directory-mockup" /><div class="task-content"><div class="task-title">Build vs partner decision (build with internal engineering or partner with NexHealth?)</div></div></label>
+    <label class="task"><input type="checkbox" data-track="dm-06-compliance" data-section="directory-mockup" /><div class="task-content"><div class="task-title">DMPO + state-specific compliance review for consumer-facing claims</div></div></label>
+    <label class="task"><input type="checkbox" data-track="dm-07-pilot-metros" data-section="directory-mockup" /><div class="task-content"><div class="task-title">Identify 5 pilot metros (high Clerri practice density) for soft launch</div></div></label>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Directory build notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="directory-mockup-notes" placeholder="Feedback from Jacob/Jim, customer reactions, patient test learnings, vendor evaluations..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/directory"><span class="dir">← Prev</span><span class="name">Patient Directory Strategy</span></a>
+    <a href="/clerri/website"><span class="dir">Next →</span><span class="name">Website & Messaging</span></a>
+  </div>
+
+</div>
+
+<script is:inline>
+  // Light interactivity for the prototype — toggles only, no real filtering
+  document.querySelectorAll('.dir-chip[data-filter]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const group = chip.dataset.filter;
+      document.querySelectorAll('.dir-chip[data-filter="' + group + '"]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+  function dmRange(v) {
+    document.getElementById('dm-range-val').textContent = v + ' mi';
+  }
+  function dmFilter() {
+    // visual feedback only — would query backend in real build
+    const btn = document.querySelector('.dir-search-btn');
+    const orig = btn.textContent;
+    btn.textContent = 'Searching…';
+    setTimeout(() => { btn.textContent = orig; }, 800);
+  }
+</script>
+
+</ClerriLayout>

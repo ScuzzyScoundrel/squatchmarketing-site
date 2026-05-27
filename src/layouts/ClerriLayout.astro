@@ -6,26 +6,70 @@ interface Props {
 }
 const { title, description = 'Clerri Marketing Strategy Hub — working document', section = '' } = Astro.props;
 
-const sections = [
-  { slug: 'dashboard', href: '/clerri', label: 'Dashboard', num: '00' },
-  { slug: 'foundation', href: '/clerri/foundation', label: 'Strategic Foundation', num: '01' },
-  { slug: 'market', href: '/clerri/market', label: 'Market Context', num: '02' },
-  { slug: 'competitors', href: '/clerri/competitors', label: 'Competitor Intelligence', num: '03' },
-  { slug: 'ad-spend', href: '/clerri/ad-spend', label: 'Ad Spend Tiers', num: '04' },
-  { slug: 'icp', href: '/clerri/icp', label: 'ICP & ABM Targets', num: '05' },
-  { slug: 'ad-strategy', href: '/clerri/ad-strategy', label: 'Ad Creative & Targeting', num: '06' },
-  { slug: 'aeo-seo', href: '/clerri/aeo-seo', label: 'AEO / SEO / SEM', num: '07' },
-  { slug: 'directory', href: '/clerri/directory', label: 'Patient Directory', num: '08' },
-  { slug: 'ai-stack', href: '/clerri/ai-stack', label: 'AI Marketing Stack', num: '09' },
-  { slug: 'workflows', href: '/clerri/workflows', label: 'Workflow Recipes', num: '10' },
-  { slug: 'website', href: '/clerri/website', label: 'Website & Messaging', num: '11' },
-  { slug: 'channels', href: '/clerri/channels', label: 'Channel Strategy', num: '12' },
-  { slug: 'partners', href: '/clerri/partners', label: 'Partnership Targets', num: '13' },
-  { slug: 'conferences', href: '/clerri/conferences', label: 'Conferences 2026', num: '14' },
-  { slug: 'team', href: '/clerri/team', label: 'Team & Operations', num: '15' },
-  { slug: 'horizontal', href: '/clerri/horizontal', label: 'Horizontal Expansion', num: '16' },
-  { slug: '90day', href: '/clerri/90day', label: 'First 90 Days', num: '17' },
-  { slug: 'metrics', href: '/clerri/metrics', label: 'Metrics & Questions', num: '18' },
+const navGroups = [
+  {
+    title: 'Start',
+    items: [
+      { slug: 'dashboard', href: '/clerri', label: 'Dashboard' },
+    ],
+  },
+  {
+    title: 'Strategy',
+    items: [
+      { slug: 'foundation', href: '/clerri/foundation', label: 'Strategic Foundation' },
+      { slug: 'market', href: '/clerri/market', label: 'Market Context' },
+      { slug: 'market-gaps', href: '/clerri/market-gaps', label: 'Market Gaps' },
+      { slug: 'competitors', href: '/clerri/competitors', label: 'Competitor Intelligence' },
+      { slug: 'clerri-weaknesses', href: '/clerri/clerri-weaknesses', label: "Clerri's Weaknesses" },
+      { slug: 'icp', href: '/clerri/icp', label: 'ICP & ABM Targets' },
+    ],
+  },
+  {
+    title: 'Channels & Budget',
+    items: [
+      { slug: 'ad-spend', href: '/clerri/ad-spend', label: 'Ad Spend Tiers' },
+      { slug: 'zero-budget', href: '/clerri/zero-budget', label: 'Zero-Budget Strategy' },
+      { slug: 'ad-strategy', href: '/clerri/ad-strategy', label: 'Ad Creative & Targeting' },
+      { slug: 'content-bank', href: '/clerri/content-bank', label: 'Content Bank' },
+      { slug: 'aeo-seo', href: '/clerri/aeo-seo', label: 'AEO / SEO / SEM' },
+      { slug: 'channels', href: '/clerri/channels', label: 'Channel Strategy' },
+    ],
+  },
+  {
+    title: 'Product & Web',
+    items: [
+      { slug: 'directory', href: '/clerri/directory', label: 'Patient Directory' },
+      { slug: 'directory-mockup', href: '/clerri/directory-mockup', label: 'Directory Mockup' },
+      { slug: 'website', href: '/clerri/website', label: 'Website & Messaging' },
+      { slug: 'website-framework', href: '/clerri/website-framework', label: 'Website Framework' },
+      { slug: 'product-ideas', href: '/clerri/product-ideas', label: 'Product Ideas' },
+    ],
+  },
+  {
+    title: 'AI & Tooling',
+    items: [
+      { slug: 'ai-stack', href: '/clerri/ai-stack', label: 'AI Marketing Stack' },
+      { slug: 'workflows', href: '/clerri/workflows', label: 'Workflow Recipes' },
+      { slug: 'claude-cli-vs-api', href: '/clerri/claude-cli-vs-api', label: 'Claude CLI vs API' },
+      { slug: 'martech-audit', href: '/clerri/martech-audit', label: 'Martech Audit' },
+    ],
+  },
+  {
+    title: 'Go-to-Market',
+    items: [
+      { slug: 'partners', href: '/clerri/partners', label: 'Partnership Targets' },
+      { slug: 'conferences', href: '/clerri/conferences', label: 'Conferences 2026' },
+    ],
+  },
+  {
+    title: 'Org & Plan',
+    items: [
+      { slug: 'team', href: '/clerri/team', label: 'Team & Operations' },
+      { slug: 'horizontal', href: '/clerri/horizontal', label: 'Horizontal Expansion' },
+      { slug: '90day', href: '/clerri/90day', label: 'First 90 Days' },
+      { slug: 'metrics', href: '/clerri/metrics', label: 'Metrics & Questions' },
+    ],
+  },
 ];
 ---
 
@@ -191,9 +235,22 @@ const sections = [
     font-size: 1.15rem; color: rgba(243,240,228,0.8); max-width: 50rem;
     margin: 0;
   }
-  .page-body { padding: 3rem; max-width: 1200px; }
+  .page-head > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .page-body { padding: 3rem; max-width: 1100px; margin: 0 auto; }
   @media (max-width: 720px) {
     .page-head, .page-body { padding: 2rem 1.5rem; }
+  }
+
+  /* Sidebar group headers */
+  .nav-group { padding: 0.75rem 0 0.25rem; }
+  .nav-group-title {
+    padding: 0 1.5rem 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(207,252,120,0.45);
+    font-weight: 600;
   }
 
   h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; margin: 2.5rem 0 1rem; }
@@ -479,12 +536,16 @@ const sections = [
       </a>
     </div>
     <nav class="sidebar-nav">
-      {sections.map(s => (
-        <a href={s.href} class={`nav-item ${section === s.slug ? 'active' : ''}`}>
-          <span class="nav-num">{s.num}</span>
-          <span>{s.label}</span>
-          <span class="nav-progress" data-progress-section={s.slug}>—</span>
-        </a>
+      {navGroups.map(group => (
+        <div class="nav-group">
+          {group.title !== 'Start' && <div class="nav-group-title">{group.title}</div>}
+          {group.items.map(s => (
+            <a href={s.href} class={`nav-item ${section === s.slug ? 'active' : ''}`}>
+              <span>{s.label}</span>
+              <span class="nav-progress" data-progress-section={s.slug}>—</span>
+            </a>
+          ))}
+        </div>
       ))}
     </nav>
     <div class="sidebar-foot">

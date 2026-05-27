@@ -1,0 +1,249 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Martech Audit" section="martech-audit">
+
+<div class="page-head">
+  <div class="page-eyebrow">Operations · First 30 Days</div>
+  <h1 class="page-title">What to audit, <em>what to fix, what to buy.</em></h1>
+  <p class="page-sub">Salesforce + Pardot audit checklist (assuming Clerri has both — verify week 1). If they don't have an EMS / MAP at all, the recommended stack to propose. Plus a martech architecture diagram for the team-of-4 + AI-workflow reality.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="martech-audit"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Audit progress: <span data-progress-here="martech-audit">0 / 0</span></p>
+
+  <!-- VERIFY FIRST -->
+  <div class="callout">
+    <div class="lbl">Verify in Week 1 — three questions for Jim / RevOps</div>
+    <ol style="padding-left:1.25rem;margin:0.5rem 0;font-size:0.95rem">
+      <li>What CRM are we on? (Likely Salesforce — confirm edition + Sales/Service Cloud)</li>
+      <li>Do we have a marketing automation platform? Pardot (now "Marketing Cloud Account Engagement"), HubSpot, Marketo, or none?</li>
+      <li>Where does member-side communication live? (Mailchimp? Sendgrid? Pardot? Custom?) — this is separate from B2B nurture.</li>
+    </ol>
+  </div>
+
+  <!-- IF THEY HAVE PARDOT -->
+  <h2>If Clerri has Salesforce + Pardot — <em>the audit.</em></h2>
+
+  <h3>1 · Salesforce data hygiene</h3>
+  <div data-section="martech-audit">
+    <label class="task"><input type="checkbox" data-track="sf-01-account-fields" data-section="martech-audit" /><div class="task-content"><div class="task-title">Account fields: Practice size (locations), Specialty mix, Plan tier, ARR, Member count, NPS — are these populated and reliable?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-02-contact-roles" data-section="martech-audit" /><div class="task-content"><div class="task-title">Contact roles: Owner-Dentist, Practice Manager, Office Admin, DSO Exec — present and consistently used?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-03-lead-routing" data-section="martech-audit" /><div class="task-content"><div class="task-title">Lead routing rules — what happens when a marketing lead comes in? Round-robin? Territory? Does anything sit in queue limbo?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-04-opportunity-stages" data-section="martech-audit" /><div class="task-content"><div class="task-title">Opportunity stages — what's the funnel structure? MQL → SQL → Discovery → Demo → Proposal → Closed?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-05-source-tracking" data-section="martech-audit" /><div class="task-content"><div class="task-title">Lead/opportunity source tracking — first-touch source? Multi-touch attribution? Any consistency?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-06-utm-storage" data-section="martech-audit" /><div class="task-content"><div class="task-title">UTM parameter capture — are utm_source / utm_campaign / utm_medium stored on leads and opportunities?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-07-duplicates" data-section="martech-audit" /><div class="task-content"><div class="task-title">Duplicate accounts/contacts — run a deduplication report. Multi-location practice accounts are notorious for fragmentation.</div></div></label>
+    <label class="task"><input type="checkbox" data-track="sf-08-api-access" data-section="martech-audit" /><div class="task-content"><div class="task-title">API access for marketing — is there a Connected App with API scope? Or do you have to ask RevOps every time?</div></div></label>
+  </div>
+
+  <h3>2 · Pardot configuration</h3>
+  <div data-section="martech-audit">
+    <label class="task"><input type="checkbox" data-track="pd-01-edition" data-section="martech-audit" /><div class="task-content"><div class="task-title">Pardot edition: Growth ($1,250/mo) / Plus ($2,500) / Advanced ($4,000) / Premium ($15,000)? Determines what Einstein features available.</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-02-templates" data-section="martech-audit" /><div class="task-content"><div class="task-title">Email templates — how many active? Are they on-brand? Do they render in Outlook 2007 (yes, still required)?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-03-engagement-studio" data-section="martech-audit" /><div class="task-content"><div class="task-title">Engagement Studio programs — how many drip flows are active? Are they updated? Last sent date on each?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-04-scoring" data-section="martech-audit" /><div class="task-content"><div class="task-title">Lead scoring rules — are they realistic? When was last review? Are SQLs actually qualifying?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-05-segments" data-section="martech-audit" /><div class="task-content"><div class="task-title">Lists / Segments — are they static (decaying) or dynamic (rule-based)? Static lists older than 6 months should be reviewed.</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-06-forms" data-section="martech-audit" /><div class="task-content"><div class="task-title">Forms — how many fields? Conversion-tested? Progressive profiling enabled?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-07-landing-pages" data-section="martech-audit" /><div class="task-content"><div class="task-title">Landing pages — Pardot LPs or website hosted? If Pardot, how stale? If website, is data sync clean?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-08-suppression" data-section="martech-audit" /><div class="task-content"><div class="task-title">Suppression lists — global unsubscribes, do-not-contact, member opt-outs. Is suppression logic working across all sends?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-09-sender-domains" data-section="martech-audit" /><div class="task-content"><div class="task-title">Sender domains + DKIM/SPF/DMARC — verified? Deliverability rate by domain?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="pd-10-api-tokens" data-section="martech-audit" /><div class="task-content"><div class="task-title">Pardot Business Unit ID + API user — what's required for n8n integration?</div></div></label>
+  </div>
+
+  <h3>3 · Integration health</h3>
+  <div data-section="martech-audit">
+    <label class="task"><input type="checkbox" data-track="int-01-sf-pardot-sync" data-section="martech-audit" /><div class="task-content"><div class="task-title">Salesforce ↔ Pardot sync — bidirectional? Any sync errors in last 30 days? Field-level mapping review.</div></div></label>
+    <label class="task"><input type="checkbox" data-track="int-02-website" data-section="martech-audit" /><div class="task-content"><div class="task-title">Website → Pardot forms — UTM capture working? Hidden fields? Field validation?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="int-03-ga4" data-section="martech-audit" /><div class="task-content"><div class="task-title">GA4 → Salesforce — is there attribution data flowing? Client ID stored on lead records?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="int-04-zoom-google" data-section="martech-audit" /><div class="task-content"><div class="task-title">Webinar platform (Zoom/Goldcast) → Pardot — auto-enroll attendees in nurture?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="int-05-linkedin" data-section="martech-audit" /><div class="task-content"><div class="task-title">LinkedIn Lead Gen Forms → Pardot — auto-sync enabled? Form field mapping correct?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="int-06-call-recording" data-section="martech-audit" /><div class="task-content"><div class="task-title">Call recording (Gong/Chorus) — if present, are insights flowing into Salesforce activity?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="int-07-member-comm" data-section="martech-audit" /><div class="task-content"><div class="task-title">Member-side comms platform — separate from B2B Pardot? What's the architecture?</div></div></label>
+  </div>
+
+  <h3>4 · Reporting + attribution</h3>
+  <div data-section="martech-audit">
+    <label class="task"><input type="checkbox" data-track="rpt-01-dashboards" data-section="martech-audit" /><div class="task-content"><div class="task-title">Existing marketing dashboards — what reports run today? Who looks at them? Are they accurate?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="rpt-02-attribution-model" data-section="martech-audit" /><div class="task-content"><div class="task-title">Attribution model — single-touch first, single-touch last, multi-touch (linear, U-shape, custom)?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="rpt-03-pipeline-source" data-section="martech-audit" /><div class="task-content"><div class="task-title">Pipeline by source — can you answer "what's marketing-sourced ARR in Q3" cleanly?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="rpt-04-cac-payback" data-section="martech-audit" /><div class="task-content"><div class="task-title">CAC + payback period — is this calculable? Is it being calculated?</div></div></label>
+    <label class="task"><input type="checkbox" data-track="rpt-05-nrr-board" data-section="martech-audit" /><div class="task-content"><div class="task-title">NRR reporting — Charlesbank's favorite metric. Is marketing's contribution to NRR isolated?</div></div></label>
+  </div>
+
+  <!-- IF NO EMS -->
+  <hr />
+  <h2>If Clerri has Salesforce but no EMS / MAP — <em>the recommendation stack.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Less likely (Charlesbank-backed companies typically have one) but possible. Here's what to propose, ranked by fit for Clerri's specific needs.</p>
+
+  <div class="grid-3">
+    <div class="card" style="border-color:var(--clerri-green)">
+      <span class="pill pill-zest">RECOMMENDED · Status quo</span>
+      <h3 style="margin:0.5rem 0">Pardot (MCAE)</h3>
+      <p style="font-size:0.9rem"><strong>Pricing:</strong> $1,250 (Growth) / $2,500 (Plus) / $4,000 (Advanced) / $15K (Premium) per month.</p>
+      <p style="font-size:0.9rem"><strong>Why:</strong> Salesforce-native = best CRM sync of any B2B MAP. Account-based marketing native. Engagement Studio is great for drip programs.</p>
+      <p style="font-size:0.9rem"><strong>Against:</strong> UI is dated. Templates require HTML expertise. Mobile editor is rough. Einstein AI gated to Advanced+.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Year-1 budget: $30-60K</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-blue">Strong alternative</span>
+      <h3 style="margin:0.5rem 0">HubSpot Marketing Hub Enterprise</h3>
+      <p style="font-size:0.9rem"><strong>Pricing:</strong> $3,600/mo Enterprise (10K contacts). $50 / 1K extra contacts. Annual contract.</p>
+      <p style="font-size:0.9rem"><strong>Why:</strong> Way better UI than Pardot. Native AI (Breeze) is much stronger. HubSpot ↔ Salesforce integration is mature. Better content management.</p>
+      <p style="font-size:0.9rem"><strong>Against:</strong> Second CRM source-of-truth risk. Higher cost per contact at scale. Migration off Pardot if already there = 3-6 months.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Year-1 budget: $50-80K</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-grey">If complexity is the issue</span>
+      <h3 style="margin:0.5rem 0">Customer.io</h3>
+      <p style="font-size:0.9rem"><strong>Pricing:</strong> $150-$1,000+ /mo depending on profile count. Pay-as-you-grow.</p>
+      <p style="font-size:0.9rem"><strong>Why:</strong> Best-in-class for lifecycle/transactional emails. Strong API. Less B2B-focused, more product-led.</p>
+      <p style="font-size:0.9rem"><strong>Use case:</strong> Member-side comms (separate from B2B nurture). Could complement Pardot.</p>
+    </div>
+  </div>
+
+  <h2>Recommended full martech stack — <em>team of 4 + AI workflows.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">If you're proposing a clean architecture, this is what to recommend. Built for the workflows in the Workflow Recipes page, scaled to the team-of-4 reality.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>CRM + B2B MAP</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Salesforce Sales Cloud:</strong> Source of truth for accounts, contacts, opportunities</li>
+        <li><strong>Pardot (MCAE) Advanced:</strong> B2B email, nurture, scoring, forms, landing pages</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Member-side comms</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Pardot or Customer.io:</strong> co-branded member emails</li>
+        <li>Practice-pulled branding via Salesforce custom fields</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>AI orchestration</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>n8n self-hosted</strong> ($7/mo VPS): workflow orchestrator</li>
+        <li><strong>Anthropic API</strong>: Claude reasoning + generation</li>
+        <li><strong>MCP servers</strong>: Salesforce, HubSpot, Notion, Google Drive</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Data + enrichment</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Clay Launch:</strong> $185/mo — practice + decision-maker enrichment</li>
+        <li><strong>Apollo:</strong> $49-119/user/mo — sales prospecting + email</li>
+        <li><strong>LinkedIn Sales Navigator:</strong> $99/user/mo — targeting</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Content + production</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Letterdrop:</strong> content CMS with SEO automation</li>
+        <li><strong>Castmagic + Opus Clip + Descript:</strong> audio/video repurposing (~$78/mo)</li>
+        <li><strong>Otter.ai or Fireflies:</strong> call transcription</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Discovery + monitoring</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Otterly.ai → Profound:</strong> AEO monitoring ($29 → $399)</li>
+        <li><strong>Visualping or Crayon:</strong> competitor change tracking</li>
+        <li><strong>Semrush or Ahrefs:</strong> SEO/SEM keyword data (~$120-200/mo)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Paid media + ABM</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Google Ads + LinkedIn Ads</strong>: native platforms</li>
+        <li><strong>Common Room or Default:</strong> signals/intent (free tier or ~$1K/mo)</li>
+        <li><strong>Skip:</strong> 6sense, Demandbase, Crayon ($30K+ enterprise overkill until Clerri is $100M ARR)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Internal tools + reporting</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Lovable / Bolt / v0:</strong> AI-built internal UIs (~$50-100/mo)</li>
+        <li><strong>Looker Studio:</strong> free dashboards from GA4 + Salesforce</li>
+        <li><strong>Notion:</strong> docs + knowledge base + workflow logs</li>
+        <li><strong>Slack:</strong> bot output channels + battle cards + comp intel</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Architecture diagram (the simple version)</h2>
+  <div class="card" style="background:var(--clerri-green);color:var(--cotton);border-color:var(--clerri-green)">
+    <pre class="mono" style="font-size:0.8rem;color:var(--zest);line-height:1.6;overflow-x:auto;white-space:pre">
+                        ┌──────────────────────┐
+                        │   SALESFORCE         │  ← source of truth
+                        │   (Sales Cloud)      │
+                        └──┬──────────────┬────┘
+                  sync     │              │
+                ┌──────────┘              └──────────┐
+                ▼                                    ▼
+        ┌───────────────┐                  ┌──────────────────┐
+        │   PARDOT      │                  │   n8n (self-host)│
+        │   (MCAE)      │                  │   $7/mo VPS      │
+        │   B2B email   │                  └────┬─────────────┘
+        │   forms       │                       │
+        │   nurture     │            ┌──────────┼──────────────┐
+        └───────────────┘            ▼          ▼              ▼
+                              ┌──────────┐ ┌─────────┐  ┌──────────┐
+                              │ Claude   │ │  Clay   │  │  Slack   │
+                              │ API      │ │ enrich  │  │  output  │
+                              │ (Sonnet/ │ │ $185/mo │  │  channel │
+                              │  Opus)   │ └─────────┘  └──────────┘
+                              └──┬───────┘
+                                 │
+                  ┌──────────────┼──────────────┐
+                  ▼              ▼              ▼
+            ┌──────────┐  ┌───────────┐  ┌──────────┐
+            │ Otterly  │  │  Letter-  │  │ Lovable/ │
+            │ /Profound│  │  drop CMS │  │  Bolt    │
+            │  AEO     │  │  content  │  │ internal │
+            └──────────┘  └───────────┘  │  tools   │
+                                         └──────────┘
+    </pre>
+  </div>
+
+  <h2>Budget summary</h2>
+  <div style="overflow-x:auto">
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Tool</th><th>Monthly</th><th>Annual</th></tr></thead>
+      <tbody>
+        <tr><td>CRM</td><td>Salesforce (existing)</td><td>—</td><td>—</td></tr>
+        <tr><td>B2B MAP</td><td>Pardot Advanced</td><td class="num-cell">$4,000</td><td class="num-cell">$48,000</td></tr>
+        <tr><td>Orchestration</td><td>n8n self-hosted</td><td class="num-cell">$7</td><td class="num-cell">$84</td></tr>
+        <tr><td>AI engine</td><td>Anthropic API (8 workflows)</td><td class="num-cell">$400</td><td class="num-cell">$4,800</td></tr>
+        <tr><td>Enrichment</td><td>Clay Launch</td><td class="num-cell">$185</td><td class="num-cell">$2,220</td></tr>
+        <tr><td>Sales engagement</td><td>Apollo (4 users)</td><td class="num-cell">$400</td><td class="num-cell">$4,800</td></tr>
+        <tr><td>AEO monitoring</td><td>Otterly → Profound</td><td class="num-cell">$399</td><td class="num-cell">$4,788</td></tr>
+        <tr><td>Comp intel</td><td>Visualping</td><td class="num-cell">$30</td><td class="num-cell">$360</td></tr>
+        <tr><td>Content tools</td><td>Letterdrop + Castmagic + Opus Clip + Descript</td><td class="num-cell">$300</td><td class="num-cell">$3,600</td></tr>
+        <tr><td>Internal tools</td><td>Lovable + Bolt + v0</td><td class="num-cell">$100</td><td class="num-cell">$1,200</td></tr>
+        <tr><td>Claude seats</td><td>Pro × 4 (team)</td><td class="num-cell">$80</td><td class="num-cell">$960</td></tr>
+        <tr style="font-weight:700;background:var(--cotton-plus)"><td colspan="2">Total tooling (excl. Pardot if existing)</td><td class="num-cell">$1,901</td><td class="num-cell">$22,812</td></tr>
+        <tr style="font-weight:700;background:var(--zest)"><td colspan="2">Total with Pardot Advanced</td><td class="num-cell">$5,901</td><td class="num-cell">$70,812</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout zest-hi">
+    <div class="lbl">The CEO conversation</div>
+    <p>If Pardot is already in place: tooling adds <strong>~$1,900/mo</strong> on top. If Pardot needs to be added: <strong>~$5,900/mo</strong> total. Compare against verified competitor marketing spend (Subscribili $340-560K/yr ALL-IN): even with the bigger budget, Clerri's tooling-only is &lt; 15% of competitor's total spend. Tooling is NOT where Clerri is constrained.</p>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Martech audit notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="martech-audit-notes" placeholder="What you found in Pardot, integration gaps discovered, what RevOps owns vs what marketing owns, tools to deprecate..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/claude-cli-vs-api"><span class="dir">← Prev</span><span class="name">Claude CLI vs API</span></a>
+    <a href="/clerri/zero-budget"><span class="dir">Next →</span><span class="name">Zero-Budget Strategy</span></a>
+  </div>
+
+</div>
+</ClerriLayout>

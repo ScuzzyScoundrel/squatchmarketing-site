@@ -4,9 +4,9 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
 <ClerriLayout title="Workflow Recipes" section="workflows">
 
 <div class="page-head">
-  <div class="page-eyebrow">10 · Build</div>
-  <h1 class="page-title">Eight workflows. <em>Stack, effort, cost.</em></h1>
-  <p class="page-sub">Each workflow has a clear trigger, output, owner, and measurable result. Real platform names — not categories. Track which you've built.</p>
+  <div class="page-eyebrow">AI Workflows · Deep Dive</div>
+  <h1 class="page-title">Autonomous workflows. <em>Minimal touch. Team-scalable.</em></h1>
+  <p class="page-sub">For each workflow: the actual platforms behind it, why this stack vs alternatives, what runs autonomously vs needs human approval, what scales to a team of 4 without bottlenecking on you, and the hidden costs people don't talk about.</p>
 </div>
 
 <div class="page-body">
@@ -14,110 +14,412 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   <div class="progress-track"><div class="progress-fill" data-progress-fill="workflows"></div></div>
   <p class="mono" style="font-size:0.75rem;color:var(--muted)">Workflows shipped: <span data-progress-here="workflows">0 / 0</span></p>
 
-  <!-- A -->
+  <!-- AUTONOMY KEY -->
+  <h2>Autonomy levels — <em>how much human in the loop?</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Each workflow below is tagged with autonomy + scale flags. The goal: most workflows run themselves so they don't bottleneck on you. The few that DO need approval should funnel into a single review surface (Slack channel), not 12 different tabs.</p>
+
+  <div class="grid-3">
+    <div class="card"><span class="pill pill-grey">L1</span><h4>Fully autonomous</h4><p style="font-size:0.875rem">Runs on schedule, no human input. Outputs to a Slack channel or dashboard. Examples: AEO monitoring, comp-intel digest.</p></div>
+    <div class="card"><span class="pill pill-zest">L2</span><h4>Approval gate</h4><p style="font-size:0.875rem">Workflow drafts, human approves before publish. One-click "ship" button. Examples: case study drafts, customized practice assets.</p></div>
+    <div class="card"><span class="pill pill-mint">L3</span><h4>Triggered by human</h4><p style="font-size:0.875rem">Person fires it explicitly (Slack command, form submit). Useful when input is unstructured. Example: battle card from objection.</p></div>
+  </div>
+
+  <h2>Platform reference — <em>what each tool actually does.</em></h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>n8n (self-hosted) — <span class="pill pill-zest">Orchestration backbone</span></h4>
+      <p style="font-size:0.9rem"><strong>What it does:</strong> Visual workflow builder. Connects 400+ services (Salesforce, Slack, Google, Anthropic, OpenAI, custom HTTP). Cron triggers, webhook triggers, manual triggers. Each workflow = a flowchart of steps.</p>
+      <p style="font-size:0.9rem"><strong>Why this vs Zapier:</strong> Execution-based pricing (1 run = 1 unit regardless of steps) is ~10x cheaper at marketing-ops scale. Self-hosting means no data-residency or vendor-lock concerns. Native LangChain + 70 AI nodes since v2.0.</p>
+      <p style="font-size:0.9rem"><strong>Why this vs Make.com:</strong> n8n is open source — you own the IP. Make is also "ops-per-block" pricing which gets expensive on multi-step AI flows.</p>
+      <p style="font-size:0.9rem"><strong>Scale to team:</strong> Workflows are version-controlled (export as JSON). Marketing ops owner approves changes. Team members can trigger via Slack/webhook without touching n8n itself.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Cost: $7/mo VPS · Effort: 1 day to set up</p>
+    </div>
+    <div class="card">
+      <h4>Claude API (Sonnet 4.6 / Opus 4.7) — <span class="pill pill-zest">Content + reasoning engine</span></h4>
+      <p style="font-size:0.9rem"><strong>What it does:</strong> Anthropic's API. Inputs prompts + context, outputs text/structured data. <strong>Prompt caching</strong> = 90% input cost reduction when persona/style/KB stays stable. <strong>Batch API</strong> = 50% off for non-realtime jobs.</p>
+      <p style="font-size:0.9rem"><strong>Why Sonnet vs Opus:</strong> Sonnet 4.6 = $3 in / $15 out per M tokens, fast, great for 90% of marketing work. Opus 4.7 for strategic positioning, deep case studies, anything where one really good output matters more than 10 average ones.</p>
+      <p style="font-size:0.9rem"><strong>Why this vs OpenAI:</strong> Caching + batch discounts are aggressive. Long-context (1M window on Opus 4.7 [1m]) lets you stuff entire customer history into one prompt without RAG complexity. Plus MCP server ecosystem is Anthropic-native.</p>
+      <p style="font-size:0.9rem"><strong>Scale to team:</strong> API keys per-environment (dev/staging/prod). n8n holds the keys, team members trigger via approved interfaces. No raw key sprawl.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Cost: $100-300/mo at full marketing-team load</p>
+    </div>
+    <div class="card">
+      <h4>Pardot (Marketing Cloud Account Engagement)</h4>
+      <p style="font-size:0.9rem"><strong>What it does:</strong> B2B marketing automation by Salesforce. Email send infrastructure, Engagement Studio (drip programs), forms, landing pages, scoring, lead routing. <strong>Tightly coupled to Salesforce.</strong></p>
+      <p style="font-size:0.9rem"><strong>Why Clerri uses it (likely):</strong> Salesforce-native = best CRM sync of any B2B MAP. Sub-par UI vs HubSpot but data infrastructure is reliable.</p>
+      <p style="font-size:0.9rem"><strong>Gotchas:</strong> Limited template flexibility (MJML or custom HTML compile is essential). API token management is friction. Pardot Einstein AI features gated behind Advanced ($4K+) / Premium ($15K+) tiers — rarely worth it.</p>
+      <p style="font-size:0.9rem"><strong>Scale strategy:</strong> Templates centralized + auto-generated from Claude. Marketers build segments, AI fills content. Engagement Studio flows reviewed quarterly.</p>
+    </div>
+    <div class="card">
+      <h4>Clay — <span class="pill pill-zest">Data enrichment engine</span></h4>
+      <p style="font-size:0.9rem"><strong>What it does:</strong> Waterfall enrichment — feeds a company/person through 50+ data providers (Apollo, ZoomInfo, Clearbit, Datagma, etc.), picks best result, fills gaps. Plus built-in AI columns (Claude/GPT inline) for custom logic. Plus 400+ integrations.</p>
+      <p style="font-size:0.9rem"><strong>Why this is the 5K-practice unlock:</strong> Personalization at 5,000 practices is impossible manually. Clay enriches each practice (specialty, region, recent funding, growth signals), then Claude personalizes outreach per row. Hours, not weeks.</p>
+      <p style="font-size:0.9rem"><strong>Why this vs Apollo alone:</strong> Apollo is one provider — accuracy is whatever Apollo has. Clay layers many. 78% email match vs ~50% single-provider.</p>
+      <p style="font-size:0.9rem"><strong>Scale to team:</strong> Marketing ops owns table schemas. Sales/CS read-only views. Failed lookups are free since March 2026 update.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Cost: $185 (Launch) / $495 (Growth) / mo</p>
+    </div>
+    <div class="card">
+      <h4>Otterly.ai / Profound — <span class="pill pill-zest">AEO monitoring</span></h4>
+      <p style="font-size:0.9rem"><strong>What they do:</strong> Run scheduled prompts against ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews. Track when your brand is cited, what context, what competitors appear instead. Otterly is cheap entry; Profound is the enterprise-grade option.</p>
+      <p style="font-size:0.9rem"><strong>Why not just DIY with Claude API:</strong> You CAN — Claude can query Perplexity API, ChatGPT API, Gemini. But you sacrifice citation tracking, competitor benchmarking, ranking deltas over time. ~$50-100/mo to DIY vs $29 → $399 for SaaS that does it well.</p>
+      <p style="font-size:0.9rem"><strong>Scale strategy:</strong> Start Otterly $29 for 60 days to prove signal matters. If AEO traffic shows up in attribution, graduate to Profound. If it doesn't, kill it.</p>
+    </div>
+    <div class="card">
+      <h4>Lovable + Bolt + v0 — <span class="pill pill-zest">Internal tools</span></h4>
+      <p style="font-size:0.9rem"><strong>What they do:</strong> AI-built web apps from prompts. Lovable = visual edits + framework flexibility. Bolt = StackBlitz-backed, runs any framework. v0 = polished UI components atop existing backend.</p>
+      <p style="font-size:0.9rem"><strong>Why marketing should own internal tools:</strong> Asset generators, battle card slash commands, expansion dashboards, KPI loggers. Engineering doesn't have time. These are marketing-owned, low-stakes, AI-built in hours.</p>
+      <p style="font-size:0.9rem"><strong>Scale to team:</strong> One marketer becomes the "internal-tools lead." Tools deployed to internal subdomain (clerri.tools.com), auth via Google SSO.</p>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- WORKFLOW A -->
+  <h2>A · Markdown → branded HTML email</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-zest">WEEK 1 DEPLOY</span><h3 style="margin:0.5rem 0">A · Markdown → branded HTML email</h3></div>
+      <div><span class="pill pill-mint">L2 · Approval gate</span> <span class="pill pill-zest">Week 1 deploy</span></div>
       <div data-status="workflow-a" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">CEO's "I want to see AI working" moment. Already proven at CareCloud — 90% time savings.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Google Doc (markdown) → n8n folder watcher → Claude API → MJML / React Email → Pardot API</div>
-    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: marketing ops · Effort: 1-2 days · Cost: ~$5/mo</p>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Marketer writes plain markdown in a shared Google Doc. n8n detects the new doc, Claude reformats it to brand-consistent HTML email with proper MJML/React Email tables, brand tokens, footer compliance text. Result auto-uploads to Pardot as a draft template. Marketer reviews + sends in Pardot UI.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>MJML vs React Email:</strong> MJML is XML-like, compiles to bulletproof table HTML that works in Outlook 2007. React Email is JSX-friendly if your dev team likes that. <strong>Pick MJML</strong> for marketing-team ownership — designers can read it, no JSX needed.</p>
+        <p style="font-size:0.875rem"><strong>Google Doc as input:</strong> Marketers already write there. No new tool to learn. Folder-watch trigger means literally zero workflow change for writers.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Why Pardot draft (not auto-send):</strong> Email is the lowest-trust autonomous action. One bad send to 50K members = headlines. Approval gate is non-negotiable here.</p>
+        <p style="font-size:0.875rem"><strong>What you'd lose with Zapier:</strong> Zapier "Email by Zapier" can't handle table-based HTML. Make.com can, but per-step pricing kills it on a multi-step Claude flow.</p>
+      </div>
+    </div>
+
+    <h4>Claude CLI vs API for this workflow</h4>
+    <p style="font-size:0.875rem"><strong>CLI (Claude Code) version</strong> — for personal use day 1: paste markdown into a Claude Code session, ask it to output MJML, copy into Pardot. Zero infra. 15 min/email.</p>
+    <p style="font-size:0.875rem"><strong>API version</strong> — for team scale: n8n + Anthropic API + Pardot REST. Marketer drops doc in folder, 90 seconds later draft appears in Pardot. Approval gate. Scales to 4-person team, none of them touching code.</p>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>Pardot template API has rate limits — batch saves over 1-2 minutes if you push many at once</li>
+      <li>Brand tokens (colors, logo, footer) belong in MJML template — Claude should never hardcode them</li>
+      <li>UTM parameters need to be appended at send-time per campaign, not in the template — store campaign-specific UTMs in n8n env vars</li>
+      <li>Image hosting: use Cloudflare R2 or S3 + CDN. Don't let Claude embed base64 images — Pardot will reject the template</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Google Doc (markdown) → n8n folder watcher → Claude API (Sonnet 4.6, prompt-cached MJML template) → MJML compiler → Pardot REST API (create template draft) → Slack ping to marketer</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: marketing ops · Effort: 1-2 days · Cost: ~$5-15/mo</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-a-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow A shipped + first email sent via the pipeline</div></div></label></div>
   </div>
 
-  <!-- B -->
+  <!-- WORKFLOW B -->
+  <h2>B · AEO monitoring across ChatGPT / Perplexity / Claude / Gemini</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-zest">JIM'S DIRECT CONCERN</span><h3 style="margin:0.5rem 0">B · AEO monitoring across ChatGPT / Perplexity / Claude / Gemini</h3></div>
+      <div><span class="pill pill-grey">L1 · Fully autonomous</span> <span class="pill pill-zest">Jim's direct concern</span></div>
       <div data-status="workflow-b" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">Current information about Clerri is outdated across AI assistants. Q1 priority.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Otterly.ai ($29) 60-day pilot → graduate to Profound ($399) → daily prompts → CSV → n8n → Slack digest + Looker Studio</div>
-    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: SEO/content lead · Effort: 0 days (SaaS) · Cost: $29-$399/mo</p>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Runs ~25 queries daily across all major AI assistants ("What is Clerri?", "Best dental membership platform for DSOs?", "Kleer vs Membersy alternatives", etc.). Tracks: do we appear? In what context? Which competitors do? Sentiment? Stale info (references Kleer/Membersy without "now Clerri")?</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>SaaS (Otterly → Profound) vs DIY:</strong> DIY with Claude calling each model's API is ~$50-100/mo but you'd build dashboarding, citation tracking, ranking deltas yourself. Otterly is $29 for 60-day pilot. Profound is $399 with full citation maps and competitive benchmarking. Buy, don't build.</p>
+        <p style="font-size:0.875rem"><strong>Daily vs weekly cadence:</strong> Daily for the first 60 days to baseline + identify volatility. Weekly after.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>What "good" looks like:</strong> Clerri cited in 60%+ of category queries within 90 days. "Kleer" and "Membersy" mentions ALWAYS include "now Clerri" qualifier. Zero stale Kleer/Membersy URLs being cited as canonical.</p>
+        <p style="font-size:0.875rem"><strong>Trigger for action:</strong> If a query result mentions a competitor when it should mention Clerri, that's a content gap = open a Linear ticket for content team.</p>
+      </div>
+    </div>
+
+    <h4>Claude CLI vs API</h4>
+    <p style="font-size:0.875rem"><strong>CLI version (free, daily, manual):</strong> 5-minute morning ritual. Paste queries into Claude Code, ask for SEO-grade summaries. Good for Day 1-30 baseline.</p>
+    <p style="font-size:0.875rem"><strong>API + Otterly/Profound (autonomous, monitored):</strong> Day 30+. Daily run, anomaly detection, Slack alerts when something shifts.</p>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>AI model responses are non-deterministic — single-run results lie. Need 3-7 day rolling averages.</li>
+      <li>ChatGPT and Perplexity heavily favor recent press releases — AEO refresh project (see AEO/SEO page) feeds this directly.</li>
+      <li>Don't share AEO data outside marketing without context — execs will see "we appear in 40% of queries" and panic without knowing it was 12% three months ago.</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Otterly.ai daily scheduled queries → CSV export → n8n → optional Claude API for "what changed" interpretation → Slack #aeo-watch channel + Looker Studio dashboard</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: SEO/content lead · Effort: 0 days SaaS · Cost: $29 → $399/mo</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-b-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow B live — daily AEO monitoring with Slack alerts</div></div></label></div>
   </div>
 
-  <!-- C -->
+  <!-- WORKFLOW C -->
+  <h2>C · Per-practice customized marketing assets <em>(5K+ scale)</em></h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-green">5K SCALE UNLOCK</span><h3 style="margin:0.5rem 0">C · Per-practice customized marketing assets</h3></div>
+      <div><span class="pill pill-zest">L2 · Approval gate per batch</span> <span class="pill pill-green">5K scale unlock</span></div>
       <div data-status="workflow-c" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">Impossible at 5K practices manually, trivial with AI. Every Clerri practice gets co-branded brochures, landing pages, emails.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Clay (5K enrichment $185-$495) → n8n → Claude Sonnet 4.6 (prompt-cached personas) → Lovable UI → Gotenberg/Puppeteer PDFs + Pardot dynamic emails → S3</div>
-    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: marketing ops + content · Effort: 5-8 days · Cost: $235-$745/mo</p>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Marketer picks a campaign type ("welcome brochure", "Q1 enrollment push email", "renewal warning"). Workflow pulls all member practices from Salesforce, enriches via Clay (specialty mix, region demographics, plan tier), Claude generates per-practice variants of the asset (brochure PDF, landing page URL, email body), all branded with practice logo + name + custom CTAs. Output: 5,000 unique assets, ready to send.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>Clay vs internal enrichment:</strong> Internal SF data is sparse. Clay's waterfall adds practice size, specialty mix, region, growth signals, recent web changes. Quality of personalization = quality of input data.</p>
+        <p style="font-size:0.875rem"><strong>PDF generation via Gotenberg vs Puppeteer:</strong> Gotenberg (Docker container with Chromium + LibreOffice) handles HTML→PDF reliably. Self-hosted on same VPS as n8n. Free.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Why approval gate by batch (not per-asset):</strong> Reviewing 5,000 assets individually = no scale. Marketer reviews a random sample of 20-30, approves batch, ships all.</p>
+        <p style="font-size:0.875rem"><strong>Claude prompt caching critical here:</strong> Brand voice + persona prompt is ~3K tokens, repeated 5,000 times. Caching = 90% savings on input cost. Without caching this workflow costs $300+, with it $30.</p>
+      </div>
+    </div>
+
+    <h4>Claude CLI vs API</h4>
+    <p style="font-size:0.875rem"><strong>CLI version doesn't scale here</strong> — 5K interactive sessions is absurd. API + Batch API is the only path.</p>
+    <p style="font-size:0.875rem"><strong>Batch API:</strong> 50% off Claude pricing for non-realtime jobs. Submit 5,000 prompts, results back within 24 hours. Perfect fit.</p>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>Practice logos: not all 5K practices have high-res logos. Workflow needs a fallback (text-only branding or "your practice logo here" placeholder for manual fill).</li>
+      <li>Compliance: state-specific dental marketing rules vary. DMPO has specific language requirements. Need a per-state compliance layer in the prompt.</li>
+      <li>Storage: 5K PDFs × 1MB = 5GB. Cloudflare R2 is ~$0.015/GB-month — basically free at this scale. Don't use S3 ($0.023) or hot CDN tiers.</li>
+      <li>URL slugs: per-practice landing pages need clean URLs (clerri.com/practices/wells-family-dental) — coordinate with web team on routing.</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Salesforce SOQL → Clay enrichment → n8n batch loop → Claude Sonnet 4.6 Batch API (prompt-cached persona) → Lovable-built approval UI → Gotenberg PDF render + Pardot dynamic content email + S3/R2 storage</div>
+    <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: marketing ops + content · Effort: 5-8 days · Cost: $235-$745/mo (Clay) + ~$50/batch Claude</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-c-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow C live — first 100 practices have branded assets generated</div></div></label></div>
   </div>
 
-  <!-- D -->
+  <!-- WORKFLOW D -->
+  <h2>D · Case study production engine</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-mint">VELOCITY</span><h3 style="margin:0.5rem 0">D · Case study production engine</h3></div>
+      <div><span class="pill pill-zest">L2 · Approval gate</span> <span class="pill pill-mint">2 weeks → 1 day</span></div>
       <div data-status="workflow-d" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">2-week process becomes 1 day. CS submits transcript → AI drafts → Marketing reviews → publish.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Otter.ai/Fireflies → S3 → n8n → Claude Opus 4.7 multi-pass (extract → draft → quote verify) → Google Doc → human edit → Letterdrop publish</div>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">CS books a customer interview, records via Otter/Fireflies. When transcript hits a Google Drive folder, n8n triggers. Claude Opus 4.7 does multi-pass extraction: pulls quantifiable outcomes, surfaces verbatim quotes, drafts narrative arc. Output: Google Doc draft + flagged quotes needing verification + numbers cross-referenced against Salesforce. Marketing edits + publishes.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>Opus vs Sonnet here:</strong> Case studies are the one place where one really great output matters. Opus 4.7's deeper reasoning produces better narrative arcs. Cost difference is ~$10 vs $2 per study — irrelevant.</p>
+        <p style="font-size:0.875rem"><strong>Multi-pass vs single prompt:</strong> Single prompt = mediocre output. Multi-pass (extract → outline → draft → verify quotes against raw transcript) catches hallucinations Claude would otherwise fabricate.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Why Otter/Fireflies, not just upload audio:</strong> Speaker labels + timestamps + searchable text. Claude can cite "Brett said at 14:32." Higher-quality output than raw audio.</p>
+        <p style="font-size:0.875rem"><strong>Why Letterdrop for publishing:</strong> SEO scaffolding (internal links, schema, related posts) auto-applied. Skip if you have a strong CMS, but Clerri's site likely needs the help.</p>
+      </div>
+    </div>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>Claude will invent statistics that "feel right" if you don't pin specific numbers in the prompt. Always provide numbers separately and ask Claude to use ONLY those.</li>
+      <li>Customer approval before publish — non-negotiable. Build approval-link generation into the workflow.</li>
+      <li>Case study metadata (industry, practice size, geography) feeds the customer stories hub filter — capture these as structured fields, not just narrative.</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Otter.ai or Fireflies → Google Drive → n8n trigger → Claude Opus 4.7 multi-pass → Salesforce data cross-ref → Google Doc → marketing edit → customer approval workflow → Letterdrop publish</div>
     <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: content lead + CS · Effort: 3-5 days · Cost: ~$15/study (saves 4-6 hours)</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-d-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow D live — first 3 case studies produced via pipeline</div></div></label></div>
   </div>
 
-  <!-- E -->
+  <!-- WORKFLOW E -->
+  <h2>E · Sales battle card on demand</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-mint">SALES ENABLEMENT</span><h3 style="margin:0.5rem 0">E · Sales battle card on demand</h3></div>
+      <div><span class="pill pill-mint">L3 · Triggered</span> <span class="pill pill-blue">Sales enablement</span></div>
       <div data-status="workflow-e" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">Rep pastes objection in Slack → AI drafts 3-sentence response + 1 metric + 1 case study link in seconds.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Slack `/battlecard &lt;objection&gt;` → n8n → Claude API + MCP (HubSpot/SF + Notion + Drive for positioning + competitor + win stories) → response in thread</div>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Rep types <code>/battlecard "they said Pearly's PMS integrations are deeper"</code> in Slack. n8n triggers, Claude pulls live positioning docs (Notion via MCP), competitor intel (most recent comp-intel digest), recent wins (Salesforce closed-won), and drafts a 3-sentence response + 1 supporting data point + 1 case study link. Posted in thread within 10 seconds.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>MCP servers vs static prompts:</strong> Static prompts go stale. MCP gives Claude live access to Notion (positioning), Salesforce (case studies, win data), Linear (product roadmap). When you update Notion, battle cards update automatically.</p>
+        <p style="font-size:0.875rem"><strong>Slack slash command vs web form:</strong> Reps live in Slack. A web form would never get used.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Why post in thread (not DM):</strong> Other reps see the battle card. Knowledge compounds. The same objection is answered once for everyone.</p>
+        <p style="font-size:0.875rem"><strong>Why human approval not needed:</strong> Sales rep is the human in the loop — they read before sending to prospect. Marketing reviews aggregated card usage weekly.</p>
+      </div>
+    </div>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>Sales says "Pearly has 50 integrations" because they read a marketing page once. Battle cards must include "as of [date]" caveats — verify integration claims quarterly via comp-intel.</li>
+      <li>Slack rate limits — bundle similar objections into one query if 10 reps hit it the same hour.</li>
+      <li>Log every battle card request to a Slack channel + dashboard — this is gold for understanding what objections you're losing on.</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Slack `/battlecard &lt;objection&gt;` slash command → n8n webhook → Claude API + MCP servers (HubSpot/Salesforce + Notion + Google Drive) → response posted in Slack thread → log to #battlecard-audit channel</div>
     <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: product marketing + RevOps · Effort: 2-4 days · Cost: $0-30/mo</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-e-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow E live — first AE team using `/battlecard` daily</div></div></label></div>
   </div>
 
-  <!-- F -->
+  <!-- WORKFLOW F -->
+  <h2>F · Expansion-ready account identification</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-zest">REVENUE MODEL UNLOCK</span><h3 style="margin:0.5rem 0">F · Expansion-ready account identification</h3></div>
+      <div><span class="pill pill-grey">L1 · Autonomous</span> <span class="pill pill-zest">Revenue model unlock</span></div>
       <div data-status="workflow-f" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">Clerri's Bucket 02 unlock. Scan existing customers nightly for expansion signals.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Salesforce (usage + plan data) → n8n nightly → Claude (signal scoring) → ranked list → Slack alert to CS + AE</div>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Nightly: pull every Clerri customer practice's signals from Salesforce (enrollment velocity, feature adoption, support sentiment, content engagement, plan utilization). Claude scores each on expansion likelihood (1-100) with "why" reasoning. Top 20 candidates go to CS + AE Slack channel with recommended play.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>Claude scoring vs rule-based:</strong> Rule-based = "if NPS &gt; 8 AND enrollment growth &gt; 10%, score high." Misses context. Claude can read support transcripts, see "we're hiring 3 hygienists" and infer expansion readiness.</p>
+        <p style="font-size:0.875rem"><strong>Why nightly (not real-time):</strong> Signals are noisy minute-to-minute. Nightly rollup smooths and produces actionable ranked list.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Common Room or DIY:</strong> Common Room aggregates community signals (LinkedIn posts, Slack activity, GitHub events). For Clerri's customer base, less relevant. DIY with Salesforce + Claude is sufficient.</p>
+        <p style="font-size:0.875rem"><strong>Output to CS + AE jointly:</strong> Expansion is CS-led but AE-aware. Both need visibility, neither owns alone.</p>
+      </div>
+    </div>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>Sales team will WANT to act on every signal immediately. Throttle to top-20 to avoid spamming customers.</li>
+      <li>Feedback loop: track which "expansion candidates" actually expanded. Use this to refine the scoring prompt monthly.</li>
+      <li>Don't surface scores below 70 to humans — noise. Keep the bottom-half for trend analysis only.</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Salesforce scheduled SOQL query → Pardot engagement data + Salesforce custom fields → n8n nightly cron → Claude scoring (with prompt-cached "good signals" reference doc) → ranked Slack post + Salesforce custom field write-back</div>
     <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: customer marketing + CS · Effort: 3-5 days · Cost: ~$30/mo</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-f-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow F live — CS receiving daily expansion candidate digest</div></div></label></div>
   </div>
 
-  <!-- G -->
+  <!-- WORKFLOW G -->
+  <h2>G · Member lifecycle communication engine</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-rose">JIM'S TOP FRUSTRATION</span><h3 style="margin:0.5rem 0">G · Member lifecycle communication engine</h3></div>
+      <div><span class="pill pill-zest">L2 · Approval gate per program</span> <span class="pill pill-rose">Jim's top frustration</span></div>
       <div data-status="workflow-g" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">Direct response to one-renewal-email-per-year problem. Co-branded with each practice.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Pardot (send + Engagement Studio) + Claude API (copy per-practice) + n8n + S3 (workflow C assets) → Welcome (Day 0/7/30) + quarterly + renewal warming (60/30/14/7d) + win-back</div>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Complete member lifecycle, co-branded with each practice. Welcome (Day 0 / 7 / 30), quarterly engagement (educational content, savings recap), renewal warming (60/30/14/7 days before), win-back (lapsed members, 30 / 90 days). Each touchpoint pulls practice branding from Salesforce and personalizes via Claude.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>Pardot Engagement Studio handles orchestration:</strong> Engagement Studio is Pardot's drip-flow builder. It triggers, scheduling, segmentation. Don't reinvent this in n8n.</p>
+        <p style="font-size:0.875rem"><strong>Claude generates copy variants:</strong> Pre-generate 3-5 variants per touchpoint. Test in Pardot. Refresh quarterly.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Co-branding via Pardot dynamic content:</strong> Practice name, logo, phone, address pulled from custom fields on the member record. Don't dynamically render at send time via Claude — too risky for compliance.</p>
+        <p style="font-size:0.875rem"><strong>Templates from Workflow A:</strong> Each lifecycle email starts as markdown, runs through workflow A's HTML compiler. One template engine, multiple programs.</p>
+      </div>
+    </div>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>Member email addresses are owned by Clerri OR the practice depending on the agreement. Audit the contract before sending to members directly.</li>
+      <li>Suppression rules matter — if a practice opts out of co-branding, the entire member base needs to be excluded from those flows.</li>
+      <li>State-specific dental marketing rules: California, New York, Texas have specific consumer protection language requirements. Build compliance footer into the MJML template, not into Claude's output.</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Pardot Engagement Studio (orchestration) + Pardot dynamic content (co-branding) + Claude API (copy generation, prompt-cached lifecycle brand voice) + Workflow A HTML compiler + Salesforce member record as source of truth</div>
     <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: customer marketing / lifecycle · Effort: 7-10 days · Cost: $100-300/mo</p>
     <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-g-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow G live — full lifecycle program running for member base</div></div></label></div>
   </div>
 
-  <!-- H -->
+  <!-- WORKFLOW H -->
+  <h2>H · Competitive intelligence weekly digest</h2>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-      <div><span class="pill pill-blue">DEFENSIVE</span><h3 style="margin:0.5rem 0">H · Competitive intelligence weekly digest</h3></div>
+      <div><span class="pill pill-grey">L1 · Autonomous</span> <span class="pill pill-blue">Defensive</span></div>
       <div data-status="workflow-h" class="status"><select><option value="not-started">Not started</option><option value="exploring">Exploring</option><option value="in-progress">In progress</option><option value="blocked">Blocked</option><option value="done">Done</option></select></div>
     </div>
-    <p style="font-size:0.9rem">Track Subscribili, Plan Forward, Pearly, DentalHQ, BoomCloud — pricing, blog, careers, LinkedIn, G2.</p>
-    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Visualping/Crayon (change detection) + Apify/Firecrawl (scrape) + LinkedIn + news → n8n → Claude (summarization + interpretation) → Monday 8am Slack channel + Notion archive</div>
+
+    <h4>What it does</h4>
+    <p style="font-size:0.9rem">Tracks Subscribili, Plan Forward, Pearly, DentalHQ, BoomCloud across 8-12 signals each: pricing page changes, blog posts, careers page (hiring patterns), LinkedIn posts from founders, G2/Capterra review velocity, podcast appearances, press releases, partnership announcements. Monday 8am: Claude summarizes the week + interprets "what this signals strategically." Posted to #comp-intel Slack channel.</p>
+
+    <h4>Why this stack</h4>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.875rem"><strong>Visualping vs Crayon:</strong> Visualping ~$30/mo for 30 pages tracked = sufficient for 5 competitors × 6 pages each. Crayon is enterprise-grade ($1-2K/mo) — overkill until Clerri is $100M+ ARR.</p>
+        <p style="font-size:0.875rem"><strong>Firecrawl for deep scrapes:</strong> When Visualping notices a change, Firecrawl extracts the new content cleanly. Better than scraping yourself.</p>
+      </div>
+      <div>
+        <p style="font-size:0.875rem"><strong>Claude interpretation vs raw changelog:</strong> Anyone can list "Subscribili posted a new blog." Strategic value = "Subscribili's blog now mentions Stream Dental integration — they're activating the specialty referral play."</p>
+        <p style="font-size:0.875rem"><strong>Why Monday morning:</strong> Marketing team reads it during weekly planning. Action items get baked into the week.</p>
+      </div>
+    </div>
+
+    <h4>Hidden gotchas</h4>
+    <ul style="font-size:0.875rem;padding-left:1rem">
+      <li>LinkedIn rate limits — use third-party services (PhantomBuster) cautiously, or just manually track founder LinkedIn weekly.</li>
+      <li>Don't share the digest outside marketing without redacting "we should attack X" interpretation — sales reps will quote it in customer calls and burn credibility.</li>
+      <li>Archive every digest to Notion — quarterly review surfaces patterns ("Subscribili has hired 4 enterprise AEs in 90 days = they're moving upmarket").</li>
+    </ul>
+
+    <div class="mono" style="font-size:0.8rem;background:var(--cotton-plus);padding:0.75rem;border-radius:0.5rem;border-left:3px solid var(--clerri-green);margin:0.75rem 0">STACK: Visualping (page change detection) + Firecrawl (clean scrape) + LinkedIn manual + news APIs → n8n weekly cron → Claude (summarization + strategic interpretation) → Slack #comp-intel channel + Notion archive</div>
     <p class="mono" style="font-size:0.8rem;color:var(--muted)">Owner: product marketing + competitive intel · Effort: 2-3 days · Cost: $50-150/mo</p>
-    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-h-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow H live — Monday digest landing in #competitive-intel</div></div></label></div>
+    <div data-section="workflows"><label class="task"><input type="checkbox" data-track="wf-h-shipped" data-section="workflows" /><div class="task-content"><div class="task-title">Workflow H live — Monday digest landing in #comp-intel</div></div></label></div>
+  </div>
+
+  <!-- TEAM SCALE GUIDANCE -->
+  <hr />
+  <h2>Scaling these workflows across a team of 4</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Ownership model</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>You (Director):</strong> Approves all L2 changes, owns n8n + API key rotation, audits monthly usage</li>
+        <li><strong>Marketing Ops hire:</strong> Builds + maintains workflows, owns Pardot/Salesforce integration, owns Clay</li>
+        <li><strong>Content / PMM hire:</strong> Triggers workflows D + G + content production, owns Otterly/Profound</li>
+        <li><strong>Customer marketing hire:</strong> Triggers workflow F output, owns lifecycle programs, owns case study pipeline</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Review surfaces (don't have 12 dashboards)</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>Slack #marketing-bots:</strong> ALL workflow outputs land here first. Single feed.</li>
+        <li><strong>Notion "Workflow Health":</strong> Last run, last failure, cost-this-month per workflow</li>
+        <li><strong>Looker Studio:</strong> AEO presence + content velocity + battle card usage + expansion candidates flow</li>
+        <li><strong>Monthly review:</strong> 30 min review of all 8 workflows + decide what to deprecate</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Failure mode planning</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li><strong>API outage:</strong> n8n retries 3x with exponential backoff. After 3, posts to #bot-failures.</li>
+        <li><strong>Wrong output:</strong> Every workflow logs prompt + response to Notion. Easy to audit + reprompt.</li>
+        <li><strong>Cost spike:</strong> Set hard monthly spend caps in Anthropic console ($500 alert / $1000 hard cap to start).</li>
+        <li><strong>Personnel change:</strong> n8n exports as JSON, all prompts version-controlled in git. Next person can pick up in days.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Cost ceiling at full team adoption</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem">
+        <li>n8n VPS: $7/mo</li>
+        <li>Claude API (all 8 workflows): $300-600/mo</li>
+        <li>Clay Launch: $185/mo</li>
+        <li>Otterly $29 → Profound $399 (after pilot)</li>
+        <li>Visualping: $30/mo</li>
+        <li>Otter/Fireflies: $20-30/mo</li>
+        <li><strong>Total: ~$600-1,200/mo</strong> for the entire AI workflow stack</li>
+      </ul>
+    </div>
   </div>
 
   <div class="note-block">
     <div class="note-label">Workflow build notes <span class="note-saved">✓ saved</span></div>
-    <textarea data-note="workflow-build" placeholder="Build gotchas, integration issues, what's working better than expected, what's stuck..."></textarea>
+    <textarea data-note="workflow-build" placeholder="Build gotchas, integration issues, what's working better than expected, what's stuck, who owns what..."></textarea>
   </div>
 
   <div class="topic-foot">
-    <a href="/clerri/ai-stack"><span class="dir">← Prev</span><span class="name">09 · AI Marketing Stack</span></a>
-    <a href="/clerri/website"><span class="dir">Next →</span><span class="name">11 · Website & Messaging</span></a>
+    <a href="/clerri/ai-stack"><span class="dir">← Prev</span><span class="name">AI Marketing Stack</span></a>
+    <a href="/clerri/claude-cli-vs-api"><span class="dir">Next →</span><span class="name">Claude CLI vs API</span></a>
   </div>
 
 </div>
