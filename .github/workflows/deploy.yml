@@ -17,8 +17,24 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - uses: cloudflare/wrangler-action@v3
+      - name: Deploy to squatchmarketing-site
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name squatchmarketing-site
+
+      - name: Ensure clerri-preview project exists (fails silently if it already does)
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create clerri-preview --production-branch=main
+
+      - name: Deploy to clerri-preview (mockup share URL)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name clerri-preview
