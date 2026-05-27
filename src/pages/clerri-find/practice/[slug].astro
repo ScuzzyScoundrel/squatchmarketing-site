@@ -1,0 +1,378 @@
+---
+import ClerriFindLayout from '../../../layouts/ClerriFindLayout.astro';
+
+export function getStaticPaths() {
+  const practices = [
+    { slug: 'wells-family-dental', name: 'Wells Family Dental', initials: 'WD', neighborhood: 'Downtown Indianapolis', address: '142 N Pennsylvania St, Indianapolis, IN 46204', phone: '(317) 555-0142', founded: 2008, owner: 'Dr. Brett Wells, DDS', members: '3,200+', rating: 4.9, reviews: 1247, languages: ['English', 'Español'], hours: { mtu: '7am-6pm', wt: '7am-6pm', f: '7am-2pm', s: '8am-1pm', su: 'Closed' }, accepting: 'Yes — usually within 1 week', plans: [ { tier: 'Individual', price: 189, featured: false, benefits: ['2 cleanings + exams/year', '2 sets of bitewing X-rays', '20% off all other services', 'No deductibles, no waiting'] }, { tier: 'Family of 4', price: 399, featured: true, label: 'Save $357', benefits: ['Best value vs. individual plans', 'All Individual benefits × 4', 'Free fluoride treatments for kids', 'Sibling cleaning bonus'] }, { tier: 'Senior (65+)', price: 159, featured: false, benefits: ['All Individual benefits', 'Discount on dentures + partials', 'Senior-specific cleaning protocols'] } ], services: ['General dentistry', 'Pediatric dentistry', 'Cosmetic dentistry', 'Crowns + bridges', 'Implants', 'Root canals', 'Whitening', 'Sealants'], story: 'Wells Family Dental has served the Indianapolis community for 17 years. Founded by Dr. Brett Wells, the practice focuses on long-term patient relationships, transparent pricing, and access to care for uninsured families. The practice was an early adopter of membership-plan-based care and now serves over 3,200 members.', perks: ['Same-day emergency appointments', 'Priority booking for members', 'Birthday offer (free whitening)', 'Sunbit financing on procedures over $500'] },
+    { slug: 'circle-city-dental', name: 'Circle City Dental', initials: 'CD', neighborhood: 'Mass Ave', address: '425 Massachusetts Ave, Indianapolis, IN 46204', phone: '(317) 555-0425', founded: 2014, owner: 'Dr. Sarah Park, DDS', members: '1,800+', rating: 4.7, reviews: 893, languages: ['English'], hours: { mtu: '8am-5pm', wt: '8am-5pm', f: '8am-3pm', s: 'Closed', su: 'Closed' }, accepting: 'Yes — 2-3 week wait', plans: [ { tier: 'Individual', price: 165, featured: false, benefits: ['2 cleanings + exams/year', '15% off other services', 'No deductibles'] }, { tier: 'Senior (65+)', price: 129, featured: false, benefits: ['All Individual benefits', 'Discount on dentures'] } ], services: ['General dentistry', 'Cosmetic dentistry', 'Crowns + veneers', 'Whitening'], story: 'A modern downtown practice focused on adult general and cosmetic dentistry. Dr. Park opened Circle City Dental in 2014 after 8 years at a large group practice. The team specializes in a calmer, less-rushed patient experience.', perks: ['Saturday emergency line', 'Online member portal', 'Member-only whitening special twice yearly'] },
+    { slug: 'indiana-orthodontics', name: 'Indiana Orthodontics Group', initials: 'IO', neighborhood: 'Broad Ripple', address: '6184 N College Ave, Indianapolis, IN 46220', phone: '(317) 555-6184', founded: 2011, owner: 'Dr. Carlos Mendoza, DDS, MS', members: '950+', rating: 4.8, reviews: 562, languages: ['English', 'Español'], hours: { mtu: '8am-6pm', wt: '8am-6pm', f: '8am-4pm', s: '9am-2pm', su: 'Closed' }, accepting: 'Yes — new patient consults within 5 days', plans: [ { tier: 'Adult Orthodontic', price: 399, featured: true, label: 'Most popular', benefits: ['Quarterly orthodontic exams', '10% off treatment plans', 'Free retainers (annually)', 'Free X-rays (annually)'] }, { tier: 'Teen Orthodontic', price: 349, featured: false, benefits: ['All Adult benefits', 'Free emergency adjustments', 'Free sport mouthguards'] } ], services: ['Orthodontics', 'Invisalign', 'Traditional braces', 'Retainers', 'Adult treatment', 'Teen treatment'], story: 'Indiana Orthodontics Group is a specialty orthodontic practice founded in 2011. Dr. Mendoza is an AAO board-certified orthodontist who launched the practice with a focus on accessible orthodontic care via in-house membership and flexible financing.', perks: ['Free Invisalign consultation', 'Sunbit financing for treatment', 'Free retainers annually'] },
+    { slug: 'mainstreet-family', name: 'MainStreet Family Dentistry', initials: 'MS', neighborhood: 'Carmel', address: '136 W Main St, Carmel, IN 46032', phone: '(317) 555-0136', founded: 2003, owner: 'Dr. Jennifer Hill, DDS', members: '4,100+', rating: 4.9, reviews: 1582, languages: ['English'], hours: { mtu: '7am-7pm', wt: '7am-7pm', f: '7am-5pm', s: '8am-2pm', su: 'Closed' }, accepting: 'Yes — same-week availability', plans: [ { tier: 'Individual', price: 215, featured: false, benefits: ['2 cleanings + exams/year', '4 bitewing X-rays', '25% off all other services', 'No deductibles'] }, { tier: 'Family of 4', price: 449, featured: true, label: 'Best value', benefits: ['Save $411 vs. individual plans', '4 individual memberships included', 'Free fluoride for kids under 18', 'Free emergency visit annually'] } ], services: ['General dentistry', 'Pediatric dentistry', 'Cosmetic dentistry', 'Sedation', 'Same-day crowns', 'Implants'], story: 'MainStreet Family Dentistry is one of Carmel\'s largest independent practices, serving over 4,100 active members. Dr. Hill founded the practice in 2003 and built it into a multi-doctor team focused on convenient extended hours and family-friendly care.', perks: ['Extended weekday hours until 7pm', 'Saturday appointments', 'Same-day crowns available', 'Sedation dentistry'] },
+    { slug: 'smile-co-studio', name: 'Smile Co. Dental Studio', initials: 'SC', neighborhood: 'Fountain Square', address: '1115 Shelby St, Indianapolis, IN 46203', phone: '(317) 555-1115', founded: 2018, owner: 'Dr. Marcus Lee, DDS', members: '780+', rating: 4.6, reviews: 421, languages: ['English'], hours: { mtu: '9am-6pm', wt: '9am-6pm', f: '9am-4pm', s: 'Closed', su: 'Closed' }, accepting: 'Yes — within 2 weeks', plans: [ { tier: 'Individual', price: 199, featured: false, benefits: ['2 cleanings + exams/year', '20% off other services', 'Periodontal screening included'] }, { tier: 'Senior (65+)', price: 149, featured: false, benefits: ['All Individual benefits', 'Periodontal-focused care'] } ], services: ['General dentistry', 'Periodontal', 'Gum disease treatment', 'Deep cleanings'], story: 'Smile Co. is a boutique general + periodontal practice in Fountain Square. Dr. Lee combines general dentistry with periodontal expertise, offering members comprehensive gum health monitoring as part of standard care.', perks: ['Periodontal screening at every visit', 'Modern boutique setting', 'Member referral bonuses'] },
+    { slug: 'bright-smile-pedo', name: 'Bright Smile Pediatric', initials: 'BS', neighborhood: 'Fishers', address: '8470 E 96th St, Fishers, IN 46038', phone: '(317) 555-8470', founded: 2009, owner: 'Dr. Aisha Patel, DDS', members: '2,400+', rating: 4.9, reviews: 738, languages: ['English', 'Español'], hours: { mtu: '8am-5pm', wt: '8am-5pm', f: '8am-3pm', s: '9am-1pm', su: 'Closed' }, accepting: 'Yes — within 1 week', plans: [ { tier: 'Single Child', price: 149, featured: false, benefits: ['2 cleanings + exams/year', 'Fluoride treatments included', '20% off sealants + restorations'] }, { tier: 'Family (kids 1-17)', price: 369, featured: true, label: 'For 2-4 kids', benefits: ['Up to 4 kids covered', 'Sibling discount built in', 'Free fluoride at every visit', 'Sport mouthguards included'] } ], services: ['Pediatric dentistry', 'Children only (ages 1-17)', 'Sedation for special needs', 'Sealants', 'Sport mouthguards'], story: 'Bright Smile is exclusively a pediatric practice serving children from age 1 through their teen years. Dr. Patel founded the practice to make children\'s dental care affordable for families without insurance. Family-friendly waiting area, kid-focused exam rooms, and gentle anxiety-conscious care.', perks: ['Toy after every visit', 'Special needs accommodations', 'Family waiting room with kids\' area', 'Spanish-speaking staff'] },
+    { slug: 'monument-dental', name: 'Monument Dental', initials: 'MD', neighborhood: 'Downtown', address: '88 Monument Circle, Indianapolis, IN 46204', phone: '(317) 555-0088', founded: 2016, owner: 'Dr. Rachel Thompson, DDS', members: '1,150+', rating: 4.5, reviews: 256, languages: ['English'], hours: { mtu: '9am-6pm', wt: '9am-6pm', f: '9am-3pm', s: 'Closed', su: 'Closed' }, accepting: 'Yes — within 2 weeks', plans: [ { tier: 'Individual', price: 225, featured: true, label: 'Most popular', benefits: ['2 cleanings + exams/year', '25% off cosmetic services', 'Free annual whitening touch-up', 'Sunbit financing available'] } ], services: ['General dentistry', 'Cosmetic dentistry', 'Whitening', 'Veneers', 'Bonding'], story: 'Monument Dental is a downtown practice specializing in cosmetic and general care for busy professionals. Dr. Thompson built the practice around lunch-hour appointments and same-day veneers.', perks: ['Free whitening with annual membership', 'Lunch-hour appointments available', 'Same-day cosmetic consults'] },
+    { slug: 'irvington-family', name: 'Irvington Family Dental', initials: 'IF', neighborhood: 'Irvington', address: '5602 E Washington St, Indianapolis, IN 46219', phone: '(317) 555-5602', founded: 2001, owner: 'Dr. James Kowalski, DDS', members: '2,900+', rating: 4.7, reviews: 612, languages: ['English'], hours: { mtu: '8am-5pm', wt: '8am-5pm', f: '8am-2pm', s: 'Closed', su: 'Closed' }, accepting: 'Yes — same week', plans: [ { tier: 'Individual', price: 175, featured: false, benefits: ['2 cleanings + exams/year', '20% off other services', 'No deductibles'] }, { tier: 'Family of 4', price: 379, featured: true, label: 'Best value', benefits: ['Save $321 vs. individual plans', 'All Individual benefits × 4', 'Free fluoride for kids'] }, { tier: 'Senior (65+)', price: 139, featured: false, benefits: ['All Individual benefits', 'Discount on dentures'] } ], services: ['General dentistry', 'Pediatric dentistry', 'Dentures', 'Crowns + bridges'], story: 'Irvington Family Dental has served Indianapolis\' east side since 2001. Dr. Kowalski runs a traditional family-focused practice that emphasizes long-term patient relationships and accessible care.', perks: ['Walk-in emergency hours', 'Free consultations', 'Multi-generational family discount'] },
+    { slug: 'crossroads-perio', name: 'Crossroads Periodontics', initials: 'CP', neighborhood: 'Carmel', address: '301 E Carmel Dr, Carmel, IN 46032', phone: '(317) 555-0301', founded: 2014, owner: 'Dr. David Chen, DDS, MS', members: '420+', rating: 4.8, reviews: 187, languages: ['English'], hours: { mtu: '8am-5pm', wt: '8am-5pm', f: '8am-3pm', s: 'Closed', su: 'Closed' }, accepting: 'No — waitlist 4-6 weeks', plans: [ { tier: 'Periodontal Care', price: 329, featured: true, label: 'Specialist plan', benefits: ['3 deep cleanings/year (vs. standard 2)', '15% off implants + grafts', 'Free periodontal screenings', 'Sunbit financing on implants'] }, { tier: 'Senior (65+)', price: 279, featured: false, benefits: ['All Periodontal Care benefits', 'Discount on dentures'] } ], services: ['Periodontics', 'Gum disease treatment', 'Dental implants', 'Bone grafting', 'Gum grafting'], story: 'Crossroads Periodontics is a specialty practice focused exclusively on gum disease and dental implants. Dr. Chen is board-certified in periodontology and offers membership pricing on procedures that typically aren\'t covered well by insurance.', perks: ['Specialist-led care', 'Implant consultations included', 'Treatment plan financing'] },
+    { slug: 'midtown-dental-arts', name: 'Midtown Dental Arts', initials: 'MA', neighborhood: 'Midtown', address: '3850 N Meridian St, Indianapolis, IN 46208', phone: '(317) 555-3850', founded: 2012, owner: 'Dr. Maria Ruiz, DDS', members: '1,650+', rating: 4.6, reviews: 489, languages: ['English', 'Español'], hours: { mtu: '8am-6pm', wt: '8am-6pm', f: '8am-3pm', s: '9am-1pm', su: 'Closed' }, accepting: 'Yes — within 1 week', plans: [ { tier: 'Individual', price: 209, featured: false, benefits: ['2 cleanings + exams/year', '20% off cosmetic services', 'Free annual whitening pen'] }, { tier: 'Family of 4', price: 425, featured: true, label: 'Best value', benefits: ['All Individual benefits × 4', 'Free sealants for kids', 'Family appointment scheduling'] } ], services: ['General dentistry', 'Cosmetic dentistry', 'Pediatric care', 'Veneers', 'Implants', 'Spanish-speaking staff'], story: 'Midtown Dental Arts is a bilingual general and cosmetic practice. Dr. Ruiz built the practice around accessible care for Spanish-speaking families in central Indianapolis.', perks: ['Bilingual front office and clinical staff', 'Saturday family appointments', 'Free annual whitening'] },
+    { slug: 'broadripple-smiles', name: 'Broad Ripple Smiles', initials: 'BR', neighborhood: 'Broad Ripple', address: '6402 Cornell Ave, Indianapolis, IN 46220', phone: '(317) 555-6402', founded: 2019, owner: 'Dr. Sam Becker, DDS', members: '540+', rating: 4.4, reviews: 312, languages: ['English'], hours: { mtu: '9am-5pm', wt: '9am-5pm', f: '9am-2pm', s: 'Closed', su: 'Closed' }, accepting: 'Yes — within 2 weeks', plans: [ { tier: 'Individual', price: 169, featured: true, label: 'Best price in Broad Ripple', benefits: ['2 cleanings + exams/year', '20% off other services', 'No deductibles or caps'] }, { tier: 'Senior (65+)', price: 129, featured: false, benefits: ['All Individual benefits', 'Senior-focused care'] } ], services: ['General dentistry', 'Fillings', 'Crowns', 'Whitening'], story: 'A newer practice serving Broad Ripple residents with affordable general dentistry. Dr. Becker opened in 2019 with a focus on no-frills, fair-priced care.', perks: ['Lowest-price guarantee on plans in the neighborhood', 'Online member booking'] },
+    { slug: 'castleton-family', name: 'Castleton Family Dental', initials: 'CF', neighborhood: 'Castleton', address: '8202 Allisonville Rd, Indianapolis, IN 46250', phone: '(317) 555-8202', founded: 2005, owner: 'Dr. Lisa Nguyen, DDS', members: '2,100+', rating: 4.5, reviews: 421, languages: ['English'], hours: { mtu: '7am-6pm', wt: '7am-6pm', f: '7am-4pm', s: '8am-1pm', su: 'Closed' }, accepting: 'Yes — within 1 week', plans: [ { tier: 'Individual', price: 185, featured: false, benefits: ['2 cleanings + exams/year', '20% off all other services', 'No deductibles'] }, { tier: 'Family of 4', price: 389, featured: true, label: 'Save $351', benefits: ['All Individual benefits × 4', 'Free fluoride for kids', 'Family scheduling priority'] }, { tier: 'Senior (65+)', price: 145, featured: false, benefits: ['All Individual benefits', 'Discount on dentures'] } ], services: ['General dentistry', 'Pediatric dentistry', 'Crowns', 'Implants', 'Family care'], story: 'Castleton Family Dental serves the north-side Indianapolis community with full-family care from kids through seniors. Dr. Nguyen runs a multi-doctor practice with extended weekday and Saturday hours.', perks: ['Extended weekday and Saturday hours', 'Multi-doctor team for same-day visits', 'Family appointment blocks'] },
+    { slug: 'westside-dental', name: 'Westside Dental Group', initials: 'WG', neighborhood: 'Speedway', distance: 5.9, address: '5915 Crawfordsville Rd, Indianapolis, IN 46224', phone: '(317) 555-5915', founded: 2008, owner: 'Dr. Antonio Garcia, DDS', members: '1,950+', rating: 4.7, reviews: 597, languages: ['English', 'Español'], hours: { mtu: '8am-6pm', wt: '8am-6pm', f: '8am-3pm', s: '9am-1pm', su: 'Closed' }, accepting: 'Yes — same week', plans: [ { tier: 'Individual', price: 195, featured: false, benefits: ['2 cleanings + exams/year', '20% off all other services', 'Orthodontic discount included'] }, { tier: 'Family of 4', price: 405, featured: true, label: 'Best value', benefits: ['All Individual benefits × 4', 'Free Invisalign consultations', 'Sport mouthguards for kids'] }, { tier: 'Senior (65+)', price: 149, featured: false, benefits: ['All Individual benefits', 'Implant consultation discount'] } ], services: ['General dentistry', 'Orthodontics', 'Invisalign', 'Pediatric care', 'Spanish-speaking staff'], story: 'Westside Dental Group serves Speedway and west-side Indianapolis with combined general and orthodontic care. Dr. Garcia\'s practice is a popular choice for families wanting both general dentistry and Invisalign under one roof.', perks: ['General + orthodontic care in one practice', 'Bilingual staff', 'Sunbit financing on orthodontic treatment'] },
+    { slug: 'meridian-dental', name: 'Meridian Dental Care', initials: 'ME', neighborhood: 'Meridian-Kessler', address: '5320 N Meridian St, Indianapolis, IN 46208', phone: '(317) 555-5320', founded: 2007, owner: 'Dr. Karen White, DDS', members: '2,700+', rating: 4.8, reviews: 824, languages: ['English'], hours: { mtu: '7am-6pm', wt: '7am-6pm', f: '7am-4pm', s: '8am-1pm', su: 'Closed' }, accepting: 'Yes — within 5 days', plans: [ { tier: 'Individual', price: 219, featured: true, label: 'Most popular', benefits: ['2 cleanings + exams/year', '25% off cosmetic services', 'Free annual whitening session', 'Premium care experience'] } ], services: ['General dentistry', 'Cosmetic dentistry', 'Veneers', 'Whitening', 'Same-day crowns'], story: 'Meridian Dental Care has been a Meridian-Kessler institution since 2007. Dr. White built the practice around exceptional cosmetic dentistry combined with thorough general care, all in a calm, modern environment.', perks: ['Free annual whitening sessions', 'Same-day crowns available', 'Premium spa-like patient experience'] },
+    { slug: 'zionsville-pedo', name: 'Zionsville Pediatric Dentistry', initials: 'ZP', neighborhood: 'Zionsville', address: '11700 N Michigan Rd, Zionsville, IN 46077', phone: '(317) 555-1170', founded: 2010, owner: 'Dr. Emily Roberts, DDS', members: '1,600+', rating: 4.9, reviews: 312, languages: ['English'], hours: { mtu: '8am-5pm', wt: '8am-5pm', f: '8am-3pm', s: '9am-12pm', su: 'Closed' }, accepting: 'Yes — within 1 week', plans: [ { tier: 'Single Child', price: 139, featured: false, benefits: ['2 cleanings + exams/year', 'Fluoride at every visit', '20% off restorations'] }, { tier: 'Family (kids 1-17)', price: 355, featured: true, label: 'For 2-4 kids', benefits: ['Up to 4 kids covered', 'Free sealants', 'Anxiety-conscious care', 'Sport mouthguards included'] } ], services: ['Pediatric dentistry', 'Children only (ages 1-17)', 'Sealants', 'Sport mouthguards', 'Anxiety care'], story: 'Zionsville Pediatric Dentistry serves children from infancy through their teen years. Dr. Roberts and her team focus on gentle, anxiety-conscious dental care in a kid-friendly environment.', perks: ['Anxiety-conscious care for sensitive kids', 'Kid-themed exam rooms', 'Free sealants annually'] },
+  ];
+
+  return practices.map(p => ({ params: { slug: p.slug }, props: p }));
+}
+
+const p = Astro.props;
+const fallback = {
+  slug: 'unknown', name: 'Sample Dental Practice', initials: 'SD', neighborhood: 'Indianapolis', address: 'Sample address', phone: '(317) 555-0000', founded: 2020, owner: 'Sample Dentist', members: '500+', rating: 4.7, reviews: 250, languages: ['English'], hours: { mtu: '9am-5pm', wt: '9am-5pm', f: '9am-3pm', s: 'Closed', su: 'Closed' }, accepting: 'Yes', plans: [{ tier: 'Individual', price: 189, featured: true, benefits: ['2 cleanings + exams/year', '20% off other services'] }], services: ['General dentistry'], story: 'Sample placeholder.', perks: ['Member perks']
+};
+const practice = p && p.name ? p : fallback;
+---
+<ClerriFindLayout title={practice.name} page="home" description={`${practice.name} — Clerri membership plans starting at $${practice.plans[0].price}/year`}>
+
+<style>
+  /* HERO */
+  .pp-hero {
+    background: linear-gradient(135deg, var(--clerri-green) 0%, var(--clerri-green-darker) 100%);
+    color: var(--cotton);
+    padding: 4rem 1.5rem 5rem;
+  }
+  .pp-hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 140px 1fr 280px;
+    gap: 2.5rem; align-items: center;
+  }
+  @media (max-width: 900px) {
+    .pp-hero-inner { grid-template-columns: 100px 1fr; gap: 1.5rem; }
+    .pp-hero-actions { grid-column: 1 / -1; }
+  }
+  .pp-logo {
+    width: 140px; height: 140px;
+    background: var(--zest); color: var(--clerri-green);
+    border-radius: 1.25rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-weight: 700;
+    font-size: 3rem; letter-spacing: -0.02em;
+  }
+  @media (max-width: 900px) { .pp-logo { width: 100px; height: 100px; font-size: 2.2rem; } }
+  .pp-info h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+    color: var(--cotton);
+  }
+  .pp-tagline {
+    color: rgba(243,240,228,0.75);
+    font-size: 1rem; margin: 0 0 1rem;
+    font-style: italic; font-family: 'Fraunces', serif;
+  }
+  .pp-meta {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.9rem; color: rgba(243,240,228,0.85);
+  }
+  .pp-meta-item { display: flex; align-items: center; gap: 0.35rem; }
+  .pp-rating { color: var(--zest); font-weight: 700; }
+
+  .pp-hero-actions {
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .pp-hero-actions .cf-btn { width: 100%; justify-content: center; }
+  .pp-hero-actions .cf-btn-outline {
+    background: transparent; color: var(--zest);
+    border: 1.5px solid var(--zest);
+  }
+  .pp-hero-actions .cf-btn-outline:hover { background: var(--zest); color: var(--clerri-green); }
+
+  /* BODY GRID */
+  .pp-body {
+    max-width: 1100px; margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    display: grid; grid-template-columns: 1fr 320px;
+    gap: 2rem;
+  }
+  @media (max-width: 900px) { .pp-body { grid-template-columns: 1fr; } }
+
+  .pp-section { margin-bottom: 2.5rem; }
+  .pp-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .pp-section p { font-size: 0.975rem; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+
+  .pp-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+  .pp-plan {
+    background: #fff;
+    border: 1.5px solid var(--cotton-dark);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .pp-plan.featured {
+    background: linear-gradient(180deg, var(--zest) 0%, #e8f99a 100%);
+    border-color: var(--clerri-green);
+  }
+  .pp-plan-label {
+    position: absolute; top: -0.6rem; left: 1rem;
+    background: var(--clerri-green); color: var(--zest);
+    padding: 0.2rem 0.7rem; border-radius: 999px;
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    font-weight: 700; text-transform: uppercase;
+  }
+  .pp-plan-tier {
+    font-family: 'Funnel Sans';
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .pp-plan-price {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--clerri-green); line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .pp-plan-price small { font-size: 0.95rem; color: var(--muted); font-weight: 400; }
+  .pp-plan-benefits {
+    margin: 0.85rem 0 0; padding: 0;
+    list-style: none;
+    font-size: 0.875rem;
+  }
+  .pp-plan-benefits li {
+    padding: 0.3rem 0 0.3rem 1.25rem;
+    position: relative;
+    color: var(--ink);
+  }
+  .pp-plan-benefits li::before {
+    content: "✓";
+    position: absolute; left: 0;
+    color: var(--clerri-green); font-weight: 700;
+  }
+  .pp-plan-join {
+    display: block;
+    margin-top: 1rem;
+    background: var(--clerri-green); color: var(--zest);
+    padding: 0.65rem; border-radius: 999px;
+    text-align: center; text-decoration: none;
+    font-weight: 600; font-size: 0.9rem;
+    transition: 0.15s;
+  }
+  .pp-plan.featured .pp-plan-join { background: var(--clerri-green); color: var(--zest); }
+  .pp-plan-join:hover { background: var(--clerri-green-darker); }
+
+  /* Services chips */
+  .pp-services { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pp-service-chip {
+    background: var(--cotton);
+    border: 1px solid var(--cotton-dark);
+    padding: 0.4rem 0.85rem; border-radius: 999px;
+    font-size: 0.825rem; color: var(--clerri-green); font-weight: 500;
+  }
+
+  /* Perks */
+  .pp-perks-list {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1.25rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .pp-perks-list ul { margin: 0; padding-left: 0; list-style: none; }
+  .pp-perks-list li {
+    padding: 0.5rem 0 0.5rem 1.6rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--cotton-dark);
+  }
+  .pp-perks-list li:last-child { border-bottom: none; }
+  .pp-perks-list li::before {
+    content: "★";
+    position: absolute; left: 0; top: 0.5rem;
+    color: var(--clerri-green); font-weight: 700;
+  }
+
+  /* SIDEBAR */
+  .pp-sidebar {
+    background: var(--cotton);
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky; top: 5rem;
+  }
+  @media (max-width: 900px) { .pp-sidebar { position: static; } }
+  .pp-sidebar-section {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--cotton-dark);
+  }
+  .pp-sidebar-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .pp-sidebar-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .pp-sidebar-val {
+    font-size: 0.925rem; color: var(--clerri-green); font-weight: 600;
+    line-height: 1.5;
+  }
+  .pp-hours-grid {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.85rem;
+    font-size: 0.875rem;
+    color: var(--ink);
+  }
+  .pp-hours-grid .day { color: var(--muted); }
+
+  /* CTA BOTTOM */
+  .pp-cta-band {
+    background: var(--zest);
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .pp-cta-band h2 {
+    font-family: 'Fraunces', serif;
+    color: var(--clerri-green);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .pp-cta-band h2 em { font-style: italic; }
+
+  .pp-back {
+    background: var(--clerri-green-darker);
+    padding: 0.85rem 1.5rem;
+  }
+  .pp-back-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+  .pp-back a {
+    color: rgba(243,240,228,0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  .pp-back a:hover { color: var(--zest); }
+</style>
+
+<div class="pp-back">
+  <div class="pp-back-inner">
+    <a href="/clerri-find/search">← Back to search results</a>
+  </div>
+</div>
+
+<section class="pp-hero">
+  <div class="pp-hero-inner">
+    <div class="pp-logo">{practice.initials}</div>
+    <div class="pp-info">
+      <h1>{practice.name}</h1>
+      <p class="pp-tagline">{practice.owner} · serving {practice.neighborhood} since {practice.founded}</p>
+      <div class="pp-meta">
+        <span class="pp-meta-item pp-rating">★ {practice.rating} <span style="color:rgba(243,240,228,0.6);font-weight:400">({practice.reviews.toLocaleString()} reviews)</span></span>
+        <span class="pp-meta-item">📍 {practice.address}</span>
+        <span class="pp-meta-item">📞 {practice.phone}</span>
+      </div>
+    </div>
+    <div class="pp-hero-actions">
+      <a href="#join" class="cf-btn cf-btn-primary">Join membership</a>
+      <a href="#contact" class="cf-btn cf-btn-outline">Book appointment</a>
+    </div>
+  </div>
+</section>
+
+<div class="pp-body">
+  <div>
+    <section class="pp-section" id="join">
+      <h2>Membership plans</h2>
+      <div class="pp-plans">
+        {practice.plans.map(plan => (
+          <div class={`pp-plan ${plan.featured ? 'featured' : ''}`}>
+            {plan.label && <span class="pp-plan-label">{plan.label}</span>}
+            <div class="pp-plan-tier">{plan.tier}</div>
+            <div class="pp-plan-price">${plan.price}<small> / year</small></div>
+            <ul class="pp-plan-benefits">
+              {plan.benefits.map(b => <li>{b}</li>)}
+            </ul>
+            <a href="#" class="pp-plan-join">Join this plan →</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="pp-section">
+      <h2>What's included for members</h2>
+      <ul style="font-size:0.95rem;padding-left:1rem;line-height:1.8;color:var(--ink-soft)">
+        <li>Preventive care at no additional cost (2 cleanings + 2 exams/year)</li>
+        <li>20%+ off restorative, cosmetic, and emergency services</li>
+        <li>Same-day appointments for members when available</li>
+        <li>Financing available for procedures over $500 (0-14.99% APR via Sunbit)</li>
+        <li>No deductibles, no annual maximums, no waiting periods</li>
+        <li>Transparent member pricing for every service before treatment</li>
+      </ul>
+    </section>
+
+    <section class="pp-section">
+      <h2>Services offered</h2>
+      <div class="pp-services">
+        {practice.services.map(s => <span class="pp-service-chip">{s}</span>)}
+      </div>
+    </section>
+
+    <section class="pp-section">
+      <h2>About the practice</h2>
+      <p>{practice.story}</p>
+    </section>
+
+    <section class="pp-section">
+      <h2>Member perks</h2>
+      <div class="pp-perks-list">
+        <ul>
+          {practice.perks.map(perk => <li>{perk}</li>)}
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <aside class="pp-sidebar" id="contact">
+    <div class="pp-sidebar-section">
+      <div class="pp-sidebar-label">Hours</div>
+      <div class="pp-hours-grid">
+        <span class="day">Mon-Tue</span><span>{practice.hours.mtu}</span>
+        <span class="day">Wed-Thu</span><span>{practice.hours.wt}</span>
+        <span class="day">Friday</span><span>{practice.hours.f}</span>
+        <span class="day">Saturday</span><span>{practice.hours.s}</span>
+        <span class="day">Sunday</span><span>{practice.hours.su}</span>
+      </div>
+    </div>
+    <div class="pp-sidebar-section">
+      <div class="pp-sidebar-label">Accepting new patients</div>
+      <div class="pp-sidebar-val">{practice.accepting}</div>
+    </div>
+    <div class="pp-sidebar-section">
+      <div class="pp-sidebar-label">Languages</div>
+      <div class="pp-sidebar-val">{practice.languages.join(' · ')}</div>
+    </div>
+    <div class="pp-sidebar-section">
+      <div class="pp-sidebar-label">Total active members</div>
+      <div class="pp-sidebar-val">{practice.members} members</div>
+    </div>
+    <div class="pp-sidebar-section">
+      <div class="pp-sidebar-label">Insurance accepted</div>
+      <div class="pp-sidebar-val">Some PPOs · Most patients use membership</div>
+    </div>
+    <a href="#" class="cf-btn cf-btn-secondary" style="width:100%;justify-content:center;margin-top:0.5rem">Call or book now</a>
+  </aside>
+</div>
+
+<section class="pp-cta-band">
+  <h2>Ready to start saving on <em>your dental care?</em></h2>
+  <a href="#join" class="cf-btn cf-btn-secondary cf-btn-lg">Join {practice.name} →</a>
+</section>
+
+</ClerriFindLayout>

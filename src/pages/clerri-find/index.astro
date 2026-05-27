@@ -1,0 +1,568 @@
+---
+import ClerriFindLayout from '../../layouts/ClerriFindLayout.astro';
+---
+<ClerriFindLayout title="Find affordable dental care" page="home" description="Search 5,000+ dental practices offering membership plans. No insurance? No problem.">
+
+<style>
+  /* ===== HERO ===== */
+  .cf-hero {
+    background: var(--clerri-green);
+    color: var(--cotton);
+    padding: 5rem 1.5rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cf-hero::before {
+    content: ""; position: absolute; top: -150px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(207,252,120,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cf-hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .cf-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.25rem;
+    max-width: 16ch;
+  }
+  .cf-hero h1 em { font-style: italic; color: var(--zest); font-weight: 600; }
+  .cf-hero-sub {
+    font-size: 1.2rem;
+    color: rgba(243,240,228,0.8);
+    max-width: 50ch;
+    margin: 0 0 2.5rem;
+  }
+
+  /* SEARCH BAR */
+  .cf-search {
+    background: #fff;
+    border-radius: 999px;
+    padding: 0.5rem;
+    display: grid; grid-template-columns: 1.3fr 1fr auto;
+    gap: 0.3rem;
+    max-width: 720px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+  }
+  @media (max-width: 640px) {
+    .cf-search {
+      grid-template-columns: 1fr;
+      border-radius: 1.25rem;
+      padding: 0.75rem;
+      gap: 0.5rem;
+    }
+  }
+  .cf-search-field {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-right: 1px solid var(--cotton-dark);
+    position: relative;
+  }
+  @media (max-width: 640px) {
+    .cf-search-field { border-right: none; border-bottom: 1px solid var(--cotton-dark); padding: 0.65rem 0.85rem; }
+    .cf-search-field:last-of-type { border-bottom: none; }
+  }
+  .cf-search-field-icon {
+    color: var(--clerri-green); font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cf-search-field-content { flex: 1; min-width: 0; }
+  .cf-search-field-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    margin-bottom: 0.1rem;
+  }
+  .cf-search-field input, .cf-search-field select {
+    width: 100%; border: none; outline: none; background: transparent;
+    font-size: 1rem; color: var(--ink);
+    font-family: 'Funnel Sans';
+    padding: 0;
+  }
+  .cf-search-btn {
+    background: var(--zest); color: var(--clerri-green);
+    border: none; border-radius: 999px;
+    padding: 0 1.85rem;
+    font-family: 'Funnel Sans';
+    font-weight: 700; font-size: 1rem;
+    cursor: pointer;
+    transition: 0.15s;
+  }
+  .cf-search-btn:hover { background: var(--zest-hover); }
+  @media (max-width: 640px) {
+    .cf-search-btn { padding: 1rem; }
+  }
+
+  .cf-hero-popular {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: rgba(243,240,228,0.65);
+  }
+  .cf-hero-popular a {
+    color: var(--zest);
+    text-decoration: none;
+    margin-right: 0.65rem;
+    border-bottom: 1px dashed transparent;
+    transition: 0.15s;
+  }
+  .cf-hero-popular a:hover { border-bottom-color: var(--zest); }
+
+  /* TRUST STRIP */
+  .cf-trust {
+    background: var(--clerri-green-darker);
+    padding: 2rem 1.5rem;
+  }
+  .cf-trust-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; text-align: center;
+  }
+  @media (max-width: 640px) {
+    .cf-trust-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  }
+  .cf-trust-item .num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.25rem; font-weight: 700;
+    color: var(--zest);
+    line-height: 1;
+  }
+  .cf-trust-item .label {
+    font-size: 0.8rem; color: rgba(243,240,228,0.7);
+    margin-top: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* HOW IT WORKS */
+  .cf-section { padding: 5rem 1.5rem; }
+  .cf-section-inner { max-width: 1100px; margin: 0 auto; }
+  .cf-section-eyebrow {
+    font-family: 'Funnel Sans';
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .cf-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    color: var(--clerri-green);
+    max-width: 22ch;
+  }
+  .cf-section h2 em { font-style: italic; color: var(--clerri-green); font-weight: 600; }
+  .cf-section-lead {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 55ch;
+    margin: 0 0 3rem;
+  }
+
+  .cf-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 840px) { .cf-steps { grid-template-columns: 1fr; } }
+  .cf-step {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem 1.75rem;
+    border: 1px solid var(--cotton-dark);
+    position: relative;
+    transition: 0.2s;
+  }
+  .cf-step:hover { border-color: var(--clerri-green); transform: translateY(-3px); }
+  .cf-step-num {
+    width: 2.5rem; height: 2.5rem;
+    background: var(--zest); color: var(--clerri-green);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 700; font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .cf-step h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .cf-step p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* FEATURED PRACTICES */
+  .cf-section-light { background: #fff; }
+  .cf-practices-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 840px) { .cf-practices-grid { grid-template-columns: 1fr; } }
+  .cf-practice-card {
+    background: var(--cotton);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--cotton-dark);
+    text-decoration: none;
+    color: inherit;
+    transition: 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .cf-practice-card:hover {
+    border-color: var(--clerri-green);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,41,32,0.08);
+  }
+  .cf-practice-img {
+    height: 160px;
+    background: linear-gradient(135deg, var(--clerri-green-darker), var(--clerri-green));
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .cf-practice-img-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-weight: 700;
+    color: var(--zest);
+    font-size: 3rem;
+    letter-spacing: -0.02em;
+  }
+  .cf-practice-badge {
+    position: absolute; top: 0.85rem; left: 0.85rem;
+    background: var(--zest); color: var(--clerri-green);
+    padding: 0.2rem 0.7rem; border-radius: 999px;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .cf-practice-body { padding: 1.25rem 1.35rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .cf-practice-body h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .cf-practice-loc {
+    font-size: 0.85rem; color: var(--muted);
+    margin: 0 0 0.85rem;
+  }
+  .cf-practice-tags {
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  .cf-practice-tag {
+    background: rgba(0,41,32,0.06);
+    padding: 0.2rem 0.55rem; border-radius: 999px;
+    font-size: 0.72rem; color: var(--clerri-green); font-weight: 500;
+  }
+  .cf-practice-price {
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-top: auto;
+  }
+  .cf-practice-price strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    color: var(--clerri-green); font-weight: 700;
+  }
+
+  /* CITIES STRIP */
+  .cf-cities {
+    background: var(--cotton);
+    padding: 4rem 1.5rem;
+  }
+  .cf-cities-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  @media (max-width: 900px) { .cf-cities-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 540px) { .cf-cities-grid { grid-template-columns: repeat(2, 1fr); } }
+  .cf-city {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 0.85rem;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--clerri-green);
+    transition: 0.15s;
+  }
+  .cf-city:hover {
+    background: var(--clerri-green); color: var(--zest);
+    transform: translateY(-2px);
+  }
+  .cf-city-name { font-weight: 600; font-size: 0.95rem; }
+  .cf-city-count { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+  .cf-city:hover .cf-city-count { color: rgba(207,252,120,0.7); }
+
+  /* VALUE PROPS */
+  .cf-value-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 720px) { .cf-value-grid { grid-template-columns: 1fr; } }
+  .cf-value {
+    background: var(--cotton);
+    border-radius: 1.5rem;
+    padding: 2.25rem;
+    border: 1px solid var(--cotton-dark);
+  }
+  .cf-value-icon {
+    width: 3rem; height: 3rem;
+    background: var(--clerri-green);
+    color: var(--zest);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .cf-value h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .cf-value p {
+    font-size: 0.975rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* CTA BAND */
+  .cf-cta-band {
+    background: var(--zest);
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  .cf-cta-band h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: var(--clerri-green);
+    margin: 0 0 1.5rem;
+    max-width: 22ch; margin-left: auto; margin-right: auto;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .cf-cta-band h2 em { font-style: italic; }
+  .cf-cta-band .cf-btn { box-shadow: 0 6px 18px rgba(0,41,32,0.15); }
+</style>
+
+<!-- HERO + SEARCH -->
+<section class="cf-hero">
+  <div class="cf-hero-inner">
+    <span class="cf-pill cf-pill-soft" style="margin-bottom:1.5rem;display:inline-block">No insurance? No problem.</span>
+    <h1>Find affordable dental care <em>near you.</em></h1>
+    <p class="cf-hero-sub">Search 5,000+ dental practices offering membership plans. Save up to 60% on cleanings, exams, and procedures — no insurance required, no waiting periods.</p>
+
+    <form action="/clerri-find/search" method="get" class="cf-search">
+      <div class="cf-search-field">
+        <span class="cf-search-field-icon">📍</span>
+        <div class="cf-search-field-content">
+          <div class="cf-search-field-label">Location</div>
+          <input type="text" name="location" placeholder="ZIP code or city" />
+        </div>
+      </div>
+      <div class="cf-search-field">
+        <span class="cf-search-field-icon">🦷</span>
+        <div class="cf-search-field-content">
+          <div class="cf-search-field-label">I'm looking for</div>
+          <select name="type">
+            <option>Any membership plan</option>
+            <option>Individual plan</option>
+            <option>Family plan</option>
+            <option>Senior plan</option>
+            <option>Orthodontic plan</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="cf-search-btn">Search →</button>
+    </form>
+
+    <div class="cf-hero-popular">
+      Popular searches:
+      <a href="/clerri-find/search?location=Indianapolis">Indianapolis</a>
+      <a href="/clerri-find/search?location=Chicago">Chicago</a>
+      <a href="/clerri-find/search?location=Austin">Austin</a>
+      <a href="/clerri-find/search?location=Denver">Denver</a>
+      <a href="/clerri-find/search?location=Phoenix">Phoenix</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="cf-trust">
+  <div class="cf-trust-inner">
+    <div class="cf-trust-item">
+      <div class="num">5,000+</div>
+      <div class="label">practices nationwide</div>
+    </div>
+    <div class="cf-trust-item">
+      <div class="num">50,000+</div>
+      <div class="label">active members</div>
+    </div>
+    <div class="cf-trust-item">
+      <div class="num">$938</div>
+      <div class="label">avg. yearly savings</div>
+    </div>
+    <div class="cf-trust-item">
+      <div class="num">0</div>
+      <div class="label">deductibles or waiting periods</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="cf-section">
+  <div class="cf-section-inner">
+    <div class="cf-section-eyebrow">How it works</div>
+    <h2>Three steps. <em>That's it.</em></h2>
+    <p class="cf-section-lead">No insurance applications. No deductibles. No paperwork. Just affordable care from a local dentist you choose.</p>
+
+    <div class="cf-steps">
+      <div class="cf-step">
+        <div class="cf-step-num">1</div>
+        <h3>Find a practice</h3>
+        <p>Search by location, plan type, and price. Filter by what matters most — distance, language, family plans, accepting new patients.</p>
+      </div>
+      <div class="cf-step">
+        <div class="cf-step-num">2</div>
+        <h3>Pick a plan</h3>
+        <p>Each practice sets its own plans. Individual, family, or senior — starting around $189/year. See exactly what's covered.</p>
+      </div>
+      <div class="cf-step">
+        <div class="cf-step-num">3</div>
+        <h3>Visit the dentist</h3>
+        <p>Cleanings and exams included. Get 20%+ off everything else. Same-day enrollment, no waiting periods, instant savings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="cf-section cf-section-light">
+  <div class="cf-section-inner">
+    <div class="cf-section-eyebrow">Why Clerri</div>
+    <h2>The smarter way <em>to pay for dental care.</em></h2>
+
+    <div class="cf-value-grid">
+      <div class="cf-value">
+        <div class="cf-value-icon">💸</div>
+        <h3>Real savings, no surprises</h3>
+        <p>Members save an average of $938 per year. Plans cover preventive care at no extra cost and discount everything else. Transparent pricing — no surprise bills.</p>
+      </div>
+      <div class="cf-value">
+        <div class="cf-value-icon">⚡</div>
+        <h3>Same-day enrollment</h3>
+        <p>No insurance applications. No 6-month waiting periods. Join during your first visit and start saving immediately — even on the same day's appointment.</p>
+      </div>
+      <div class="cf-value">
+        <div class="cf-value-icon">🦷</div>
+        <h3>Choose your dentist</h3>
+        <p>5,000+ practices across all 50 states. Each one offers their own membership plan with their own pricing — you pick the dentist, you pick the plan.</p>
+      </div>
+      <div class="cf-value">
+        <div class="cf-value-icon">👨‍👩‍👧</div>
+        <h3>Plans for the whole family</h3>
+        <p>Individual, family of 4, and senior plans available. Most practices offer family discounts — typically saving 25-40% versus enrolling each person separately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRACTICES -->
+<section class="cf-section">
+  <div class="cf-section-inner">
+    <div class="cf-section-eyebrow">Featured practices</div>
+    <h2>Highly rated <em>near you.</em></h2>
+    <p class="cf-section-lead">A few of the 5,000+ Clerri practices accepting new members.</p>
+
+    <div class="cf-practices-grid">
+      <a href="/clerri-find/practice/wells-family-dental" class="cf-practice-card">
+        <div class="cf-practice-img">
+          <span class="cf-practice-badge">★ Featured</span>
+          <div class="cf-practice-img-mark">WD</div>
+        </div>
+        <div class="cf-practice-body">
+          <h4>Wells Family Dental</h4>
+          <p class="cf-practice-loc">Downtown Indianapolis, IN · 0.8 mi</p>
+          <div class="cf-practice-tags">
+            <span class="cf-practice-tag">General</span>
+            <span class="cf-practice-tag">Pediatric</span>
+            <span class="cf-practice-tag">EN / ES</span>
+          </div>
+          <div class="cf-practice-price">Individual plans from <strong>$189/yr</strong></div>
+        </div>
+      </a>
+      <a href="/clerri-find/practice/circle-city-dental" class="cf-practice-card">
+        <div class="cf-practice-img">
+          <div class="cf-practice-img-mark">CD</div>
+        </div>
+        <div class="cf-practice-body">
+          <h4>Circle City Dental</h4>
+          <p class="cf-practice-loc">Mass Ave, Indianapolis IN · 1.4 mi</p>
+          <div class="cf-practice-tags">
+            <span class="cf-practice-tag">General</span>
+            <span class="cf-practice-tag">Cosmetic</span>
+          </div>
+          <div class="cf-practice-price">Individual plans from <strong>$165/yr</strong></div>
+        </div>
+      </a>
+      <a href="/clerri-find/practice/indiana-orthodontics" class="cf-practice-card">
+        <div class="cf-practice-img">
+          <div class="cf-practice-img-mark">IO</div>
+        </div>
+        <div class="cf-practice-body">
+          <h4>Indiana Orthodontics Group</h4>
+          <p class="cf-practice-loc">Broad Ripple, Indianapolis IN · 2.1 mi</p>
+          <div class="cf-practice-tags">
+            <span class="cf-practice-tag">Orthodontics</span>
+            <span class="cf-practice-tag">Adults + teens</span>
+          </div>
+          <div class="cf-practice-price">Ortho plans from <strong>$399/yr</strong></div>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="/clerri-find/search" class="cf-btn cf-btn-ghost cf-btn-lg">See all practices →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="cf-cities">
+  <div class="cf-section-inner">
+    <div class="cf-section-eyebrow" style="text-align:center;margin-bottom:1.5rem">Browse by city</div>
+    <div class="cf-cities-grid">
+      <a href="/clerri-find/search?location=Indianapolis" class="cf-city"><div class="cf-city-name">Indianapolis</div><div class="cf-city-count">142 practices</div></a>
+      <a href="/clerri-find/search?location=Chicago" class="cf-city"><div class="cf-city-name">Chicago</div><div class="cf-city-count">287 practices</div></a>
+      <a href="/clerri-find/search?location=Austin" class="cf-city"><div class="cf-city-name">Austin</div><div class="cf-city-count">163 practices</div></a>
+      <a href="/clerri-find/search?location=Denver" class="cf-city"><div class="cf-city-name">Denver</div><div class="cf-city-count">118 practices</div></a>
+      <a href="/clerri-find/search?location=Phoenix" class="cf-city"><div class="cf-city-name">Phoenix</div><div class="cf-city-count">194 practices</div></a>
+      <a href="/clerri-find/search?location=Seattle" class="cf-city"><div class="cf-city-name">Seattle</div><div class="cf-city-count">147 practices</div></a>
+      <a href="/clerri-find/search?location=Boston" class="cf-city"><div class="cf-city-name">Boston</div><div class="cf-city-count">132 practices</div></a>
+      <a href="/clerri-find/search?location=Atlanta" class="cf-city"><div class="cf-city-name">Atlanta</div><div class="cf-city-count">221 practices</div></a>
+      <a href="/clerri-find/search?location=Dallas" class="cf-city"><div class="cf-city-name">Dallas</div><div class="cf-city-count">245 practices</div></a>
+      <a href="/clerri-find/search?location=Miami" class="cf-city"><div class="cf-city-name">Miami</div><div class="cf-city-count">198 practices</div></a>
+      <a href="/clerri-find/search?location=Nashville" class="cf-city"><div class="cf-city-name">Nashville</div><div class="cf-city-count">109 practices</div></a>
+      <a href="/clerri-find/search?location=Portland" class="cf-city"><div class="cf-city-name">Portland</div><div class="cf-city-count">94 practices</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cf-cta-band">
+  <h2>Ready to find affordable dental care <em>near you?</em></h2>
+  <a href="/clerri-find/search" class="cf-btn cf-btn-secondary cf-btn-lg">Find a practice →</a>
+</section>
+
+</ClerriFindLayout>

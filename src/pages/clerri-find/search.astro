@@ -1,0 +1,510 @@
+---
+import ClerriFindLayout from '../../layouts/ClerriFindLayout.astro';
+
+const practices = [
+  { slug: 'wells-family-dental', name: 'Wells Family Dental', initials: 'WD', neighborhood: 'Downtown Indianapolis', distance: 0.8, specialty: ['general','pedo'], languages: ['EN','ES'], rating: 4.9, reviews: 1247, price: 189, family: true, senior: true, financing: true, accepting: true, weekends: true, featured: true, tags: ['General','Pediatric','Cosmetic'] },
+  { slug: 'circle-city-dental', name: 'Circle City Dental', initials: 'CD', neighborhood: 'Mass Ave', distance: 1.4, specialty: ['general'], languages: ['EN'], rating: 4.7, reviews: 893, price: 165, family: false, senior: true, financing: false, accepting: true, weekends: false, featured: false, tags: ['General','Cosmetic'] },
+  { slug: 'indiana-orthodontics', name: 'Indiana Orthodontics Group', initials: 'IO', neighborhood: 'Broad Ripple', distance: 2.1, specialty: ['ortho'], languages: ['EN','ES'], rating: 4.8, reviews: 562, price: 399, family: false, senior: false, financing: true, accepting: true, weekends: true, featured: false, tags: ['Orthodontics','Adults + Teens'] },
+  { slug: 'mainstreet-family', name: 'MainStreet Family Dentistry', initials: 'MS', neighborhood: 'Carmel', distance: 3.5, specialty: ['general','pedo'], languages: ['EN'], rating: 4.9, reviews: 1582, price: 215, family: true, senior: false, financing: true, accepting: true, weekends: true, featured: true, tags: ['General','Pediatric','Family'] },
+  { slug: 'smile-co-studio', name: 'Smile Co. Dental Studio', initials: 'SC', neighborhood: 'Fountain Square', distance: 4.2, specialty: ['general','perio'], languages: ['EN'], rating: 4.6, reviews: 421, price: 199, family: false, senior: true, financing: false, accepting: true, weekends: false, featured: false, tags: ['General','Periodontal'] },
+  { slug: 'bright-smile-pedo', name: 'Bright Smile Pediatric', initials: 'BS', neighborhood: 'Fishers', distance: 5.8, specialty: ['pedo'], languages: ['EN','ES'], rating: 4.9, reviews: 738, price: 149, family: true, senior: false, financing: false, accepting: true, weekends: true, featured: false, tags: ['Pediatric','Kids only'] },
+  { slug: 'monument-dental', name: 'Monument Dental', initials: 'MD', neighborhood: 'Downtown', distance: 1.1, specialty: ['general','cosmetic'], languages: ['EN'], rating: 4.5, reviews: 256, price: 225, family: false, senior: false, financing: true, accepting: true, weekends: false, featured: false, tags: ['General','Cosmetic','Whitening'] },
+  { slug: 'irvington-family', name: 'Irvington Family Dental', initials: 'IF', neighborhood: 'Irvington', distance: 6.3, specialty: ['general','pedo'], languages: ['EN'], rating: 4.7, reviews: 612, price: 175, family: true, senior: true, financing: false, accepting: true, weekends: false, featured: false, tags: ['General','Pediatric'] },
+  { slug: 'crossroads-perio', name: 'Crossroads Periodontics', initials: 'CP', neighborhood: 'Carmel', distance: 4.0, specialty: ['perio'], languages: ['EN'], rating: 4.8, reviews: 187, price: 329, family: false, senior: true, financing: true, accepting: false, weekends: false, featured: false, tags: ['Periodontics','Implants'] },
+  { slug: 'midtown-dental-arts', name: 'Midtown Dental Arts', initials: 'MA', neighborhood: 'Midtown', distance: 2.5, specialty: ['general','cosmetic'], languages: ['EN','ES'], rating: 4.6, reviews: 489, price: 209, family: true, senior: false, financing: true, accepting: true, weekends: true, featured: false, tags: ['General','Cosmetic','Family'] },
+  { slug: 'broadripple-smiles', name: 'Broad Ripple Smiles', initials: 'BR', neighborhood: 'Broad Ripple', distance: 2.3, specialty: ['general'], languages: ['EN'], rating: 4.4, reviews: 312, price: 169, family: false, senior: true, financing: false, accepting: true, weekends: false, featured: false, tags: ['General'] },
+  { slug: 'castleton-family', name: 'Castleton Family Dental', initials: 'CF', neighborhood: 'Castleton', distance: 7.1, specialty: ['general','pedo'], languages: ['EN'], rating: 4.5, reviews: 421, price: 185, family: true, senior: true, financing: false, accepting: true, weekends: true, featured: false, tags: ['General','Pediatric','Family'] },
+  { slug: 'westside-dental', name: 'Westside Dental Group', initials: 'WG', neighborhood: 'Speedway', distance: 5.9, specialty: ['general','ortho'], languages: ['EN','ES'], rating: 4.7, reviews: 597, price: 195, family: true, senior: true, financing: true, accepting: true, weekends: false, featured: false, tags: ['General','Orthodontics','Family'] },
+  { slug: 'meridian-dental', name: 'Meridian Dental Care', initials: 'ME', neighborhood: 'Meridian-Kessler', distance: 2.9, specialty: ['general','cosmetic'], languages: ['EN'], rating: 4.8, reviews: 824, price: 219, family: false, senior: false, financing: true, accepting: true, weekends: true, featured: true, tags: ['General','Cosmetic'] },
+  { slug: 'zionsville-pedo', name: 'Zionsville Pediatric Dentistry', initials: 'ZP', neighborhood: 'Zionsville', distance: 8.4, specialty: ['pedo'], languages: ['EN'], rating: 4.9, reviews: 312, price: 139, family: true, senior: false, financing: false, accepting: true, weekends: true, featured: false, tags: ['Pediatric','Kids only'] },
+];
+---
+<ClerriFindLayout title="Search results" page="home" description="Browse dental practices offering membership plans">
+
+<style>
+  .cf-results-header {
+    background: var(--clerri-green);
+    color: var(--cotton);
+    padding: 2.5rem 1.5rem;
+  }
+  .cf-results-header-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+  .cf-results-search {
+    background: #fff;
+    border-radius: 999px;
+    padding: 0.5rem;
+    display: grid; grid-template-columns: 1.3fr 1fr auto;
+    gap: 0.3rem;
+    max-width: 900px;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    .cf-results-search { grid-template-columns: 1fr; border-radius: 1.25rem; padding: 0.75rem; }
+  }
+  .cf-results-search input, .cf-results-search select {
+    border: none; outline: none; background: transparent;
+    padding: 0.85rem 1.25rem;
+    font-size: 1rem; color: var(--ink);
+    font-family: 'Funnel Sans';
+    width: 100%;
+  }
+  .cf-results-search input { border-right: 1px solid var(--cotton-dark); }
+  @media (max-width: 640px) {
+    .cf-results-search input { border-right: none; border-bottom: 1px solid var(--cotton-dark); }
+  }
+  .cf-results-search button {
+    background: var(--zest); color: var(--clerri-green);
+    border: none; border-radius: 999px;
+    padding: 0 1.85rem;
+    font-weight: 700; font-size: 1rem;
+    cursor: pointer; font-family: 'Funnel Sans';
+  }
+  .cf-results-search button:hover { background: var(--zest-hover); }
+
+  /* MAIN LAYOUT */
+  .cf-results-body {
+    max-width: 1200px; margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 900px) {
+    .cf-results-body { grid-template-columns: 1fr; }
+    .cf-filters-toggle { display: block !important; }
+  }
+
+  /* FILTER SIDEBAR */
+  .cf-filters {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky; top: 5rem;
+  }
+  @media (max-width: 900px) {
+    .cf-filters { position: static; }
+    .cf-filters.collapsed { display: none; }
+  }
+  .cf-filters h3 {
+    font-family: 'Funnel Sans';
+    font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    margin: 0 0 1rem;
+  }
+  .cf-filter-group { margin-bottom: 1.5rem; }
+  .cf-filter-group:last-child { margin-bottom: 0; }
+  .cf-filter-group h4 {
+    font-size: 0.825rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 600;
+    margin: 0 0 0.65rem;
+  }
+  .cf-chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .cf-chip {
+    background: var(--cotton);
+    border: 1px solid var(--cotton-dark);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.825rem;
+    cursor: pointer; user-select: none;
+    transition: 0.15s;
+  }
+  .cf-chip:hover { border-color: var(--clerri-green); }
+  .cf-chip.active {
+    background: var(--clerri-green); color: var(--zest);
+    border-color: var(--clerri-green);
+  }
+  .cf-range { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cf-range-vals { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); }
+  .cf-range-vals .v { font-weight: 700; color: var(--clerri-green); }
+  .cf-range input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    background: var(--cotton-dark);
+    height: 4px; border-radius: 999px;
+    outline: none;
+  }
+  .cf-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px;
+    background: var(--clerri-green);
+    border-radius: 999px; cursor: pointer;
+  }
+  .cf-toggle {
+    display: flex; align-items: center; gap: 0.55rem;
+    cursor: pointer; user-select: none;
+    font-size: 0.9rem;
+    padding: 0.35rem 0;
+    color: var(--ink-soft);
+  }
+  .cf-toggle input { accent-color: var(--clerri-green); width: 1rem; height: 1rem; }
+  .cf-filter-clear {
+    width: 100%; background: transparent;
+    color: var(--clerri-green); border: 1px solid var(--clerri-green);
+    border-radius: 999px; padding: 0.55rem;
+    font-family: 'Funnel Sans';
+    font-weight: 600; cursor: pointer;
+    margin-top: 1rem; font-size: 0.85rem;
+    transition: 0.15s;
+  }
+  .cf-filter-clear:hover { background: var(--clerri-green); color: var(--zest); }
+
+  .cf-filters-toggle {
+    display: none;
+    background: var(--clerri-green); color: var(--zest);
+    border: none; border-radius: 999px;
+    padding: 0.65rem 1.25rem;
+    font-family: 'Funnel Sans';
+    font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; margin-bottom: 1rem;
+  }
+
+  /* RESULTS */
+  .cf-results-list { min-width: 0; }
+  .cf-results-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .cf-results-count {
+    font-size: 0.9rem; color: var(--muted);
+  }
+  .cf-results-count strong { color: var(--clerri-green); font-weight: 700; }
+  .cf-results-sort {
+    background: #fff; border: 1px solid var(--cotton-dark);
+    border-radius: 999px; padding: 0.4rem 1.1rem;
+    font-size: 0.85rem; color: var(--ink); font-family: 'Funnel Sans';
+    cursor: pointer; outline: none;
+  }
+
+  .cf-result-cards { display: flex; flex-direction: column; gap: 0.85rem; }
+  .cf-result-card {
+    background: #fff; border: 1px solid var(--cotton-dark);
+    border-radius: 1.25rem; padding: 1.35rem;
+    display: grid; grid-template-columns: 80px 1fr auto;
+    gap: 1.25rem; align-items: flex-start;
+    text-decoration: none; color: inherit;
+    transition: 0.15s;
+  }
+  .cf-result-card:hover {
+    border-color: var(--clerri-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,41,32,0.08);
+  }
+  .cf-result-card.featured {
+    border-color: var(--zest);
+    background: linear-gradient(to bottom right, #fefdf2, #fff);
+  }
+  @media (max-width: 600px) {
+    .cf-result-card { grid-template-columns: 60px 1fr; }
+    .cf-result-right { grid-column: 1 / -1; text-align: left; }
+  }
+  .cf-result-logo {
+    width: 80px; height: 80px;
+    background: var(--clerri-green); color: var(--zest);
+    border-radius: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-weight: 700;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+  .cf-result-card.featured .cf-result-logo { background: var(--zest); color: var(--clerri-green); }
+  .cf-result-body { min-width: 0; }
+  .cf-result-tag {
+    display: inline-block;
+    background: var(--clerri-green); color: var(--zest);
+    padding: 0.18rem 0.55rem; border-radius: 999px;
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .cf-result-card.featured .cf-result-tag { background: var(--pulse); color: var(--cotton); }
+  .cf-result-body h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.01em;
+  }
+  .cf-result-meta {
+    font-size: 0.85rem; color: var(--muted);
+    margin: 0 0 0.6rem;
+  }
+  .cf-result-meta-row {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    font-size: 0.825rem;
+  }
+  .cf-result-meta-row span { color: var(--ink-soft); }
+  .cf-result-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+  .cf-result-pill {
+    background: rgba(0,41,32,0.06);
+    padding: 0.18rem 0.5rem; border-radius: 999px;
+    font-size: 0.72rem; color: var(--clerri-green); font-weight: 500;
+  }
+  .cf-result-right {
+    text-align: right;
+    display: flex; flex-direction: column; align-items: flex-end;
+    gap: 0.4rem;
+  }
+  .cf-result-rating {
+    font-weight: 700; color: var(--clerri-green);
+    font-size: 1rem;
+  }
+  .cf-result-rating-count { color: var(--muted); font-size: 0.75rem; font-weight: 400; }
+  .cf-result-price strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem; color: var(--clerri-green); font-weight: 700;
+    display: block;
+  }
+  .cf-result-price-label { font-size: 0.7rem; color: var(--muted); }
+  .cf-result-link {
+    background: var(--clerri-green); color: var(--zest);
+    padding: 0.45rem 0.9rem; border-radius: 999px;
+    font-size: 0.825rem; font-weight: 600;
+    margin-top: 0.25rem;
+  }
+
+  .cf-empty {
+    background: #fff; border: 1px dashed var(--cotton-dark);
+    border-radius: 1.25rem; padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .cf-empty h3 {
+    font-family: 'Fraunces', serif;
+    color: var(--clerri-green); margin: 0 0 0.5rem;
+  }
+  .cf-empty p { color: var(--muted); margin: 0; }
+</style>
+
+<section class="cf-results-header">
+  <div class="cf-results-header-inner">
+    <h1 style="font-family:'Fraunces',serif;font-size:1.75rem;margin:0;font-weight:700;letter-spacing:-0.01em">Dental practices near Indianapolis, IN</h1>
+    <form action="/clerri-find/search" method="get" class="cf-results-search">
+      <input type="text" name="location" placeholder="ZIP or city" value="Indianapolis, IN" />
+      <select name="type">
+        <option>Any membership plan</option>
+        <option>Individual plan</option>
+        <option>Family plan</option>
+        <option>Senior plan</option>
+        <option>Orthodontic plan</option>
+      </select>
+      <button type="submit">Update search</button>
+    </form>
+  </div>
+</section>
+
+<button class="cf-filters-toggle" onclick="document.getElementById('cf-filters').classList.toggle('collapsed')">⚙ Filters</button>
+
+<div class="cf-results-body">
+  <aside id="cf-filters" class="cf-filters collapsed">
+    <h3>Filter results</h3>
+
+    <div class="cf-filter-group">
+      <h4>Specialty</h4>
+      <div class="cf-chip-row">
+        <div class="cf-chip active" data-filter="specialty" data-val="all">All</div>
+        <div class="cf-chip" data-filter="specialty" data-val="general">General</div>
+        <div class="cf-chip" data-filter="specialty" data-val="pedo">Pediatric</div>
+        <div class="cf-chip" data-filter="specialty" data-val="ortho">Orthodontics</div>
+        <div class="cf-chip" data-filter="specialty" data-val="perio">Periodontics</div>
+        <div class="cf-chip" data-filter="specialty" data-val="cosmetic">Cosmetic</div>
+      </div>
+    </div>
+
+    <div class="cf-filter-group">
+      <h4>Distance</h4>
+      <div class="cf-range">
+        <input type="range" id="cf-range-distance" min="1" max="15" value="10" />
+        <div class="cf-range-vals"><span>0 mi</span><span class="v" id="cf-range-distance-val">10 mi</span></div>
+      </div>
+    </div>
+
+    <div class="cf-filter-group">
+      <h4>Plan price (per year)</h4>
+      <div class="cf-chip-row">
+        <div class="cf-chip active" data-filter="price" data-val="any">Any</div>
+        <div class="cf-chip" data-filter="price" data-val="under-180">Under $180</div>
+        <div class="cf-chip" data-filter="price" data-val="180-250">$180-$250</div>
+        <div class="cf-chip" data-filter="price" data-val="250-plus">$250+</div>
+      </div>
+    </div>
+
+    <div class="cf-filter-group">
+      <h4>Languages</h4>
+      <div class="cf-chip-row">
+        <div class="cf-chip" data-filter="lang" data-val="en">English</div>
+        <div class="cf-chip" data-filter="lang" data-val="es">Español</div>
+      </div>
+    </div>
+
+    <div class="cf-filter-group">
+      <h4>Features</h4>
+      <label class="cf-toggle"><input type="checkbox" data-feature="accepting" checked /> Accepting new patients</label>
+      <label class="cf-toggle"><input type="checkbox" data-feature="family" /> Family plans</label>
+      <label class="cf-toggle"><input type="checkbox" data-feature="senior" /> Senior plans</label>
+      <label class="cf-toggle"><input type="checkbox" data-feature="weekends" /> Open weekends</label>
+      <label class="cf-toggle"><input type="checkbox" data-feature="financing" /> Financing available</label>
+    </div>
+
+    <button class="cf-filter-clear" onclick="clearAllFilters()">Clear all filters</button>
+  </aside>
+
+  <main class="cf-results-list">
+    <div class="cf-results-meta">
+      <div class="cf-results-count"><strong id="cf-result-count">{practices.length}</strong> practices within <span id="cf-result-distance">10</span> miles</div>
+      <select class="cf-results-sort" id="cf-sort">
+        <option value="distance">Sort: Distance</option>
+        <option value="price">Sort: Lowest price</option>
+        <option value="rating">Sort: Highest rated</option>
+      </select>
+    </div>
+
+    <div class="cf-result-cards" id="cf-results">
+      {practices.map(p => (
+        <a href={`/clerri-find/practice/${p.slug}`} class={`cf-result-card ${p.featured ? 'featured' : ''}`}
+          data-distance={p.distance}
+          data-price={p.price}
+          data-rating={p.rating}
+          data-specialty={p.specialty.join(',')}
+          data-languages={p.languages.map(l => l.toLowerCase()).join(',')}
+          data-accepting={p.accepting ? '1' : '0'}
+          data-family={p.family ? '1' : '0'}
+          data-senior={p.senior ? '1' : '0'}
+          data-weekends={p.weekends ? '1' : '0'}
+          data-financing={p.financing ? '1' : '0'}
+        >
+          <div class="cf-result-logo">{p.initials}</div>
+          <div class="cf-result-body">
+            {p.featured && <span class="cf-result-tag">★ Featured</span>}
+            <h4>{p.name}</h4>
+            <p class="cf-result-meta">{p.neighborhood} · {p.distance} mi · {p.languages.join(' / ')}</p>
+            <div class="cf-result-pills">
+              {p.tags.map(t => <span class="cf-result-pill">{t}</span>)}
+              {p.family && <span class="cf-result-pill">Family plans</span>}
+              {p.financing && <span class="cf-result-pill">Financing</span>}
+              {!p.accepting && <span class="cf-result-pill" style="background:rgba(153,46,92,0.1);color:var(--pulse)">Waitlist</span>}
+            </div>
+          </div>
+          <div class="cf-result-right">
+            <div class="cf-result-rating">★ {p.rating}<div class="cf-result-rating-count">{p.reviews.toLocaleString()} reviews</div></div>
+            <div class="cf-result-price"><strong>${p.price}/yr</strong><div class="cf-result-price-label">individual plan</div></div>
+            <div class="cf-result-link">View practice →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="cf-empty" id="cf-empty" style="display:none">
+      <h3>No practices match your filters</h3>
+      <p>Try widening your distance or removing some filters.</p>
+    </div>
+  </main>
+</div>
+
+<script is:inline>
+  const state = { specialty: 'all', price: 'any', distance: 10, langs: new Set(), features: new Set(['accepting']), sort: 'distance' };
+
+  function readChips() {
+    document.querySelectorAll('.cf-chip[data-filter]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const group = chip.dataset.filter;
+        const val = chip.dataset.val;
+        if (group === 'lang') {
+          if (state.langs.has(val)) { state.langs.delete(val); chip.classList.remove('active'); }
+          else { state.langs.add(val); chip.classList.add('active'); }
+        } else {
+          document.querySelectorAll(`.cf-chip[data-filter="${group}"]`).forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          state[group] = val;
+        }
+        applyFilters();
+      });
+    });
+  }
+
+  function readFeatures() {
+    document.querySelectorAll('.cf-toggle input[data-feature]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) state.features.add(cb.dataset.feature);
+        else state.features.delete(cb.dataset.feature);
+        applyFilters();
+      });
+    });
+  }
+
+  function applyFilters() {
+    const cards = Array.from(document.querySelectorAll('.cf-result-card'));
+    let visible = 0;
+    cards.forEach(card => {
+      const dist = parseFloat(card.dataset.distance);
+      const price = parseFloat(card.dataset.price);
+      const specs = card.dataset.specialty.split(',');
+      const langs = card.dataset.languages.split(',');
+
+      let show = true;
+      if (dist > state.distance) show = false;
+      if (state.specialty !== 'all' && !specs.includes(state.specialty)) show = false;
+      if (state.price === 'under-180' && price >= 180) show = false;
+      if (state.price === '180-250' && (price < 180 || price > 250)) show = false;
+      if (state.price === '250-plus' && price < 250) show = false;
+      if (state.langs.size > 0) {
+        let hasAny = false;
+        state.langs.forEach(l => { if (langs.includes(l)) hasAny = true; });
+        if (!hasAny) show = false;
+      }
+      state.features.forEach(f => { if (card.dataset[f] !== '1') show = false; });
+
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    document.getElementById('cf-result-count').textContent = visible;
+    document.getElementById('cf-empty').style.display = visible === 0 ? '' : 'none';
+  }
+
+  function applySort() {
+    const sort = document.getElementById('cf-sort').value;
+    state.sort = sort;
+    const container = document.getElementById('cf-results');
+    const cards = Array.from(container.querySelectorAll('.cf-result-card'));
+    cards.sort((a, b) => {
+      if (sort === 'distance') return parseFloat(a.dataset.distance) - parseFloat(b.dataset.distance);
+      if (sort === 'price') return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+      if (sort === 'rating') return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+      return 0;
+    });
+    cards.forEach(c => container.appendChild(c));
+  }
+
+  function setupRange() {
+    const range = document.getElementById('cf-range-distance');
+    const val = document.getElementById('cf-range-distance-val');
+    const distVal = document.getElementById('cf-result-distance');
+    range.addEventListener('input', () => {
+      state.distance = parseInt(range.value);
+      val.textContent = range.value + ' mi';
+      distVal.textContent = range.value;
+      applyFilters();
+    });
+  }
+
+  function clearAllFilters() {
+    state.specialty = 'all'; state.price = 'any'; state.distance = 10;
+    state.langs.clear(); state.features.clear(); state.features.add('accepting');
+    document.querySelectorAll('.cf-chip').forEach(c => c.classList.remove('active'));
+    document.querySelector('.cf-chip[data-filter="specialty"][data-val="all"]').classList.add('active');
+    document.querySelector('.cf-chip[data-filter="price"][data-val="any"]').classList.add('active');
+    document.querySelectorAll('.cf-toggle input').forEach(cb => { cb.checked = cb.dataset.feature === 'accepting'; });
+    document.getElementById('cf-range-distance').value = 10;
+    document.getElementById('cf-range-distance-val').textContent = '10 mi';
+    document.getElementById('cf-result-distance').textContent = '10';
+    applyFilters();
+  }
+  window.clearAllFilters = clearAllFilters;
+
+  document.getElementById('cf-sort').addEventListener('change', applySort);
+  readChips(); readFeatures(); setupRange(); applyFilters(); applySort();
+</script>
+
+</ClerriFindLayout>

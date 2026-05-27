@@ -1,0 +1,289 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  page?: string;
+}
+const {
+  title,
+  description = 'Find affordable dental care near you. Browse Clerri practices offering membership plans — no insurance required.',
+  page = '',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="description" content={description} />
+<title>{title} · Clerri Find</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap" />
+<style is:global>
+  :root {
+    --clerri-green: #002920;
+    --clerri-green-dark: #001f18;
+    --clerri-green-darker: #06372D;
+    --clerri-grey: #2e423e;
+    --clerri-grey-light: #b9baab;
+    --zest: #cffc78;
+    --zest-hover: #c5f764;
+    --zest-dark: #b3e85a;
+    --lumen: #f6ff8f;
+    --cotton: #f3f0e4;
+    --cotton-plus: #f5f0e1;
+    --cotton-dark: #e4dfcd;
+    --scrub: #bbf6e2;
+    --enamel: #b5c2f8;
+    --pulse: #992e5c;
+    --blush: #ff9b8e;
+    --ink: #212121;
+    --ink-soft: #444;
+    --muted: #666;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Funnel Sans', system-ui, -apple-system, sans-serif;
+    background: var(--cotton);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  a { color: inherit; }
+  ::selection { background: var(--zest); color: var(--clerri-green); }
+
+  /* ===== TOP NAV ===== */
+  .cf-nav {
+    background: var(--cotton);
+    border-bottom: 1px solid var(--cotton-dark);
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .cf-nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem;
+  }
+  .cf-logo {
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--clerri-green); letter-spacing: -0.02em;
+    text-decoration: none;
+    display: flex; align-items: baseline; gap: 0.4rem;
+  }
+  .cf-logo-mark { color: var(--clerri-green); }
+  .cf-logo-sub {
+    font-family: 'Funnel Sans';
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .cf-nav-links {
+    display: flex; gap: 1.5rem; align-items: center;
+    font-size: 0.95rem;
+  }
+  .cf-nav-links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: 0.15s;
+    font-weight: 500;
+  }
+  .cf-nav-links a:hover { color: var(--clerri-green); }
+  .cf-nav-links a.active { color: var(--clerri-green); }
+  .cf-nav-cta {
+    background: var(--clerri-green); color: var(--zest);
+    padding: 0.55rem 1.15rem; border-radius: 999px;
+    text-decoration: none; font-weight: 600;
+    font-size: 0.875rem;
+    transition: 0.15s;
+  }
+  .cf-nav-cta:hover { background: var(--clerri-green-darker); transform: translateY(-1px); }
+  .cf-nav-mobile-toggle {
+    display: none;
+    background: var(--clerri-green); color: var(--zest);
+    border: none; border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem; font-weight: 600;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .cf-nav-links { display: none; }
+    .cf-nav-mobile-toggle { display: block; }
+  }
+
+  /* ===== FOOTER ===== */
+  .cf-footer {
+    background: var(--clerri-green);
+    color: var(--cotton);
+    padding: 4rem 1.5rem 2rem;
+    margin-top: 5rem;
+  }
+  .cf-footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 768px) {
+    .cf-footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 480px) {
+    .cf-footer-inner { grid-template-columns: 1fr; }
+  }
+  .cf-footer h4 {
+    font-family: 'Funnel Sans'; font-size: 0.75rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--zest); margin: 0 0 1rem;
+    font-weight: 600;
+  }
+  .cf-footer ul { list-style: none; padding: 0; margin: 0; }
+  .cf-footer li { padding: 0.3rem 0; }
+  .cf-footer a {
+    color: rgba(243,240,228,0.75);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .cf-footer a:hover { color: var(--zest); }
+  .cf-footer-brand .word {
+    font-size: 2rem; font-weight: 700;
+    color: var(--zest); margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .cf-footer-brand p {
+    font-size: 0.9rem; color: rgba(243,240,228,0.7);
+    max-width: 28ch; margin: 0;
+  }
+  .cf-footer-bottom {
+    max-width: 1200px; margin: 3rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(243,240,228,0.15);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.825rem; color: rgba(243,240,228,0.55);
+  }
+
+  /* ===== SHARED COMPONENT STYLES ===== */
+  .cf-container {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .cf-pill {
+    display: inline-block; padding: 0.3rem 0.85rem;
+    border-radius: 999px; font-size: 0.75rem;
+    font-weight: 600; letter-spacing: 0.02em;
+  }
+  .cf-pill-zest { background: var(--zest); color: var(--clerri-green); }
+  .cf-pill-cotton { background: var(--cotton-dark); color: var(--ink); }
+  .cf-pill-mint { background: var(--scrub); color: var(--clerri-green); }
+  .cf-pill-blue { background: var(--enamel); color: var(--clerri-green); }
+  .cf-pill-soft {
+    background: rgba(207,252,120,0.15); color: var(--zest);
+    border: 1px solid rgba(207,252,120,0.3);
+  }
+
+  .cf-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.5rem; border-radius: 999px;
+    font-family: 'Funnel Sans';
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer; border: none;
+    transition: all 0.2s;
+  }
+  .cf-btn-primary {
+    background: var(--zest); color: var(--clerri-green);
+  }
+  .cf-btn-primary:hover { background: var(--zest-hover); transform: translateY(-1px); }
+  .cf-btn-secondary {
+    background: var(--clerri-green); color: var(--zest);
+  }
+  .cf-btn-secondary:hover { background: var(--clerri-green-darker); }
+  .cf-btn-ghost {
+    background: transparent; color: var(--clerri-green);
+    border: 1.5px solid var(--clerri-green);
+  }
+  .cf-btn-ghost:hover { background: var(--clerri-green); color: var(--zest); }
+  .cf-btn-lg { padding: 1rem 1.85rem; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+
+<nav class="cf-nav">
+  <div class="cf-nav-inner">
+    <a href="/clerri-find" class="cf-logo">
+      <span class="cf-logo-mark">clerri</span>
+      <span class="cf-logo-sub">find</span>
+    </a>
+    <div class="cf-nav-links">
+      <a href="/clerri-find" class={page === 'home' ? 'active' : ''}>Find a practice</a>
+      <a href="/clerri-find/how-it-works" class={page === 'how' ? 'active' : ''}>How it works</a>
+      <a href="#" class={page === 'practices' ? 'active' : ''}>For practices</a>
+      <a href="#" class={page === 'help' ? 'active' : ''}>Help</a>
+      <a href="/clerri-find" class="cf-nav-cta">Find care near you</a>
+    </div>
+    <button class="cf-nav-mobile-toggle" onclick="document.getElementById('cf-mobile-menu').style.display = document.getElementById('cf-mobile-menu').style.display === 'block' ? 'none' : 'block'">Menu</button>
+  </div>
+  <div id="cf-mobile-menu" style="display:none;padding:1rem 1.5rem 1.5rem;border-top:1px solid var(--cotton-dark);background:var(--cotton)">
+    <div style="display:flex;flex-direction:column;gap:0.85rem">
+      <a href="/clerri-find" style="text-decoration:none;color:var(--ink);font-weight:600">Find a practice</a>
+      <a href="/clerri-find/how-it-works" style="text-decoration:none;color:var(--ink);font-weight:600">How it works</a>
+      <a href="#" style="text-decoration:none;color:var(--ink);font-weight:600">For practices</a>
+      <a href="#" style="text-decoration:none;color:var(--ink);font-weight:600">Help</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <slot />
+</main>
+
+<footer class="cf-footer">
+  <div class="cf-footer-inner">
+    <div class="cf-footer-brand">
+      <div class="word">clerri.</div>
+      <p>Membership plans that make dental care affordable for everyone — no insurance required.</p>
+    </div>
+    <div>
+      <h4>For patients</h4>
+      <ul>
+        <li><a href="/clerri-find">Find a practice</a></li>
+        <li><a href="/clerri-find/how-it-works">How it works</a></li>
+        <li><a href="#">Insurance vs. membership</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Member support</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>For practices</h4>
+      <ul>
+        <li><a href="#">Why Clerri</a></li>
+        <li><a href="#">Platform</a></li>
+        <li><a href="#">Customer stories</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact sales</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="cf-footer-bottom">
+    <span>© 2026 Clerri. All rights reserved. · Backed by Charlesbank Capital Partners</span>
+    <span style="font-family:'Funnel Sans';letter-spacing:0.05em">Membership infrastructure for healthcare practices</span>
+  </div>
+</footer>
+
+</body>
+</html>

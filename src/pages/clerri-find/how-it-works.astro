@@ -1,0 +1,342 @@
+---
+import ClerriFindLayout from '../../layouts/ClerriFindLayout.astro';
+---
+<ClerriFindLayout title="How dental membership plans work" page="how" description="Learn how Clerri membership plans work — affordable dental care without insurance.">
+
+<style>
+  .hw-hero {
+    background: var(--clerri-green);
+    color: var(--cotton);
+    padding: 5rem 1.5rem 4rem;
+  }
+  .hw-hero-inner { max-width: 900px; margin: 0 auto; }
+  .hw-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.025em;
+    margin: 0 0 1rem;
+  }
+  .hw-hero h1 em { font-style: italic; color: var(--zest); font-weight: 600; }
+  .hw-hero-sub {
+    font-size: 1.2rem;
+    color: rgba(243,240,228,0.8);
+    max-width: 55ch;
+    margin: 0;
+  }
+
+  .hw-section {
+    padding: 4rem 1.5rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .hw-section-wide {
+    padding: 4rem 1.5rem;
+    background: #fff;
+  }
+  .hw-section-wide-inner { max-width: 1100px; margin: 0 auto; }
+
+  .hw-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .hw-section h2, .hw-section-wide h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--clerri-green);
+    margin: 0 0 1rem;
+  }
+  .hw-section h2 em { font-style: italic; }
+  .hw-section p, .hw-section-wide p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+  }
+
+  .hw-detailed-steps {
+    display: flex; flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  .hw-step {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 1.5rem; align-items: flex-start;
+  }
+  @media (max-width: 600px) { .hw-step { grid-template-columns: 60px 1fr; gap: 1rem; } }
+  .hw-step-num {
+    width: 80px; height: 80px;
+    background: var(--clerri-green); color: var(--zest);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-weight: 700;
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) { .hw-step-num { width: 60px; height: 60px; font-size: 1.85rem; } }
+  .hw-step-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.65rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+  .hw-step-content p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* Comparison table */
+  .hw-compare {
+    background: var(--cotton);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid var(--cotton-dark);
+  }
+  .hw-compare-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  @media (max-width: 700px) { .hw-compare-grid { grid-template-columns: 1fr; } }
+  .hw-compare-col {
+    background: #fff; border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1.5px solid var(--cotton-dark);
+  }
+  .hw-compare-col.winning {
+    border-color: var(--clerri-green);
+    background: linear-gradient(180deg, var(--zest) 0%, #ddf5a3 100%);
+  }
+  .hw-compare-col h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--clerri-green);
+    margin: 0 0 0.75rem;
+  }
+  .hw-compare-col ul {
+    list-style: none; padding: 0; margin: 0;
+    font-size: 0.9rem;
+  }
+  .hw-compare-col li {
+    padding: 0.45rem 0 0.45rem 1.5rem;
+    position: relative;
+    color: var(--ink);
+  }
+  .hw-compare-col li.no::before { content: "✗"; position: absolute; left: 0; color: var(--pulse); font-weight: 700; }
+  .hw-compare-col li.yes::before { content: "✓"; position: absolute; left: 0; color: var(--clerri-green); font-weight: 700; }
+  .hw-compare-col li.neutral::before { content: "·"; position: absolute; left: 0; color: var(--muted); font-weight: 700; }
+
+  /* FAQ */
+  .hw-faq {
+    background: #fff;
+    border: 1px solid var(--cotton-dark);
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  .hw-faq summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.25rem 1.5rem;
+    font-family: 'Funnel Sans';
+    font-weight: 600; font-size: 1.05rem;
+    color: var(--clerri-green);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .hw-faq summary::-webkit-details-marker { display: none; }
+  .hw-faq summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    color: var(--clerri-green);
+    transition: 0.15s;
+  }
+  .hw-faq[open] summary::after { content: "−"; }
+  .hw-faq-body {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.975rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .hw-cta {
+    background: var(--zest);
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  .hw-cta h2 {
+    font-family: 'Fraunces', serif;
+    color: var(--clerri-green);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin: 0 0 1.5rem;
+  }
+  .hw-cta h2 em { font-style: italic; }
+</style>
+
+<section class="hw-hero">
+  <div class="hw-hero-inner">
+    <h1>How dental membership <em>actually works.</em></h1>
+    <p class="hw-hero-sub">Membership plans aren't insurance. They're a simpler, direct agreement between you and a dental practice. Here's exactly how it works — and why 50,000+ patients are choosing it instead of insurance.</p>
+  </div>
+</section>
+
+<section class="hw-section">
+  <div class="hw-eyebrow">The basics</div>
+  <h2>You join. <em>You save. That's it.</em></h2>
+
+  <div class="hw-detailed-steps">
+    <div class="hw-step">
+      <div class="hw-step-num">1</div>
+      <div class="hw-step-content">
+        <h3>Find a practice that works for you</h3>
+        <p>Search 5,000+ Clerri practices by location, plan type, and price. Each practice sets its own pricing and benefits. Filter by what matters — distance, languages, family plans, weekend hours. You choose your dentist.</p>
+      </div>
+    </div>
+    <div class="hw-step">
+      <div class="hw-step-num">2</div>
+      <div class="hw-step-content">
+        <h3>Pick a plan that fits</h3>
+        <p>Most practices offer Individual, Family, and Senior tiers. A typical individual plan is around $189/year. Family plans usually save 25-40% compared to enrolling each person separately. No deductibles, no waiting periods, no surprise fees.</p>
+      </div>
+    </div>
+    <div class="hw-step">
+      <div class="hw-step-num">3</div>
+      <div class="hw-step-content">
+        <h3>Enroll — even at your first visit</h3>
+        <p>Sign up online or right in the office. Your membership is active immediately. Even if you join during your first visit, you get member pricing on that same appointment. No 6-month waiting periods like insurance.</p>
+      </div>
+    </div>
+    <div class="hw-step">
+      <div class="hw-step-num">4</div>
+      <div class="hw-step-content">
+        <h3>Start saving from day one</h3>
+        <p>Preventive care (cleanings and exams) is included. Everything else — fillings, crowns, cosmetic work, even emergencies — comes with 20%+ off member pricing. The average member saves $938 per year.</p>
+      </div>
+    </div>
+    <div class="hw-step">
+      <div class="hw-step-num">5</div>
+      <div class="hw-step-content">
+        <h3>Renew annually (or don't)</h3>
+        <p>Plans run for one year. You can renew at the end (most practices send a friendly reminder) or simply not renew if it's not working for you. No long-term contracts, no cancellation fees.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hw-section-wide">
+  <div class="hw-section-wide-inner">
+    <div class="hw-eyebrow">The honest comparison</div>
+    <h2>Membership vs. dental insurance vs. paying out of pocket</h2>
+    <p>Most people choose membership when they're either uninsured, frustrated with insurance limits, or want simpler care without paperwork. Here's how the three options actually compare for a typical year of care.</p>
+
+    <div class="hw-compare">
+      <div class="hw-compare-grid">
+        <div class="hw-compare-col">
+          <h4>Paying out of pocket</h4>
+          <ul>
+            <li class="yes">No monthly fee</li>
+            <li class="no">Full price for everything</li>
+            <li class="no">No preventive coverage</li>
+            <li class="no">Costs add up fast on procedures</li>
+            <li class="no">No predictable budget</li>
+            <li class="neutral">Average annual cost: $850-$1,500 for routine care</li>
+          </ul>
+        </div>
+        <div class="hw-compare-col">
+          <h4>Dental insurance</h4>
+          <ul>
+            <li class="yes">Some preventive covered</li>
+            <li class="no">$30-$70/month premiums</li>
+            <li class="no">$50-$100 annual deductible</li>
+            <li class="no">6-month waiting periods</li>
+            <li class="no">$1,000-$2,500 annual coverage cap</li>
+            <li class="no">Network restrictions</li>
+            <li class="no">Many procedures excluded</li>
+          </ul>
+        </div>
+        <div class="hw-compare-col winning">
+          <h4>Clerri membership</h4>
+          <ul>
+            <li class="yes">Preventive included</li>
+            <li class="yes">20%+ off everything else</li>
+            <li class="yes">No deductibles, no caps</li>
+            <li class="yes">No waiting periods</li>
+            <li class="yes">Choose your dentist</li>
+            <li class="yes">Family + senior plans</li>
+            <li class="yes">Average annual savings: $938</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hw-section">
+  <div class="hw-eyebrow">Common questions</div>
+  <h2>Frequently asked questions.</h2>
+
+  <details class="hw-faq">
+    <summary>Is a dental membership plan the same as insurance?</summary>
+    <div class="hw-faq-body">No — and that's a feature, not a bug. Membership plans are a direct agreement between you and your dentist's office. There's no third-party insurance company adjudicating claims, no deductibles, no waiting periods, no annual coverage caps. You pay one yearly fee and you get the benefits the practice specifies — typically free preventive care and a discount on everything else.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>What if I already have dental insurance?</summary>
+    <div class="hw-faq-body">You can still join a membership plan if it makes financial sense for you. Many people with limited or low-value insurance plans (the kind with $1,000 annual caps) find that membership saves more. Some practices will only let you use one or the other for a given visit — talk to your dentist about which is the better fit for your treatment plan.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>How much do plans usually cost?</summary>
+    <div class="hw-faq-body">Each practice sets its own pricing, but typical ranges are: Individual plans $129-$249/year. Family plans $299-$499/year (covering 2-4 people). Senior plans (65+) $129-$179/year. Orthodontic plans $349-$499/year. Some specialty practices price slightly higher. Most plans pay for themselves within 1-2 routine visits.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>What's included in a typical membership?</summary>
+    <div class="hw-faq-body">Most plans include 2 cleanings per year, 2 exams per year, necessary X-rays, and 20%+ off all other services (fillings, crowns, root canals, cosmetic work, emergencies). Some plans also include sealants for kids, free whitening, free emergency visits, or additional perks. Each practice's plan page lists exactly what's covered.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>Are there waiting periods like insurance?</summary>
+    <div class="hw-faq-body">No. Membership benefits start the day you enroll. Many practices even let you enroll during your first visit and apply member pricing to that same appointment. This is one of the biggest differences from dental insurance, which usually requires 6-12 month waiting periods for major procedures.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>What if I need major work — can I still get financing?</summary>
+    <div class="hw-faq-body">Yes. Many Clerri practices offer financing through Sunbit for procedures over $500. Approval is typically instant, with rates ranging from 0% to 14.99% APR. Membership savings stack with financing, so you get the discount AND the ability to pay over time.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>Can I cancel my plan?</summary>
+    <div class="hw-faq-body">Plans run annually and renew unless you choose not to. There are no early termination fees. If you cancel mid-year, most practices won't refund the year's fee, but they also won't bill you again. Some practices offer pro-rated refunds — check each practice's terms.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>What about my whole family?</summary>
+    <div class="hw-faq-body">Most practices offer family plans designed for 2-4 people (typically covering parents + kids under 18). Family plans usually save 25-40% versus enrolling each person separately. Some practices also offer add-on enrollments for additional family members beyond the base plan.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>What if I move or switch practices?</summary>
+    <div class="hw-faq-body">Your membership is with the specific practice you enrolled at. If you move, you'd cancel that membership and join a new Clerri practice in your new area. Plans don't transfer between practices, but it's easy to find a new one through Clerri's search.</div>
+  </details>
+
+  <details class="hw-faq">
+    <summary>Is Clerri the practice, or just the platform?</summary>
+    <div class="hw-faq-body">Clerri is the platform that powers dental membership plans at 5,000+ independent practices. The practice is your actual dental provider — they treat you, set their own pricing, and manage your care. Clerri provides the technology behind the membership program (enrollment, billing, member benefits administration).</div>
+  </details>
+</section>
+
+<section class="hw-cta">
+  <h2>Ready to find a practice <em>near you?</em></h2>
+  <a href="/clerri-find" class="cf-btn cf-btn-secondary cf-btn-lg">Search practices →</a>
+</section>
+
+</ClerriFindLayout>
