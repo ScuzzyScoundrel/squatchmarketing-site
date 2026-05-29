@@ -74,6 +74,20 @@ const navGroups = [
     ],
   },
 ];
+
+// Build-time map of section -> task-track IDs. Lets the sidebar show a real
+// count (done/total) for EVERY section on any page load — not just the page
+// you're currently on — and survive refreshes (numerator comes from localStorage).
+const _rawPages = import.meta.glob('../pages/clerri/*.astro', { query: '?raw', import: 'default', eager: true });
+const sectionTracks = {};
+for (const _content of Object.values(_rawPages)) {
+  const _re = /data-track="([^"]+)"[^>]*?data-section="([^"]+)"/g;
+  let _m;
+  while ((_m = _re.exec(_content)) !== null) {
+    (sectionTracks[_m[2]] ||= []).push(_m[1]);
+  }
+}
+for (const _k in sectionTracks) sectionTracks[_k] = [...new Set(sectionTracks[_k])];
 ---
 
 <!DOCTYPE html>
@@ -213,6 +227,33 @@ const navGroups = [
   }
   .sidebar-foot button:hover {
     background: var(--zest); color: var(--clerri-green);
+  }
+
+  /* ====== COLLAPSIBLE SIDEBAR ====== */
+  .clerri-app { transition: grid-template-columns 0.22s ease; }
+  .collapse-btn {
+    background: transparent; border: 1px solid rgba(207,252,120,0.3);
+    color: var(--zest); width: 100%; padding: 0.45rem; margin-top: 0.25rem;
+    border-radius: 999px; cursor: pointer; font-size: 0.7rem; font-weight: 600;
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em;
+    transition: all 0.15s;
+  }
+  .collapse-btn:hover { background: var(--zest); color: var(--clerri-green); }
+  html.sidebar-collapsed .clerri-app { grid-template-columns: 0 1fr; }
+  html.sidebar-collapsed .clerri-sidebar { opacity: 0; pointer-events: none; }
+  .sidebar-expand {
+    display: none; position: fixed; top: 1rem; left: 1rem; z-index: 60;
+    background: var(--clerri-green); color: var(--zest);
+    border: 1px solid rgba(207,252,120,0.4);
+    width: 40px; height: 40px; border-radius: 999px; cursor: pointer;
+    font-size: 1.1rem; align-items: center; justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.28);
+  }
+  html.sidebar-collapsed .sidebar-expand { display: flex; }
+  @media (max-width: 1024px) {
+    html.sidebar-collapsed .clerri-app { grid-template-columns: 1fr; }
+    html.sidebar-collapsed .clerri-sidebar { opacity: 1; pointer-events: auto; }
+    .sidebar-expand { display: none !important; }
   }
 
   /* ====== MAIN ====== */
@@ -548,6 +589,7 @@ const navGroups = [
 </style>
 </head>
 <body>
+<script is:inline>try{if(localStorage.getItem('clerri-sidebar-collapsed')==='1')document.documentElement.classList.add('sidebar-collapsed');}catch(e){}</script>
 <div class="clerri-app">
   <aside class="clerri-sidebar" id="sidebar">
     <div class="clerri-brand">
@@ -572,6 +614,7 @@ const navGroups = [
     <div class="sidebar-foot">
       <button onclick="exportHub()">↓ Export markdown</button>
       <button onclick="resetHub()">⟲ Reset state</button>
+      <button class="collapse-btn" onclick="toggleSidebar()">« Collapse menu</button>
       <div class="mono" style="font-size:0.65rem;color:rgba(207,252,120,0.5);text-align:center;letter-spacing:0.1em">Working doc · Jerris Heaton</div>
     </div>
   </aside>
@@ -582,10 +625,16 @@ const navGroups = [
 </div>
 
 <button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('mobile-hidden')">☰ Menu</button>
+<button class="sidebar-expand" onclick="toggleSidebar()" aria-label="Expand menu" title="Expand menu">»</button>
+<script id="clerri-section-tracks" type="application/json" set:html={JSON.stringify(sectionTracks)}></script>
 
 <script is:inline>
 (function() {
   const KEY = 'clerri-hub-v3';
+  const SECTION_TRACKS = (() => {
+    try { return JSON.parse(document.getElementById('clerri-section-tracks')?.textContent || '{}'); }
+    catch { return {}; }
+  })();
   function load() {
     try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
     catch { return {}; }
@@ -648,33 +697,28 @@ const navGroups = [
 
   function updateProgress() {
     const state = load();
-    const sections = {};
-    document.querySelectorAll('[data-track]').forEach(cb => {
-      const sec = cb.dataset.section || 'misc';
-      sections[sec] = sections[sec] || { done: 0, total: 0 };
-      sections[sec].total++;
-      if (state[cb.dataset.track]) sections[sec].done++;
-    });
-    // Update visible page progress
+    function count(sec) {
+      const tracks = SECTION_TRACKS[sec] || [];
+      return { done: tracks.filter(t => state[t]).length, total: tracks.length };
+    }
+    // In-page progress + fill (current page)
     document.querySelectorAll('[data-progress-here]').forEach(el => {
-      const sec = el.dataset.progressHere;
-      const s = sections[sec];
-      if (s) el.textContent = s.done + ' / ' + s.total;
-      const fill = document.querySelector('[data-progress-fill="' + sec + '"]');
-      if (fill && s) fill.style.width = (s.done / Math.max(s.total, 1) * 100) + '%';
+      const c = count(el.dataset.progressHere);
+      el.textContent = c.done + ' / ' + c.total;
+      const fill = document.querySelector('[data-progress-fill="' + el.dataset.progressHere + '"]');
+      if (fill) fill.style.width = (c.done / Math.max(c.total, 1) * 100) + '%';
     });
-    // Update sidebar nav badges using globally-stored counts per section
-    const allSections = JSON.parse(localStorage.getItem(KEY + ':sections') || '{}');
-    // Merge what we just counted on THIS page
-    Object.assign(allSections, sections);
-    localStorage.setItem(KEY + ':sections', JSON.stringify(allSections));
+    // Sidebar nav badges — computed for EVERY section from the build-time map,
+    // so counts are correct on any page load and persist across refreshes.
     document.querySelectorAll('[data-progress-section]').forEach(el => {
-      const sec = el.dataset.progressSection;
-      const s = allSections[sec];
-      if (s && s.total > 0) {
-        el.textContent = s.done + '/' + s.total;
-        if (s.done === s.total) el.style.background = 'var(--zest)';
-      } else { el.textContent = '—'; }
+      const c = count(el.dataset.progressSection);
+      if (c.total > 0) {
+        el.textContent = c.done + '/' + c.total;
+        el.style.background = c.done === c.total ? 'var(--zest)' : '';
+        el.style.color = c.done === c.total ? 'var(--clerri-green)' : '';
+      } else {
+        el.textContent = '—';
+      }
     });
   }
 
@@ -708,6 +752,11 @@ const navGroups = [
     localStorage.removeItem(KEY);
     localStorage.removeItem(KEY + ':sections');
     location.reload();
+  };
+
+  window.toggleSidebar = function() {
+    const collapsed = document.documentElement.classList.toggle('sidebar-collapsed');
+    try { localStorage.setItem('clerri-sidebar-collapsed', collapsed ? '1' : '0'); } catch (e) {}
   };
 
   if (document.readyState === 'loading') {
