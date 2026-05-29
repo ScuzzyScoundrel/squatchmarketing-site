@@ -50,6 +50,27 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   </div>
   <p style="color:var(--ink-soft);max-width:70ch"><strong>So "add a new page when needed" splits cleanly:</strong> a new <em>kind</em> of thing → you + Claude Code (fast, reusable forever); another of an existing thing → the team, instantly.</p>
 
+  <h2>Two ways to create pages — <em>and you can skip the CMS entirely.</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">Astro is file-based-routing first: any <code>.astro</code> file in <code>src/pages/</code> is instantly a live page. The CMS is an add-on for team-managed content, not a gate you have to pass through. So you can hand-build any page with Claude Code, no CMS — exactly how this entire strategy hub was built.</p>
+  <div style="overflow-x:auto">
+  <table class="vtable">
+    <thead><tr><th></th><th>Code-built (your workflow)</th><th>CMS-templated (the team's)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>How</strong></td><td>Claude Code writes <code>src/pages/foo.astro</code></td><td>Team creates an entry in Sanity</td></tr>
+      <tr><td><strong>Who</strong></td><td>You</td><td>Liz / content team</td></tr>
+      <tr><td><strong>Control</strong></td><td>Total — any layout, any component</td><td>Within the template's fields</td></tr>
+      <tr><td><strong>Edited by</strong></td><td>You (in code)</td><td>Team (in the CMS, no code)</td></tr>
+      <tr><td><strong>Best for</strong></td><td>Campaign pages, bespoke one-offs, experiments</td><td>Blogs, case studies, repeatable content</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="color:var(--ink-soft);max-width:70ch">Both live in the same project, share the same components + design system, and deploy the same way (git push → build → live). The deciding question per page is just: <strong>who maintains it?</strong> You → build it in code; the team → back it with a CMS template.</p>
+  <div class="callout mint">
+    <div class="lbl">Two things worth knowing</div>
+    <p style="margin:0 0 0.5rem"><strong>Hybrid is allowed:</strong> a hand-built page can still pull CMS data when useful (e.g. query Sanity for the 3 latest case studies). Building in code doesn't cut you off from CMS content.</p>
+    <p style="margin:0"><strong>The one tradeoff:</strong> a code-built page isn't editable by the team in the CMS — it's in code. So hand-build the pages you'll own; CMS-back the ones the team will own.</p>
+  </div>
+
   <h2>What the team edits — <em>accessible, no HTML.</em></h2>
   <div class="callout">
     <p style="margin:0 0 0.5rem">In Sanity Studio the team gets:</p>
@@ -209,6 +230,10 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   .qa { margin-bottom:0.75rem; }
   .qa .q { font-weight:600; color:var(--ink); margin:0 0 0.4rem; font-size:0.95rem; }
   .qa .ctx { color:var(--muted); margin:0; font-size:0.875rem; font-style:italic; }
+  .vtable { width:100%; border-collapse:collapse; font-size:0.9rem; margin:0.5rem 0 1rem; }
+  .vtable th, .vtable td { text-align:left; padding:0.6rem 0.75rem; border-bottom:1px solid var(--cotton-dark); vertical-align:top; }
+  .vtable th { font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clerri-green); }
+  .vtable code { font-size:0.8rem; }
 </style>
 
 </ClerriLayout>
