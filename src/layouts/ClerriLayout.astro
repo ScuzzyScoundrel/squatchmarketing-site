@@ -42,6 +42,7 @@ const navGroups = [
       { slug: 'directory-mockup', href: '/clerri/directory-mockup', label: 'Directory Mockup' },
       { slug: 'website', href: '/clerri/website', label: 'Website & Messaging' },
       { slug: 'website-framework', href: '/clerri/website-framework', label: 'Website Framework' },
+      { slug: 'website-build', href: '/clerri/website-build', label: 'Website Build & CMS' },
       { slug: 'product-ideas', href: '/clerri/product-ideas', label: 'Product Ideas' },
     ],
   },
@@ -52,6 +53,8 @@ const navGroups = [
       { slug: 'workflows', href: '/clerri/workflows', label: 'Workflow Recipes' },
       { slug: 'claude-cli-vs-api', href: '/clerri/claude-cli-vs-api', label: 'Claude CLI vs API' },
       { slug: 'martech-audit', href: '/clerri/martech-audit', label: 'Martech Audit' },
+      { slug: 'vendor-audit', href: '/clerri/vendor-audit', label: 'Vendor Audit' },
+      { slug: 'reporting-automation', href: '/clerri/reporting-automation', label: 'Reporting Automation' },
     ],
   },
   {
@@ -439,6 +442,24 @@ const navGroups = [
     color: inherit; opacity: 0.85; font-weight: 600;
   }
   .callout p { margin: 0.25rem 0; }
+
+  /* ====== TAKEAWAY STRIP ====== */
+  .takeaway {
+    background: #fff;
+    border-left: 4px solid var(--clerri-green);
+    border-radius: 0 0.75rem 0.75rem 0;
+    padding: 0.9rem 1.25rem;
+    margin: 0 0 1.75rem;
+    box-shadow: 0 1px 3px rgba(0,41,32,0.06);
+  }
+  .takeaway .tk-lbl {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--clerri-green); font-weight: 700;
+    margin-bottom: 0.35rem; opacity: 0.75;
+  }
+  .takeaway p { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); }
 
   /* ====== KEY METRIC ====== */
   .metric-card {

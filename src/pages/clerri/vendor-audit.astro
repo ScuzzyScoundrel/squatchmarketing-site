@@ -1,0 +1,261 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Vendor Audit" section="vendor-audit">
+
+<div class="page-head">
+  <div class="page-eyebrow">Operations · Keep / Cut</div>
+  <h1 class="page-title">The marketing closet — <em>who stays, who goes.</em></h1>
+  <p class="page-sub">Six inherited vendors under review. Verified findings, keep/cut leanings, and the exact questions to ask before you sign or sever. Loudspeaker gets the deep-dive — they're actively lobbying to stay after a termination notice.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>Loudspeaker is doing real, sophisticated work — but 110 articles have produced 163 total clicks, and their "it's working" case leans on LLM metrics they self-select plus lead growth they can't attribute to themselves. Don't renew on the narrative; pull the attribution data first. Most of what they do is replicable in-house with the AI content workflow.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="vendor-audit"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Verification progress: <span data-progress-here="vendor-audit">0 / 0</span></p>
+
+  <h2>The six vendors <em>at a glance.</em></h2>
+  <div style="overflow-x:auto">
+  <table class="vtable">
+    <thead>
+      <tr><th>Vendor</th><th>Verdict</th><th>Why</th><th>First move</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Loudspeaker</strong><br/><span class="mono muted">~content/AEO</span></td>
+        <td><span class="tag tag-amber">Decide after meeting</span></td>
+        <td>Real, competent programmatic-SEO + AEO program. Results weak-but-early; revenue attribution unproven. They're lobbying to reverse a termination.</td>
+        <td>Hold the meeting below. Pull HubSpot attribution + GSC position data first.</td>
+      </tr>
+      <tr>
+        <td><strong>7 Knots Digital</strong><br/><span class="mono muted">James Karklins</span></td>
+        <td><span class="tag tag-amber">Renegotiate or cut</span></td>
+        <td>They're a B2B media / demand-gen agency, not a deliverability shop. Likely paying agency rates for a thin slice of capability.</td>
+        <td>Reconcile scope vs. spend. Get the SOW and what we actually consume.</td>
+      </tr>
+      <tr>
+        <td><strong>Opascope</strong><br/><span class="mono muted">~$6,500/mo</span></td>
+        <td><span class="tag tag-amber">Fix governance</span></td>
+        <td>Legit performance-marketing agency; rate is normal. The problem is no owner + unclear deliverables, not price.</td>
+        <td>Get the signed SOW + last 3 monthly deliverable reports. Assign an owner or cut.</td>
+      </tr>
+      <tr>
+        <td><strong>Open Dental</strong><br/><span class="mono muted">PMS partner</span></td>
+        <td><span class="tag tag-green">Keep</span></td>
+        <td>Market-leading PMS (~14-18% share, 12K+ installs, API-transparent). This is a partner, not a cost to cut.</td>
+        <td>Confirm the integration is on their certified marketplace.</td>
+      </tr>
+      <tr>
+        <td><strong>RRD</strong><br/><span class="mono muted">print fulfillment</span></td>
+        <td><span class="tag tag-green">Keep, right-size</span></td>
+        <td>Legit at-scale fulfillment. Possibly overkill for current brochure volumes.</td>
+        <td>Check per-unit pricing vs. volume. Compare to QuikPrint for small runs.</td>
+      </tr>
+      <tr>
+        <td><strong>QuikPrint</strong><br/><span class="mono muted">small print</span></td>
+        <td><span class="tag tag-grey">Identify</span></td>
+        <td>Generic name, unverifiable online. Need the legal entity.</td>
+        <td>Pull the exact name + website off the invoice.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="mono muted" style="font-size:0.8rem">Solutionreach appears in the email but is not a Clerri vendor — it's where Jim and Josh Rich previously worked. Context only.</p>
+
+  <h2>Loudspeaker — <em>the deep dive.</em></h2>
+
+  <h3>What they actually built (it's real)</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Programmatic content engine</h4>
+      <p style="font-size:0.9rem">110 articles across 8 clusters at ~8/week — competitor "alternatives" pages (BoomCloud, Subscribili, Plan Forward, DentalHQ, Bento, illumitrac…), statistics pages, insurance-alternatives, 3-way comparisons.</p>
+    </div>
+    <div class="card">
+      <h4>AEO / LLM tracking</h4>
+      <p style="font-size:0.9rem">Referrer-regex tracking of ChatGPT / Perplexity / Gemini / Claude sessions + prompt-citation monitoring. They were genuinely early on AEO.</p>
+    </div>
+    <div class="card">
+      <h4>ABM infrastructure</h4>
+      <p style="font-size:0.9rem">Bombora third-party intent, site de-anonymization, a ~170-account enterprise target list. Real demand-gen plumbing.</p>
+    </div>
+    <div class="card">
+      <h4>Data integrity</h4>
+      <p style="font-size:0.9rem">They flagged that Clerri's own "100M uninsured" stat has no credible source. Most vendors would have just published it — this is a green flag.</p>
+    </div>
+  </div>
+  <div class="callout mint">
+    <div class="lbl">Reframe</div>
+    <p>The public research suggested a thin vendor. The actual deliverables flip that — this is competent, sophisticated work. The question is no longer "are they real," it's "are the results worth the spend, and can we do it ourselves."</p>
+  </div>
+
+  <h3>The hard numbers — this is the weak part</h3>
+  <div style="overflow-x:auto">
+  <table class="vtable">
+    <thead>
+      <tr><th>Cluster</th><th>Articles</th><th>Clicks</th><th>Impressions</th><th>CTR</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Stats Based</td><td>45</td><td>69</td><td>43,930</td><td>0.16%</td></tr>
+      <tr><td>Alternatives</td><td>15</td><td>55</td><td>16,224</td><td>0.34%</td></tr>
+      <tr><td>Insurance Alternatives</td><td>12</td><td>18</td><td>6,188</td><td>0.29%</td></tr>
+      <tr><td>Membership Plan (action)</td><td>14</td><td>15</td><td>5,518</td><td>0.27%</td></tr>
+      <tr><td>Competitor Comparison</td><td>11</td><td>5</td><td>1,891</td><td>0.26%</td></tr>
+      <tr><td>3-Way Comparison</td><td>8</td><td>0</td><td>102</td><td>0.00%</td></tr>
+      <tr><td>Competitor Pricing</td><td>4</td><td>0</td><td>0</td><td>—</td></tr>
+      <tr class="tr-total"><td><strong>Total</strong></td><td><strong>110</strong></td><td><strong>163</strong></td><td><strong>74,058</strong></td><td><strong>0.22%</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:0.95rem;color:var(--ink-soft);max-width:70ch"><strong>~1.5 clicks per article.</strong> 74K impressions but almost nobody clicks — that pattern means pages are indexed but ranking low (page 2-3), or titles/snippets don't compel. Either way, organic search is not yet delivering traffic.</p>
+
+  <h3>The two claims that don't hold up</h3>
+  <div class="callout wine">
+    <div class="lbl">Scrutinize</div>
+    <p style="margin-bottom:0.75rem"><strong>1. "Now mentioned in every BoomCloud-alternatives prompt!"</strong> — they choose which prompts to track. That's a self-graded exam. And LLM sessions are only 30-80/month — tiny traffic. AEO is real and worth doing, but it's being used as the headline precisely because the SEO clicks underperform.</p>
+    <p style="margin:0"><strong>2. "57 MQLs in April vs 39 in January (+46%)"</strong> — that's company-wide lead growth. With only 163 total clicks from their content, it's nearly impossible their blogs sourced a meaningful share of those MQLs. They're claiming credit for a number their own traffic data can't support.</p>
+  </div>
+
+  <h3>The fair steelman</h3>
+  <p style="font-size:0.95rem;color:var(--ink-soft);max-width:70ch">Programmatic SEO is a 6-12 month game. 110 articles at ~4 months is early — impressions are growing and pages are indexing, which are real leading indicators. You cannot tell from clicks alone whether this compounds or stalls. That uncertainty is exactly why the meeting below exists: get the data that resolves it before you decide.</p>
+
+  <h3>Can we do this without them?</h3>
+  <div class="callout zest-hi">
+    <p style="margin:0"><strong>Yes — this is the AI content play your own hub already maps out.</strong> The competitor-alternatives + stats-pages pattern is replicable with a Claude content pipeline at pennies per article. LLM-citation tracking is already planned (Otterly → Profound). You already own all 110 articles — they live on clerri.com, so cutting Loudspeaker keeps the asset. The likely upgrade: better CTR via the "Fire your insurance company" POV + real case-study hooks (Midtown Dental 46%, 7-to-7 Dental $4.5M, SkyRidge 8X) sitting right there in their own report. The only real question is bandwidth — matching 8 articles/week in-house needs the workflow built + an editor to QA.</p>
+  </div>
+
+  <h2>Two ways to play it — <em>both on the table.</em></h2>
+  <div class="grid-2">
+    <div class="card">
+      <span class="pill pill-zest">Option A</span>
+      <h3 style="margin:0.5rem 0">Performance-gated extension</h3>
+      <p style="font-size:0.9rem">60-day extension, but re-baselined on metrics that tie to revenue: content-sourced <em>pipeline</em> (not company-wide MQLs), page-1 rankings for target terms, and click trajectory. If they can't move those, you cut with proof in hand.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Best if: their fee is modest and the deeper-dive data trends up.</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">Option B</span>
+      <h3 style="margin:0.5rem 0">Cut now, absorb in-house</h3>
+      <p style="font-size:0.9rem">End the engagement, keep the 110 articles, redirect the spend. Rebuild the content engine with the AI workflow and own the AEO play directly. Improve quality with the new positioning.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Best if: the fee is steep, attribution is empty, or rankings are flat.</p>
+    </div>
+  </div>
+  <p style="font-size:0.9rem;color:var(--muted);max-width:70ch">Decision deferred until the meeting + the data pull. The questions below are designed to tell you which option is right.</p>
+
+  <h2>Your meeting with Loudspeaker — <em>questions + what you're listening for.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Don't accept narrative. For each question, the goal is the green answer; the red answer is your signal to move toward Option B. Lead with attribution — it's the one that resolves everything else.</p>
+
+  <h3>Attribution &amp; revenue — the crux</h3>
+  <div class="card qa">
+    <p class="q">1. "Of the 57 MQLs in April, how many touched a Loudspeaker page before converting? Show me the multi-touch path in HubSpot."</p>
+    <p class="good">✓ A specific number with the attribution report — even a small, honest one. "11 of 57 had a blog touchpoint, here's the path."</p>
+    <p class="bad">✗ Deflection to "SEO is holistic / brand halo / you can't attribute everything," or claiming most of them without data.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">2. "What's the content-sourced <em>pipeline and revenue</em> — not MQLs? Has any closed or open deal touched this content?"</p>
+    <p class="good">✓ At least pipeline influence with specifics, or an honest "too early for closed-won — here's the pipeline we've influenced."</p>
+    <p class="bad">✗ Can't connect to pipeline at all; only vanity metrics; changes the subject.</p>
+  </div>
+
+  <h3>SEO reality</h3>
+  <div class="card qa">
+    <p class="q">3. "What's the average GSC position for our target-term pages? Which pages rank on page 1?"</p>
+    <p class="good">✓ Some page-1 or climbing rankings for commercial terms (e.g. "[competitor] alternatives") with a clear trajectory.</p>
+    <p class="bad">✗ Everything stuck page 2-3, or dodging position with impression counts.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">4. "163 clicks from 110 articles is ~1.5 each. Why is CTR 0.22%, and what's the path to materially higher traffic?"</p>
+    <p class="good">✓ A credible diagnosis (domain-authority maturation, ranking curve, title/snippet optimization plan) + a timeline with an actual click target.</p>
+    <p class="bad">✗ Immediately pivots to LLM citations; no diagnosis; "it just takes time" with no plan or number.</p>
+  </div>
+
+  <h3>LLM / AEO claims</h3>
+  <div class="card qa">
+    <p class="q">5. "Show me the full list of prompts you track for LLM citations — including the ones we DON'T appear in."</p>
+    <p class="good">✓ A comprehensive, non-cherry-picked list with honest gaps. "We appear in 8 of 15 tracked — here are the 7 we don't."</p>
+    <p class="bad">✗ Only flattering prompts; can't produce the full list; resists showing misses.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">6. "LLM sessions are 30-80/month. What's the realistic ceiling, and how does that become leads or revenue?"</p>
+    <p class="good">✓ Honest framing that AEO is early and long-game, plus a believable growth model.</p>
+    <p class="bad">✗ Treats 80 sessions as a headline win; overstates LLM traffic value.</p>
+  </div>
+
+  <h3>Cost &amp; ownership</h3>
+  <div class="card qa">
+    <p class="q">7. "What exactly are we paying monthly, and what's the breakdown — content production vs. tracking vs. strategy?"</p>
+    <p class="good">✓ A transparent, itemized breakdown.</p>
+    <p class="bad">✗ Vague bundled fee; can't itemize on the spot.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">8. "We own all 110 articles and they stay on clerri.com if we part ways, correct? Same for the GSC/GA4 data?"</p>
+    <p class="good">✓ A clear, immediate yes.</p>
+    <p class="bad">✗ Any hedging about content ownership, "proprietary" templates, or workflows we can't keep.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">9. "If we brought this in-house with our AI content workflow, what specifically would we lose that you provide?"</p>
+    <p class="good">✓ A confident, honest answer naming genuine differentiators (strategy, QA, niche expertise). Shows they know their value.</p>
+    <p class="bad">✗ Defensiveness; vague "expertise"; can't name anything we couldn't replicate.</p>
+  </div>
+
+  <h3>Strategy, fit &amp; who's really doing the work</h3>
+  <div class="card qa">
+    <p class="q">10. "Our positioning is shifting to 'Fire your insurance company,' and our real competitor is DIY in-house plans. How does the roadmap change?"</p>
+    <p class="good">✓ Immediate, specific adjustment ideas — shows strategic flexibility and that they're listening.</p>
+    <p class="bad">✗ Rigidity; "our cluster model is set"; doesn't engage with the new positioning.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">11. "What will you commit to over 60 days, measured on content-sourced pipeline and page-1 rankings — not MQLs or citations?"</p>
+    <p class="good">✓ Willingness to be measured on revenue-tied metrics with specific targets.</p>
+    <p class="bad">✗ Only wants to be judged on impressions / citations / sessions; won't commit to hard numbers.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">12. "Who's actually doing the work? The reporting keeps coming 'from Nik' — our consultant. Walk me through your team and hours."</p>
+    <p class="good">✓ Clear ownership, real hours, named people on their side doing the production.</p>
+    <p class="bad">✗ It emerges that Nik (our own resource) is doing the heavy lifting — meaning we're paying Loudspeaker for work we already resource internally.</p>
+  </div>
+
+  <h2>Dive-deeper checklist — <em>pull before you decide.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">You can get most of this yourself from HubSpot + GSC without waiting on the vendor. Check off as you confirm.</p>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-01-attribution" data-section="vendor-audit" /><div class="task-content"><div class="task-title">HubSpot: how many of April's 57 MQLs had a Loudspeaker blog touchpoint?</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-02-position" data-section="vendor-audit" /><div class="task-content"><div class="task-title">GSC: average position for target-term pages — anything on page 1?</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-03-trajectory" data-section="vendor-audit" /><div class="task-content"><div class="task-title">Is monthly click volume accelerating or flat? (the compound-vs-dud tell)</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-04-promptlist" data-section="vendor-audit" /><div class="task-content"><div class="task-title">Get the full LLM prompt-tracking list — check for cherry-picking</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-05-cost" data-section="vendor-audit" /><div class="task-content"><div class="task-title">Confirm the monthly fee + itemized breakdown</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-06-ownership" data-section="vendor-audit" /><div class="task-content"><div class="task-title">Confirm content + data ownership survives a separation</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-07-opascope" data-section="vendor-audit" /><div class="task-content"><div class="task-title">Opascope: signed SOW + last 3 monthly deliverable reports</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-08-7knots" data-section="vendor-audit" /><div class="task-content"><div class="task-title">7 Knots: reconcile what we pay vs. what we actually consume</div></div></label></div>
+  <div data-section="vendor-audit"><label class="task"><input type="checkbox" data-track="va-09-judd" data-section="vendor-audit" /><div class="task-content"><div class="task-title">Sync with Judd (CFO) on billing — surface any hidden outsourcers</div></div></label></div>
+
+  <div class="note-block">
+    <div class="note-label">Vendor audit notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="vendor-audit-notes" placeholder="Meeting answers, attribution numbers, contract terms, gut read on each vendor, decisions..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/martech-audit"><span class="dir">← Prev</span><span class="name">Martech Audit</span></a>
+    <a href="/clerri/partners"><span class="dir">Next →</span><span class="name">Partnership Targets</span></a>
+  </div>
+
+</div>
+
+<style>
+  .vtable { width:100%; border-collapse:collapse; font-size:0.9rem; margin:0.5rem 0 1rem; }
+  .vtable th, .vtable td { text-align:left; padding:0.6rem 0.75rem; border-bottom:1px solid var(--cotton-dark); vertical-align:top; }
+  .vtable th { font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clerri-green); }
+  .vtable tr.tr-total td { border-top:2px solid var(--clerri-green); border-bottom:none; }
+  .vtable .muted { color:var(--muted); font-weight:400; }
+  .tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:0.15rem 0.55rem; border-radius:1rem; white-space:nowrap; }
+  .tag-green { background:#cffc78; color:#002920; }
+  .tag-amber { background:#ffe7a3; color:#5c4500; }
+  .tag-grey { background:#e4dfcd; color:#444; }
+  .qa { margin-bottom:0.85rem; }
+  .qa .q { font-weight:600; color:var(--ink); margin:0 0 0.6rem; font-size:0.95rem; }
+  .qa .good { color:#0a6b4f; margin:0.3rem 0; font-size:0.9rem; }
+  .qa .bad { color:#8a2d3f; margin:0.3rem 0 0; font-size:0.9rem; }
+</style>
+
+</ClerriLayout>

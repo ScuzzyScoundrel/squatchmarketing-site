@@ -5,35 +5,253 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
 
 <div class="page-head">
   <div class="page-eyebrow">09 · Tooling</div>
-  <h1 class="page-title">Six tools, <em>$400-900/month.</em></h1>
-  <p class="page-sub">Day-1 stack replaces what would otherwise be $5-15K/month of enterprise tooling. Battle-tested, not hyped. Each tool has a clear use case and integration path.</p>
+  <h1 class="page-title">CLI for you. API for the team. <em>Both for cutting edge.</em></h1>
+  <p class="page-sub">Most "AI marketing workflows" you'll see pitched are API + n8n setups that take weeks to build and die in 30 days because nobody uses them. The honest version: CLI for solo work, API only when something needs to run without you, multi-agent pipelines when you're ready to run the most automated marketing org in dental SaaS.</p>
 </div>
 
 <div class="page-body">
 
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>CLI for solo work, API only when something runs without you, multi-agent pipelines when you're ready to pull ahead. Validate every workflow by hand 3-5 times before you automate it — the cutting-edge tier is your 90-day moat, not your week-1 to-do.</p>
+  </div>
+
   <div class="progress-track"><div class="progress-fill" data-progress-fill="ai-stack"></div></div>
   <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="ai-stack">0 / 0</span></p>
 
+  <h2>The decision rule — <em>CLI or API?</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Before you build anything, ask one question: <strong>"Does anyone need to run this who isn't me at a terminal?"</strong> That's the whole framework.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="pill pill-mint">Solo · CLI</span>
+      <h3 style="margin:0.5rem 0">Claude Code / claude.ai</h3>
+      <p style="font-size:0.9rem">Interactive. You at a terminal or browser. Zero infra. $20-100/mo flat (Pro or Max plan).</p>
+      <ul style="font-size:0.875rem;padding-left:1.2rem;line-height:1.6;margin:0.5rem 0">
+        <li>First drafts of any content</li>
+        <li>Monthly win-loss synthesis from transcripts</li>
+        <li>Research + competitive scans</li>
+        <li>Template-from-fact-sheet generation</li>
+        <li>Anything that runs because <em>you</em> ran it</li>
+      </ul>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">Covers ~70% of real workflow needs</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">Team · API</span>
+      <h3 style="margin:0.5rem 0">Anthropic API + n8n + MCP</h3>
+      <p style="font-size:0.9rem">Programmatic. Scheduled or triggered. Multi-user. Per-token usage + infra cost.</p>
+      <ul style="font-size:0.875rem;padding-left:1.2rem;line-height:1.6;margin:0.5rem 0">
+        <li>SDR-facing tools inside their existing CRM</li>
+        <li>Scheduled reports / dashboards</li>
+        <li>CRM-triggered workflows (lead crosses score → action)</li>
+        <li>"@claude in Slack" agents</li>
+        <li>Anything where you're <em>not</em> in the loop</li>
+      </ul>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">Build only after manual validation</p>
+    </div>
+  </div>
+
+  <div class="callout zest-hi">
+    <strong>The trap nobody admits:</strong> Building API + n8n flows before you've done the task by hand 3-5 times. You'll spend weeks on infra and discover the workflow didn't matter. The pattern that works: <strong>Manual First → Test Immediately → Scale Gradually.</strong>
+  </div>
+
+  <h2>Your <em>90-day automation arc.</em></h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="pill pill-mint">Days 1-30</span>
+      <h4 style="margin:0.5rem 0">Manual + CLI</h4>
+      <p style="font-size:0.875rem">Run every workflow by hand with Claude Code or claude.ai. Track which actually save time vs. sound clever. Most ideas die here — that's a feature.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">+$20-100/mo · infra: zero</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">Days 30-60</span>
+      <h4 style="margin:0.5rem 0">Automate the survivors</h4>
+      <p style="font-size:0.875rem">Workflows you ran 5+ times manually graduate to n8n + API. Wire the highest-leverage 2-3. Skip the rest. Resist the urge to build everything.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">+$50-200/mo · VPS + creds</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-wine">Days 60-90</span>
+      <h4 style="margin:0.5rem 0">Multi-agent + autonomous</h4>
+      <p style="font-size:0.875rem">Layer the cutting-edge tier — agent pipelines, voice-first ops, autonomous monitors. This is the moat — the work that makes board decks land.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">+$100-300/mo · agent runtime</p>
+    </div>
+  </div>
+
+  <h2>The four baseline workflows — <em>solo vs team.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Every "AI marketing workflow" pitch boils down to one of these four. Side-by-side: how it works when it's just you, and what changes when you scale it for the team.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="pill pill-mint">A · Markdown → Branded Email</span>
+      <h4 style="margin:0.5rem 0">Solo (CLI)</h4>
+      <p style="font-size:0.875rem">Write markdown. Ask Claude Code to convert to MJML using the Clerri brand tokens. Paste into Brevo. 5 min per email. Cost: included in your plan.</p>
+      <h4 style="margin:0.75rem 0 0.5rem">Team (API)</h4>
+      <p style="font-size:0.875rem">n8n flow: Notion doc tagged "send-as-email" → API call with brand template → draft in Brevo → Slack ping for review. Used when CSMs send branded content without your involvement.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">Real value: 10x speed IF brand template is locked</p>
+    </div>
+
+    <div class="card">
+      <span class="pill pill-zest">B · SDR Lead Enrichment</span>
+      <h4 style="margin:0.5rem 0">Solo (CLI)</h4>
+      <p style="font-size:0.875rem">Pointless for you — you're not the SDR. Skip the solo version.</p>
+      <h4 style="margin:0.75rem 0 0.5rem">Team (API · required)</h4>
+      <p style="font-size:0.875rem">Must live inside Salesforce or Outreach where SDRs already work. Triggered by new-lead webhook → Clay enrichment → Claude scores fit + drafts opener → writes back to the lead record. Standalone Slack bots get abandoned.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">Only build after one SDR validates the use case manually</p>
+    </div>
+
+    <div class="card">
+      <span class="pill pill-mint">C · Win-Loss Synthesis</span>
+      <h4 style="margin:0.5rem 0">Solo (CLI)</h4>
+      <p style="font-size:0.875rem">Drop Gong/Fathom transcripts in a folder. Run Claude Code with a thematic-extraction prompt. Get a report. Monthly cadence. One of the highest-leverage CLI workflows.</p>
+      <h4 style="margin:0.75rem 0 0.5rem">Team (API)</h4>
+      <p style="font-size:0.875rem">Doesn't really need to scale — one person consolidates. API only if you want a real-time "this objection pattern is trending up" dashboard.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">Real value: 10x — patterns hidden in transcripts surface fast</p>
+    </div>
+
+    <div class="card">
+      <span class="pill pill-zest">D · Content Drafts</span>
+      <h4 style="margin:0.5rem 0">Solo (CLI)</h4>
+      <p style="font-size:0.875rem">First drafts of blogs, social, sales enablement. Paste into CMS. Heavy human edit. Speed-up: 3-5x. Quality: only as good as your prompts + brand guide.</p>
+      <h4 style="margin:0.75rem 0 0.5rem">Team (API)</h4>
+      <p style="font-size:0.875rem">Slack command <code>/draft topic="..."</code> → n8n → Claude with brand context → draft in Notion. Risk: creates "AI sludge" if review discipline isn't enforced.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--clerri-green);margin-top:0.5rem">Real value: 3-5x — only if humans edit hard</p>
+    </div>
+  </div>
+
+  <h2>Cutting-edge tier — <em>"this feels like magic."</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Five workflows that put Clerri marketing genuinely ahead of every dental-SaaS competitor. Each is feasible in 2026 with current tools. None require an engineer — just the right architecture and a $7/mo VPS.</p>
+
+  <div class="card" style="margin-bottom:1rem">
+    <span class="pill pill-wine">01 · Autonomous</span>
+    <h3 style="margin:0.5rem 0">Tier-1 Account Intel Agent</h3>
+    <p style="font-size:0.9rem">Every Sunday night, an agent reads your top 50-100 accounts in Salesforce. For each, it searches the web for hiring signals, leadership changes, M&A activity, recent news, and RFP database hits. It cross-references against existing account notes and similar-account win/loss patterns. Output: a "heat score" change + 3-line pulse + recommended next move. Delivered to the account AE as a Slack DM. Quiet accounts get downgraded automatically. You get a Monday-morning digest: "12 accounts heated up, 8 cooled."</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Stack: Claude Agent SDK + Salesforce MCP + web search · ~$3-5 per weekly run · Setup: 4-6 hrs</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <span class="pill pill-wine">02 · Multi-Agent</span>
+    <h3 style="margin:0.5rem 0">Content Production Line (5 agents, 1 pipeline)</h3>
+    <p style="font-size:0.9rem">Slack command: <code>/brief topic="how DSOs use membership plans to neutralize Aspen Direct"</code>. A supervisor agent spawns four workers: <strong>(a) Researcher</strong> — web search + RAG over your case studies + interview transcripts; <strong>(b) Drafter</strong> — long-form first draft; <strong>(c) Brand-Voice Editor</strong> — enforces Clerri style guide, swaps generic phrasing for category-specific language; <strong>(d) Distributor</strong> — produces CMS post, LinkedIn carousel copy, email teaser, X/Threads variants. Output lands in Notion + Slack 8-12 minutes later, fully tagged for review.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Stack: Claude Agent SDK supervisor pattern + Notion MCP + GA4 MCP · ~$3-8 per artifact · Setup: 8-12 hrs</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <span class="pill pill-wine">03 · Voice-First</span>
+    <h3 style="margin:0.5rem 0">"Walking the Dog" Marketing Ops</h3>
+    <p style="font-size:0.9rem">Open iPhone Shortcuts at 7am on a walk: voice note "we need a one-pager for ADSO Summit on the patient marketplace pitch, AE-facing, two pages max, ready by Thursday." 90 seconds, hands free. Audio → Whisper → Claude → output routes by deliverable type. By the time you're back at your desk, there's a brand-compliant draft waiting in Slack with the design tokens applied and a Notion brief logged. This is the workflow that makes the team think you're a wizard.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Stack: iOS Shortcut webhook → n8n → Whisper API → Claude → Slack/Notion/Brevo · ~$0.10/voice note · Setup: 2-3 hrs</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <span class="pill pill-wine">04 · Live Monitor</span>
+    <h3 style="margin:0.5rem 0">Competitive Intel Watcher</h3>
+    <p style="font-size:0.9rem">Headless Playwright scrapes BoomCloud, Subscribili, Plan Forward, Pearly, DentalHQ every Sunday. Claude diffs against last week's snapshot: pricing changes, new messaging, new customer logos, new blog topics, new feature pages. If anything material changed, drafts an internal Slack post + auto-updates the <code>/clerri/competitors</code> comparison sheet in the strategy hub. You wake up Monday knowing exactly what every competitor did last week, with the analysis already done.</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Stack: Playwright + Claude API + GitHub API (for hub edits) · ~$2-5 per weekly run · Setup: 6-8 hrs</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <span class="pill pill-wine">05 · Just-in-Time</span>
+    <h3 style="margin:0.5rem 0">Pre-Call Brief Generator</h3>
+    <p style="font-size:0.9rem">15 minutes before any AE's next external meeting, an agent reads the last 3 Gong/Fathom calls with that account, the Salesforce history, and the playbook from the most-similar account that closed. Drafts a 1-page brief: 5 talking points, likely objections with battle-card answers, "what's changed since last call," recommended next step. Lands in the AE's Slack DM. AEs go from "I should prep for this" to "the prep is already done."</p>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Stack: Gong webhook → Claude API + Salesforce MCP · ~$0.30-0.80 per brief · Setup: 6-8 hrs</p>
+  </div>
+
+  <h2>What setup actually looks like — <em>two walkthroughs.</em></h2>
+
+  <h3 style="margin-top:1.5rem">Walkthrough 1: Voice-First Marketing Ops (the magic one)</h3>
+  <div class="card">
+    <ol style="font-size:0.9rem;line-height:1.7;padding-left:1.2rem;margin:0">
+      <li><strong>iPhone Shortcut</strong> — Create a Shortcut "Hey Clerri" that records audio + uploads via POST to your n8n webhook URL. Add to home screen + voice-trigger via Siri.</li>
+      <li><strong>n8n webhook node</strong> — Receives audio blob. ~2 min to set up.</li>
+      <li><strong>Whisper API call</strong> — Transcribes audio. $0.006/min. Returns text.</li>
+      <li><strong>Claude API call</strong> — Single prompt: <em>"You are Clerri's marketing ops dispatcher. Extract: deliverable_type, audience, deadline, key_facts. Then route based on deliverable_type."</em> Output is JSON.</li>
+      <li><strong>Conditional routing in n8n</strong> — Based on <code>deliverable_type</code>:
+        <ul style="margin:0.4rem 0">
+          <li><strong>one-pager</strong> → Claude drafts markdown + MJML → posts to Slack <code>#marketing-drafts</code></li>
+          <li><strong>email</strong> → Claude drafts HTML → creates Brevo draft campaign</li>
+          <li><strong>brief</strong> → Claude writes Notion page → Slack notification with link</li>
+          <li><strong>research</strong> → Claude runs web search agent → Slack thread with sources</li>
+        </ul>
+      </li>
+      <li><strong>Done.</strong> Phone-to-deliverable in 2-5 minutes. Run it 5 times in your first week to dial in the prompt.</li>
+    </ol>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green);margin-top:0.75rem">Total infra cost: ~$7/mo VPS + Claude API usage (~$0.10/voice note). Setup time: 2-3 hours start to finish.</p>
+  </div>
+
+  <h3 style="margin-top:1.5rem">Walkthrough 2: Autonomous Account Intel Agent</h3>
+  <div class="card">
+    <ol style="font-size:0.9rem;line-height:1.7;padding-left:1.2rem;margin:0">
+      <li><strong>n8n weekly cron</strong> — Sunday 8pm trigger.</li>
+      <li><strong>Salesforce MCP query</strong> — Pull Tier-1 accounts (e.g., <code>Tier__c = '1'</code>) — name, ID, recent notes, last activity, current owner.</li>
+      <li><strong>For each account, agent runs</strong> (Claude Agent SDK with <code>web_search</code> + <code>read_url</code> tools):
+        <ul style="margin:0.4rem 0">
+          <li>Search: <em>"[account name] dental practice news"</em>, <em>"[account name] hiring"</em>, <em>"[account name] acquisition"</em></li>
+          <li>Read: top 3 results per query, dedupe stale content</li>
+          <li>Pull: existing Salesforce account notes for context</li>
+          <li>Synthesize: heat score (1-10), heat-score delta from last week, 3-line pulse, recommended next move</li>
+        </ul>
+      </li>
+      <li><strong>Write-back logic</strong>:
+        <ul style="margin:0.4rem 0">
+          <li>Heat score delta ≥ 2 → Slack DM to account owner with the pulse</li>
+          <li>Heat score delta ≥ 1 → append to Salesforce account note</li>
+          <li>Any drop → flag in your Monday digest as "cooling — re-engage?"</li>
+        </ul>
+      </li>
+      <li><strong>Monday digest to you</strong> — Aggregate post to your DM: top 5 heating, top 5 cooling, anything anomalous worth digging into.</li>
+      <li><strong>Feedback loop</strong> — In Slack, AEs react with ✅ if useful, ❌ if noise. Feed this back into the agent's scoring prompt monthly.</li>
+    </ol>
+    <p class="mono" style="font-size:0.8rem;color:var(--clerri-green);margin-top:0.75rem">Cost: ~$3-5 per weekly run for 100 accounts. Setup time: 4-6 hours. Single biggest "wow" factor for sales leadership.</p>
+  </div>
+
+  <h2>Honest effectiveness — <em>where AI wins, where it doesn't.</em></h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4 style="color:var(--clerri-green)">✓ Genuinely wins</h4>
+      <ul style="font-size:0.9rem;line-height:1.6;padding-left:1.2rem;margin:0.5rem 0">
+        <li><strong>Pattern extraction from unstructured data</strong> — call transcripts, support tickets, win-loss notes. 10x speed-up. Killer use case.</li>
+        <li><strong>First drafts of long-form content</strong> — 3-5x speed, only if you'd edit anyway</li>
+        <li><strong>Templating + variable substitution</strong> — briefs from fact sheets, ICP-specific messaging variants. Solid 3-5x.</li>
+        <li><strong>Research synthesis</strong> — competitor scans, market sizing, persona work. 5-10x.</li>
+        <li><strong>Voice → action workflows</strong> — the cognitive-overhead removal is unreal</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--wine, #6e2b3a)">✗ Doesn't, despite the hype</h4>
+      <ul style="font-size:0.9rem;line-height:1.6;padding-left:1.2rem;margin:0.5rem 0">
+        <li><strong>Brand judgment with no examples</strong> — more time correcting than starting fresh</li>
+        <li><strong>Creative concepts</strong> — still bad at originality, good at execution once concept is locked</li>
+        <li><strong>SDR tools that don't live in the CRM</strong> — abandoned in 30 days</li>
+        <li><strong>"Strategic" decisions</strong> — Claude can pressure-test your strategy, not make it</li>
+        <li><strong>Anything you couldn't do manually first</strong> — automation amplifies clarity, not confusion</li>
+      </ul>
+    </div>
+  </div>
+
   <h2>Day-1 stack — <em>the six tools.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">$400-900/mo replaces what would otherwise be $5-15K/mo of enterprise tooling. Tags show whether each is CLI-first or required for API workflows.</p>
+
   <div class="grid-2">
     <div class="card">
       <span class="pill pill-zest">01 · Content Engine</span>
-      <h3 style="margin:0.5rem 0">Claude API (Sonnet 4.6)</h3>
-      <p style="font-size:0.9rem">Primary content engine — drafting, summarization, scoring. Prompt caching cuts input 90%; Batch API 50% off. Opus 4.7 for strategic positioning + case studies.</p>
-      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">~$100-300/mo at full load</p>
-      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-01-claude" data-section="ai-stack" /><div class="task-content"><div class="task-title">Set up Claude API account + Pardot/Salesforce credentials</div></div></label></div>
+      <h3 style="margin:0.5rem 0">Claude Code + Claude API</h3>
+      <p style="font-size:0.9rem">Claude Code ($20-100/mo Pro/Max) handles every solo workflow. API on top for team automations. Sonnet 4.6 for most tasks; Opus 4.7 for strategic positioning + case studies. Prompt caching cuts input 90%; Batch API another 50% off.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">$20-100/mo (CLI) + ~$50-300/mo (API at load)</p>
+      <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-01-claude" data-section="ai-stack" /><div class="task-content"><div class="task-title">Set up Claude Max plan + API account with prompt caching enabled</div></div></label></div>
     </div>
     <div class="card">
       <span class="pill pill-zest">02 · Orchestration</span>
       <h3 style="margin:0.5rem 0">n8n (self-hosted)</h3>
-      <p style="font-size:0.9rem">Owns every cross-system flow. Execution-based billing. Native LangChain + 70 AI nodes in v2.0. 80-90% cheaper than Zapier at marketing-ops scale.</p>
+      <p style="font-size:0.9rem">Owns every cross-system flow. Execution-based billing. Native LangChain + 70 AI nodes in v2.0. 80-90% cheaper than Zapier at marketing-ops scale. Required for any API-tier workflow.</p>
       <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">~$7/mo VPS</p>
       <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-02-n8n" data-section="ai-stack" /><div class="task-content"><div class="task-title">Spin up self-hosted n8n on $7/mo VPS — primary workflow orchestrator</div></div></label></div>
     </div>
     <div class="card">
       <span class="pill pill-zest">03 · Enrichment</span>
       <h3 style="margin:0.5rem 0">Clay (Launch tier)</h3>
-      <p style="font-size:0.9rem">Per-practice enrichment for 5K personalization play. Waterfall data — 78% email match, 85% company-data fill. Failed lookups free (March 2026).</p>
+      <p style="font-size:0.9rem">Per-practice enrichment for personalization play. Waterfall data — 78% email match, 85% company-data fill. Failed lookups free.</p>
       <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">$185/mo Launch or $495 Growth</p>
       <div data-section="ai-stack"><label class="task"><input type="checkbox" data-track="stack-03-clay" data-section="ai-stack" /><div class="task-content"><div class="task-title">Clay Launch ($185/mo) — build top-100 DSO + 200 emerging-group enrichment lists</div></div></label></div>
     </div>
@@ -80,12 +298,15 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   </div>
 
   <h2>MCP servers <em>worth knowing.</em></h2>
-  <p style="color:var(--ink-soft);max-width:65ch">Mid-2025 onward, Claude can read/write CRM, analytics, and ops data via natural language. 25 marketing-relevant MCP servers cover ~95% of agency-grade workflows.</p>
+  <p style="color:var(--ink-soft);max-width:65ch">Mid-2025 onward, Claude can read/write CRM, analytics, and ops data via natural language. 25+ marketing-relevant MCP servers cover ~95% of agency-grade workflows. These are the rails the cutting-edge tier rides on.</p>
 
   <div class="grid-3">
-    <div class="card"><h4>CRM</h4><p style="font-size:0.875rem">HubSpot MCP (official beta), Salesforce MCP (most mature). For Pardot: Salesforce MCP + Pardot REST via n8n bridge.</p></div>
+    <div class="card"><h4>CRM</h4><p style="font-size:0.875rem">HubSpot MCP (official), Salesforce MCP (most mature). For Pardot: Salesforce MCP + Pardot REST via n8n bridge.</p></div>
     <div class="card"><h4>Analytics + Knowledge</h4><p style="font-size:0.875rem">GA4 MCP, Notion MCP, Google Drive MCP, Linear MCP — knowledge grounding for battle cards + case studies.</p></div>
     <div class="card"><h4>Platform</h4><p style="font-size:0.875rem">Cloudflare MCP gateway (host your own behind auth), Anthropic reference servers (filesystem, fetch, postgres) for custom builds.</p></div>
+    <div class="card"><h4>Voice + Audio</h4><p style="font-size:0.875rem">Whisper API for transcription. ElevenLabs MCP for voice synthesis (sales rep audio briefs, podcast intros).</p></div>
+    <div class="card"><h4>Web Action</h4><p style="font-size:0.875rem">Playwright MCP for headless browser tasks. Computer Use API (Sonnet 4.6) for Pardot/Salesforce UIs without official APIs.</p></div>
+    <div class="card"><h4>Communication</h4><p style="font-size:0.875rem">Slack MCP, Gmail MCP, Brevo via REST. The "last mile" — where agent output reaches humans.</p></div>
   </div>
 
   <div class="note-block">

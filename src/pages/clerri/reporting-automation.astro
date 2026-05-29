@@ -1,0 +1,155 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Reporting Automation" section="reporting-automation">
+
+<div class="page-head">
+  <div class="page-eyebrow">Operations · Reporting &amp; Forecasting</div>
+  <h1 class="page-title">Kill the spreadsheet — <em>live dashboards in the CRM.</em></h1>
+  <p class="page-sub">The 2026 "Master" reporting workbook is a 32-tab manual ETL pipeline. Here's the layer map, why it exists, and the plan to replace it with native, filterable Salesforce + HubSpot dashboards — no more hand-pasting exports.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>The workbook is a manual ETL pipeline: 7 exports hand-pasted on a schedule, "cleaned" by hand, then modeled into the leadership scorecard. Salesforce + HubSpot already talk natively (bidirectional sync) — the hard part isn't connecting them, it's defining clean funnel stages + UTM mapping, then building the dashboard in one home. That's a RevOps project that needs an owner, not a marketing-solo fix.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="reporting-automation"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="reporting-automation">0 / 0</span></p>
+
+  <h2>What the workbook actually is — <em>5 stacked layers.</em></h2>
+  <div style="overflow-x:auto">
+  <table class="rtable">
+    <thead><tr><th>Layer</th><th>Tabs</th><th>What it does</th><th>Manual?</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 · Raw</strong></td><td>Raw | Leads, MQL, SQL, Opportunity, Booked, Paid Clicks, Meta Clicks</td><td>Funnel exports from Salesforce/HubSpot + ad-spend from Google &amp; Meta</td><td><span class="tag tag-red">Hand-pasted</span></td></tr>
+      <tr><td><strong>2 · Cleaning</strong></td><td>Cleaned ___ columns; URL Builder, Approved UTM, URL Mapping, Mapping</td><td>Normalizes messy source/channel data after the fact</td><td><span class="tag tag-red">Hand-mapped</span></td></tr>
+      <tr><td><strong>3 · Model</strong></td><td>Inbound + Outbound Monthly, Goals by Channel / YOY, Sheet17</td><td>Applies conversion rates (Inbound 0.665 MQL→SQL, etc.) to compute goals + forecast by SMB/Enterprise</td><td><span class="tag tag-amber">Formula</span></td></tr>
+      <tr><td><strong>4 · Exec views</strong></td><td>ELT - Weekly Update, Daily Tracker</td><td>Leadership scorecard (Monthly / Target / % to Plan / YoY) + daily pacing</td><td><span class="tag tag-amber">Formula</span></td></tr>
+      <tr><td><strong>5 · Campaigns</strong></td><td>Third Party Calendar + Spend, Event Performance, Media Buy, Partner Affinity, Webinar Planning</td><td>Campaign-level spend + results tracking</td><td><span class="tag tag-red">Mixed manual</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="mono muted" style="font-size:0.8rem">Plus dead weight: "DONT EDIT…", "Dont Use Original…", "URL Builder (DEPRACTED)", and an empty "Organic-Paid | Third-Party Infl" tab — the tell that this grew with no clear owner.</p>
+
+  <h2>The manual burden — <em>7 exports, every cycle.</em></h2>
+  <div style="overflow-x:auto">
+  <table class="rtable">
+    <thead><tr><th>Tab</th><th>Source (proven by field names)</th><th>How it should flow instead</th></tr></thead>
+    <tbody>
+      <tr><td>Raw | Leads / MQL / SQL / Opportunity / Booked</td><td>Salesforce + HubSpot (<span class="mono">MQL: Entered</span>, <span class="mono">HS: First Conversion Date</span>)</td><td>Already in the CRM — never export</td></tr>
+      <tr><td>Raw | Paid Clicks</td><td>Google Ads (<span class="mono">Cost Micros</span> is the API field)</td><td>Auto-connector (Supermetrics / Funnel.io)</td></tr>
+      <tr><td>Raw | Meta Clicks</td><td>Meta Ads (<span class="mono">Amount spent</span>, <span class="mono">Link clicks</span>)</td><td>Auto-connector (Supermetrics / Funnel.io)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>"Sync" is not "reporting" — <em>the distinction that decides everything.</em></h2>
+  <div class="callout zest-hi">
+    <p style="margin:0 0 0.6rem"><strong>Yes — Salesforce + HubSpot talk natively.</strong> HubSpot ships a certified, bidirectional integration (no middleware): contacts, companies, deals/opportunities, and activities sync both ways every few minutes, with field-level mapping you control.</p>
+    <p style="margin:0"><strong>But syncing records ≠ a unified dashboard.</strong> Each system still reports on its own data. So the funnel dashboard has to be <em>built</em> in one home — with the other system's data synced in. You're choosing a reporting home, not just flipping on a connector. <span class="mono muted">(Verify HubSpot tier — the strong native sync + custom report builder generally need Marketing/Sales Hub Pro or Enterprise.)</span></p>
+  </div>
+
+  <h2>Where the dashboard lives — <em>A or B.</em></h2>
+  <div class="grid-2">
+    <div class="card">
+      <span class="pill pill-zest">Option A</span>
+      <h3 style="margin:0.5rem 0">Report in Salesforce</h3>
+      <p style="font-size:0.9rem">Sync HubSpot marketing data into SFDC; build there. Native dashboards are filterable but somewhat static — <strong>CRM Analytics</strong> (paid add-on) is the genuinely interactive, drill-down experience.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Best if leadership treats revenue/pipeline as the spine.</p>
+    </div>
+    <div class="card" style="border:2px solid var(--clerri-green)">
+      <span class="pill pill-green">Option B · Recommended</span>
+      <h3 style="margin:0.5rem 0">Report in HubSpot</h3>
+      <p style="font-size:0.9rem">Sync SFDC opportunity/booked data into HubSpot; build in the custom report builder. Dashboards are natively interactive + filterable, and marketing <strong>attribution</strong> (which channel sourced MQL→SQL→revenue) is far easier than in Salesforce.</p>
+      <p class="mono" style="font-size:0.8rem;color:var(--clerri-green)">Best for a marketing-led funnel — which is yours.</p>
+    </div>
+  </div>
+  <p style="font-size:0.9rem;color:var(--ink-soft);max-width:70ch"><strong>Recommendation:</strong> report the full funnel in HubSpot with Salesforce opportunity/booked synced in. It gives the channel-level MQL→SQL→Booked view this spreadsheet is faking, interactive + filterable, with no paid BI add-on. Reserve CRM Analytics for later only if leadership wants pipeline analytics Salesforce does deeper.</p>
+
+  <h2>Operational prerequisites — <em>the RevOps work.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">Automation amplifies clean data; it can't fix a messy funnel. These come before any dashboard. This is the "make it operational" layer.</p>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-01-stages" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Define funnel stages precisely: what <em>is</em> a Lead vs MQL vs SQL vs Opp vs Booked — and where each is set</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-02-mapping" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Map HubSpot lifecycle stage ↔ Salesforce stage so they agree</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-03-utm" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Enforce the UTM taxonomy at entry (locked URL builder + validation) so "Cleaned ___" columns become unnecessary</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-04-connector" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Audit the existing connector: is the native sync live, what tier, what syncs, which direction</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-05-sourcetruth" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Decide the source of truth per field (revenue = SFDC, marketing source = HubSpot)</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-06-validate" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Validate the conversion rates (0.665, 0.53, etc.) against real historical data, not assumptions</div></div></label></div>
+
+  <h2>Agenda for your ops-consultant conversation</h2>
+  <p style="color:var(--ink-soft);max-width:65ch">He's likely the one doing the manual exports today — so he holds the ground truth on how the data actually flows. This is a discovery conversation, not a confrontation. Listen for where the real friction is.</p>
+
+  <h3>The connector &amp; data flow</h3>
+  <div class="card qa">
+    <p class="q">Is the native HubSpot–Salesforce integration live today, or is anything held together with middleware (Zapier, n8n, manual)?</p>
+    <p class="ctx">Establishes whether we're configuring an existing sync or building one.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Walk me through a lead's full path — where it enters, and how it moves Lead → MQL → SQL → Opp → Booked across both systems.</p>
+    <p class="ctx">Reveals which system owns which stage, and where data gets stuck or re-keyed.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">What HubSpot tier are we on? What objects and fields sync today, and in which direction?</p>
+    <p class="ctx">Tier gates the native reporting; sync scope tells us what's already usable.</p>
+  </div>
+
+  <h3>Stages &amp; definitions</h3>
+  <div class="card qa">
+    <p class="q">How is an MQL defined right now — and is that the same definition in HubSpot and Salesforce?</p>
+    <p class="ctx">If the two disagree, every funnel number is suspect. This is the root of most reporting pain.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Why do the "Cleaned" source/channel columns exist — what's dirty about the raw data?</p>
+    <p class="ctx">Points straight at the UTM-enforcement gap we need to close.</p>
+  </div>
+
+  <h3>The manual work &amp; the bridge</h3>
+  <div class="card qa">
+    <p class="q">Exactly what do you export and paste each cycle, how long does it take, and what breaks most often?</p>
+    <p class="ctx">Quantifies the time we'd reclaim and surfaces the fragile spots.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">While we fix native reporting, can we auto-feed the Raw tabs with a connector (Coefficient for CRM, Supermetrics for ad spend) so you stop pasting now?</p>
+    <p class="ctx">A bridge that buys relief immediately without waiting on the full rebuild.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Who should own this funnel + dashboard going forward?</p>
+    <p class="ctx">The real first step. Unowned infrastructure is why we have a 32-tab file. Likely RevOps / SFDC admin.</p>
+  </div>
+
+  <h2>The phased plan</h2>
+  <div class="grid-3">
+    <div class="card"><span class="pill pill-mint">Now</span><h4 style="margin:0.5rem 0">Stop the bleeding</h4><p style="font-size:0.875rem">Coefficient (CRM→Sheets) + Supermetrics (ad spend) auto-feed the Raw tabs. No more pasting while we fix the foundation. ~$100-300/mo.</p></div>
+    <div class="card"><span class="pill pill-zest">Next</span><h4 style="margin:0.5rem 0">Fix the foundation</h4><p style="font-size:0.875rem">Clean stage definitions, enforce UTMs, audit the connector, set source-of-truth. The prerequisites above. RevOps-owned.</p></div>
+    <div class="card"><span class="pill pill-wine">Then</span><h4 style="margin:0.5rem 0">Native dashboards</h4><p style="font-size:0.875rem">Build the full funnel + forecast in HubSpot (SFDC synced in). Retire the spreadsheet as source of truth. Interactive, filterable, no paste.</p></div>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Reporting notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="reporting-automation-notes" placeholder="Ops consultant answers, connector status, stage definitions, who owns it, decisions..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/vendor-audit"><span class="dir">← Prev</span><span class="name">Vendor Audit</span></a>
+    <a href="/clerri/partners"><span class="dir">Next →</span><span class="name">Partnership Targets</span></a>
+  </div>
+
+</div>
+
+<style>
+  .rtable { width:100%; border-collapse:collapse; font-size:0.88rem; margin:0.5rem 0 0.75rem; }
+  .rtable th, .rtable td { text-align:left; padding:0.55rem 0.7rem; border-bottom:1px solid var(--cotton-dark); vertical-align:top; }
+  .rtable th { font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--clerri-green); }
+  .rtable .mono { font-family:'JetBrains Mono', monospace; font-size:0.8rem; }
+  .rtable .muted, .muted { color:var(--muted); }
+  .tag { display:inline-block; font-size:0.7rem; font-weight:700; padding:0.12rem 0.5rem; border-radius:1rem; white-space:nowrap; }
+  .tag-red { background:#f3d2d2; color:#8a2d3f; }
+  .tag-amber { background:#ffe7a3; color:#5c4500; }
+  .qa { margin-bottom:0.75rem; }
+  .qa .q { font-weight:600; color:var(--ink); margin:0 0 0.4rem; font-size:0.95rem; }
+  .qa .ctx { color:var(--muted); margin:0; font-size:0.875rem; font-style:italic; }
+</style>
+
+</ClerriLayout>

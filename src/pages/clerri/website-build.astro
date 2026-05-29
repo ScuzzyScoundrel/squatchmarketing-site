@@ -1,0 +1,152 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Website Build & CMS" section="website-build">
+
+<div class="page-head">
+  <div class="page-eyebrow">Web · Build &amp; CMS Decision</div>
+  <h1 class="page-title">Astro <em>and</em> a CMS — you can have both.</h1>
+  <p class="page-sub">Jacob is building the new clerri.com. The one decision that can't wait: a content layer the marketing team can manage, chosen before pages get hardcoded. Here's how to get speed + SEO + team ownership at once — plus the questions to ask Jacob.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>Pure Astro is the right rendering layer for speed and SEO/AEO, but raw Astro stores content in code — a non-technical team can't safely manage it. The 2026 fix: keep Astro, add a CMS layer on top (Git-based, headless, or visual). The real risk is Jacob hardcoding copy into components before that layer is chosen — which would make marketing permanently dependent on him for every word change.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="website-build"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="website-build">0 / 0</span></p>
+
+  <h2>The tension — <em>and why it's already solved.</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">Astro is fast, SEO-strong, and what Jacob's already building in. The catch: out of the box, content lives as markdown/code in a Git repo, which marketing can't edit safely. The answer isn't to abandon Astro — it's to add a content layer on top. Three architectures, lightest to most powerful.</p>
+
+  <h2>Three ways to add a content layer</h2>
+  <div class="grid-3">
+    <div class="card">
+      <span class="pill pill-mint">Option 1 · Lightest</span>
+      <h3 style="margin:0.5rem 0">Git-based CMS</h3>
+      <p style="font-size:0.875rem">Content lives as files in the repo; editors use a friendly UI that quietly commits to Git.</p>
+      <p style="font-size:0.875rem;margin:0.5rem 0"><strong>Tools:</strong> Keystatic (best Astro-native fit, free), Sveltia CMS (free), TinaCMS (adds inline editing).</p>
+      <p style="font-size:0.875rem"><strong>Best for:</strong> blog, resources, case studies.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--muted)">Trade-off: not true real-time multi-user; editors need a hidden Git account.</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-zest">Option 2 · Team-friendly</span>
+      <h3 style="margin:0.5rem 0">Headless CMS (API)</h3>
+      <p style="font-size:0.875rem">Content lives in a hosted database; Astro pulls it in. Real roles, permissions, multi-user editing.</p>
+      <p style="font-size:0.875rem;margin:0.5rem 0"><strong>Tools:</strong> Sanity (dev-loved, real-time, AI Assist), Storyblok (marketer-loved, visual blocks), Payload (TS-native, self-hostable).</p>
+      <p style="font-size:0.875rem"><strong>Best for:</strong> a team that publishes without ever pinging Jacob.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--muted)">Trade-off: monthly cost; content lives off-Git.</p>
+    </div>
+    <div class="card">
+      <span class="pill pill-wine">Option 3 · The "both worlds"</span>
+      <h3 style="margin:0.5rem 0">Visual editing on Astro</h3>
+      <p style="font-size:0.875rem">Marketers edit on a live preview of the real page — click text to change it, drag components to build layouts. Devs define the component library; marketers stay in the guardrails.</p>
+      <p style="font-size:0.875rem;margin:0.5rem 0"><strong>Tools:</strong> Storyblok Visual Editor, TinaCMS inline, Builder.io (AI-assisted drag-drop), Sanity Presentation.</p>
+      <p style="font-size:0.875rem"><strong>Best for:</strong> Jacob's components + true what-you-see editing for your team.</p>
+      <p class="mono" style="font-size:0.75rem;color:var(--muted)">Trade-off: cost + guardrails so the site doesn't drift off-brand.</p>
+    </div>
+  </div>
+
+  <h2>Recommendation <em>for Clerri specifically.</em></h2>
+  <div class="callout zest-hi">
+    <p style="margin:0 0 0.6rem"><strong>Small team (Liz needs to publish solo), AEO/SEO priority, conversion focus, Jacob already on Astro:</strong></p>
+    <ul style="margin:0;padding-left:1.1rem;font-size:0.95rem;line-height:1.6">
+      <li><strong>If marketing should own landing pages visually → Astro + Storyblok.</strong> Best autonomy for the team; Jacob builds components once.</li>
+      <li><strong>If content is more structured (blog, resources, the patient directory) and Jacob wants dev-grade control → Astro + Sanity</strong> (or Payload if he'd rather self-host in TypeScript).</li>
+      <li><strong>If budget is $0 today → start with Keystatic</strong> and migrate later. Shipping on it now and upgrading is a fine path.</li>
+    </ul>
+  </div>
+  <div class="callout wine">
+    <div class="lbl">Time-sensitive</div>
+    <p style="margin:0">The CMS decision is a <strong>this-week</strong> conversation, not a post-launch one. If Jacob vibe-codes 30 beautiful pages with copy hardcoded into components, you'll be retrofitting a CMS later and dependent on him for every edit in the meantime. Lock the content layer before the page count grows. Bonus: since the company is AI-first, the AI-native CMS features (Sanity AI Assist, Builder AI, Storyblok AI) fit the culture — a fair tiebreaker.</p>
+  </div>
+
+  <h2>Questions for Jacob <em>about the website.</em></h2>
+  <p style="color:var(--ink-soft);max-width:65ch">He's a partner, not a vendor — these are collaborative, but lead with the content-layer ones. They're the difference between a site marketing can run and one it can't.</p>
+
+  <h3>Architecture &amp; content layer (the critical ones)</h3>
+  <div class="card qa">
+    <p class="q">1. What's the stack, and what are you building it in — Astro? Cursor, v0, Lovable, something else?</p>
+    <p class="ctx">Probing: is the foundation what we think, and is it maintainable by someone other than him.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">2. Right now, is copy hardcoded in components, or is there a content layer (markdown / CMS / DB) separating content from code?</p>
+    <p class="ctx">The single most important answer. Hardcoded = future dependency + retrofit cost.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">3. Have you picked a CMS yet, or is it open? Can we decide it together before the page count grows?</p>
+    <p class="ctx">Gets you a seat at the decision while it's still cheap to make.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">4. Once it's live, what's the workflow for me or Liz to publish a blog post or tweak a landing page — do we need you, or can we self-serve?</p>
+    <p class="ctx">Defines whether marketing is independent or bottlenecked.</p>
+  </div>
+
+  <h3>Ownership &amp; risk</h3>
+  <div class="card qa">
+    <p class="q">5. If you got pulled fully onto product tomorrow, could marketing maintain and update the site without you?</p>
+    <p class="ctx">The bus-factor question, asked kindly. Surfaces hidden dependency.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">6. Where's it hosted, who can deploy, and is there a preview/staging environment so we can review before publishing?</p>
+    <p class="ctx">Cloudflare/Vercel/Netlify? Deploy access + staging = operational readiness.</p>
+  </div>
+
+  <h3>SEO / AEO (our stated priority)</h3>
+  <div class="card qa">
+    <p class="q">7. What's the migration + redirect plan from the old agency site so we don't tank existing rankings?</p>
+    <p class="ctx">A botched migration can erase years of SEO. Needs a real 301 map.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">8. How are we handling SEO fundamentals — metadata, sitemaps, structured data / schema?</p>
+    <p class="ctx">Table stakes; confirm they're built in, not bolted on later.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">9. Jim flagged LLM discovery as a priority — are we building in structured data, an llms.txt, and genuinely citable content so AI assistants surface us?</p>
+    <p class="ctx">Ties the build directly to the AEO play we're investing in.</p>
+  </div>
+
+  <h3>Roadmap &amp; collaboration</h3>
+  <div class="card qa">
+    <p class="q">10. What's the realistic launch timeline, and what's MVP vs. fast-follow?</p>
+    <p class="ctx">Lets you sequence content + campaigns around the real date.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">11. The patient-directory mockup I've been building — could it live inside this site as a content type, or is it a separate product surface?</p>
+    <p class="ctx">Worth showing him the prototype; connects your directory work to the build.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">12. How's Nik Noda involved in the build, and where does his work hand off to mine? Where do you want marketing's input vs. where do you want us out of the way?</p>
+    <p class="ctx">Clarifies lanes early — avoids stepping on the "marketing engineer."</p>
+  </div>
+
+  <h2>Decisions to capture</h2>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-01-stack" data-section="website-build" /><div class="task-content"><div class="task-title">Confirm the stack + whether content is hardcoded or layered</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-02-cms" data-section="website-build" /><div class="task-content"><div class="task-title">Agree on a CMS (or commit to a starter + migration path)</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-03-workflow" data-section="website-build" /><div class="task-content"><div class="task-title">Define the publish workflow for marketing (self-serve vs. dev-gated)</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-04-redirects" data-section="website-build" /><div class="task-content"><div class="task-title">Get the redirect/migration plan from the old agency site</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-05-aeo" data-section="website-build" /><div class="task-content"><div class="task-title">Confirm structured data + llms.txt + citable content in the build</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-06-directory" data-section="website-build" /><div class="task-content"><div class="task-title">Decide if the patient directory lives inside the site or as a separate surface</div></div></label></div>
+
+  <div class="note-block">
+    <div class="note-label">Website build notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="website-build-notes" placeholder="Jacob's answers, CMS pick + rationale, timeline, who owns what, integration gotchas..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/website-framework"><span class="dir">← Prev</span><span class="name">Website Framework</span></a>
+    <a href="/clerri/product-ideas"><span class="dir">Next →</span><span class="name">Product Ideas</span></a>
+  </div>
+
+</div>
+
+<style>
+  .qa { margin-bottom:0.75rem; }
+  .qa .q { font-weight:600; color:var(--ink); margin:0 0 0.4rem; font-size:0.95rem; }
+  .qa .ctx { color:var(--muted); margin:0; font-size:0.875rem; font-style:italic; }
+</style>
+
+</ClerriLayout>
