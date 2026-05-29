@@ -149,7 +149,14 @@ for (const _k in sectionTracks) sectionTracks[_k] = [...new Set(sectionTracks[_k
   }
   @media (max-width: 1024px) {
     .clerri-app { grid-template-columns: 1fr; }
-    .clerri-sidebar { position: static !important; height: auto !important; }
+    .clerri-sidebar {
+      position: fixed !important; top: 0; left: 0;
+      height: 100vh !important; width: 280px; max-width: 85vw;
+      z-index: 90; transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      box-shadow: 2px 0 18px rgba(0,0,0,0.35);
+    }
+    .clerri-sidebar.mobile-open { transform: translateX(0); }
   }
 
   /* ====== SIDEBAR ====== */
@@ -582,9 +589,14 @@ for (const _k in sectionTracks) sectionTracks[_k] = [...new Set(sectionTracks[_k
     font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
     cursor: pointer;
   }
+  .mobile-backdrop {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45); z-index: 85;
+  }
   @media (max-width: 1024px) {
     .mobile-toggle { display: block; }
-    .clerri-sidebar.mobile-hidden { display: none; }
+    .mobile-backdrop.show { display: block; }
+    .collapse-btn { display: none; }
   }
 </style>
 </head>
@@ -624,7 +636,8 @@ for (const _k in sectionTracks) sectionTracks[_k] = [...new Set(sectionTracks[_k
   </main>
 </div>
 
-<button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('mobile-hidden')">☰ Menu</button>
+<button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">☰ Menu</button>
+<div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
 <button class="sidebar-expand" onclick="toggleSidebar()" aria-label="Expand menu" title="Expand menu">»</button>
 <script id="clerri-section-tracks" type="application/json" set:html={JSON.stringify(sectionTracks)}></script>
 
@@ -692,7 +705,25 @@ for (const _k in sectionTracks) sectionTracks[_k] = [...new Set(sectionTracks[_k
       });
     });
 
+    setupMobileDrawer();
     updateProgress();
+  }
+
+  function setupMobileDrawer() {
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('mobileToggle');
+    const backdrop = document.getElementById('mobileBackdrop');
+    if (!sidebar || !toggle) return;
+    function set(open) {
+      sidebar.classList.toggle('mobile-open', open);
+      if (backdrop) backdrop.classList.toggle('show', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? '✕ Close' : '☰ Menu';
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    toggle.addEventListener('click', () => set(!sidebar.classList.contains('mobile-open')));
+    if (backdrop) backdrop.addEventListener('click', () => set(false));
+    sidebar.querySelectorAll('.nav-item').forEach(a => a.addEventListener('click', () => set(false)));
   }
 
   function updateProgress() {
