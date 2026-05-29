@@ -77,6 +77,48 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-04-connector" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Audit the existing connector: is the native sync live, what tier, what syncs, which direction</div></div></label></div>
   <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-05-sourcetruth" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Decide the source of truth per field (revenue = SFDC, marketing source = HubSpot)</div></div></label></div>
   <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-06-validate" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Validate the conversion rates (0.665, 0.53, etc.) against real historical data, not assumptions</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="ra-07-sourcefields" data-section="reporting-automation" /><div class="task-content"><div class="task-title">Reconcile the THREE competing source fields (Original Source vs utm_source vs Lead Source) — declare one source of truth</div></div></label></div>
+
+  <h2>Three competing source fields — <em>pick one source of truth.</em></h2>
+  <div class="callout wine">
+    <div class="lbl">Finding — surfaced by an inbound demo notification</div>
+    <p style="margin:0 0 0.6rem">A RevOps Bot demo alert exposed a <strong>third</strong> source field: <code>Contact Lead Source: 421284932 - Email_marketing</code>. So "source" is tracked in three different places, and reporting is confused because nobody's declared which one wins:</p>
+    <ul style="margin:0;padding-left:1.1rem;font-size:0.92rem;line-height:1.6">
+      <li><strong>Original Source</strong> (HubSpot, auto) — channel category on every contact. <em>Reliable for channel-level reporting.</em></li>
+      <li><strong>utm_source</strong> (campaign tags) — only on tagged-link arrivals, and a governance mess (fb vs facebook, year suffixes). <em>Campaign detail only, after cleanup.</em></li>
+      <li><strong>Lead Source</strong> (the new one) — the numeric-ID prefix suggests a <strong>Salesforce picklist synced into HubSpot</strong>. Potentially more intentional, but verify before trusting.</li>
+    </ul>
+    <p style="margin:0.6rem 0 0;font-size:0.92rem"><strong>Action:</strong> pull <code>Lead Source</code>'s fill-rate + value distribution (consistently populated? what values? SFDC-synced?), then declare ONE field the reporting source of truth and map the others to it. Three competing fields = the confusion you're feeling.</p>
+  </div>
+
+  <h2>Marketing Diagnostic Dashboard — <em>build this to see the current state.</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">One dashboard, five questions: funnel shape, where contacts come from, is the data trustworthy, does it connect to revenue, what's the agency doing. Report on <code>Lifecycle Stage</code> + <code>Original Source</code> (the reliable fields). Build in order.</p>
+  <div style="overflow-x:auto">
+  <table class="rtable">
+    <thead><tr><th>#</th><th>Report</th><th>How to build it</th><th>What to look for</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Lifecycle funnel</strong></td><td>Funnel report: Lead→MQL→SQL→Opp→Customer + conversion rates</td><td>A stage where everything dies (broken handoff/definition); near-zero stages (unused); sane MQL→SQL ratio</td></tr>
+      <tr><td>2</td><td><strong>Acquisition over time</strong></td><td>Contact create date, monthly (12-24mo), broken down by Original Source</td><td>Offline-import spikes (big list dumps); is <em>digital</em> acquisition growing or flat</td></tr>
+      <tr><td>3</td><td><strong>MQLs by source</strong></td><td>Became-MQL date, monthly, broken down by Original Source</td><td>Did 39→57 happen; which channel drove it (Organic = maybe agency; Paid/Events/Offline = not)</td></tr>
+      <tr><td>4</td><td><strong>Data completeness</strong></td><td>Counts by Lifecycle Stage; contacts with no Owner / no Source / blank lifecycle</td><td>% with blank lifecycle (funnel built on sand); % offline (~97%); orphaned contacts</td></tr>
+      <tr><td>5</td><td><strong>Deals → revenue</strong></td><td>Deals by stage, by Original Source, win rate, avg sales cycle</td><td>Which sources produce closed-won; pipeline coverage; cycle length by segment</td></tr>
+      <tr><td>6</td><td><strong>The 89K offline</strong></td><td>Offline-source contacts grouped by Original Source Drill-Down 1/2 (or import/list)</td><td>Purchased lists? event scans? an integration? the Kleer/Membersy migration?</td></tr>
+      <tr><td>7</td><td><strong>utm_source mess</strong></td><td>Non-offline contacts grouped by utm_source</td><td>Quantify the fragmentation for the cleanup + the vendor audit</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="grid-2">
+    <div class="card"><h4>⚠️ Tier caveat</h4><p style="font-size:0.875rem">Multi-touch <em>revenue</em> attribution needs Marketing Hub <strong>Enterprise</strong> — verify the tier. The funnel + everything above works on <strong>Pro</strong>.</p></div>
+    <div class="card"><h4>⚠️ Garbage-in caveat</h4><p style="font-size:0.875rem">Reports are only as good as the stage/source definitions. If numbers look wild, it's a data-definition problem — that's the finding, not a report bug. Take it to the ops consultant.</p></div>
+  </div>
+  <p style="color:var(--ink-soft);max-width:70ch;margin-top:0.5rem"><strong>Build checklist:</strong></p>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-01-funnel" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#1 Lifecycle funnel</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-02-acquisition" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#2 Acquisition over time by Original Source</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-03-mqls" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#3 MQLs over time by source (tests the agency claim)</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-04-completeness" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#4 Data completeness / hygiene</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-05-deals" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#5 Deals by source + stage + win rate</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-06-offline" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#6 The 89K offline breakdown</div></div></label></div>
+  <div data-section="reporting-automation"><label class="task"><input type="checkbox" data-track="dd-07-utm" data-section="reporting-automation" /><div class="task-content"><div class="task-title">#7 utm_source mess (cleanup + audit ammo)</div></div></label></div>
 
   <h2>Agenda for your ops-consultant conversation</h2>
   <p style="color:var(--ink-soft);max-width:65ch">He's likely the one doing the manual exports today — so he holds the ground truth on how the data actually flows. This is a discovery conversation, not a confrontation. Listen for where the real friction is.</p>
@@ -103,6 +145,10 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   <div class="card qa">
     <p class="q">Why do the "Cleaned" source/channel columns exist — what's dirty about the raw data?</p>
     <p class="ctx">Points straight at the UTM-enforcement gap we need to close.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">What is "Contact Lead Source," is it synced from Salesforce, and who/what sets it — vs. Original Source and utm_source?</p>
+    <p class="ctx">Resolves the three-source-field confusion. The numeric-ID format on the demo alert smells like an SFDC picklist sync.</p>
   </div>
 
   <h3>The manual work &amp; the bridge</h3>
