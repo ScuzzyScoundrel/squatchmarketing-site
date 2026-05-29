@@ -4,136 +4,198 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
 <ClerriLayout title="Website Build & CMS" section="website-build">
 
 <div class="page-head">
-  <div class="page-eyebrow">Web · Build &amp; CMS Decision</div>
-  <h1 class="page-title">Astro <em>and</em> a CMS — you can have both.</h1>
-  <p class="page-sub">Jacob is building the new clerri.com. The one decision that can't wait: a content layer the marketing team can manage, chosen before pages get hardcoded. Here's how to get speed + SEO + team ownership at once — plus the questions to ask Jacob.</p>
+  <div class="page-eyebrow">Web · Build, CMS &amp; Migration</div>
+  <h1 class="page-title">Astro + Sanity — <em>you build templates, the team fills them.</em></h1>
+  <p class="page-sub">The decided blueprint: a fast static Astro site, a structured headless CMS the team edits in (no code, no HTML), and templates you build on the backend with Claude Code. Plus the migration plan that moves the site without losing a point of SEO or AEO value.</p>
 </div>
 
 <div class="page-body">
 
   <div class="takeaway">
     <span class="tk-lbl">Bottom line</span>
-    <p>Pure Astro is the right rendering layer for speed and SEO/AEO, but raw Astro stores content in code — a non-technical team can't safely manage it. The 2026 fix: keep Astro, add a CMS layer on top (Git-based, headless, or visual). The real risk is Jacob hardcoding copy into components before that layer is chosen — which would make marketing permanently dependent on him for every word change.</p>
+    <p>Because you build templates yourself with Claude Code, you don't need a visual page-builder — structured content (Astro + Sanity) is the cleaner, cheaper, more controlled fit. You define content types + page templates in code; the team publishes blogs, swaps images, and edits copy in a polished CMS. The migration's #1 risk is SEO/AEO loss — solved below with a 301 map, sitemap, and an AEO-preservation checklist.</p>
   </div>
 
   <div class="progress-track"><div class="progress-fill" data-progress-fill="website-build"></div></div>
   <p class="mono" style="font-size:0.75rem;color:var(--muted)">Progress: <span data-progress-here="website-build">0 / 0</span></p>
 
-  <h2>The tension — <em>and why it's already solved.</em></h2>
-  <p style="color:var(--ink-soft);max-width:70ch">Astro is fast, SEO-strong, and what Jacob's already building in. The catch: out of the box, content lives as markdown/code in a Git repo, which marketing can't edit safely. The answer isn't to abandon Astro — it's to add a content layer on top. Three architectures, lightest to most powerful.</p>
+  <h2>The decision — <em>and why it's right for Clerri.</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">A visual page-builder (Storyblok/Webflow) exists so <em>marketers</em> can build pages without devs. But you're technical and build with Claude Code — so you don't need that cost or complexity. You build templates in code; the team fills them with content. That's the structured-content model: lighter, faster, cheaper, and more controlled, with no brand-drift risk.</p>
+  <div class="callout zest-hi">
+    <div class="lbl">Recommended stack</div>
+    <p style="margin:0"><strong>Astro</strong> (fast static rendering) + <strong>Sanity</strong> (structured headless CMS). You define schemas + templates in code; the team edits in Sanity Studio — a polished, real-time editor with image management and roles, <strong>no Git knowledge needed</strong>. <strong>Keystatic</strong> is the alternative if you'd rather keep content in-repo + free + maximally Claude-Code-native, and the team's fine with its simpler UI.</p>
+  </div>
 
-  <h2>Three ways to add a content layer</h2>
-  <div class="grid-3">
+  <h2>The architecture — <em>four layers, who owns each.</em></h2>
+  <div class="grid-2">
+    <div class="card"><h4>1 · Design system (you, once)</h4><p style="font-size:0.9rem">Brand tokens in code — color palette, a fixed type scale, spacing. The guardrail that keeps every page on-brand no matter who edits it.</p></div>
+    <div class="card"><h4>2 · Templates / content types (you, via Claude Code)</h4><p style="font-size:0.9rem">Blog Post, Case Study, Solution Page, Landing Page, Author. Each = a Sanity schema (the fields) + an Astro component (how it renders).</p></div>
+    <div class="card"><h4>3 · Content (the team, daily)</h4><p style="font-size:0.9rem">Marketers create entries inside those types — write, upload images, set tags. They never touch code or layout.</p></div>
+    <div class="card"><h4>4 · The site (Astro renders)</h4><p style="font-size:0.9rem">A dynamic route renders any entry the CMS produces. Pre-built to static/edge so it stays fast; publish triggers a rebuild.</p></div>
+  </div>
+
+  <h2>Building templates with Claude Code — <em>what it actually looks like.</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">Three different jobs — only the first is "building," and it's a one-time ~30-minute task per type:</p>
+  <div class="card qa">
+    <p class="q">A · New content <em>type</em> (e.g. you start publishing Webinars)</p>
+    <p class="ctx">You tell Claude Code: "Add a Webinar type — fields: title, date, speaker, registration link, body, hero image. Build the Sanity schema + the Astro template + the route." Claude writes all three; you review, commit, deploy. From then on the team creates Webinar entries that render automatically.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">B · New <em>instance</em> of an existing type (another blog, case study, solution page)</p>
+    <p class="ctx">The team does this — no dev, no Claude Code. They just add a new entry in the CMS and publish.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">C · A bespoke one-off page (a weird campaign landing page)</p>
+    <p class="ctx">Either build a quick custom Astro page via Claude Code, or make a flexible "Landing Page" type once (optional stacked sections) so the team can compose future ones themselves.</p>
+  </div>
+  <p style="color:var(--ink-soft);max-width:70ch"><strong>So "add a new page when needed" splits cleanly:</strong> a new <em>kind</em> of thing → you + Claude Code (fast, reusable forever); another of an existing thing → the team, instantly.</p>
+
+  <h2>What the team edits — <em>accessible, no HTML.</em></h2>
+  <div class="callout">
+    <p style="margin:0 0 0.5rem">In Sanity Studio the team gets:</p>
+    <ul style="margin:0;padding-left:1.1rem;font-size:0.95rem;line-height:1.6">
+      <li><strong>Rich-text body</strong> — bold, links, headings, embeds. Word-like, not code.</li>
+      <li><strong>Image upload + swap</strong> — drag-drop, auto-optimized via the CMS CDN.</li>
+      <li><strong>Content fields</strong> — titles, dates, tags, CTAs.</li>
+      <li><strong>Curated style knobs (only if you expose them)</strong> — e.g. "Heading size: S/M/L," "Accent: [brand-color dropdown]."</li>
+    </ul>
+    <p style="margin:0.6rem 0 0;font-size:0.9rem">Honest guidance: keep type + color in the <strong>design system</strong> so the site stays consistent; expose only the few knobs worth giving the team. Images + copy: fully theirs. No raw HTML — by design.</p>
+  </div>
+
+  <h2>The migration plan — <em>~6-8 weeks.</em></h2>
+  <div class="grid-2">
+    <div class="card"><span class="pill pill-mint">Phase 0 · wk 0-1</span><h4 style="margin:0.4rem 0">Audit &amp; decide</h4><p style="font-size:0.875rem">Inventory every existing URL + content type; spec the design system; lock the CMS. <strong>Output: the redirect map (old URL → new) — the SEO lifeline.</strong></p></div>
+    <div class="card"><span class="pill pill-zest">Phase 1 · wk 2-4</span><h4 style="margin:0.4rem 0">Build the system (dev-heavy)</h4><p style="font-size:0.875rem">You + Claude Code build the token system + templates/schemas in Astro + Sanity. The long pole; once done, the team is self-sufficient.</p></div>
+    <div class="card"><span class="pill pill-zest">Phase 2 · wk 3-5</span><h4 style="margin:0.4rem 0">Model &amp; migrate content</h4><p style="font-size:0.875rem">Set up content types; move existing blogs/case studies in (scriptable via API, or manual for a small set — AI can help transform). Apply the 301s.</p></div>
+    <div class="card"><span class="pill pill-zest">Phase 3 · wk 4-6</span><h4 style="margin:0.4rem 0">Wire &amp; preview</h4><p style="font-size:0.875rem">Connect Astro ↔ Sanity, set up live preview + publish→rebuild webhook, define roles (who drafts vs. publishes).</p></div>
+    <div class="card"><span class="pill pill-wine">Phase 4 · wk 6-8</span><h4 style="margin:0.4rem 0">QA &amp; cutover</h4><p style="font-size:0.875rem">Verify every redirect, metadata, structured data, Core Web Vitals on staging → staged DNS cutover → monitor 404s + rankings post-launch.</p></div>
+    <div class="card"><span class="pill pill-grey">Ongoing</span><h4 style="margin:0.4rem 0">Stays fast</h4><p style="font-size:0.875rem">Astro pre-renders to static/edge; a publish webhook rebuilds in ~1-2 min. Visitors always hit a static, CDN-served page. Core Web Vitals stay green.</p></div>
+  </div>
+
+  <h2>Protecting SEO + AEO — <em>the migration's #1 risk.</em></h2>
+  <div class="callout wine">
+    <div class="lbl">Why this section exists</div>
+    <p style="margin:0">A site migration is the most common way to erase years of search equity overnight — wrong redirects, a leftover staging <code>Disallow: /</code>, or dropped metadata can tank rankings in days. The redirect you want is a <strong>301 (permanent</strong> — passes ranking equity), not a 302 (temporary) and definitely not a 401 (that's "unauthorized," unrelated). Below is the guardrail checklist.</p>
+  </div>
+
+  <h3>Don't lose SEO</h3>
+  <div class="grid-2">
     <div class="card">
-      <span class="pill pill-mint">Option 1 · Lightest</span>
-      <h3 style="margin:0.5rem 0">Git-based CMS</h3>
-      <p style="font-size:0.875rem">Content lives as files in the repo; editors use a friendly UI that quietly commits to Git.</p>
-      <p style="font-size:0.875rem;margin:0.5rem 0"><strong>Tools:</strong> Keystatic (best Astro-native fit, free), Sveltia CMS (free), TinaCMS (adds inline editing).</p>
-      <p style="font-size:0.875rem"><strong>Best for:</strong> blog, resources, case studies.</p>
-      <p class="mono" style="font-size:0.75rem;color:var(--muted)">Trade-off: not true real-time multi-user; editors need a hidden Git account.</p>
+      <h4>Before you touch anything</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem;line-height:1.6">
+        <li><strong>Crawl + inventory</strong> the live site (Screaming Frog / Sitebulb) and export every URL with its traffic, rankings, and backlinks from GSC + GA4. You can't protect value you haven't measured.</li>
+        <li><strong>Keep URLs identical where you can</strong> — the best redirect is no redirect. Only change URLs that truly must change.</li>
+      </ul>
     </div>
     <div class="card">
-      <span class="pill pill-zest">Option 2 · Team-friendly</span>
-      <h3 style="margin:0.5rem 0">Headless CMS (API)</h3>
-      <p style="font-size:0.875rem">Content lives in a hosted database; Astro pulls it in. Real roles, permissions, multi-user editing.</p>
-      <p style="font-size:0.875rem;margin:0.5rem 0"><strong>Tools:</strong> Sanity (dev-loved, real-time, AI Assist), Storyblok (marketer-loved, visual blocks), Payload (TS-native, self-hostable).</p>
-      <p style="font-size:0.875rem"><strong>Best for:</strong> a team that publishes without ever pinging Jacob.</p>
-      <p class="mono" style="font-size:0.75rem;color:var(--muted)">Trade-off: monthly cost; content lives off-Git.</p>
+      <h4>The redirects</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem;line-height:1.6">
+        <li><strong>1:1 301 map</strong> — every old URL → its exact new equivalent. No chains (A→B→C), no loops, and never mass-redirect everything to the homepage (Google treats that as a soft-404 and drops the equity).</li>
+        <li><strong>Implement at the edge</strong> — Cloudflare <code>_redirects</code> or Redirect Rules (you're on Cloudflare Pages), or Astro's redirect config. Test every one before cutover.</li>
+      </ul>
     </div>
     <div class="card">
-      <span class="pill pill-wine">Option 3 · The "both worlds"</span>
-      <h3 style="margin:0.5rem 0">Visual editing on Astro</h3>
-      <p style="font-size:0.875rem">Marketers edit on a live preview of the real page — click text to change it, drag components to build layouts. Devs define the component library; marketers stay in the guardrails.</p>
-      <p style="font-size:0.875rem;margin:0.5rem 0"><strong>Tools:</strong> Storyblok Visual Editor, TinaCMS inline, Builder.io (AI-assisted drag-drop), Sanity Presentation.</p>
-      <p style="font-size:0.875rem"><strong>Best for:</strong> Jacob's components + true what-you-see editing for your team.</p>
-      <p class="mono" style="font-size:0.75rem;color:var(--muted)">Trade-off: cost + guardrails so the site doesn't drift off-brand.</p>
+      <h4>Crawl &amp; index signals</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem;line-height:1.6">
+        <li><strong>Self-referencing canonical</strong> on every page.</li>
+        <li><strong>XML sitemap</strong> — you already run <code>@astrojs/sitemap</code>; make sure it lists only canonical, 200-status URLs (no redirected/404 ones), reference it in <code>robots.txt</code>, and resubmit in GSC at launch.</li>
+        <li><strong>robots.txt</strong> — confirm the new site isn't shipping a staging "block everything" rule. This single mistake has killed more migrations than any other.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Carry the value over</h4>
+      <ul style="font-size:0.9rem;padding-left:1rem;line-height:1.6">
+        <li><strong>Metadata parity</strong> — preserve or improve title tags + meta descriptions per page; don't drop them in the rebuild.</li>
+        <li><strong>Structured data (JSON-LD)</strong> — Organization, Article, BreadcrumbList, FAQ. Feeds rich results <em>and</em> AEO.</li>
+        <li><strong>Internal links</strong> — repoint to the new URLs directly, not through redirects.</li>
+        <li><strong>Core Web Vitals</strong> — Astro keeps these green; it's a ranking factor.</li>
+      </ul>
     </div>
   </div>
 
-  <h2>Recommendation <em>for Clerri specifically.</em></h2>
-  <div class="callout zest-hi">
-    <p style="margin:0 0 0.6rem"><strong>Small team (Liz needs to publish solo), AEO/SEO priority, conversion focus, Jacob already on Astro:</strong></p>
+  <h3>Don't lose AEO (the part most teams forget)</h3>
+  <div class="callout mint">
+    <p style="margin:0 0 0.5rem">Clerri has been actively earning AI-assistant citations (the competitor-alternatives + stats content). A migration can silently break that if the cited pages move or get gated.</p>
     <ul style="margin:0;padding-left:1.1rem;font-size:0.95rem;line-height:1.6">
-      <li><strong>If marketing should own landing pages visually → Astro + Storyblok.</strong> Best autonomy for the team; Jacob builds components once.</li>
-      <li><strong>If content is more structured (blog, resources, the patient directory) and Jacob wants dev-grade control → Astro + Sanity</strong> (or Payload if he'd rather self-host in TypeScript).</li>
-      <li><strong>If budget is $0 today → start with Keystatic</strong> and migrate later. Shipping on it now and upgrading is a fine path.</li>
+      <li><strong>Protect the cited content</strong> — identify the pages already getting LLM citations and 301 them precisely; don't change those URLs casually or let the content drop.</li>
+      <li><strong>Baseline citations before launch</strong> — snapshot via Otterly/Profound pre-migration, compare weekly after.</li>
+      <li><strong>Add <code>llms.txt</code> (and <code>llms-full.txt</code>)</strong> — the emerging standard that points AI crawlers to your key citable content.</li>
+      <li><strong>Keep content server-rendered + ungated</strong> — Astro's static HTML is ideal; AI crawlers must see fully-rendered, ungated content (no JS-gating, no forms blocking it). This is a structural advantage over a BoomCloud-style gated page.</li>
+      <li><strong>Credible, sourced facts</strong> — citability rewards clear claims with real sources (fix the unsourced stats, e.g. use the defensible 72M-uninsured figure, not the unsourced "100M").</li>
     </ul>
   </div>
-  <div class="callout wine">
-    <div class="lbl">Time-sensitive</div>
-    <p style="margin:0">The CMS decision is a <strong>this-week</strong> conversation, not a post-launch one. If Jacob vibe-codes 30 beautiful pages with copy hardcoded into components, you'll be retrofitting a CMS later and dependent on him for every edit in the meantime. Lock the content layer before the page count grows. Bonus: since the company is AI-first, the AI-native CMS features (Sanity AI Assist, Builder AI, Storyblok AI) fit the culture — a fair tiebreaker.</p>
-  </div>
+
+  <h3>Pre-launch SEO/AEO checklist</h3>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-01-crawl" data-section="website-build" /><div class="task-content"><div class="task-title">Crawl + inventory the live site; export URLs + traffic + rankings + backlinks (GSC/GA4)</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-02-301map" data-section="website-build" /><div class="task-content"><div class="task-title">Build the 1:1 301 redirect map; no chains, no loops, no redirect-to-home</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-03-redirects-live" data-section="website-build" /><div class="task-content"><div class="task-title">Implement + test 301s at the edge (Cloudflare) before cutover</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-04-robots" data-section="website-build" /><div class="task-content"><div class="task-title">Verify robots.txt isn't blocking crawlers (no leftover staging Disallow)</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-05-sitemap" data-section="website-build" /><div class="task-content"><div class="task-title">Sitemap = canonical 200-status URLs only; resubmit in GSC at launch</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-06-metadata" data-section="website-build" /><div class="task-content"><div class="task-title">Metadata + canonicals + JSON-LD structured data on every template</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-07-aeo-baseline" data-section="website-build" /><div class="task-content"><div class="task-title">Baseline LLM citations (Otterly/Profound) + protect cited pages' URLs</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-08-llmstxt" data-section="website-build" /><div class="task-content"><div class="task-title">Add llms.txt; keep citable content server-rendered + ungated</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-seo-09-monitor" data-section="website-build" /><div class="task-content"><div class="task-title">Post-launch: monitor GSC coverage, rankings, 404s + citations for 4-8 weeks</div></div></label></div>
 
   <h2>Questions for Jacob <em>about the website.</em></h2>
-  <p style="color:var(--ink-soft);max-width:65ch">He's a partner, not a vendor — these are collaborative, but lead with the content-layer ones. They're the difference between a site marketing can run and one it can't.</p>
+  <p style="color:var(--ink-soft);max-width:65ch">He's a partner, not a vendor — collaborative, but lead with the content-layer and migration ones.</p>
 
-  <h3>Architecture &amp; content layer (the critical ones)</h3>
+  <h3>Architecture &amp; content layer</h3>
   <div class="card qa">
-    <p class="q">1. What's the stack, and what are you building it in — Astro? Cursor, v0, Lovable, something else?</p>
-    <p class="ctx">Probing: is the foundation what we think, and is it maintainable by someone other than him.</p>
+    <p class="q">1. What's the stack + what are you building it in — Astro? Cursor, v0, Lovable?</p>
+    <p class="ctx">Confirms the foundation and whether it's maintainable by someone other than him.</p>
   </div>
   <div class="card qa">
-    <p class="q">2. Right now, is copy hardcoded in components, or is there a content layer (markdown / CMS / DB) separating content from code?</p>
+    <p class="q">2. Is copy hardcoded in components, or is there a content layer separating content from code?</p>
     <p class="ctx">The single most important answer. Hardcoded = future dependency + retrofit cost.</p>
   </div>
   <div class="card qa">
-    <p class="q">3. Have you picked a CMS yet, or is it open? Can we decide it together before the page count grows?</p>
+    <p class="q">3. Sanity vs Keystatic — any preference? Can we lock the content layer before the page count grows?</p>
     <p class="ctx">Gets you a seat at the decision while it's still cheap to make.</p>
   </div>
   <div class="card qa">
-    <p class="q">4. Once it's live, what's the workflow for me or Liz to publish a blog post or tweak a landing page — do we need you, or can we self-serve?</p>
-    <p class="ctx">Defines whether marketing is independent or bottlenecked.</p>
+    <p class="q">4. Who builds templates/schemas, and is it something I can own via Claude Code on the backend?</p>
+    <p class="ctx">Confirms the division of labor we're planning: you build templates, team fills content.</p>
   </div>
 
-  <h3>Ownership &amp; risk</h3>
+  <h3>Migration &amp; risk</h3>
   <div class="card qa">
-    <p class="q">5. If you got pulled fully onto product tomorrow, could marketing maintain and update the site without you?</p>
-    <p class="ctx">The bus-factor question, asked kindly. Surfaces hidden dependency.</p>
+    <p class="q">5. What's the migration + 301 plan from the old agency site, and who owns the redirect map?</p>
+    <p class="ctx">A botched migration can erase years of SEO. This is the highest-risk item.</p>
   </div>
   <div class="card qa">
-    <p class="q">6. Where's it hosted, who can deploy, and is there a preview/staging environment so we can review before publishing?</p>
-    <p class="ctx">Cloudflare/Vercel/Netlify? Deploy access + staging = operational readiness.</p>
-  </div>
-
-  <h3>SEO / AEO (our stated priority)</h3>
-  <div class="card qa">
-    <p class="q">7. What's the migration + redirect plan from the old agency site so we don't tank existing rankings?</p>
-    <p class="ctx">A botched migration can erase years of SEO. Needs a real 301 map.</p>
+    <p class="q">6. Where's it hosted, who can deploy, and is there a staging environment to QA before cutover?</p>
+    <p class="ctx">Cloudflare Pages? Deploy access + staging = migration readiness.</p>
   </div>
   <div class="card qa">
-    <p class="q">8. How are we handling SEO fundamentals — metadata, sitemaps, structured data / schema?</p>
-    <p class="ctx">Table stakes; confirm they're built in, not bolted on later.</p>
-  </div>
-  <div class="card qa">
-    <p class="q">9. Jim flagged LLM discovery as a priority — are we building in structured data, an llms.txt, and genuinely citable content so AI assistants surface us?</p>
-    <p class="ctx">Ties the build directly to the AEO play we're investing in.</p>
+    <p class="q">7. How are we handling metadata, canonicals, sitemaps, structured data, and llms.txt?</p>
+    <p class="ctx">Confirms SEO/AEO are built into the templates, not bolted on later.</p>
   </div>
 
   <h3>Roadmap &amp; collaboration</h3>
   <div class="card qa">
-    <p class="q">10. What's the realistic launch timeline, and what's MVP vs. fast-follow?</p>
+    <p class="q">8. Realistic launch timeline, and MVP vs. fast-follow scope?</p>
     <p class="ctx">Lets you sequence content + campaigns around the real date.</p>
   </div>
   <div class="card qa">
-    <p class="q">11. The patient-directory mockup I've been building — could it live inside this site as a content type, or is it a separate product surface?</p>
+    <p class="q">9. The patient-directory mockup — could it live inside this site as a content type, or separate?</p>
     <p class="ctx">Worth showing him the prototype; connects your directory work to the build.</p>
   </div>
   <div class="card qa">
-    <p class="q">12. How's Nik Noda involved in the build, and where does his work hand off to mine? Where do you want marketing's input vs. where do you want us out of the way?</p>
+    <p class="q">10. How's Nik involved, and where does his work hand off to mine? Where do you want marketing in vs. out?</p>
     <p class="ctx">Clarifies lanes early — avoids stepping on the "marketing engineer."</p>
   </div>
 
   <h2>Decisions to capture</h2>
   <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-01-stack" data-section="website-build" /><div class="task-content"><div class="task-title">Confirm the stack + whether content is hardcoded or layered</div></div></label></div>
-  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-02-cms" data-section="website-build" /><div class="task-content"><div class="task-title">Agree on a CMS (or commit to a starter + migration path)</div></div></label></div>
-  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-03-workflow" data-section="website-build" /><div class="task-content"><div class="task-title">Define the publish workflow for marketing (self-serve vs. dev-gated)</div></div></label></div>
-  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-04-redirects" data-section="website-build" /><div class="task-content"><div class="task-title">Get the redirect/migration plan from the old agency site</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-02-cms" data-section="website-build" /><div class="task-content"><div class="task-title">Lock the CMS — Sanity (or Keystatic) — and who builds templates</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-03-workflow" data-section="website-build" /><div class="task-content"><div class="task-title">Define the publish workflow for the team (Studio → webhook → rebuild)</div></div></label></div>
+  <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-04-redirects" data-section="website-build" /><div class="task-content"><div class="task-title">Own the 301 redirect map from the old agency site</div></div></label></div>
   <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-05-aeo" data-section="website-build" /><div class="task-content"><div class="task-title">Confirm structured data + llms.txt + citable content in the build</div></div></label></div>
   <div data-section="website-build"><label class="task"><input type="checkbox" data-track="wb-06-directory" data-section="website-build" /><div class="task-content"><div class="task-title">Decide if the patient directory lives inside the site or as a separate surface</div></div></label></div>
 
   <div class="note-block">
     <div class="note-label">Website build notes <span class="note-saved">✓ saved</span></div>
-    <textarea data-note="website-build-notes" placeholder="Jacob's answers, CMS pick + rationale, timeline, who owns what, integration gotchas..."></textarea>
+    <textarea data-note="website-build-notes" placeholder="Jacob's answers, CMS pick + rationale, redirect-map owner, timeline, who owns what..."></textarea>
   </div>
 
   <div class="topic-foot">
