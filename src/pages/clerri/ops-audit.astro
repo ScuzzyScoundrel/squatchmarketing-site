@@ -1,0 +1,122 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Ops Discovery" section="ops-audit">
+
+<div class="page-head">
+  <div class="page-eyebrow">Operations · Consultant Discovery</div>
+  <h1 class="page-title">The ops consultant <em>question bank.</em></h1>
+  <p class="page-sub">Stack confirmed: Salesforce + HubSpot. He likely built much of the current setup and runs the manual reporting — so this is discovery, not interrogation, but you're the owner now. Lead with architecture; everything else hangs off it.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>"Which system is master?" is the keystone — the three source fields, the empty HubSpot deals, and dedup confusion all trace back to it. Ask it first. And surface the possible fire fast: cold Clay-imported lists sent from a barely-warmed domain is how a sender reputation gets torched.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="ops-audit"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Asked / answered: <span data-progress-here="ops-audit">0 / 0</span></p>
+
+  <h2>Tier 1 — <em>Architecture (ask first).</em></h2>
+  <div class="card qa">
+    <p class="q">1. Is Salesforce or HubSpot the master / system of record?</p>
+    <p class="ctx">If SFDC is master, it holds the truth (contacts, accounts, opportunities) and HubSpot is the marketing layer feeding it — normal for sales-led B2B. If HubSpot is master, marketing owns the DB. The master decides who wins on conflict. Listen for clear per-object/per-field source-of-truth rules; red flag if nobody's sure.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">2. Is the sync bidirectional or one-way — and are there sync errors right now?</p>
+    <p class="ctx">"Selective bidirectional" with field ownership = healthy. Ask to see the HubSpot sync-health screen — failing records explain a lot of bad data.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">3. Who owns the admin logins to every platform — us or an agency/you?</p>
+    <p class="ctx">If an agency holds the Google Ads or domain keys, cutting them loses history + access. Ties to the vendor audit. Get a who-holds-what inventory.</p>
+  </div>
+
+  <h2>Tier 2 — <em>The active risks.</em></h2>
+  <div class="card qa">
+    <p class="q">4. Domain &amp; deliverability — new sending domain or established? Subdomain (e.g. go.clerri.com) to protect the root? SPF/DKIM/DMARC set? What's the warming schedule, and are we sending to cold/Clay lists?</p>
+    <p class="ctx">The fire: cold scraped lists + cold domain = blacklisting. Tie-in: 7knots was hired for "deliverability warming" — is this their work, and is it actually working? (vendor-audit evidence)</p>
+  </div>
+  <div class="card qa">
+    <p class="q">5. Lists &amp; the Clay imports — how is the DB segmented? How many contacts are opted-in &amp; engaged vs. cold imports vs. customers? What came from Clay, was it cold, and is it being emailed? Marketable vs. non-marketable split?</p>
+    <p class="ctx">Explains the 89,353 "Offline Sources" we found. Confirm what that pile actually is.</p>
+  </div>
+
+  <h2>Tier 3 — <em>The data mess (source tracking).</em></h2>
+  <div class="card qa">
+    <p class="q">6. We have three source fields — Original Source (auto), utm_source (messy), Lead Source (numeric-ID, looks SFDC-synced). Which is the official source of truth?</p>
+    <p class="ctx">The three-field problem is the root of the reporting confusion. Force a single answer.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">6b. What sets Lead Source — is it the SFDC picklist, and does source survive the sync between systems?</p>
+    <p class="ctx">The numeric-ID format on the demo alert (421284932) smells like a Salesforce picklist.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">6c. Why is there a literal <code>{'{{site_source_name}}'}</code> token in the data — what tracking template is broken?</p>
+    <p class="ctx">An unrendered merge variable means a link template is actively writing the placeholder instead of the value.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">6d. Is there a UTM standard, and is it enforced or free-text? Who maintains the "Cleaned Source/Channel" columns, and why are they needed?</p>
+    <p class="ctx">fb vs facebook + year-suffixed fragments = no governance. The cleaning columns are the symptom.</p>
+  </div>
+
+  <h2>Tier 3b — <em>The funnel object gap.</em></h2>
+  <div class="card qa">
+    <p class="q">7. Why is the HubSpot "Deal" object unused — do opportunities live in Salesforce instead, and does that closed-won data sync back into HubSpot?</p>
+    <p class="ctx">If SFDC opportunities don't sync back, marketing can't see which campaigns produced revenue — the closed-loop gap, and exactly why we recommend syncing SFDC deal data into HubSpot for reporting.</p>
+  </div>
+
+  <h2>Tier 4 — <em>Channels &amp; reporting.</em></h2>
+  <div class="card qa">
+    <p class="q">8. Full CPC + CPL platform inventory — Google/Meta/Bing/LinkedIn (CPC) and the content-syndication buys (Beckers, GDN, AADOM, Dental Economics — CPL). Who optimizes each day-to-day? Whose card is billed? Monthly spend per platform?</p>
+    <p class="ctx">Maps who runs what (ties to vendor audit) and surfaces hidden spend.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">9. Retargeting — are pixels installed (Meta/Google/LinkedIn), where, and are audiences + live campaigns running, or just pixels collecting dust? Who owns them?</p>
+    <p class="ctx">Pixels with no campaigns = wasted audience building. No pixels = starting from zero.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">10. Reporting &amp; dashboards — who builds them, where do they live, and walk me through how a number gets from raw data to the ELT Weekly Update tab.</p>
+    <p class="ctx">This is the manual ETL we want to kill. See the Reporting Automation page.</p>
+  </div>
+
+  <h2>About the consultant himself</h2>
+  <div class="card qa">
+    <p class="q">11. What do you own day-to-day beyond the reporting?</p>
+    <p class="ctx">Defines keep/scope. Overlaps with the Nik question — who's actually doing what.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">12. Is any of this documented, or is it in your head? And what HubSpot tier are we on?</p>
+    <p class="ctx">Bus-factor + the tier gates whether we even get multi-touch revenue attribution.</p>
+  </div>
+
+  <h2>Capture as you go</h2>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-01-master" data-section="ops-audit" /><div class="task-content"><div class="task-title">Master system + per-field source-of-truth rules</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-02-sync" data-section="ops-audit" /><div class="task-content"><div class="task-title">Sync direction + current error count</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-03-logins" data-section="ops-audit" /><div class="task-content"><div class="task-title">Who owns every platform login (vendor offboarding risk)</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-04-domain" data-section="ops-audit" /><div class="task-content"><div class="task-title">Domain/deliverability status + are cold Clay lists being emailed</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-05-source" data-section="ops-audit" /><div class="task-content"><div class="task-title">Declared source-of-truth field + the broken merge-token leak</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-06-deals" data-section="ops-audit" /><div class="task-content"><div class="task-title">Where opportunities live + whether closed-won syncs to HubSpot</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-07-channels" data-section="ops-audit" /><div class="task-content"><div class="task-title">CPC/CPL inventory + who manages + spend</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-08-tier" data-section="ops-audit" /><div class="task-content"><div class="task-title">HubSpot tier + what's documented vs. in-his-head</div></div></label></div>
+
+  <div class="note-block">
+    <div class="note-label">Ops meeting notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="ops-audit-notes" placeholder="His answers, the master-system verdict, sync direction, who owns logins, domain status, source-of-truth decision, surprises..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/reporting-automation"><span class="dir">← Prev</span><span class="name">Reporting Automation</span></a>
+    <a href="/clerri/martech-audit"><span class="dir">Next →</span><span class="name">Martech Audit</span></a>
+  </div>
+
+</div>
+
+<style>
+  .qa { margin-bottom:0.75rem; }
+  .qa .q { font-weight:600; color:var(--ink); margin:0 0 0.4rem; font-size:0.95rem; }
+  .qa .ctx { color:var(--muted); margin:0; font-size:0.875rem; font-style:italic; }
+</style>
+
+</ClerriLayout>
