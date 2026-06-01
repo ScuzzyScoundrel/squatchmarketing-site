@@ -1,0 +1,106 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Ops Assessment" section="ops-assessment">
+
+<div class="page-head">
+  <div class="page-eyebrow">Operations · Health Check</div>
+  <h1 class="page-title">Is what I inherited <em>actually normal?</em></h1>
+  <p class="page-sub">A grounded verdict on the Salesforce + HubSpot setup surfaced in the Nik + John 1:1s, checked against B2B RevOps best practice (researched + sourced June 2026). Short version: it's sound, not broken.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>Three of four areas are <strong>normal-if-done-right</strong> and the one <strong>suboptimal</strong> item (opportunities not syncing back to HubSpot) is already on the fix list. Your two instincts were right: the "crazy" conversion-source workflow is <em>textbook best practice</em>, and "contact lead stages moving account lead stages" is exactly the trap to avoid. No red flags. This is a fragmented-but-competent post-merger system, not a mess.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="ops-assessment"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Fixes actioned: <span data-progress-here="ops-assessment">0 / 0</span></p>
+
+  <h2>The verdicts <em>at a glance.</em></h2>
+  <div style="overflow-x:auto">
+  <table class="atable">
+    <thead><tr><th>Question</th><th>Verdict</th><th>One-line</th></tr></thead>
+    <tbody>
+      <tr><td>SF ↔ HubSpot sync (opps not mapped back)</td><td><span class="tag tag-amber">Suboptimal — fixable</span></td><td>Architecture right, implementation incomplete. Native fix, already decided.</td></tr>
+      <tr><td>Account-level lead stages</td><td><span class="tag tag-green">Normal if done right</span></td><td>Correct for DSO/account-based selling. Just don't let contacts drive the account stage.</td></tr>
+      <tr><td>"Conversion source" workflow</td><td><span class="tag tag-green">Normal — it's good</span></td><td>Textbook first-touch protection. A sign of a competent team, not over-engineering.</td></tr>
+      <tr><td>Lifecycle / stage realignment</td><td><span class="tag tag-green">Normal if done right</span></td><td>Merger is the textbook trigger. Use one shared lifecycle + two pipelines.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>1 · Salesforce ↔ HubSpot sync <span class="tag tag-amber">Suboptimal — fixable</span></h2>
+  <div class="card">
+    <p><strong>The best practice:</strong> Salesforce is the system of record for revenue (Opportunities, Amount, Stage, Close Date); HubSpot is master for marketing (source, score, lifecycle). The standard pattern is to sync SF Opportunities <em>back</em> into HubSpot as Deals — "closed-loop reporting" — so closed-won revenue attributes to the originating campaign/source. Rule: one field = one owner.</p>
+    <p><strong>Clerri's reality:</strong> The architecture is right — SF-as-master fits your sales-led motion (SDRs on SF Sales Engagement, finance reconciles in SF). But syncing fields <em>without</em> flowing opportunities back is the single most common closed-loop gap — it's why marketing measures clicks while sales measures dollars. The fix is <strong>native HubSpot functionality, not a custom build</strong> (Marketing/Sales Hub Pro or Enterprise).</p>
+    <p><strong>Do this:</strong> Turn on native SF Opportunity→Deal sync. Set Amount / Stage / Close Date to <strong>"Always use Salesforce"</strong> so SF stays master; HubSpot owns original source, score, lifecycle. Document a one-page field-ownership map. Caveat: HubSpot "campaigns" are asset tags, not relational SF Campaigns — attribute influence via contact original-source on the synced deal, don't expect parity.</p>
+    <p class="mono conf">Confidence: high · the keystone gap, already on your action list</p>
+  </div>
+
+  <h2>2 · Account vs. contact lead stages <span class="tag tag-green">Normal if done right</span></h2>
+  <div class="card">
+    <p><strong>The best practice:</strong> Account-level qualification — the "Marketing Qualified Account" (MQA) model — is the right grain for account-based / multi-location selling; contact-level is the default for single-buyer motions. The documented hazard: HubSpot's contact↔company sync, if you wire contact stages <em>up</em> to the account, makes the account inherit the <strong>highest/furthest</strong> contact stage.</p>
+    <p><strong>Clerri's reality:</strong> Account-level by service category (general / general-plus / specialty) is correct for DSO/Enterprise — a DSO is one entity you sell to as a unit. For the ~13-day SMB cycle, account vs. contact barely differs, so it's harmless there. Your phrasing — "contact lead stages moving account lead stages" — names the exact trap: one curious associate at a 40-location DSO could flip the whole account to MQL and misroute it. <strong>Your smell instinct is correct.</strong></p>
+    <p><strong>Do this:</strong> Keep account-level as the primary grain — don't "upgrade" to contact-level wholesale. Use contact engagement as <em>inputs</em> that inform, never auto-override, the account stage. Do NOT build contact→company stage automation that takes the highest value; if contacts must influence the account, filter to real buying-committee roles only. Leave HubSpot's native company→contact sync as the one automated direction.</p>
+    <p class="mono conf">Confidence: high</p>
+  </div>
+
+  <h2>3 · The "conversion source" workflow <span class="tag tag-green">Normal — it's good</span></h2>
+  <div class="card">
+    <p><strong>The best practice:</strong> Separating first-touch from last-touch into distinct, non-colliding fields is mainstream RevOps. HubSpot does it natively (Original Source = immutable first-touch; Latest Source = last-touch). Salesforce has <em>no</em> native immutable first-touch field, and its lead conversion overwrites Lead Source — so mature teams add a dedicated field (often "Conversion Source") to protect first-touch.</p>
+    <p><strong>Clerri's reality:</strong> The "crazy workflow" is the <strong>correct, intended fix</strong> for Salesforce's overwrite behavior — it replicates HubSpot's Original/Latest split inside the CRM and protects first-touch attribution through the sales cycle. This is a sign of a competent RevOps team (Nik), not over-engineering. Your "probably okay if done correctly" read is exactly right.</p>
+    <p><strong>Do this:</strong> Endorse it — don't simplify it away. Keep Lead Source = immutable first-touch and Conversion Source = last-touch, and <em>document that contract</em>. Verify the conversion Flow has <strong>"Overwrite Lead Source = false"</strong> and that merges keep the oldest record's source. Map HubSpot Original Source → the SF first-touch field with aligned picklists. The only real risk is field sprawl / mismatched picklists across the two systems — not the field itself.</p>
+    <p class="mono conf">Confidence: high · this is the one you were most suspicious of — it's fine</p>
+  </div>
+
+  <h2>4 · Lifecycle / stage realignment for sales→CS <span class="tag tag-green">Normal if done right</span></h2>
+  <div class="card">
+    <p><strong>The best practice:</strong> One shared lifecycle (Lead → MQL → SQL → Opportunity → Customer) synced as <em>parallel fields</em> between HubSpot and Salesforce — not mapped 1:1, because the two are architecturally different — with <strong>buyer-verified exit criteria</strong> per stage (not rep-activity checkboxes). Two opportunity pipelines by segment. The sales→CS handoff completes at Closed Won with a handoff packet. Most alignment problems are <em>definition</em> problems, not tooling.</p>
+    <p><strong>Clerri's reality:</strong> Realigning post-merger is exactly right — a merger is the textbook cause of duplicate/overlapping stages and two incompatible funnels. Keep HubSpot lifecycle as a parallel synced property (don't force it 1:1 onto SF opportunity stages), and write exit criteria instead of activity checkboxes.</p>
+    <p><strong>Do this — the recommended model:</strong></p>
+    <ul style="font-size:0.9rem;line-height:1.6;padding-left:1.2rem;margin:0.25rem 0">
+      <li><strong>Shared lifecycle</strong> (HubSpot property, mirrored on SF, forward-only): Lead → MQL (exit: fits ICP + crosses score) → SQL (exit: meeting held + fit confirmed; SF Lead converts here) → Opportunity → Customer. Keep SF "Lead Status" as a separate synced sub-stage of SQL — don't collapse it into lifecycle.</li>
+      <li><strong>Two SF opportunity pipelines:</strong> SMB = 4 stages tuned to the 13-day cycle (Qualify → Demo/Evaluate → Verbal/Closing → Closed); Enterprise/DSO = 6 stages (Qualify → Discovery → Solution/Evaluation → Proposal → Negotiation → Closed).</li>
+      <li><strong>CS handoff:</strong> a distinct post-Closed-Won Onboarding/Implementation phase owned by CS (a separate object/status, NOT a fake open opp stage), with a handoff packet required as a Closed Won exit criterion.</li>
+      <li><strong>Hygiene:</strong> split Closed Lost into "Disqualified/No Decision" vs "Lost to Competitor" so conversion math stays clean; agree one pipeline number to end marketing-vs-sales forecast conflicts.</li>
+    </ul>
+    <p class="mono conf">Confidence: high · pair this with John's willingness to realign SF stages</p>
+  </div>
+
+  <h2>What to do with this</h2>
+  <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-01-dealsync" data-section="ops-assessment" /><div class="task-content"><div class="task-title">Confirm native SF Opportunity→Deal sync gets enabled + field-ownership map documented</div></div></label></div>
+  <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-02-accountstage" data-section="ops-assessment" /><div class="task-content"><div class="task-title">Confirm no contact→account stage automation takes the "highest" value (the DSO trap)</div></div></label></div>
+  <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-03-convsource" data-section="ops-assessment" /><div class="task-content"><div class="task-title">Endorse the conversion-source workflow; verify "Overwrite Lead Source = false" + aligned picklists</div></div></label></div>
+  <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-04-stages" data-section="ops-assessment" /><div class="task-content"><div class="task-title">With John + Nik, adopt the shared-lifecycle + two-pipeline + CS-handoff model</div></div></label></div>
+  <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-05-share" data-section="ops-assessment" /><div class="task-content"><div class="task-title">Use this as the RevOps-health read for the Nik data-architecture deep-dive + (if useful) Judd</div></div></label></div>
+
+  <div class="note-block">
+    <div class="note-label">Assessment notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="ops-assessment-notes" placeholder="What Nik confirms in the deep-dive, decisions made, where reality differs from the assessment..."></textarea>
+  </div>
+
+  <p class="mono" style="font-size:0.7rem;color:var(--muted);margin-top:1.5rem">Grounded in HubSpot + Salesforce docs, SmartBug, RevBlack, SalesforceBen, ChiliPiper, Dreamdata, Gary Smith Partnership, SiftHub et al. (researched June 2026). Verdicts are best-practice reads, not a substitute for confirming Clerri's exact config with Nik.</p>
+
+  <div class="topic-foot">
+    <a href="/clerri/discovery-log"><span class="dir">← Prev</span><span class="name">Discovery Log</span></a>
+    <a href="/clerri/reporting-automation"><span class="dir">Next →</span><span class="name">Reporting Automation</span></a>
+  </div>
+
+</div>
+
+<style>
+  .atable { width:100%; border-collapse:collapse; font-size:0.9rem; margin:0.5rem 0 1rem; }
+  .atable th, .atable td { text-align:left; padding:0.6rem 0.75rem; border-bottom:1px solid var(--cotton-dark); vertical-align:top; }
+  .atable th { font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clerri-green); }
+  .tag { display:inline-block; font-size:0.7rem; font-weight:700; padding:0.12rem 0.55rem; border-radius:1rem; white-space:nowrap; }
+  .tag-green { background:#cffc78; color:#002920; }
+  .tag-amber { background:#ffe7a3; color:#5c4500; }
+  .card p { font-size:0.92rem; line-height:1.55; margin:0 0 0.6rem; }
+  .conf { font-size:0.72rem !important; color:var(--muted); margin:0 !important; }
+  h2 .tag { vertical-align:middle; margin-left:0.4rem; }
+</style>
+
+</ClerriLayout>
