@@ -1,0 +1,151 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="SF + HubSpot Audit" section="audit-walkthrough">
+
+<div class="page-head">
+  <div class="page-eyebrow">Operations · Step-by-Step Audit Guide</div>
+  <h1 class="page-title">The Salesforce + HubSpot audit, <em>one module at a time.</em></h1>
+  <p class="page-sub">Eight small modules — new leads, imported leads, customer records, lead stages, source tracking, reporting, hygiene. Each tells you where to click, what to check, what healthy vs. broken looks like, and what to drop here for analysis. You never hold it all at once.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>Do one module per sitting, in order. Each ends with a "grab for me" — a screenshot or export you drop into chat, and I translate it into findings. You're not studying the system; you're handing me pieces and I assemble the map. By Module 8 you'll have a field-ownership map, a clean stage model, a source-of-truth decision, the closed-loop fix scoped, and a hygiene punch-list. That's the whole audit.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="audit-walkthrough"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Modules done: <span data-progress-here="audit-walkthrough">0 / 0</span></p>
+
+  <div class="callout zest-hi">
+    <div class="lbl">How to use this</div>
+    <p style="margin:0">One module per sitting (15-20 min each) — no prep, no understanding required first; that's my job. After each, drop the "grab for me" screenshot/export into chat and I'll tell you what it means and what's wrong. Don't jump ahead or do it all at once. The checkboxes track your progress so you can <em>see</em> it shrinking.</p>
+  </div>
+
+  <h2>Module 0 · Orientation <span class="pill pill-grey">~10 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> Set the mental model so nothing else feels abstract.</p>
+    <p class="model"><strong>The model:</strong> <strong>Salesforce = system of record</strong> — the truth for accounts, opportunities, and revenue, where sales + finance live. <strong>HubSpot = the marketing engine</strong> — forms, email, source, scoring. They sync. SF wins on revenue fields; HubSpot owns marketing fields. Everything below is just verifying that this is actually how it's wired.</p>
+    <p class="grab">📎 Grab for me: the list of tools + logins you now have access to (from Nik) — so I know what we can actually see.</p>
+    <p class="good">✓ Healthy: you can log into both HubSpot + Salesforce and reach Settings.</p>
+    <p class="bad">✗ Flag first: read-only, or locked out of settings — get access from Nik before going further.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-00-access" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Confirm admin/read access to HubSpot + Salesforce (note what's missing)</div></div></label></div>
+  </div>
+
+  <h2>Module 1 · The sync — how relationships map <span class="pill pill-grey">~20 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> See exactly how the two systems talk — this answers "how relationships are being mapped."</p>
+    <p><strong>Where:</strong> HubSpot → Settings (gear) → Integrations → Connected Apps → Salesforce → <strong>Field Mappings</strong> tab. Then find the sync health / activity view.</p>
+    <p class="grab">📎 Grab for me: a screenshot of the Field Mappings tab + the sync-health screen.</p>
+    <p><strong>What we'll read together:</strong> which objects sync (Contacts↔Leads/Contacts, Companies↔Accounts, Deals↔Opportunities), the direction + conflict rule per field, and whether errors are piling up.</p>
+    <p class="good">✓ Healthy: revenue fields (Amount, Stage, Close Date) = "Always use Salesforce"; clear per-field ownership; few/no sync errors.</p>
+    <p class="bad">✗ Red flag: Opportunities NOT syncing into HubSpot as Deals (the known gap); conflict rules undefined; hundreds of failing records.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-01-mappings" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Field mappings captured + sync errors checked</div></div></label></div>
+  </div>
+
+  <h2>Module 2 · New leads — inbound / form fills <span class="pill pill-grey">~20 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> Trace one real inbound lead end-to-end so you see what the system stamps automatically.</p>
+    <p><strong>Where:</strong> Pick one recent demo-request contact in HubSpot → open its full timeline + properties. Then find the same person in Salesforce.</p>
+    <p class="grab">📎 Grab for me: a screenshot of that contact's key properties (Original Source, lifecycle stage, lead status, owner, create date, UTMs) + how it looks in SF.</p>
+    <p><strong>What we'll read together:</strong> was the source captured? Lifecycle set right? Did it sync to SF? Did Chili Piper route + assign an owner?</p>
+    <p class="good">✓ Healthy: source + UTMs populated, lifecycle = Lead/MQL, synced to SF, routed, owned.</p>
+    <p class="bad">✗ Red flag: blank source, stuck lifecycle, didn't sync, no owner.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-02-inbound" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Traced one inbound/form-fill lead end-to-end</div></div></label></div>
+  </div>
+
+  <h2>Module 3 · Imported leads — Clay / lists <span class="pill pill-grey">~15 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> Check how bulk/cold imports enter — and whether they're handled safely (this is the deliverability risk).</p>
+    <p><strong>Where:</strong> HubSpot → Contacts → filter to a recent import or list source; check "Marketing contact" status; see how Clay-sourced records are tagged.</p>
+    <p class="grab">📎 Grab for me: a screenshot of an imported contact's properties + your marketable vs. non-marketable counts.</p>
+    <p><strong>What we'll read together:</strong> are imports tagged with a distinct source? Marked marketable (billable + emailable) or not? Any opt-in basis? Kept separate from sending lists?</p>
+    <p class="good">✓ Healthy: imports clearly tagged, NOT auto-marketed, held out of nurture until opted in.</p>
+    <p class="bad">✗ Red flag: cold Clay imports flagged marketable and dropped into sending lists — the deliverability + botched-campaign risk.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-03-imports" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Import handling + marketable status verified</div></div></label></div>
+  </div>
+
+  <h2>Module 4 · Customer records — the existing base <span class="pill pill-grey">~20 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> See how current customers are represented and protected from prospect messaging.</p>
+    <p><strong>Where:</strong> Open a known customer in Salesforce (account + its contacts) and in HubSpot. Check lifecycle = Customer; see how the support team's list stays separate.</p>
+    <p class="grab">📎 Grab for me: a screenshot of a customer account in SF + its contacts, and how customers are flagged in HubSpot.</p>
+    <p><strong>What we'll read together:</strong> are customers marked lifecycle = Customer and flagged so prospect campaigns exclude them? Does the missing lead-source/UTM on customers exist in SF? Are account↔contact links correct?</p>
+    <p class="good">✓ Healthy: customers clearly flagged + excluded from prospecting; clean account/contact structure.</p>
+    <p class="bad">✗ Red flag: customers can receive prospect emails (the John Lowe incident); broken account links; no source history.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-04-customers" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Customer-record structure + prospect-exclusion verified</div></div></label></div>
+  </div>
+
+  <h2>Module 5 · Lead stages &amp; lifecycle <span class="pill pill-grey">~20 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> Map the stage model and catch the account-stage trap.</p>
+    <p><strong>Where:</strong> HubSpot → Settings → Properties → Lifecycle stage (+ Lead status values). Salesforce → opportunity stages. Note where things are account-level vs. contact-level.</p>
+    <p class="grab">📎 Grab for me: the lifecycle stage list + lead status values + the SF opportunity stages.</p>
+    <p><strong>What we'll read together:</strong> is lifecycle synced as a parallel field or forced 1:1 onto opp stages? Is MQL defined the same in both systems? Is there ANY automation where contact stages drive the account/company stage?</p>
+    <p class="good">✓ Healthy: parallel-synced, consistent MQL definition, account stage owned by a rule/rep — not by the highest contact.</p>
+    <p class="bad">✗ Red flag: contact→account "highest value" automation (the DSO trap — one associate flips a 40-location account); MQL means different things in each system.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-05-stages" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Stage model mapped + account-stage trap checked</div></div></label></div>
+  </div>
+
+  <h2>Module 6 · Source tracking &amp; attribution <span class="pill pill-grey">~20 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> Resolve the four-field confusion and find the leaks — this is the "what fields are falling short" core.</p>
+    <p><strong>Where:</strong> The four source fields — Original Source (HubSpot), utm_source, Lead Source (SF), Conversion Source. Pull a group-by count of each (like the utm_source breakdown you already did).</p>
+    <p class="grab">📎 Grab for me: a value-count breakdown of each of the four fields.</p>
+    <p><strong>What we'll read together:</strong> which is the declared source of truth? Do picklist values align across systems? Is "Overwrite Lead Source = false"? Where's the unrendered merge-token leak coming from?</p>
+    <p class="good">✓ Healthy: one declared source-of-truth field, aligned picklists, first-touch preserved.</p>
+    <p class="bad">✗ Red flag: four competing fields no one owns; the placeholder token still writing junk; last-touch clobbering first-touch.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-06-source" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Source fields reconciled + leak source identified</div></div></label></div>
+  </div>
+
+  <h2>Module 7 · Reporting — what we can generate <span class="pill pill-grey">~20 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> See the reporting surface and confirm the closed-loop gap.</p>
+    <p><strong>Where:</strong> HubSpot → Reporting → Dashboards + Reports. Try to build a simple "contacts by Original Source → lifecycle" funnel. (Pair with the Diagnostic Dashboard build list on <a href="/clerri/reporting-automation">Reporting Automation</a>.)</p>
+    <p class="grab">📎 Grab for me: a screenshot of the dashboards list + your one funnel attempt.</p>
+    <p><strong>What we'll read together:</strong> can you tie closed-won revenue to source/campaign? (Probably not yet — opps don't sync back.) What dashboards already exist?</p>
+    <p class="good">✓ Healthy: funnel-by-source works; a closed-loop revenue view exists.</p>
+    <p class="bad">✗ Red flag: revenue invisible in HubSpot (the gap); reporting is all proxy metrics (clicks, MQLs).</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-07-reporting" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Reporting surface mapped + closed-loop gap confirmed</div></div></label></div>
+  </div>
+
+  <h2>Module 8 · Data hygiene — what's falling short <span class="pill pill-grey">~15 min</span></h2>
+  <div class="card mod">
+    <p><strong>Goal:</strong> Quantify the gaps so the cleanup is concrete.</p>
+    <p><strong>Where:</strong> HubSpot → property fill-rates (or export key fields); check duplicates; investigate the ~89K "Offline Sources" pile.</p>
+    <p class="grab">📎 Grab for me: fill-rate stats or a contact export of key fields (Original Source, lifecycle, owner, lead source).</p>
+    <p><strong>What we'll read together:</strong> % of records missing source/owner/lifecycle? Duplicates? What ARE the 89K offline contacts? Marketable count?</p>
+    <p class="good">✓ Healthy: high fill rates, few dupes, the offline pile explained.</p>
+    <p class="bad">✗ Red flag: big blanks, duplicate sprawl, a mystery offline pile no one can account for.</p>
+    <div data-section="audit-walkthrough"><label class="task"><input type="checkbox" data-track="aw-08-hygiene" data-section="audit-walkthrough" /><div class="task-content"><div class="task-title">Hygiene gaps quantified</div></div></label></div>
+  </div>
+
+  <h2>What you'll have at the end</h2>
+  <div class="callout mint">
+    <p style="margin:0">After these 8 modules you'll hold: a <strong>field-ownership map</strong>, a <strong>clean stage model</strong>, a <strong>source-of-truth decision</strong>, the <strong>closed-loop fix scoped</strong>, and a <strong>hygiene punch-list</strong>. Most of it doubles as your <a href="/clerri/ops-assessment">Nik deep-dive</a> agenda — and the field-ownership map template drops in here right after that session. That's the audit: not a monster, a finished checklist.</p>
+  </div>
+
+  <div class="note-block">
+    <div class="note-label">Audit findings <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="audit-walkthrough-notes" placeholder="Drop module-by-module findings here as we work through them: what's healthy, what's broken, what to fix..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/ops-assessment"><span class="dir">← Prev</span><span class="name">Ops Assessment</span></a>
+    <a href="/clerri/reporting-automation"><span class="dir">Next →</span><span class="name">Reporting Automation</span></a>
+  </div>
+
+</div>
+
+<style>
+  .mod p { font-size:0.92rem; line-height:1.55; margin:0 0 0.55rem; }
+  .mod .model { background:var(--cotton-plus); padding:0.7rem 0.9rem; border-radius:0.6rem; }
+  .mod .grab { background:rgba(207,252,120,0.18); border-left:3px solid var(--clerri-green); padding:0.5rem 0.75rem; border-radius:0 0.4rem 0.4rem 0; font-weight:600; font-size:0.9rem; }
+  .mod .good { color:#0a6b4f; }
+  .mod .bad { color:#8a2d3f; }
+  h2 .pill { vertical-align:middle; margin-left:0.4rem; font-size:0.65rem; }
+</style>
+
+</ClerriLayout>
