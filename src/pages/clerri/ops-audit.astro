@@ -43,6 +43,43 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <p class="ctx">Explains the 89,353 "Offline Sources" we found. Confirm what that pile actually is.</p>
   </div>
 
+  <h2>Email deliverability — <em>two domains, unenforced DMARC.</em></h2>
+  <div class="callout wine">
+    <div class="lbl">Findings (MXToolbox + HubSpot, 2026-05-29)</div>
+    <p style="margin:0 0 0.5rem"><strong>Two authorized sending domains:</strong> <code>clerrihq.com</code> (separate root) and <code>mktg.clerri.com</code> (subdomain of the primary). Running both splits sender reputation across two half-warmed domains instead of compounding it into one — the worst setup for a program that's barely warming.</p>
+    <p style="margin:0 0 0.5rem"><strong>DMARC on clerrihq.com is <code>p=none</code></strong> — it exists but tells receivers to do nothing about spoofed/failing mail. Spoofable + short of Gmail/Yahoo bulk-sender rules. Check <code>mktg.clerri.com</code> too.</p>
+    <p style="margin:0">BIMI/logo + SOA warnings = low priority; the Google reverse-DNS warning = ignore (it's Google's shared infra, not ours).</p>
+  </div>
+  <div class="callout zest-hi">
+    <div class="lbl">The decision</div>
+    <p style="margin:0 0 0.5rem"><strong>Consolidate to one sending domain — lean <code>mktg.clerri.com</code></strong> (inherits clerri.com trust, recognizable, brand-aligned; the separate root <code>clerrihq.com</code> is the weaker choice). Keep whichever holds real reputation if they differ — but if both are cold, consolidate now while it's cheap.</p>
+    <p style="margin:0"><strong>Then enforce DMARC in stages:</strong> <code>p=none</code> + turn on aggregate reports → confirm every legit sender (Google, HubSpot) is SPF/DKIM-aligned → <code>p=quarantine</code> ramp → <code>p=reject</code>. Never jump straight to reject on an active domain — you'll block your own mail.</p>
+  </div>
+
+  <h3>What to ask 7knots — diplomatically</h3>
+  <p style="color:var(--ink-soft);max-width:70ch">Frame as "getting up to speed + planning to scale," not "why is this broken." A real deliverability expert answers these crisply; a template-factory fumbles — either way you learn what you need without throwing a punch. Credit what's right: the <code>mktg.clerri.com</code> subdomain is the correct setup.</p>
+  <div class="card qa">
+    <p class="q">"Walk me through our sending-domain setup — I see both clerrihq.com and mktg.clerri.com authorized. What's the thinking, and which are we primarily sending from?"</p>
+    <p class="ctx">Good: clear rationale + a consolidation plan. Red flag: doesn't know why both exist.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">"I want our authentication airtight before we scale volume — can you confirm DKIM is signing for HubSpot on our primary domain, and that SPF/DKIM align to it?"</p>
+    <p class="ctx">Good: names the alignment specifics. Red flag: vague "it's all set up" with no detail.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">"Our DMARC is on p=none — is that a deliberate monitoring phase, and what's the roadmap to quarantine/reject? Are we collecting aggregate reports, and what do they show about alignment?"</p>
+    <p class="ctx">The expert tell. Good: "deliberate — here's the report data + timeline." Red flag: didn't know it was p=none / no reports / no roadmap. The "are we collecting reports" part is the killer — no reports = warming with no instrumentation.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">"Walk me through our email design + testing approach — our sends follow a consistent template. How are we testing layout/subject/CTA variations, and what's our image-to-text ratio while we warm?"</p>
+    <p class="ctx">Ties the identical-template observation to deliverability (image-heavy + repetitive structure can trip filters from a cold domain) + engagement. Good: a testing plan + ratio awareness. Red flag: "the template works, we just swap the content."</p>
+  </div>
+
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-09-domain-consolidate" data-section="ops-audit" /><div class="task-content"><div class="task-title">Decide single sending domain + consolidation plan (lean mktg.clerri.com)</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-10-dkim" data-section="ops-audit" /><div class="task-content"><div class="task-title">Confirm DKIM alignment for HubSpot on the kept domain</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-11-dmarc" data-section="ops-audit" /><div class="task-content"><div class="task-title">DMARC: are we collecting aggregate reports? roadmap to enforcement?</div></div></label></div>
+  <div data-section="ops-audit"><label class="task"><input type="checkbox" data-track="oa-12-templates" data-section="ops-audit" /><div class="task-content"><div class="task-title">Email design: testing plan + image-to-text ratio (vs. identical blasts)</div></div></label></div>
+
   <h2>Tier 3 — <em>The data mess (source tracking).</em></h2>
   <div class="card qa">
     <p class="q">6. We have three source fields — Original Source (auto), utm_source (messy), Lead Source (numeric-ID, looks SFDC-synced). Which is the official source of truth?</p>
