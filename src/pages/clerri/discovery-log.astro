@@ -1,0 +1,118 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Discovery Log" section="discovery-log">
+
+<div class="page-head">
+  <div class="page-eyebrow">Org & Plan · Running Knowledge Base</div>
+  <h1 class="page-title">What the 1:1s <em>actually revealed.</em></h1>
+  <p class="page-sub">Living capture from onboarding meetings — org structure, real tech stack, confirmed vendor roles, and the answers to the architecture questions. Updated as discovery continues. Source: Nik Garza (ops) + John Lowe (CCO), 2026-06-01.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>The keystone is answered: Salesforce + HubSpot sync fields but <strong>opportunities aren't mapped back to HubSpot</strong> — the closed-loop gap, and the fix is already in motion. Nik Garza is a 4-year veteran who ran the merger consolidations (an asset, keep close). 7knots is confirmed loose-governance and the plan is to in-source core functions. And there's a live 287-location DCA enterprise deal that ties straight to the Subscribili battlecard.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="discovery-log"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Action items done: <span data-progress-here="discovery-log">0 / 0</span></p>
+
+  <h2>The big unlocks <em>(what changed).</em></h2>
+  <div class="callout zest-hi">
+    <ul style="margin:0;padding-left:1.1rem;font-size:0.95rem;line-height:1.7">
+      <li><strong>Keystone answered:</strong> SF ↔ HubSpot sync fields, but <strong>opportunities are NOT mapped back to HubSpot</strong> → marketing can't see revenue outcomes. Fix decided: map SF deals to HubSpot. This unblocks closed-loop reporting.</li>
+      <li><strong>Nik Garza ≠ peripheral consultant:</strong> ~4 years in, oversaw the merger + tech-stack consolidations; focus is GTM engineering / revenue systems / AI. He's the institutional-knowledge holder and the vendor orchestrator — collaborative, competent. Keep him close.</li>
+      <li><strong>7knots verdict forming:</strong> Nik himself says they were "moving quickly without best practices." Decision aligned: <strong>transition core functions (segmentation, automation) in-house</strong>, keep 7knots only to fill gaps on 3-month extensions.</li>
+      <li><strong>Email domain answered:</strong> the separate sending domain was deliberate — a past spam-report timeout damaged the main domain, so they split. Email validation via cron now in place.</li>
+      <li><strong>A 4th source field exists:</strong> "conversion source" is Nik's intentional workflow to avoid the historical fragmentation from overwriting "lead source." So the field sprawl is partly by-design, not all chaos.</li>
+    </ul>
+  </div>
+
+  <h2>People &amp; org <em>(Customer Success side).</em></h2>
+  <div style="overflow-x:auto">
+  <table class="dtable">
+    <thead><tr><th>Person</th><th>Role</th><th>Owns</th></tr></thead>
+    <tbody>
+      <tr><td><strong>John Lowe</strong></td><td>Chief Customer Officer</td><td>All of CS + support; your cross-functional partner</td></tr>
+      <tr><td><strong>Megan</strong></td><td>Services group lead</td><td>Implementation + onboarding (Enterprise + SMB)</td></tr>
+      <tr><td><strong>Jackie</strong></td><td>Acting Mgr, Enterprise → being promoted to <strong>Director of CS</strong></td><td>CSM training + enterprise relationships</td></tr>
+      <tr><td><strong>Eric Henderson</strong></td><td>Support lead</td><td>Support dept (10-12K interactions/mo); the AI contact-center rollout</td></tr>
+      <tr><td><strong>Amy McHugh</strong></td><td>Operations</td><td>Churn + Salesforce components, client lists, opportunities</td></tr>
+      <tr><td><strong>Nik Garza</strong></td><td>Ops consultant / SF admin</td><td>GTM engineering, revenue systems, the vendor stack</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:0.875rem;color:var(--muted)">CS splits into CSMs (strategic, business reviews) and Customer Support Reps (tactical, location-level — they reactivate dormant accounts + ensure locations actually sell).</p>
+
+  <h2>The real tech stack <em>(confirmed by Nik).</em></h2>
+  <div class="grid-3">
+    <div class="card"><h4>CRM + MAP</h4><p style="font-size:0.875rem">Salesforce (Sales Engagement for SDR sequencing) + HubSpot. Fields sync; opportunities don't map back yet.</p></div>
+    <div class="card"><h4>Scheduling + calls</h4><p style="font-size:0.875rem">Chili Piper (demo booking + "demo rescue" follow-up), Attention (call recording).</p></div>
+    <div class="card"><h4>Enrichment</h4><p style="font-size:0.875rem">Clay + Orbital — inbound + bulk enrichment of existing data.</p></div>
+    <div class="card"><h4>Data + analytics</h4><p style="font-size:0.875rem">Snowflake (warehouse), Pendo (product analytics, lower priority), GA/Tag Manager/Search Console.</p></div>
+    <div class="card"><h4>Customer success</h4><p style="font-size:0.875rem">ChurnZero (CS analytics — manual entry today). Support on base RingCentral (being upgraded).</p></div>
+    <div class="card"><h4>Marketing vendors</h4><p style="font-size:0.875rem">Loudspeaker (SEO/AEO/GEO), Opascope (Google + FB ads), 7knots (email + HubSpot).</p></div>
+  </div>
+
+  <h2>Vendor roles <em>(now confirmed).</em></h2>
+  <div style="overflow-x:auto">
+  <table class="dtable">
+    <thead><tr><th>Vendor</th><th>Scope</th><th>Status / signal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Loudspeaker</strong></td><td>SEO / AEO / GEO since February</td><td>Even Nik is skeptical of the MQL attribution. Audit ongoing — see Vendor Audit.</td></tr>
+      <tr><td><strong>Opascope</strong></td><td>Google + Facebook ads</td><td><strong>FB ads paused since late April (budget)</strong> — waiting on YOUR direction to unpause. A decision sitting on your desk.</td></tr>
+      <tr><td><strong>7knots</strong></td><td>Email engagement + HubSpot support</td><td>Loose governance (Nik's words). Plan: in-source core functions, keep for gap-fill on 3-month extensions.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Strategic gold <em>(facts worth acting on).</em></h2>
+  <div class="grid-2">
+    <div class="card"><h4>DCA — 287 locations</h4><p style="font-size:0.9rem">A live enterprise onboarding of up to 287 locations. This is the same DCA/Rodeo deal where <strong>Subscribili offered zero-cost-year-one</strong> (see battlecard). Onboarding has no automation yet — a risk at this scale.</p></div>
+    <div class="card"><h4>Bridge Pro — 5-10% adoption</h4><p style="font-size:0.9rem">Only 5-10% of customers use Bridge Pro (auto-writes data to the PMS, kills manual office work). The single biggest <strong>upsell + expansion-marketing</strong> opportunity — ties directly to Jim's "grow memberships in the existing base" priority.</p></div>
+    <div class="card"><h4>Pricing is chaos</h4><p style="font-size:0.9rem">Legacy pricing is inconsistent — flat fees + variable ($2.95-$4.95 + strike fees), no uniform structure. John + Judd to cohort legacy customers and standardize packaging. Affects forecasting + upsell.</p></div>
+    <div class="card"><h4>Support = 10-12K/mo, 65-70% members</h4><p style="font-size:0.9rem">Most are short member calls (benefits, portal access). An <strong>AI contact center</strong> is being implemented (Eric + John) — a member-experience + content opportunity (self-serve, knowledge guides).</p></div>
+    <div class="card"><h4>Cherry integration</h4><p style="font-size:0.9rem">You're already on a press release for a "Cherry" (patient financing) integration — coordinate outreach so customer comms are consistent.</p></div>
+    <div class="card"><h4>The botched campaign</h4><p style="font-size:0.9rem">Recent automated prospect campaigns drew backlash — poor opt-out + email titles not matching content. John's rule: future campaigns MUST separate messaging for offices vs. existing members vs. prospects. This is the 7knots governance gap, with a real incident attached.</p></div>
+  </div>
+
+  <h2>Action plan <em>(from both meetings).</em></h2>
+  <h3>Meet the people (John's list + Nik follow-up)</h3>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-01-amy" data-section="discovery-log" /><div class="task-content"><div class="task-title">Amy McHugh — Salesforce usage, client lists, account opportunities (30 min)</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-02-leads" data-section="discovery-log" /><div class="task-content"><div class="task-title">Megan, Jackie, Eric — department operations + partnership opportunities</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-03-agency" data-section="discovery-log" /><div class="task-content"><div class="task-title">Website agency — the WordPress migration project</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-04-nik-followup" data-section="discovery-log" /><div class="task-content"><div class="task-title">Nik follow-up — data-architecture deep dive (prep questions on lead creation, source tracking, lifecycle, SF→HubSpot sync)</div></div></label></div>
+
+  <h3>Get access + docs</h3>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-05-access" data-section="discovery-log" /><div class="task-content"><div class="task-title">Meta + all ad/marketing accounts (Nik granting); GA, Tag Manager, Search Console</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-06-attribution-doc" data-section="discovery-log" /><div class="task-content"><div class="task-title">Get the existing lead-attribution workflow documentation from Nik</div></div></label></div>
+
+  <h3>Decisions on your desk</h3>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-07-fbads" data-section="discovery-log" /><div class="task-content"><div class="task-title">Opascope Facebook ads — decide whether/when to unpause (paused since April, waiting on you)</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-08-dealmapping" data-section="discovery-log" /><div class="task-content"><div class="task-title">Confirm SF→HubSpot deal mapping gets built (Nik requesting) — unblocks revenue reporting</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-09-pmtool" data-section="discovery-log" /><div class="task-content"><div class="task-title">Choose the cost-effective marketing PM tool (replaces manual Slack/Jira request handling)</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-10-campaign-gov" data-section="discovery-log" /><div class="task-content"><div class="task-title">Campaign governance — list segmentation (offices vs members vs prospects) + opt-out fix so the botched-campaign incident never repeats</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-11-7knots-insource" data-section="discovery-log" /><div class="task-content"><div class="task-title">Plan the 7knots in-sourcing (segmentation + automation) + define the gap-fill scope for their 3-month extension</div></div></label></div>
+  <div data-section="discovery-log"><label class="task"><input type="checkbox" data-track="dl-12-bridgepro" data-section="discovery-log" /><div class="task-content"><div class="task-title">Bridge Pro expansion campaign — pitch the 90-95% not using it (ties to existing-base growth)</div></div></label></div>
+
+  <div class="note-block">
+    <div class="note-label">Discovery notes <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="discovery-log-notes" placeholder="New intel as more 1:1s happen (Amy, Megan, Jackie, Eric, agency), shifts in assumptions, follow-up questions..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/ops-audit"><span class="dir">← Prev</span><span class="name">Ops Discovery</span></a>
+    <a href="/clerri/team"><span class="dir">Next →</span><span class="name">Team & Operations</span></a>
+  </div>
+
+</div>
+
+<style>
+  .dtable { width:100%; border-collapse:collapse; font-size:0.9rem; margin:0.5rem 0 1rem; }
+  .dtable th, .dtable td { text-align:left; padding:0.6rem 0.75rem; border-bottom:1px solid var(--cotton-dark); vertical-align:top; }
+  .dtable th { font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clerri-green); }
+</style>
+
+</ClerriLayout>
