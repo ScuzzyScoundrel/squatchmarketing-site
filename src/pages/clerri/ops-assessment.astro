@@ -70,6 +70,63 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <p class="mono conf">Confidence: high · pair this with John's willingness to realign SF stages</p>
   </div>
 
+  <h2>Deep-dive questions for Nik <em>(the technical session).</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">Collaborative working session, not an audit — frame it as "let's map this together so I can report accurately." Each question verifies a specific finding above. The goal artifact: a one-page field-ownership map + a lead-flow diagram you both sign off on.</p>
+
+  <h3>A · The sync architecture (verify SF-as-master)</h3>
+  <div class="card qa">
+    <p class="q">Walk me through the full sync — which objects sync SF↔HubSpot, and per field, which direction and who wins on conflict?</p>
+    <p class="ctx">Verifying the "one field = one owner" map exists. Want: revenue fields (Amount, Stage, Close Date) set to "Always use Salesforce"; source/score/lifecycle owned by HubSpot.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">What HubSpot tier are we on, and what's the plan + timeline to sync SF Opportunities back into HubSpot as Deals?</p>
+    <p class="ctx">The keystone fix. Native opportunity sync needs Marketing/Sales Hub Pro or Enterprise — confirm tier, then confirm this is actually getting built (you flagged it; Nik said he'd request it).</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Is there an inclusion list controlling what syncs, and are there sync errors/failures right now?</p>
+    <p class="ctx">Pile-ups here explain bad data. Ask to see the sync-health screen live.</p>
+  </div>
+
+  <h3>B · Lead creation (form fills + imports)</h3>
+  <div class="card qa">
+    <p class="q">Walk me through a lead's full path from (a) a form fill and (b) a list/Clay import — what gets stamped where, and what syncs?</p>
+    <p class="ctx">Reveals where source/lifecycle values originate and whether imports enter as marketable contacts (ties to the 89K offline + deliverability risk).</p>
+  </div>
+  <div class="card qa">
+    <p class="q">How does the demo-request form + Chili Piper routing interact with lead creation and account matching?</p>
+    <p class="ctx">Confirms the inbound→meeting→account path that feeds account-level qualification.</p>
+  </div>
+
+  <h3>C · Source tracking (verify the conversion-source workflow)</h3>
+  <div class="card qa">
+    <p class="q">Which field is THE reporting source of truth — Original Source, utm_source, Lead Source, or Conversion Source — and how do they relate?</p>
+    <p class="ctx">Resolves the four-field question. Confirm Lead Source = immutable first-touch, Conversion Source = last-touch, and the conversion Flow has "Overwrite Lead Source = false."</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Why do some customer contacts have no Lead Source / no UTM source — does that data exist in Salesforce and not sync, or was it never captured?</p>
+    <p class="ctx">The specific gap you noticed. Distinguishes a sync limitation from a capture gap.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Does HubSpot Original Source map into a preserved SF first-touch field with aligned picklists — and what's writing the literal merge-token we saw in the data?</p>
+    <p class="ctx">Picklist alignment is what makes reports reconcile vs. double-count. The unrendered token = a broken tracking template still leaking.</p>
+  </div>
+
+  <h3>D · Lifecycle stages (verify the account-stage trap is absent)</h3>
+  <div class="card qa">
+    <p class="q">Is lifecycle stage synced as a parallel field or mapped 1:1 to opportunity stages — and is MQL defined identically in both systems?</p>
+    <p class="ctx">Best practice is parallel-synced, not 1:1. Mismatched MQL definitions make every funnel number suspect.</p>
+  </div>
+  <div class="card qa">
+    <p class="q">Is there any automation where contact stages drive the company/account stage?</p>
+    <p class="ctx">The DSO trap — if it takes the highest contact value, one associate can flip a 40-location account. Confirm it doesn't exist (or is filtered to buying-committee roles).</p>
+  </div>
+
+  <h3>E · The output</h3>
+  <div class="card qa">
+    <p class="q">Can we co-produce a one-page field-ownership map + a lead-flow diagram from this session?</p>
+    <p class="ctx">The artifact that ends the ambiguity and becomes the spec for the closed-loop reporting build.</p>
+  </div>
+
   <h2>What to do with this</h2>
   <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-01-dealsync" data-section="ops-assessment" /><div class="task-content"><div class="task-title">Confirm native SF Opportunity→Deal sync gets enabled + field-ownership map documented</div></div></label></div>
   <div data-section="ops-assessment"><label class="task"><input type="checkbox" data-track="oas-02-accountstage" data-section="ops-assessment" /><div class="task-content"><div class="task-title">Confirm no contact→account stage automation takes the "highest" value (the DSO trap)</div></div></label></div>
