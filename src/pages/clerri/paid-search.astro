@@ -13,7 +13,7 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
 
   <div class="takeaway">
     <span class="tk-lbl">Bottom line</span>
-    <p>The account-wide data (corrected from a fuller export): you spend <strong>~$11.5K/mo, all Search</strong>, and <strong>~39% goes to bidding your own brand name</strong> while the Competitor, Fee-For-Service, Software, and Insurance-Alternatives campaigns sit <strong>paused</strong>. Real non-brand demand-gen runs ~$585/lead; only ~25 conversions/mo total; the account is littered with 50+ dead campaigns and widespread disapproved ads; conversion "value" is an assigned proxy (fake ROAS). <strong>You don't need more budget — you need to reallocate the $11.5K you have</strong> (cut brand, turn on conquest + problem-aware), prove a better CPL, then scale.</p>
+    <p>The account-wide data (corrected from a fuller export): you spend <strong>~$11.5K/mo, all Search</strong>, and <strong>~39% goes to bidding your own brand name</strong> while conquest limps on a $50/day budget and the Fee-For-Service, Software, and Insurance-Alternatives campaigns sit <strong>paused</strong>. Real non-brand demand-gen runs ~$585/lead; only ~25 conversions/mo total; the account is littered with 50+ dead campaigns and widespread disapproved ads; conversion "value" is an assigned proxy (fake ROAS). <strong>You don't need more budget — you need to reallocate the $11.5K you have</strong> (cut brand, fund up the throttled conquest campaign, test problem-aware), prove a better CPL, then scale.</p>
   </div>
 
   <div class="progress-track"><div class="progress-fill" data-progress-fill="paid-search"></div></div>
@@ -27,7 +27,7 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
       <tr><td>Spend</td><td>~$11.5K/mo (last 30 days), 100% Search</td><td>Display built but entirely paused. The real account-wide figure (an earlier partial export showed only ~$3,200).</td></tr>
       <tr><td><strong>Brand spend</strong></td><td><strong>~39% ($4,487)</strong> on Brand-Main/Kleer/mCPC</td><td><strong>Harvesting your own name</strong> — converts cheap, inflates the blended number. Brand-Main on Target Impression Share = vanity.</td></tr>
       <tr><td>Conversions</td><td>25/mo total; ~12 non-brand</td><td>Thin for $11.5K. Blended CPL $460, but non-brand demand-gen is ~$585.</td></tr>
-      <tr><td><strong>Paused campaigns</strong></td><td>Competitor, Fee-For-Service, Software, Insurance-Alternatives all OFF</td><td><strong>Backwards</strong> — conquest + problem-aware campaigns are dark while brand eats 39%.</td></tr>
+      <tr><td><strong>Throttled / paused</strong></td><td>One $50/day Competitor campaign runs ($1,273, $637 CPL); the bigger Competitors, Fee-For-Service, Software & Insurance-Alternatives campaigns sit OFF</td><td><strong>Backwards</strong> — conquest is throttled to an afterthought and problem-aware is dark, while brand eats 39%.</td></tr>
       <tr><td>Account hygiene</td><td>60+ campaigns, ~54 paused/ended; "ads disapproved" widespread</td><td>A graveyard of past agencies. Memberships campaign: "search volume limited," opt-score 44/100.</td></tr>
       <tr><td>Conversion value</td><td>Assigned proxy (~$960-1,350/conv)</td><td>Not real revenue → any ROAS reported is fictional. Confirm the 25 are real demo requests.</td></tr>
       <tr><td>Wasted spend</td><td>Consumer-insurance queries (Delta/Humana/MetLife portals) in search terms</td><td>Wrong audience — patients, not practices. Loose match types.</td></tr>
@@ -36,7 +36,57 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   </table>
   </div>
 
-  <h2>2 · The reframe — <em>you're fishing the wrong pond.</em></h2>
+  <h2>2 · The reallocation — <em>move the same $11.5K.</em></h2>
+  <p style="color:var(--ink-soft);max-width:74ch">No new budget. Pull the ~$2.7K wasted bidding your own brand name and move it to conquest, a small vendor-aware push, and a problem-aware <em>test</em> — <strong>without cutting the Memberships engine</strong>, which is doing the real SMB work (10 of 25 conversions). Prove the new CPLs, then ask Judd for scale.</p>
+  <div style="overflow-x:auto">
+  <table class="ptable">
+    <thead><tr><th>Bucket</th><th>Now · last 30d</th><th>Recalibrated</th><th>Move &amp; why</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Brand defense</strong><br><span class="mono" style="font-size:0.68rem;color:var(--muted)">Main · Kleer · mCPC</span></td>
+        <td>$4,487 · 39%<br><span class="mono" style="font-size:0.68rem;color:var(--muted)">13 conv</span></td>
+        <td><strong>~$1,750 · 15%</strong></td>
+        <td><span class="pill pill-wine">Cut ~$2.7K</span> Cap impression share, kill the Target-IS vanity. Converts cheap, but it's demand you already own — defense, not growth.</td>
+      </tr>
+      <tr>
+        <td><strong>Solution-aware</strong><br><span class="mono" style="font-size:0.68rem;color:var(--muted)">Memberships</span></td>
+        <td>$5,752 · 50%<br><span class="mono" style="font-size:0.68rem;color:var(--muted)">10 conv · $575 CPL</span></td>
+        <td><strong>~$6,000 · 52%</strong></td>
+        <td><span class="pill pill-mint">Protect</span> The proven SMB engine — do <strong>not</strong> cut. It's "search-volume limited," so grow it by widening keywords, not just raising budget.</td>
+      </tr>
+      <tr>
+        <td><strong>Conquest</strong><br><span class="mono" style="font-size:0.68rem;color:var(--muted)">Competitor</span></td>
+        <td>$1,273 · 11%<br><span class="mono" style="font-size:0.68rem;color:var(--muted)">2 conv · $637 CPL</span></td>
+        <td><strong>~$2,250 · 20%</strong></td>
+        <td><span class="pill pill-zest">Fund up</span> Already live but throttled to $50/day. "boomcloud / dentalhq alternative + pricing" = highest switching intent; pair with the comparison pages you already rank for.</td>
+      </tr>
+      <tr>
+        <td><strong>Vendor-aware</strong><br><span class="mono" style="font-size:0.68rem;color:var(--muted)">software / platform</span></td>
+        <td>~$0 · starved</td>
+        <td><strong>~$700 · 6%</strong></td>
+        <td><span class="pill pill-zest">Carve out</span> Best CTR in the account (14.5%) — buyers seeking a vendor. Small dedicated line to demo / product LPs.</td>
+      </tr>
+      <tr>
+        <td><strong>Problem-aware</strong><br><span class="mono" style="font-size:0.68rem;color:var(--muted)">NEW · upstream</span></td>
+        <td>$0 · 0%</td>
+        <td><strong>~$500–1,000 · TEST</strong></td>
+        <td><span class="pill pill-mint">Test, don't bet</span> "drop delta / drop ppo / fee-for-service." Zero paid competition, but unproven — a controlled test that earns more budget only by proving a CPL.</td>
+      </tr>
+      <tr style="background:var(--cotton-plus)">
+        <td><strong>Total</strong></td>
+        <td><strong>$11,512 · 25 conv</strong><br><span class="mono" style="font-size:0.68rem;color:var(--muted)">$460 blended CPL</span></td>
+        <td><strong>~$11.5K</strong></td>
+        <td>Same spend, reallocated. The ask to Judd is <em>scale</em> — but only after the new CPLs prove out.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout zest-hi">
+    <div class="lbl">The discipline — say this in the room</div>
+    <p style="margin:0"><strong>Protect what works, test what's new.</strong> Memberships is the engine — it stays funded; the freed money comes out of <em>brand</em>, not out of the engine. Problem-aware is a $500–1K experiment, not a bet — it earns budget by proving a CPL, not by promise. And <strong>add Bing Search in parallel</strong> (same proven terms, lower CPC, a fresh audience pool) — that's net-new reach layered on top, not a slice of this $11.5K.</p>
+  </div>
+
+  <h2>3 · The reframe — <em>you're fishing the wrong pond.</em></h2>
   <p style="color:var(--ink-soft);max-width:72ch">Every keyword in the account is <strong>solution-aware</strong> — someone already searching "dental membership plans." That catches two groups: researchers (not ready to buy) and DIY-ers (about to build their own — your real competitor). It misses the practice that hasn't connected its pain to "membership" yet. New SMB acquisition starts one step upstream.</p>
   <div class="grid-3">
     <div class="card"><span class="pill pill-mint">Problem-aware</span><h4 style="margin:0.4rem 0">MISSING entirely</h4><p style="font-size:0.875rem">"dropping delta dental," "fee for service transition," "declining dental reimbursement," "increase practice revenue." The biggest new-SMB pool — and you bid on none of it.</p></div>
@@ -44,7 +94,7 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <div class="card"><span class="pill pill-wine">Vendor-aware</span><h4 style="margin:0.4rem 0">STARVED</h4><p style="font-size:0.875rem">"dental membership software/platform" — your best CTR (14.5%), buyers seeking a vendor — got ~$1.1K total. Underfunded.</p></div>
   </div>
 
-  <h2>3 · Segment strategy <em>(SMB / Mid / DSO).</em></h2>
+  <h2>4 · Segment strategy <em>(SMB / Mid / DSO).</em></h2>
   <div class="callout wine">
     <div class="lbl">Strategic honesty — say this in the meeting</div>
     <p style="margin:0"><strong>Paid search is an SMB + mid-market channel. It is NOT a DSO channel.</strong> DSO buying is committee-driven, low-volume, and happens via ABM + events + Becker's/GDN — not Google searches. Don't burn paid-search budget chasing DSOs; a handful of high-intent enterprise terms at most. Pushing search to "win DSOs" is how money disappears.</p>
@@ -60,7 +110,7 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   </table>
   </div>
 
-  <h2>4 · The keyword architecture <em>(what to actually build).</em></h2>
+  <h2>5 · The keyword architecture <em>(what to actually build).</em></h2>
   <div class="grid-2">
     <div class="card">
       <h4>Problem-aware (SMB) — NEW</h4>
@@ -105,7 +155,7 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     </div>
   </div>
 
-  <h2>5 · Competitor gaps <em>(researched, June 2026).</em></h2>
+  <h2>6 · Competitor gaps <em>(researched, June 2026).</em></h2>
   <p class="mono muted" style="font-size:0.78rem">Positioning + conquest-page facts are verified from live competitor sites; volume/CPC is directional (no Ahrefs/SEMrush) — buy one month of Keyword Planner before committing budget.</p>
   <div style="overflow-x:auto">
   <table class="ptable">
@@ -138,13 +188,13 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   </div>
   <p class="mono muted" style="font-size:0.78rem">Caveats for the room: validate the BoomCloud-2.0-migration angle with sales (couldn't confirm publicly); negative-keyword "Pearl Dental Software" before any "Pearly" bid; pull one month of Keyword Planner/Ahrefs before locking budget. Sources: live competitor sites + ADA News (Delta class-actions, May 2026).</p>
 
-  <h2>6 · Kill the waste — <em>negative keywords, week 1.</em></h2>
+  <h2>7 · Kill the waste — <em>negative keywords, week 1.</em></h2>
   <p style="color:var(--ink-soft);max-width:72ch">You're paying for <em>patients</em> looking for their own insurance. Add these as negatives immediately:</p>
   <p class="mono" style="font-size:0.82rem;background:var(--cotton-plus);padding:0.7rem 0.9rem;border-radius:0.5rem;line-height:1.7">delta dental · humana · metlife · cigna · aetna · mydelta · dentalquest · truassure · carefreedental · "ncd" · ".com" (portal-login intent) · "for business" / "for companies" / "for employees" (group benefits) · "california" + carrier terms · "full coverage" · "no annual maximum"</p>
 
-  <h2>7 · Hard goals — <em>90 days.</em></h2>
+  <h2>8 · Hard goals — <em>90 days.</em></h2>
   <div class="grid-3">
-    <div class="card"><div class="rnum">&lt;$300</div><div class="rlbl">SMB demo CPL (from ~$600) via problem-aware + high-intent focus + waste removal + LP fix</div></div>
+    <div class="card"><div class="rnum">&lt;$300</div><div class="rlbl">SMB demo CPL (from ~$575) via problem-aware + high-intent focus + waste removal + LP fix</div></div>
     <div class="card"><div class="rnum">3x</div><div class="rlbl">conversion volume (~5 → ~15/mo) at same or lower spend</div></div>
     <div class="card"><div class="rnum">20%+</div><div class="rlbl">of budget on high-intent vendor + conquest terms (from near-zero)</div></div>
     <div class="card"><div class="rnum">50+</div><div class="rlbl">negative keywords added to kill consumer-insurance waste</div></div>
@@ -152,8 +202,8 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <div class="card"><div class="rnum">1</div><div class="rlbl">clear hard conversion defined (demo request) — stop counting soft actions</div></div>
   </div>
 
-  <h2>8 · Fix or own it — <em>the in-house plan.</em></h2>
-  <p style="color:var(--ink-soft);max-width:72ch">At ~$3,200/mo of media, this is very in-houseable — Google Ads at this scale isn't hard, and you'd reclaim the entire retainer. LogicalPosition-style management runs ~10% of spend (~$300-500/mo) vs. a $4.5-10K retainer. The build:</p>
+  <h2>9 · Fix or own it — <em>the in-house plan.</em></h2>
+  <p style="color:var(--ink-soft);max-width:72ch">At ~$11.5K/mo of media you're paying a ~$6,500–10K/mo retainer — roughly <strong>57–87% of spend on management</strong>, when the managed-PPC norm is 10–20%. An account this size is very in-houseable, or moveable to performance-based management (~10–15% of spend, ~$1.2–1.7K/mo) — either way you'd reclaim <strong>~$5K/mo or more</strong>. The build:</p>
   <div class="grid-2">
     <div class="card"><h4>Account structure</h4><p style="font-size:0.875rem">3 campaign clusters: (1) Problem-aware SMB → education/calculator LPs; (2) Solution + vendor-aware → demo/product LPs; (3) Conquest + brand-defense → comparison LPs. One hard conversion: demo request.</p></div>
     <div class="card"><h4>Landing pages by intent</h4><p style="font-size:0.875rem">Problem-aware → "is membership right for you?" + calculator. Vendor-aware → product/demo. Conquest → "[competitor] alternative" comparison. The CTRs are healthy; the LP is likely the conversion bottleneck.</p></div>
@@ -165,8 +215,8 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <p class="ctx">Good: a clear answer (tracking change + what + when). Red flag: doesn't know, or can't explain the cliff.</p>
   </div>
   <div class="card qa">
-    <p class="q">2. "We spend ~$3,200/mo on Google and pay you [confirm fee]. How do you justify the fee vs. managed media — and what's the path to more media or a lower fee?"</p>
-    <p class="ctx">Good: acknowledges the inversion + a real plan. Red flag: defends the retainer without addressing the ratio.</p>
+    <p class="q">2. "We spend ~$11.5K/mo on Google and pay you ~$6,500–10K/mo — management is over half the media. How do you justify that vs. the 10–20% norm, and what's the path to performance-based pricing or a lower fee?"</p>
+    <p class="ctx">Good: acknowledges the lopsided ratio + a real plan (performance pricing / lower fee / more media). Red flag: defends the retainer without addressing that management ≈ media.</p>
   </div>
   <div class="card qa">
     <p class="q">3. "Why are we 100% on broad membership terms while software terms starve and consumer-insurance queries leak budget — where's the awareness-stage + negative-keyword strategy?"</p>

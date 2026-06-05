@@ -1,0 +1,163 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Action Center" section="action-board">
+
+<div class="page-head">
+  <div class="page-eyebrow">Start · Action Center</div>
+  <h1 class="page-title">One list. <em>What actually moves.</em></h1>
+  <p class="page-sub">The front door. The real actions pulled out of 45 pages + the June-3 meeting wave, prioritized by when you can do them and tagged by who owns them. Start at the top; check things off; the rollup at the bottom catches anything still open anywhere in the hub.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">How to use this</span>
+    <p><strong>"Do this week" is the only list that matters before each morning.</strong> Everything is sequenced so you're never guessing what's next. Owners are tagged — if it's not <em>Jerris</em>, your job is to unblock it, not do it. <span class="pill pill-green">Automation</span> tags mark work that should become a workflow, not a recurring chore — see the catalog below.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="action-board"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Board items done: <span data-progress-here="action-board">0 / 0</span></p>
+
+  <!-- ============ DO THIS WEEK ============ -->
+  <h2>🔥 Do this week <em>— things you can start today.</em></h2>
+  <p style="color:var(--ink-soft);max-width:70ch">Personally actionable, no dependencies, mostly emails/Slacks/decisions. Clear this list and you've converted five meetings into motion.</p>
+  <div data-section="action-board">
+    <label class="task"><input type="checkbox" data-track="ab-wk-01-pr" data-section="action-board" /><div class="task-content"><div class="task-title">Send the partnership press release (scheduled this morning)</div><div class="task-meta">Contact swapped to you. Confirm it's out, then re-release historical PRs to fix LLM identity (Clerri = Kleer+Membersy).</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Quick</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-02-claude" data-section="action-board" /><div class="task-content"><div class="task-title">Resolve Claude seat access — the single blocker for in-sourcing</div><div class="task-meta">Nothing in-house (Loudspeaker, 7knots, ads) replaces cleanly until Liz + you have working seats. Highest-leverage unblock on the page.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-03-loudspeaker" data-section="action-board" /><div class="task-content"><div class="task-title">Cancel Loudspeaker ($6K/mo); give 7knots newsletter notice</div><div class="task-meta">Both aligned with Liz. Use Judd as negotiating leverage; no multi-year terms. Confirm notice windows.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-rose">Vendors</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-04-syncs" data-section="action-board" /><div class="task-content"><div class="task-title">Book 4 conversations: Josh (partnership roles), Suzanne (enablement split), Meghan (product working session), John (post-board event)</div><div class="task-meta">All are role/ownership unblocks. 15-min holds — clarity now prevents duplicated work later.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Org</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-05-decision" data-section="action-board" /><div class="task-content"><div class="task-title">Decide + announce: badge scanners reinstated as the event standard</div><div class="task-meta">Aligned with Diamond. One message to the events team. Then hand the attribution build to the 30-day list.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-rose">Events</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-06-inputs" data-section="action-board" /><div class="task-content"><div class="task-title">Collect inputs: Jon's Claude deck, Diamond's Q1 scan list, Cori's lifecycle docs, Liz's Confluence customer list</div><div class="task-meta">Four one-line asks. They feed the calculator, attribution, patient-marketing, and webinar work.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Quick</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-07-calls" data-section="action-board" /><div class="task-content"><div class="task-title">Listen to 3–5 SMB sales calls in Attention ("KM Sales SMB")</div><div class="task-meta">Fastest way to internalize objections (timing, DIY-spreadsheet belief, fee-discount fear) in your own words.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Learn</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-08-mvp" data-section="action-board" /><div class="task-content"><div class="task-title">Ship ONE MVP asset today: the "risks of a DIY in-house plan" one-pager</div><div class="task-meta">Proves the MVP-first muscle (agreed with Meghan) and arms sales against the #1 objection immediately. Don't wait for the process.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-wk-09-opascope" data-section="action-board" /><div class="task-content"><div class="task-title">⚠ Open the Opascope referral-fee investigation (steps on Vendor Audit)</div><div class="task-meta">Pull the contract, ask Opascope in writing who the referral partner of record is, loop Judd. Verify before suspecting anyone — time-sensitive + decision-relevant.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-wine">Verify</span></div></div></label>
+  </div>
+
+  <!-- ============ NEXT 30 DAYS ============ -->
+  <h2>📋 Next 30 days <em>— build the engine.</em></h2>
+  <div data-section="action-board">
+    <label class="task"><input type="checkbox" data-track="ab-mo-01-calc" data-section="action-board" /><div class="task-content"><div class="task-title">Build the revenue / write-off calculator (the #1 lead magnet + a live demo tool)</div><div class="task-meta">Jon wants it for demos; the funnel already points to it. Interactive, embeddable, gated for leads.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-blue">Content</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-02-enable" data-section="action-board" /><div class="task-content"><div class="task-title">Stand up the feature-release → enablement process; ship the first 3 one-pagers + demo videos</div><div class="task-meta">The #1 cross-meeting pain. Recurring intake from product → slick + 60-sec video → Slack + Pendo announce.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-03-inhouse" data-section="action-board" /><div class="task-content"><div class="task-title">Full in-house-vs-Clerri risk collateral + expand the comparison article</div><div class="task-meta">Legal/liability, no automation, deeper-discount data. Pairs with the calculator and the "Fire your insurance company" spine.</div><div class="task-tags"><span class="pill pill-grey">Group</span><span class="pill pill-blue">Content</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-04-cadence" data-section="action-board" /><div class="task-content"><div class="task-title">Editorial cadence + content pillars with Liz (7-month calendar)</div><div class="task-meta">Moves Liz from firefighting to proactive. Pillars map to the messaging playbook + benchmark report already built.</div><div class="task-tags"><span class="pill pill-grey">Liz</span><span class="pill pill-blue">Content</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-05-crm" data-section="action-board" /><div class="task-content"><div class="task-title">CRM hygiene: scope the ~900-field gap + the SF→HubSpot opportunity-sync fix (with Nik)</div><div class="task-meta">Closed-loop revenue view is impossible until opps sync back. Nik already requesting the SF deal → HubSpot map.</div><div class="task-tags"><span class="pill pill-grey">Jerris+Nik</span><span class="pill pill-wine">Data/Ops</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-06-eventauto" data-section="action-board" /><div class="task-content"><div class="task-title">Event attribution automation live: scan → HubSpot campaign → MQL/pipeline report</div><div class="task-meta">Kills manual reconciliation; gives Diamond + Judd real per-show ROI across ~40 events × ~$15K.</div><div class="task-tags"><span class="pill pill-grey">Jerris+Nik</span><span class="pill pill-green">Automation</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-07-recycle" data-section="action-board" /><div class="task-content"><div class="task-title">Recycled-lead nurture from SF picklists ("not a priority" / "bad timing" / "competitor")</div><div class="task-meta">Jon flagged ghosted prospects as a lead source. Needs the picklists cleaned first — pairs with CRM hygiene.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-green">Automation</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-mo-08-bisync" data-section="action-board" /><div class="task-content"><div class="task-title">Bi-weekly marketing↔services sync running; testimonial video shoot booked at 1 practice</div><div class="task-meta">Cadence agreed with Meghan. First testimonial = social proof asset + a free promo video for the practice.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+  </div>
+
+  <!-- ============ 60-90 DAYS ============ -->
+  <h2>🏗️ 60–90 days <em>— the big builds.</em></h2>
+  <div data-section="action-board">
+    <label class="task"><input type="checkbox" data-track="ab-q-01-patientadopt" data-section="action-board" /><div class="task-content"><div class="task-title">Patient-marketing adoption push — drive practices onto Automated Patient Marketing + Bridge</div><div class="task-meta">Jim's #1 mandate. The 50–75% YoY membership-growth stat is your sales argument to practices. Build the education campaign with Cori.</div><div class="task-tags"><span class="pill pill-grey">Jerris+Cori</span><span class="pill pill-zest">Patient Mktg</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-q-02-winback" data-section="action-board" /><div class="task-content"><div class="task-title">Winback program live (Iterable) + renewal "$ you saved this year" comms</div><div class="task-meta">Both backlogged for resources. Target auto-renew-off members first — highest churn risk, clearest message.</div><div class="task-tags"><span class="pill pill-grey">Jerris+Cori</span><span class="pill pill-zest">Patient Mktg</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-q-03-pendo" data-section="action-board" /><div class="task-content"><div class="task-title">Claim Pendo + ship milestone gamification (logged-in-no-member nudge; 75/150-member rewards)</div><div class="task-meta">Underused lever Meghan flagged. Ties rewards to the 150-member fee waiver — adoption + retention in one system.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-green">Automation</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-q-04-demoenv" data-section="action-board" /><div class="task-content"><div class="task-title">Sales demo environment with Paul (CTO) — retire the Figma mockups</div><div class="task-meta">Real Open Dental / Dentrix / Eaglesoft sandbox for sales. Unblocks integration-specific demo videos.</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+    <label class="task"><input type="checkbox" data-track="ab-q-05-directory" data-section="action-board" /><div class="task-content"><div class="task-title">Patient-facing directory — prospective patients find membership practices</div><div class="task-meta">Differentiation + flywheel; neutralizes BoomCloud's "marketplace." Mockup already in the hub (/clerri/directory-mockup).</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-blue">Product</span></div></div></label>
+  </div>
+
+  <!-- ============ AUTOMATIONS ============ -->
+  <h2>⚙️ The automation backlog <em>— turn chores into workflows.</em></h2>
+  <p style="color:var(--ink-soft);max-width:72ch">Every recurring manual task here is a workflow waiting to be built. Status tells you what's ready vs. blocked; the last column is what you can do <strong>today</strong> to move it.</p>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead><tr><th>Automation</th><th>What it kills</th><th>Status</th><th>Do today</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Meeting notes → action items</strong></td><td>Manually re-reading Gemini docs + retyping next-steps into the hub</td><td><span class="pill pill-zest">Build now</span></td><td>Greenlight it — drop a .docx, get a synthesis + checkable tasks. Buildable in this repo today.</td></tr>
+      <tr><td><strong>Feature-release → enablement pack</strong></td><td>Sales/CS finding out about features from customers</td><td><span class="pill pill-zest">Build now</span></td><td>Draft the intake template; first pack from the next release using Claude (one-pager + 60-sec script).</td></tr>
+      <tr><td><strong>Event attribution</strong></td><td>Post-show manual lead reconciliation</td><td><span class="pill pill-blue">Spec</span></td><td>Confirm HubSpot campaign fields with Nik; define the scan-import format.</td></tr>
+      <tr><td><strong>SF → HubSpot opportunity sync</strong></td><td>No closed-loop revenue view; skewed channel reports</td><td><span class="pill pill-mint">Decided</span></td><td>Nik owns the field map — give him the marketing fields you need back.</td></tr>
+      <tr><td><strong>Recycled-lead nurture</strong></td><td>Ghosted/bad-timing leads dying in the CRM</td><td><span class="pill pill-blue">Spec</span></td><td>Blocked on clean picklists — fold into CRM hygiene scoping.</td></tr>
+      <tr><td><strong>Pendo milestone gamification</strong></td><td>Stalled onboarding (logged-in, no member added)</td><td><span class="pill pill-grey">Blocked</span></td><td>Resolve Pendo ownership (product vs marketing) — one Slack to settle it.</td></tr>
+      <tr><td><strong>Patient winback / renewal-savings</strong></td><td>Silent churn on auto-renew-off members</td><td><span class="pill pill-grey">Partner</span></td><td>Product-owned (Cori) — get the lapsed + savings data feed; co-design in Iterable.</td></tr>
+      <tr><td><strong>MQL / pipeline reporting</strong></td><td>Drowning in dashboards, no signal</td><td><span class="pill pill-mint">In progress</span></td><td>Nik building it — see <a href="/clerri/reporting-automation">Reporting Automation</a>. Define the 5 numbers you actually want.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout zest-hi">
+    <div class="lbl">Start the flywheel</div>
+    <p style="margin:0">Build the <strong>meeting-notes → action-items</strong> pipeline first. It compounds: every future 1:1 and discovery call auto-lands here as checkable tasks, so the hub stays current without you re-reading a single transcript. Say the word and I'll build it against your <span class="mono">/Clerri/meeting docs/</span> folder.</p>
+  </div>
+
+  <!-- ============ LIVE ROLLUP ============ -->
+  <h2>🗂️ Everything still open <em>— the safety net.</em></h2>
+  <p style="color:var(--ink-soft);max-width:72ch">Live across all 45 hub pages, sorted by most-remaining. This is the "did I miss anything" view — click any row to jump straight to that page's tasks. <span id="rollup-sum" class="mono" style="color:var(--clerri-green)"></span></p>
+  <div id="rollup-list" class="rollup">
+    <p class="mono muted" style="font-size:0.8rem">Loading open tasks across the hub…</p>
+  </div>
+
+  <div class="note-block" style="margin-top:1.5rem">
+    <div class="note-label">Working notes — blockers & wins <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="action-board-notes" placeholder="What's blocked and on whom, what you shipped this week, what to raise on Jim's weekly call..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/meetings"><span class="dir">← Source</span><span class="name">Meeting Intelligence</span></a>
+    <a href="/clerri"><span class="dir">Home →</span><span class="name">Dashboard</span></a>
+  </div>
+
+</div>
+
+<style>
+  .rollup { display:flex; flex-direction:column; gap:0.3rem; margin:0.5rem 0; }
+  .rollup-row {
+    display:grid; grid-template-columns: 1fr 120px 52px; align-items:center; gap:0.75rem;
+    padding:0.55rem 0.9rem; background:#fff; border:1px solid var(--cotton-dark);
+    border-radius:0.6rem; text-decoration:none; color:var(--ink); transition:all 0.15s;
+  }
+  .rollup-row:hover { border-color:var(--clerri-green); transform:translateX(2px); }
+  .rollup-row.done { opacity:0.5; }
+  .rollup-name { font-weight:600; font-size:0.9rem; }
+  .rollup-bar { height:0.45rem; background:var(--cotton-dark); border-radius:999px; overflow:hidden; }
+  .rollup-bar > span { display:block; height:100%; background:var(--clerri-green); border-radius:999px; }
+  .rollup-row.done .rollup-bar > span { background:var(--zest-dark); }
+  .rollup-count { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--muted); text-align:right; }
+  @media (max-width:600px){ .rollup-row { grid-template-columns: 1fr 60px 48px; } .rollup-bar { display:none; } }
+</style>
+
+<script is:inline>
+(function(){
+  var KEY='clerri-hub-v3';
+  function load(){ try{return JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){return {};} }
+  var TRACKS={};
+  try{ TRACKS=JSON.parse(document.getElementById('clerri-section-tracks').textContent||'{}'); }catch(e){}
+  var OVERRIDE={
+    quickstart:{label:'Dashboard · Quick start', href:'/clerri'},
+    'action-board':{label:'Action Center (this page)', href:'/clerri/action-board'}
+  };
+  function pretty(s){ return s.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();}); }
+  function render(){
+    var state=load();
+    var rows=Object.keys(TRACKS).map(function(sec){
+      var ids=TRACKS[sec]||[];
+      var done=ids.filter(function(i){return state[i];}).length;
+      return {sec:sec, done:done, total:ids.length, rem:ids.length-done};
+    }).filter(function(r){return r.total>0;});
+    rows.sort(function(a,b){ return b.rem-a.rem || a.sec.localeCompare(b.sec); });
+    var totDone=0, totAll=0;
+    var html=rows.map(function(r){
+      totDone+=r.done; totAll+=r.total;
+      var o=OVERRIDE[r.sec]||{};
+      var label=o.label||pretty(r.sec);
+      var href=o.href||('/clerri/'+r.sec);
+      var pct=r.total?Math.round(r.done/r.total*100):0;
+      var done=r.rem===0;
+      return '<a class="rollup-row'+(done?' done':'')+'" href="'+href+'">'+
+        '<span class="rollup-name">'+label+'</span>'+
+        '<span class="rollup-bar"><span style="width:'+pct+'%"></span></span>'+
+        '<span class="rollup-count">'+r.done+'/'+r.total+'</span></a>';
+    }).join('');
+    var el=document.getElementById('rollup-list');
+    if(el) el.innerHTML = html || '<p class="mono muted" style="font-size:0.8rem">No tracked tasks found yet.</p>';
+    var sum=document.getElementById('rollup-sum');
+    if(sum) sum.textContent = totDone+' / '+totAll+' done · '+rows.length+' sections';
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',render); else render();
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.dataset && e.target.dataset.track) setTimeout(render,60);
+  });
+})();
+</script>
+
+</ClerriLayout>

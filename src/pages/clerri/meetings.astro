@@ -1,0 +1,196 @@
+---
+import ClerriLayout from '../../layouts/ClerriLayout.astro';
+---
+<ClerriLayout title="Meeting Intelligence" section="meetings">
+
+<div class="page-head">
+  <div class="page-eyebrow">Org & Plan · Meeting Intelligence</div>
+  <h1 class="page-title">The download — <em>five rooms, one signal.</em></h1>
+  <p class="page-sub">June 3, 2026 — five back-to-back meetings (SMB Sales, Events, Patient Marketing, Content, Services). Synthesized to the signal, the decisions made, and every action item — checkable, and rolled up on the <a href="/clerri/action-board" style="color:var(--zest)">Action Center</a>.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="takeaway">
+    <span class="tk-lbl">Bottom line</span>
+    <p>One pain repeats in four of five rooms: <strong>there's no enablement layer</strong> — sales and CS don't know when features ship, there are no one-pagers or demo videos, and demos run on <strong>Figma mockups</strong>, not live systems. And one asset is under-pulled: Core's <strong>Automated Patient Marketing + Bridge</strong>, which the head of analytics ties to <strong>50–75% YoY membership growth</strong> for practices that use it. Fix the first, scale the second.</p>
+  </div>
+
+  <div class="progress-track"><div class="progress-fill" data-progress-fill="meetings"></div></div>
+  <p class="mono" style="font-size:0.75rem;color:var(--muted)">Action items captured: <span data-progress-here="meetings">0 / 0</span> · <a href="/clerri/action-board">go to the Board →</a></p>
+
+  <h2>The six cross-cutting themes</h2>
+  <div class="grid-3">
+    <div class="callout zest-hi"><div class="lbl">Theme 01 · #1 internal win</div><p style="font-size:0.9rem;margin:0"><strong>Enablement vacuum.</strong> No feature comms, no slicks, no demo videos; demos on Figma. Hit in 4 of 5 rooms. MVP-first collateral already agreed with Meghan.</p></div>
+    <div class="callout wine"><div class="lbl">Theme 02 · live wound</div><p style="font-size:0.9rem;margin:0"><strong>CRM/data hygiene.</strong> Opportunities don't sync SF→HubSpot; ~900 missing contact fields from the May-2025 merger; dirty picklists. Blocks attribution + nurture.</p></div>
+    <div class="callout mint"><div class="lbl">Theme 03 · in-sourcing</div><p style="font-size:0.9rem;margin:0"><strong>Agencies coming home.</strong> Loudspeaker ($6K/mo "robot content") → terminate; 7knots newsletter → in-house. Blocker: your Claude seat access.</p></div>
+    <div class="callout"><div class="lbl">Theme 04 · Jim's #1</div><p style="font-size:0.9rem;margin:0"><strong>Patient marketing has rails already.</strong> Automated Patient Marketing, Bridge (in-office SMS/email), opt-OUT model, Iterable/Mandrill/SendGrid. Adoption + winback is the gap.</p></div>
+    <div class="callout"><div class="lbl">Theme 05 · ROI plumbing</div><p style="font-size:0.9rem;margin:0"><strong>Events need attribution.</strong> Badge scanners back; stop manual reconciliation; Nik Garza to report MQLs/pipeline across ~40 shows × ~$15K.</p></div>
+    <div class="callout"><div class="lbl">Theme 06 · facts captured</div><p style="font-size:0.9rem;margin:0"><strong>Pricing + platforms.</strong> $99 Essentials (+$199 init) / $199 Integration / 3.95% ≈ $48/patient/yr. 150-member fee waiver. Core (ex-Kleer/SMB) vs Connect (ex-Membersy/DSO).</p></div>
+  </div>
+
+  <p class="mono muted" style="font-size:0.76rem;margin-top:0.5rem">Note: Gemini's auto-notes mangled names — "Clary / Clear / Membercy" = Clerri / Kleer / Membersy throughout. Stats flagged <em>(verify n)</em> are vendor/analyst-sourced, not yet independently confirmed.</p>
+
+  <!-- ============ MEETING 1 ============ -->
+  <h2>1 · SMB Overview + Marketing <em>— the sales-floor truth.</em></h2>
+  <p class="mono muted" style="font-size:0.78rem">09:15 MDT · Jon Bayne (SMB Sales Lead), Liam Doyle, Michael Marconi · recorded in Attention under "KM Sales SMB"</p>
+  <div class="card">
+    <h4 style="margin-top:0">What I learned</h4>
+    <ul style="font-size:0.9rem;line-height:1.6;margin:0">
+      <li><strong>Lead flow:</strong> website demo request → MQL → opportunity → SQL on a good meeting. <strong>Opportunities do NOT sync SF→HubSpot</strong> — the closed-loop gap, confirmed from the floor.</li>
+      <li><strong>Channel truth:</strong> organic search = highest volume + best closed-won; <strong>paid social (Instagram) generated junk leads → already cut</strong>. Reports skew because opps often aren't created for weak channels.</li>
+      <li><strong>Pricing:</strong> "Essentials" (non-integrated) $99/mo + $199 init; <strong>"Integration" $199/mo flat</strong> (the sales focus); merchant fee flat <strong>3.95% recurring per patient ≈ $48/patient/yr</strong>.</li>
+      <li><strong>150-member threshold:</strong> sales pitched the $199/mo waiving at 150 members as a "green flag" — but <strong>Jim shelved this waiver on 06-02</strong> (operational complexity, system not ready). The floor referenced it anyway on 06-03 — a live example of the enablement/comms gap. Treat as sunset.</li>
+      <li><strong>Objections:</strong> timing, no prioritization, office-manager↔dentist disconnect; dentists won't discount fees; "we can DIY a plan on a spreadsheet" → <strong>in-house risk is the wedge</strong>.</li>
+      <li><strong>Data:</strong> ~900 missing contact fields, May-2025 merger data loss, dirty SF picklists; SDRs (Matt, Caleb) running Nik's Clay lists with no targeting logic.</li>
+    </ul>
+    <h4>Decisions</h4>
+    <p style="margin:0 0 0.5rem"><span class="pill pill-wine">Killed</span> gift-card promos (ran $50 Uber Eats without telling sales). &nbsp;<span class="pill pill-mint">Build</span> in-house-plan risk collateral. &nbsp;<span class="pill pill-mint">Build</span> customer testimonial videos.</p>
+    <h4>My action items</h4>
+    <div data-section="meetings">
+      <label class="task"><input type="checkbox" data-track="mtg-smb-01-crm" data-section="meetings" /><div class="task-content"><div class="task-title">Investigate CRM hygiene — the ~900 missing SF fields + HubSpot sync post-merger</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-wine">Data/Ops</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-02-enablement" data-section="meetings" /><div class="task-content"><div class="task-title">Stand up a recurring feature-comms + sales-enablement process (slicks, videos, timelines)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-03-loop" data-section="meetings" /><div class="task-content"><div class="task-title">Build a sales↔marketing feedback loop on promos/content (no more surprise offers)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-04-calc" data-section="meetings" /><div class="task-content"><div class="task-title">Build the interactive revenue / write-off calculator for demos (the lead magnet)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-blue">Content</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-05-inhouse" data-section="meetings" /><div class="task-content"><div class="task-title">Produce in-house-vs-Clerri risk collateral + expand the existing article</div><div class="task-tags"><span class="pill pill-grey">Group</span><span class="pill pill-blue">Content</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-06-testimonial" data-section="meetings" /><div class="task-content"><div class="task-title">Plan on-site testimonial video shoots (give the practice a promo video in return)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-blue">Content</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-07-stats" data-section="meetings" /><div class="task-content"><div class="task-title">Pull email performance stats at the next SDR meeting; get Jon's Claude-built deck</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Learn</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-smb-08-calls" data-section="meetings" /><div class="task-content"><div class="task-title">Listen to 3–5 recorded SMB sales calls in Attention ("KM Sales SMB")</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Learn</span></div></div></label>
+    </div>
+  </div>
+
+  <!-- ============ MEETING 2 ============ -->
+  <h2>2 · Diamond 1:1 <em>— events + ROI plumbing.</em></h2>
+  <p class="mono muted" style="font-size:0.78rem">11:30 MDT · Diamond Douyon (Event Manager)</p>
+  <div class="card">
+    <h4 style="margin-top:0">What I learned</h4>
+    <ul style="font-size:0.9rem;line-height:1.6;margin:0">
+      <li><strong>Staffing:</strong> AE + CX per show, only 3 AEs — a "juggling act" across overlapping dental events. Jim wants to expand sales.</li>
+      <li><strong>Badge scanners:</strong> RevOps had killed them (incomplete data); Q1 used a hybrid (scanners + HubSpot-form iPads). You pushed to make <strong>scanning the standard</strong> — fluent beats complete.</li>
+      <li><strong>ROI gap:</strong> shows cost ~$15K, ~40/yr, no clear MQL/pipeline picture. Manual reconciliation is the bottleneck.</li>
+      <li><strong>Booths:</strong> old 20×20 with monitors demoed well but cost a lot; small booths can't show the Figma platform.</li>
+    </ul>
+    <h4>Decisions</h4>
+    <p style="margin:0 0 0.5rem"><span class="pill pill-mint">Aligned</span> badge scanners reinstated as the standard lead-capture tool.</p>
+    <h4>My action items</h4>
+    <div data-section="meetings">
+      <label class="task"><input type="checkbox" data-track="mtg-dia-01-scanlist" data-section="meetings" /><div class="task-content"><div class="task-title">Get a Q1 scan list from Diamond to evaluate the real data quality</div><div class="task-tags"><span class="pill pill-grey">Diamond</span><span class="pill pill-rose">Events</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-dia-02-attribution" data-section="meetings" /><div class="task-content"><div class="task-title">Design automated event attribution — scan → HubSpot campaign → MQL/pipeline (no manual reconcile)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-green">Automation</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-dia-03-nik" data-section="meetings" /><div class="task-content"><div class="task-title">Nik Garza: standing trade-show MQL + sourced-pipeline report; Diamond + Nik review scan issues</div><div class="task-tags"><span class="pill pill-grey">Nik Garza</span><span class="pill pill-rose">Events</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-dia-04-booth" data-section="meetings" /><div class="task-content"><div class="task-title">Reevaluate booth setup + per-event ROI to justify ~40 shows/yr</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-rose">Events</span></div></div></label>
+    </div>
+  </div>
+
+  <!-- ============ MEETING 3 ============ -->
+  <h2>3 · Cori Intro <em>— the patient-marketing engine (Jim's #1).</em></h2>
+  <p class="mono muted" style="font-size:0.78rem">12:30 EDT · Cori McClelland (product × marketing — patient/member engagement)</p>
+  <div class="card">
+    <h4 style="margin-top:0">What I learned</h4>
+    <ul style="font-size:0.9rem;line-height:1.6;margin:0">
+      <li><strong>Two platforms:</strong> <strong>Core</strong> (ex-Kleer, SMB, has PMS integration = "Pro") and <strong>Connect</strong> (ex-Membersy, DSO, no native integration until the <strong>Bridge</strong> solution). Consolidation stalled — Core can't do DSO group-level yet. Meet Marissa (Core) + David Demeary (Connect).</li>
+      <li><strong>Automated Patient Marketing</strong> (Core Pro + PMS): patients auto-opted into campaigns by insurance status + visit frequency — uninsured drips, treatment-plan, seasonal.</li>
+      <li><strong>Bridge:</strong> front desk sends SMS/email to in-office patients. Email live, SMS in setup.</li>
+      <li><strong>Compliance reality:</strong> <strong>opt-OUT model</strong> (raised mailable volume, some practice pushback). Email only for broad marketing — no consent for SMS to non-members; SMS only when a patient requests via Bridge. Maps to the INFORM-not-INCENTIVIZE gate.</li>
+      <li><strong>The stat:</strong> practices using patient marketing see <strong>50–75% YoY membership growth</strong> (head of analytics) <em>(verify n)</em>. Stack: Iterable (engagement), Mandrill (Core txn), SendGrid (Connect txn).</li>
+      <li><strong>Gaps:</strong> renewals are thin/transactional; churn from auto-renew-off members; a <strong>winback program is backlogged for resources</strong>.</li>
+    </ul>
+    <h4>My action items</h4>
+    <div data-section="meetings">
+      <label class="task"><input type="checkbox" data-track="mtg-cori-01-adopt" data-section="meetings" /><div class="task-content"><div class="task-title">Drive practice adoption of Automated Patient Marketing + Bridge — education campaign (Jim's #1)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Patient Mktg</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-cori-02-winback" data-section="meetings" /><div class="task-content"><div class="task-title">Stand up the winback program (lapsed members) — currently backlogged</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Patient Mktg</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-cori-03-renewal" data-section="meetings" /><div class="task-content"><div class="task-title">Upgrade renewal comms — lead with "$ you saved this year"; target auto-renew-off churn</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Patient Mktg</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-cori-04-learn" data-section="meetings" /><div class="task-content"><div class="task-title">Get lifecycle + patient-marketing docs from Cori; meet David Demeary + Marissa; schedule follow-up</div><div class="task-tags"><span class="pill pill-grey">Cori</span><span class="pill pill-grey">Learn</span></div></div></label>
+    </div>
+  </div>
+
+  <!-- ============ MEETING 4 ============ -->
+  <h2>4 · Liz 1:1 <em>— content, agencies, in-sourcing.</em></h2>
+  <p class="mono muted" style="font-size:0.78rem">14:00 MDT · Liz Kravitz (Content Marketing Manager — direct report)</p>
+  <div class="card">
+    <h4 style="margin-top:0">What I learned</h4>
+    <ul style="font-size:0.9rem;line-height:1.6;margin:0">
+      <li><strong>Bandwidth:</strong> Liz is stuck in reactive "firefighting" + partnership deliverables — no proactive strategy. Wants a content calendar with pillars + reliable cadence.</li>
+      <li><strong>Loudspeaker:</strong> "robot content," low value, <strong>$6,000/mo → terminate, bring in-house with AI</strong> (keyword research, drafting, images). <strong>Blocker: your Claude seat access.</strong></li>
+      <li><strong>7knots newsletter:</strong> inconsistent, heavy manual editing → discontinue, in-house.</li>
+      <li><strong>Ownership chaos:</strong> webinars/partnerships siloed with Josh Rich (ACT Dental, Smile Source) since staff left; CE-credit webinars must be strictly educational. Enablement ("Clerri U") ownership unclear (Suzanne vs marketing).</li>
+      <li><strong>Brand:</strong> off-brand website, leadership "wild card" influence, rejected Verve's advice; B2B2C/white-label confusion — patients often never see the Clerri brand. <strong>Patient-facing directory</strong> floated as differentiation.</li>
+      <li><strong>Missing assets:</strong> sales sheets, product overview videos — the same enablement gap.</li>
+    </ul>
+    <h4>Decisions</h4>
+    <p style="margin:0 0 0.5rem"><span class="pill pill-wine">Aligned</span> offboard Loudspeaker, content production in-house.</p>
+    <h4>My action items</h4>
+    <div data-section="meetings">
+      <label class="task"><input type="checkbox" data-track="mtg-liz-01-claude" data-section="meetings" /><div class="task-content"><div class="task-title">Resolve Claude seat access — the blocker for all in-sourcing</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-liz-02-loudspeaker" data-section="meetings" /><div class="task-content"><div class="task-title">Cancel the Loudspeaker contract; wind down 7knots newsletter</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-rose">Vendors</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-liz-03-josh" data-section="meetings" /><div class="task-content"><div class="task-title">Sync with Josh Rich — own webinar/content/partnership roles (ACT Dental, Smile Source)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Org</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-liz-04-suzanne" data-section="meetings" /><div class="task-content"><div class="task-title">Meet Suzanne — split marketing vs customer enablement ("Clerri U")</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Org</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-liz-05-cadence" data-section="meetings" /><div class="task-content"><div class="task-title">Liz: 7-month editorial cadence + content pillars; practical implementation guides for practices</div><div class="task-tags"><span class="pill pill-grey">Liz</span><span class="pill pill-blue">Content</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-liz-06-quick" data-section="meetings" /><div class="task-content"><div class="task-title">Liz: update site contact David → Jerris; share Confluence customer list for webinars</div><div class="task-tags"><span class="pill pill-grey">Liz</span><span class="pill pill-grey">Quick</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-liz-07-pr" data-section="meetings" /><div class="task-content"><div class="task-title">Send the partnership press release (scheduled this morning)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-grey">Quick</span></div></div></label>
+    </div>
+  </div>
+
+  <!-- ============ MEETING 5 ============ -->
+  <h2>5 · Intro to Services <em>— onboarding, Pendo, demo environments.</em></h2>
+  <p class="mono muted" style="font-size:0.78rem">15:00 EDT · Meghan Hicks (Head of Onboarding / Services)</p>
+  <div class="card">
+    <h4 style="margin-top:0">What I learned</h4>
+    <ul style="font-size:0.9rem;line-height:1.6;margin:0">
+      <li><strong>Services:</strong> onboarding, implementation, integration, data migration → handed to Jackie's CSMs (both under John Lowe). 30-day post-go-live target = first "member" milestone.</li>
+      <li><strong>Same enablement gap:</strong> feature releases don't reach customer-facing teams → CS blindsided when customers ask. Agreed: one-pagers + short demo videos on release, <strong>MVP-first "do it now."</strong></li>
+      <li><strong>Pendo</strong> (overlay tool) ownership is unclear (product vs marketing) — a big underused lever for <strong>segmented + gamified milestone messaging</strong> (e.g., logged-in-but-no-member nudges; rewards at enrollment tiers — ties to the 150-member waiver).</li>
+      <li><strong>Demo environments:</strong> sales on Figma mockups; sandboxes (Open Dental, Dentrix) exist but are product/eng-only → need a dedicated sales demo env, raise with <strong>Paul Biancacello (CTO)</strong>.</li>
+      <li><strong>Data ecosystem:</strong> Snowflake (warehouse), ChurnZero (ARR/MRR/users), Tableau/ThoughtSpot (reporting).</li>
+    </ul>
+    <h4>Decisions</h4>
+    <p style="margin:0 0 0.5rem"><span class="pill pill-mint">Aligned</span> MVP-first collateral. &nbsp;<span class="pill pill-mint">Aligned</span> standing bi-weekly marketing↔services sync.</p>
+    <h4>My action items</h4>
+    <div data-section="meetings">
+      <label class="task"><input type="checkbox" data-track="mtg-megh-01-feature" data-section="meetings" /><div class="task-content"><div class="task-title">Establish the feature-release → one-pager + demo-video process (MVP-first)</div><div class="task-tags"><span class="pill pill-grey">Jerris+Meghan</span><span class="pill pill-zest">Enablement</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-megh-02-pendo" data-section="meetings" /><div class="task-content"><div class="task-title">Claim Pendo for marketing — build segmented + gamified milestone messaging</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-green">Automation</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-megh-03-demoenv" data-section="meetings" /><div class="task-content"><div class="task-title">Discuss a dedicated sales demo environment with Paul Biancacello (CTO)</div><div class="task-tags"><span class="pill pill-grey">Jerris</span><span class="pill pill-zest">Enablement</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="mtg-megh-04-roles" data-section="meetings" /><div class="task-content"><div class="task-title">Working session w/ Meghan on product tiers; define roles; Slack John re: post-board event</div><div class="task-tags"><span class="pill pill-grey">Jerris+Meghan</span><span class="pill pill-grey">Org</span></div></div></label>
+    </div>
+  </div>
+
+  <!-- processed meeting docs (managed by scripts/meeting-sync.py — June-3 synthesized above by hand; June-1 live on Discovery Log + Leadership Mandate):
+       doc:SMB Overview + Marketing - 2026_06_03 09_15 MDT - Notes by Gemini.docx
+       doc:Diamond _ Jerris 1_1 - 2026_06_03 11_30 MDT - Notes by Gemini.docx
+       doc:Jerris _ Cori Intro - 2026_06_03 12_30 EDT - Notes by Gemini.docx
+       doc:Liz _ Jerris 1_1 - 2026_06_03 14_00 MDT - Notes by Gemini.docx
+       doc:Intro to Services - 2026_06_03 15_00 EDT - Notes by Gemini.docx
+       doc:Jerris _ Jim _ Judd - 2026_06_01 13_59 MDT - Notes by Gemini.docx
+       doc:Jerris and John Lowe Connect - 2026_06_01 13_01 EDT - Notes by Gemini.docx
+       doc:Jerris_Nik Intro  - 2026_06_01 10_59 CDT - Notes by Gemini.docx -->
+    <!-- doc:SMB Team Meeting - 2026_06_02 12_00 EDT - Notes by Gemini.docx -->
+  <h2>📥 SMB Team Meeting <em>— auto-imported.</em></h2>
+  <p class="mono muted" style="font-size:0.78rem">Jun 2, 2026 · Jim Higgins Jon Bayne Liam Doyle Liz Kravitz Michael Marconi rob.yoegel@clerri.com Matt Coates Judd Christensen Caleb Bonge Jerris Heaton · auto-extracted from Gemini notes</p>
+  <div class="card">
+    <h4 style="margin-top:0">Action items</h4>
+    <div data-section="meetings">
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-01" data-section="meetings" /><div class="task-content"><div class="task-title">Send opportunity data</div><div class="task-meta">Provide the list of opportunities created in May to the team.</div><div class="task-tags"><span class="pill pill-grey">Jon Bayne</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-02" data-section="meetings" /><div class="task-content"><div class="task-title">Email presentation slides</div><div class="task-meta">Distribute the presentation slides covering lead source analysis and performance metrics to the meeting attendees.</div><div class="task-tags"><span class="pill pill-grey">Jon Bayne</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-03" data-section="meetings" /><div class="task-content"><div class="task-title">Analyze recent leads</div><div class="task-meta">Perform a deeper analysis of the most recent lead performance data.</div><div class="task-tags"><span class="pill pill-grey">Jon Bayne</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-04" data-section="meetings" /><div class="task-content"><div class="task-title">Schedule sales meeting</div><div class="task-meta">Organize a session between Jerris Heaton and the sales team to review promotions and outreach processes.</div><div class="task-tags"><span class="pill pill-grey">Jon Bayne</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-05" data-section="meetings" /><div class="task-content"><div class="task-title">Obtain demo assets</div><div class="task-meta">Locate and secure the demo materials showing text sign-up functionality for use in sales presentations.</div><div class="task-tags"><span class="pill pill-grey">Jerris Heaton</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-06" data-section="meetings" /><div class="task-content"><div class="task-title">Update Board Deck</div><div class="task-meta">Incorporate sales team performance data for small and medium-sized business deals into the board presentation.</div><div class="task-tags"><span class="pill pill-grey">Judd Christensen</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-07" data-section="meetings" /><div class="task-content"><div class="task-title">Send Sales Slides</div><div class="task-meta">Forward the detailed sales data presentation slides to Judd Christensen.</div><div class="task-tags"><span class="pill pill-grey">Jon Bayne</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-08" data-section="meetings" /><div class="task-content"><div class="task-title">Schedule Meeting Cadence</div><div class="task-meta">Organize a weekly or bi-weekly sync to ensure consistent communication between marketing and sales teams.</div><div class="task-tags"><span class="pill pill-grey">The group</span></div></div></label>
+      <label class="task"><input type="checkbox" data-track="smb-team-meeting-09" data-section="meetings" /><div class="task-content"><div class="task-title">Share Lead Analysis</div><div class="task-meta">Provide data on lead sources and feedback on performance to Jerris Heaton to guide future planning.</div><div class="task-tags"><span class="pill pill-grey">Jon Bayne</span></div></div></label>
+    </div>
+  </div>
+
+<!-- AUTO-APPEND ANCHOR — scripts/meeting-sync.py inserts new meetings above this line -->
+
+  <div class="note-block">
+    <div class="note-label">Meeting notes — follow-ups & open questions <span class="note-saved">✓ saved</span></div>
+    <textarea data-note="meetings-notes" placeholder="Who still owes you what, names to confirm (Paul vs Jacob, Marissa, David Demeary), stats to verify (50–75% n)..."></textarea>
+  </div>
+
+  <div class="topic-foot">
+    <a href="/clerri/discovery-log"><span class="dir">← Prev</span><span class="name">Discovery Log</span></a>
+    <a href="/clerri/action-board"><span class="dir">Next →</span><span class="name">Action Center</span></a>
+  </div>
+
+</div>
+</ClerriLayout>
