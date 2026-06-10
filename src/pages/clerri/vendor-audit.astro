@@ -19,7 +19,7 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   <div class="progress-track"><div class="progress-fill" data-progress-fill="vendor-audit"></div></div>
   <p class="mono" style="font-size:0.75rem;color:var(--muted)">Verification progress: <span data-progress-here="vendor-audit">0 / 0</span></p>
 
-  <h2>The six vendors <em>at a glance.</em></h2>
+  <h2>The seven vendors <em>at a glance.</em></h2>
   <div style="overflow-x:auto">
   <table class="vtable">
     <thead>
@@ -28,21 +28,27 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <tbody>
       <tr>
         <td><strong>Loudspeaker</strong><br/><span class="mono muted">~$6k/mo · content/AEO</span></td>
-        <td><span class="tag tag-amber">Maintenance mode (decided)</span></td>
-        <td>Nik's audit: real visibility, but 0 pre-conversion assists across 385 contacts + Direct/Organic revenue down. Keep the asset, stop active spend.</td>
-        <td>Run the offboarding checklist below; bring SEO/AEO in-house.</td>
+        <td><span class="tag tag-amber">Full cancel (decided)</span></td>
+        <td>Nik's audit: real visibility, but 0 pre-conversion assists across 385 contacts + Direct/Organic revenue down. Keep the asset, end the spend.</td>
+        <td>Run the offboarding checklist below; AirOps Pro ($2K/mo) + in-house strategy replaces it.</td>
       </tr>
       <tr>
         <td><strong>7 Knots Digital</strong><br/><span class="mono muted">James Karklins</span></td>
-        <td><span class="tag tag-amber">Renegotiate or cut</span></td>
-        <td>They're a B2B media / demand-gen agency, not a deliverability shop. Likely paying agency rates for a thin slice of capability.</td>
-        <td>Reconcile scope vs. spend. Get the SOW and what we actually consume.</td>
+        <td><span class="tag tag-amber">Wind down (decided)</span></td>
+        <td>$10,200/mo ($27,540/qtr prepaid) Spinnaker retainer to email ~1.5% of the list; their own audit shows 34.5K of 44K contacts never engaged.</td>
+        <td>Set the exit date (prepaid quarter = handoff runway); capture domain, DKIM/DMARC, suppression list, templates.</td>
       </tr>
       <tr>
         <td><strong>Opascope</strong><br/><span class="mono muted">$6.5k→$10k/mo ads</span></td>
-        <td><span class="tag tag-amber">Right-size / switch tier</span></td>
-        <td>SOW escalates to $10k/mo at month 7+ (you're past it). 20% of spend + $10k min retainer on $50k — but you spend ~$15k = 20-67% effective fee vs. ~10% benchmark.</td>
-        <td>Switch to Team-POC ($4,500/mo, 14-day notice); verify the actual current invoice; right-size to real spend.</td>
+        <td><span class="tag tag-amber">Exit (decided)</span></td>
+        <td>$6,500/mo invoice (SOW runs to $10k at month 7+); QS 1–3/10, 39% brand, ~$7K/mo documented waste. LP found it all in a pre-sale audit.</td>
+        <td>Sign Logical Position (~$2,500–3,000/mo); 30-day notice (§5.6 exit billing budgeted); transfer ad-account ownership to Clerri.</td>
+      </tr>
+      <tr>
+        <td><strong>Verve</strong><br/><span class="mono muted">~€500–1,800/mo · hosting/CMS</span></td>
+        <td><span class="tag tag-amber">Exit at migration</span></td>
+        <td>Dutch infrastructure contract (hosting + CMS updates + retainer hours + monitoring) — auto-renews annually, billed in advance. Full decode below.</td>
+        <td>Find the renewal date vs. Jacob's WordPress ship date; capture GitHub repo + DNS before notice.</td>
       </tr>
       <tr>
         <td><strong>Open Dental</strong><br/><span class="mono muted">PMS partner</span></td>
@@ -70,9 +76,9 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   <h2>Decisions — <em>updated June 2026.</em></h2>
 
   <div class="callout zest-hi">
-    <div class="lbl">Loudspeaker → maintenance mode</div>
+    <div class="lbl">Loudspeaker → full cancel (upgraded from maintenance mode)</div>
     <p style="margin:0 0 0.5rem">Nik's first-party audit (Salesforce + HubSpot + GSC, prepared for Jim + John) settles it: visibility gains are <strong>real and validated</strong> (86 URLs, 70,533 impressions, high-intent themes), but business-outcome attribution is <strong>not established</strong> — <strong>0 pre-conversion Loudspeaker URL assists</strong> across 385 Direct/Organic contacts, AI referrals ≈ 2 MQLs, and Direct/Organic closed-won revenue actually <em>down</em> 21-61% during the engagement. At 3 months, that's early for SEO — but the work is replicable in-house, and stopping doesn't erase the rankings if pages stay live.</p>
-    <p style="margin:0"><strong>The call:</strong> move to maintenance mode (don't pay the $12k Option-1 sprint — you're going in-house anyway). It's low-regret + reversible: if rankings hold, you've confirmed you can own it; if they decay, the work was durable and you re-engage. Bring it in-house as two parts — <strong>measurement</strong> (Profound / Otterly / the AEO tool Nik named) and <strong>production</strong> (the AI content pipeline + a human editor). Buying a monitor ≠ replacing the content engine.</p>
+    <p style="margin:0"><strong>The call (updated):</strong> full cancel — the $6,000/mo ends entirely (and don't pay the $12k Option-1 sprint). It's low-regret + reversible: if rankings hold, you've confirmed you can own it; if they decay, the work was durable and you re-engage. Bring it in-house as two parts — <strong>measurement</strong> (Profound / Otterly / the AEO tool Nik named) and <strong>production</strong> (the AI content pipeline + a human editor). Buying a monitor ≠ replacing the content engine.</p>
   </div>
 
   <h4>⚠️ Offboarding — protect the asset BEFORE you stop</h4>
@@ -182,8 +188,8 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
     <div class="card">
       <h3>Setup that protects us</h3>
       <ul>
-        <li><strong>Never send from clerri.com.</strong> Buy 2–4 lookalike domains (e.g. tryclerri.com, clerri-team.com) — cold outbound lives there, so the marketing domain's deliverability recovery is never at risk.</li>
-        <li>2–3 inboxes per domain, <strong>2–4 week automated warm-up</strong> before any campaign, then 20–50 sends/inbox/day max.</li>
+        <li><strong>Never send from clerri.com — or clerrihq.com</strong> (the live HubSpot marketing domain). Buy 2–3 <strong>fresh lookalike domains</strong> (getclerri.com / joinclerri.com / meetclerri.com-style — check availability), not subdomains: a subdomain shares organizational linkage with the root so reputation can bleed; a separate domain severs it. Point each root at a redirect to clerri.com.</li>
+        <li>2–3 inboxes per domain with real-person names (6–9 total ≈ <strong>200–350 sends/day capacity</strong>); <strong>2–3 week automated warm-up to 90%+ health</strong> before any campaign, then 20–40 sends/inbox/day. Register our own domains — skip Instantly's done-for-you option (2026 community reports flag DFY domains arriving with poor reputation).</li>
         <li>SPF/DKIM/DMARC on every sending domain (same checklist as the 7knots capture).</li>
         <li>Pricing is SMB-grade (tens-to-low-hundreds per month + inbox costs) — verify current tiers at signup.</li>
       </ul>
@@ -200,10 +206,9 @@ import ClerriLayout from '../../layouts/ClerriLayout.astro';
   </div>
   <div class="callout" style="margin-top:1rem">
     <div class="lbl">The flow + what good looks like</div>
-    <p style="margin:0 0 0.5rem"><strong>Clay builds the list</strong> (segment: SMB first — the personas from the messaging playbook) → emails verified → <strong>Instantly sequences</strong> (3–4 touches, plain-text, one CTA) → <strong>replies route to SDRs</strong> → meetings logged in HubSpot/Salesforce. SDR dials shift to same-day follow-up on opens/replies.</p>
-    <p style="margin:0"><strong>KPIs:</strong> reply rate 3–5%+, positive-reply rate, meetings booked per inbox per week, bounce under 3%, spam complaints under 0.1%. <strong>30-day rollout:</strong> wk 1 domains + DNS + inboxes → wks 2–3 warm-up + list build + sequence copy → wk 4 first 1–2K-contact SMB campaign → scale inboxes only after the KPIs hold.</p>
+    <p style="margin:0 0 0.5rem"><strong>Clay builds the list</strong> (native Instantly integration; SMB personas first) → emails verified → <strong>Instantly sequences</strong> (50–125 words, human-written framework + one Clay-personalized line, single CTA) → <strong>Slack pings on replies/Interested</strong> → activities auto-log to <strong>Salesforce</strong> via OutboundSync webhook (requires Instantly's Hypergrowth plan; Zapier/Make is the cheaper DIY alternative) — reps work calls from Salesforce and never live in another tool. <strong>Settle with Nik before the webhook goes live:</strong> cold leads land in SF tagged with a source the HS↔SF sync <em>explicitly excludes</em> — they enter HubSpot only after a rep qualifies them. Otherwise cold prospects leak into clerrihq.com nurture and contaminate both motions. AI Reply Agent: logistics on autopilot; substantive replies (PPO objections, "we already looked at Kleer") always get a human.</p>
+    <p style="margin:0"><strong>KPIs:</strong> industry average reply rate is 3.4% — warmed, authenticated setups run 5–10%; track positive-reply rate and <strong>qualified meetings booked</strong> (the real metric); bounce under 2%, complaints under 0.3%. <strong>Rollout (3–4 weeks — warm-up is the gate):</strong> wk 1 domains + DNS + inboxes → wks 2–3 warm-up + Clay list + sequence copy → wk 4–5 first 1–2K SMB campaign → scale only after KPIs hold. <strong>Ownership:</strong> Jerris owns setup + a 4–6 week pilot, then hands the reps a running machine. The honest constraint to plan for: if the engine works, <em>call capacity</em> — not email — becomes the bottleneck; that's a headcount conversation we'll see coming in the data.</p>
   </div>
-  <p class="muted" style="font-size:0.9rem">Strategy session reference: the claude.ai share link couldn't be read programmatically — paste the key decisions from that chat to refine this (volumes, domain names, list segments, copy angles).</p>
 
   <h2>Loudspeaker — <em>the deep dive.</em></h2>
 
